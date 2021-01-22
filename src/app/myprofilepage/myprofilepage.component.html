@@ -1,0 +1,118 @@
+<app-navbar></app-navbar>
+<br>
+<br><br><br>
+<div class="container bootstrap snippets bootdey form-container">
+  <h2 class="header">Πληροφορίες</h2>
+  <div class="panel-body inf-content">
+    <div class="row">
+      <div class="col-md-4">
+        <br>
+        <br>
+        <img *ngIf="sex=='Male' && role=='Student'" alt="" style="width:600px;" title=""
+          class="img-circle img-thumbnail isTooltip" src="../../assets/malestudent.png" data-original-title="Usuario">
+        <img *ngIf="sex=='Female' && role=='Student'" alt="" style="width:600px;" title=""
+          class="img-circle img-thumbnail isTooltip" src="../../assets/femalestudent.jpg" data-original-title="Usuario">
+        <img *ngIf="sex=='Male' && role=='Teacher'" alt="" style="width:600px;" title=""
+          class="img-circle img-thumbnail isTooltip" src="../../assets/teachemale.png" data-original-title="Usuario">
+        <img *ngIf="sex=='Female' && role=='Teacher'" alt="" style="width:600px;" title=""
+          class="img-circle img-thumbnail isTooltip" src="../../assets/teacherfemale.png" data-original-title="Usuario">
+        <ul title="Ratings" class="list-inline ratings text-center">
+          <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
+        </ul>
+      </div>
+      <div class="col-md-6"><br>
+        <div class="table-responsive"><br><br>
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                    Όνομα
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{first_name}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-user  text-primary"></span>
+                    Επώνυμο
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{last_name}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-cloud text-primary"></span>
+                    Φύλο
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{grsex}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-cloud text-primary"></span>
+                    Όνομα χρήστη
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{username}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                    Email
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{email}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                    Τηλέφωνο
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{phone}}
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>
+                    <span class="glyphicon glyphicon-eye-open text-primary"></span>
+                    Ρόλος
+                  </strong>
+                </td>
+                <td class="text-primary">
+                  {{grrole}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

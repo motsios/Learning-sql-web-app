@@ -1,0 +1,60 @@
+.form-container {
+  background: rgb(196, 196, 196);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px;
+  margin: 0 auto;
+  margin-top: 0%;
+  text-align: center;
+  width: 80%;
+}
+.content {
+  color: rgb(63, 67, 70);
+  text-align: center;
+}
+
+.info {
+  color: rgb(255, 255, 255);
+}
+
+.staticinfo {
+  color: rgb(255, 255, 255);
+}
+
+.col-md-6 {
+  text-align: center;
+}
+
+.col-md-4 {
+  margin-top: 40px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: rgb(230, 219, 219);
+}
+.header {
+  font-style: initial;
+  font-size: 60px;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+  margin-top: 1%;
+  text-align: center;
+  width: 100%;
+}
+.center1 {
+  border: 2px solid rgb(31, 31, 32);
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgb(66, 59, 59);
+  display: flex;
+  font-size: 59px;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  width: 80%;
+}
+

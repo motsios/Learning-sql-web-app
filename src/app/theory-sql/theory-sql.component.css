@@ -1,0 +1,65 @@
+:host ::ng-deep .pdfViewer .page .canvasWrapper {
+  margin-top: 10px;
+  border: 5px solid rgb(54, 52, 52);
+}
+.form-container {
+  background: rgb(168, 166, 166);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 0%;
+  width: 80%;
+}
+.content {
+  color: rgb(43, 43, 107);
+  text-align: center;
+}
+.info {
+  color: rgb(255, 255, 255);
+}
+
+.staticinfo {
+  color: rgb(255, 255, 255);
+}
+
+.btn1 {
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: rgb(230, 219, 219);
+}
+.header {
+  font-style: initial;
+  font-size: 60px;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+  margin-top: 1%;
+  text-align: center;
+  width: 100%;
+}
+.center1 {
+  border: 2px solid rgb(31, 31, 32);
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgb(66, 59, 59);
+  display: flex;
+  font-size: 59px;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  width: 80%;
+}
+

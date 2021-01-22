@@ -1,0 +1,99 @@
+<app-navbar></app-navbar>
+<br>
+<div>
+  <h2 class="header center1">Προσθήκη νέου Πίνακα</h2>
+  <br>
+  <div class="form-container headers">
+    <div class="header1"><label for="fname"><b>Δημιουργία πίνακα</b></label></div>
+    <input id="tablename" type="text" name="tablename" [(ngModel)]="tablename" placeholder="Όνομα Πίνακα..." required>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr class="headers">
+          <th>Όνομα στήλης</th>
+          <th>Τύπος( )</th>
+          <th>PK</th>
+          <th>NN</th>
+          <th>UQ</th>
+          <th>AI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let field of fieldArray; let i = index" class="headers">
+          <td>
+            <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.name}}" />
+          </td>
+          <td><select size="1" name="{{field.type}}" (change)="selectChangeHandler($event)" [(ngModel)]="field.type">
+              <option value="INT" selected="selected">
+                INT
+              </option>
+              <option value="VARCHAR">
+                VARCHAR
+              </option>
+              <option value="FLOAT">
+                FLOAT
+              </option>
+              <option value="DATETIME">
+                DATETIME
+              </option>
+              <option value="TINYINT">
+                BOOLEAN
+              </option>
+            </select> ( <input *ngIf="field.type!='TINYINT' && field.type!='DATETIME'" [(ngModel)]="field.size"
+              type="number" name="{{field.size}}" /> )</td>
+          <td><input type="checkbox" class="region_ct" value="PK" ngDefaultControl name="{{field.primarykey}}"
+              [(ngModel)]="field.primarykey" (click)="clearOthersPrimaries()" /></td>
+          <td><input type="checkbox" class="region_ct" value="NN" ngDefaultControl name="{{field.notnull}}"
+              [(ngModel)]="field.notnull" /></td>
+          <td><input type="checkbox" class="region_ct" value="UQ" ngDefaultControl name="{{field.unique}}"
+              [(ngModel)]="field.unique" /></td>
+          <td><input type="checkbox" class="region_ct" value="AI" ngDefaultControl name="{{field.autoincrement}}"
+              [(ngModel)]="field.autoincrement" /></td>
+          <td>
+            <button class="btn btn-default" type="button" (click)="deleteFieldValue(i)"><i
+                class="fa fa-trash-o fa-lg"></i></button>
+          </td>
+        </tr>
+        <tr class="headers">
+          <td>
+            <input class="form-control" type="text" id="newAttributeCode" [(ngModel)]="newAttribute.name"
+              name="newAttributeCode" />
+          </td>
+          <td><select size="1" name="{{newAttribute.type}}" (change)="selectChangeHandler($event)"
+              [(ngModel)]="newAttribute.type">
+              <option value="INT" selected="selected">
+                INT
+              </option>
+              <option value="VARCHAR">
+                VARCHAR
+              </option>
+              <option value="FLOAT">
+                FLOAT
+              </option>
+              <option value="DATETIME">
+                DATETIME
+              </option>
+              <option value="TINYINT">
+                BOOLEAN
+              </option>
+            </select> ( <input *ngIf="newAttribute.type!='TINYINT' && newAttribute.type!='DATETIME'"
+              [(ngModel)]="newAttribute.size" type="number" height="2" name="{{newAttribute.size}}" /> )</td>
+          <td><input type="checkbox" class="region_ct" value="PK" ngDefaultControl name="{{newAttribute.primarykey}}"
+              [(ngModel)]="newAttribute.primarykey" (click)="clearOthersPrimaries()" /></td>
+          <td><input type="checkbox" class="region_ct" value="NN" ngDefaultControl name="{{newAttribute.notnull}}"
+              [(ngModel)]="newAttribute.notnull" /></td>
+          <td><input type="checkbox" class="region_ct" value="UQ" ngDefaultControl name="{{newAttribute.unique}}"
+              [(ngModel)]="newAttribute.unique" /></td>
+          <td><input type="checkbox" class="region_ct" value="AI" ngDefaultControl name="{{newAttribute.autoincrement}}"
+              [(ngModel)]="newAttribute.autoincrement" /></td>
+          <td>
+            <button class="btn btn-default" type="button" (click)="addFieldValue()"> <i class="fa fa-plus"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" (click)="createTable()"
+      style="margin-left:auto;margin-right:auto;display:block;margin-top:5%;margin-bottom:0%"
+      class="btn btn-primary center">Καταχώρηση</button>
+  </div>

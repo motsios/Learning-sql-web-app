@@ -1,0 +1,87 @@
+<app-navbar></app-navbar><br>
+<div>
+  <h2 class="header center1">Ερωτήσεις SQL Κουίζ</h2>&nbsp;
+</div>
+<button type="button" class="btn1 btn-primary  py-1 px-2" (click)="add()"><i class="fa fa-plus fa-lg"></i></button>
+<br>
+<!-- Table -->
+<div style="height:400px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Εύκολες SQL ερωτήσεις</th>
+        <th scope="col">Επιλογή α</th>
+        <th scope="col">Επιλογή b</th>
+        <th scope="col">Επιλογή c</th>
+        <th scope="col">Επιλογή d</th>
+        <th scope="col">Απάντηση</th>
+        <th scope="col">Σκορ</th>
+        <th scope="col">Ενέργειες</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let question of easyquestionsArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{question.question}}</b></td>
+        <td><b>{{question.a}}</b></td>
+        <td><b>{{question.b}}</b></td>
+        <td><b>{{question.c}}</b></td>
+        <td><b>{{question.d}}</b></td>
+        <td><b>{{question.correct_answer}}</b></td>
+        <td><b>{{question.score}}</b></td>
+        <td>
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="updateField(question.id,question.question,question.a,question.b,question.c,question.d,question.correct_answer,question.score,question.difficulty)"><i
+              class="fa fa-pencil"></i></button> &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
+              class="fa fa-trash-o"></i></button> &nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- Table -->
+<br><br>
+<!-- Table -->
+<div style="height:400px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Δύσκολες SQL ερωτήσεις</th>
+        <th scope="col">Επιλογή a</th>
+        <th scope="col">Επιλογή b</th>
+        <th scope="col">Επιλογή c</th>
+        <th scope="col">Επιλογή d</th>
+        <th scope="col">Απάντηση</th>
+        <th scope="col">Σκορ</th>
+        <th scope="col">Ενέργειες</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let question of hardquestionsArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{question.question}}</b></td>
+        <td><b>{{question.a}}</b></td>
+        <td><b>{{question.b}}</b></td>
+        <td><b>{{question.c}}</b></td>
+        <td><b>{{question.d}}</b></td>
+        <td><b>{{question.correct_answer}}</b></td>
+        <td><b>{{question.score}}</b></td>
+        <td>
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="updateField(question.id,question.question,question.a,question.b,question.c,question.d,question.correct_answer,question.score,question.difficulty)"><i
+              class="fa fa-pencil"></i></button> &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
+              class="fa fa-trash-o"></i></button> &nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br><br><br>
+<!-- Table -->
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

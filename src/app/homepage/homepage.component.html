@@ -1,0 +1,34 @@
+<br>
+<form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h2 class="header">Καλωσήλθατε στην Web εφαρμογή SQL</h2>
+  <img style='height: 100%; width: 100%; object-fit: cover' src="../../assets/sqlimage.jpg"><br>
+  <div class="form-group">
+    <label for="username">΄Ονομα χρήστη</label>
+    <input type="text" formControlName="username" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+      <div *ngIf="f.username.errors.required">Το Όνομα Χρήστη απαιτείτα</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Κωδικός πρόσβασης</label>
+    <input type="password" formControlName="password" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Ο Κωδικός Πρόσβασης απαιτείται</div>
+    </div>
+  </div>
+  <div class="ok">
+    <a class="btn btn-link" (click)="openSwal()">Ξεχάσατε τον κωδικό πρόσβασης;</a>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Είσοδος
+    </button>
+    <a routerLink="/register" class="btn btn-link">Εγγραφή</a>
+  </div>
+</form>
+<br>
+<br>
+<br>

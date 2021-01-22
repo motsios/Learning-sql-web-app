@@ -1,0 +1,15 @@
+<h2 style="text-align: center;">Αποτέλεσμα</h2>
+<div style="height:450px; table-layout: auto; overflow: auto">
+  <table class="table table-striped form-container table-container">
+    <thead>
+      <tr>
+        <th *ngFor="let field of columnsArray;" class="headers">{{field}}</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let data of dataArray ">
+        <td *ngFor="let column of columnsArray;let i=index;">{{data[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

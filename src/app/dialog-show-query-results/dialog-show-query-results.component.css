@@ -1,0 +1,5 @@
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: rgb(230, 219, 219);
+}

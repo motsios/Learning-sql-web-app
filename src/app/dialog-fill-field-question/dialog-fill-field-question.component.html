@@ -1,0 +1,39 @@
+<div class="md-dialog-container">
+  <h2 style="text-align: center" *ngIf="edit=='true'">''Επεξεργασία Ερώτησης Συμπλήρωσης-κενού''</h2>
+  <h2 style="text-align: center" *ngIf="edit=='false'">''Προσθήκη Ερώτησης Συμπλήρωσης-κενού''</h2>
+  <hr>
+  <br>
+  <form class="form-container" [formGroup]="editoraddForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="question">Ερώτηση</label>
+      <input type="text" formControlName="question" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.question.errors }" />
+      <div *ngIf="submitted && f.question.errors" class="invalid-feedback">
+        <div *ngIf="f.question.errors.required">Η Ερώτηση απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fill_field_question">SQL ερώτημα</label>
+      <input type="fill_field_question" formControlName="fill_field_question" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.fill_field_question.errors }" />
+      <div *ngIf="submitted && f.fill_field_question.errors" class="invalid-feedback">
+        <div *ngIf="f.fill_field_question.errors.required">Το SQL ερώτημα απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="hideWord">Αποκρυμένες Λέξεις</label><i class="fa fa-info-circle" (click)="infoHideWord()"></i>
+      <input type="hideWord" formControlName="hideWord" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.hideWord.errors }" />
+      <div *ngIf="submitted && f.hideWord.errors" class="invalid-feedback">
+        <div *ngIf="f.hideWord.errors.required">Απαιτείται τουλάχιστον μία αποκρυμένη λέξη</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary">
+        Αποθήκευση
+      </button>
+      <a class="btn btn-link" (click)="close()">Ακύρωση</a>
+    </div>
+  </form>
+</div>

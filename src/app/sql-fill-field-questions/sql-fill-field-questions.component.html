@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<br>
+<h1 class="center1" *ngIf="categorySelected==false">Επιλέξτε μία Κατηγορία SQL Λέξεων για εξάσκηση</h1>
+<div class="navbar bg-dark" style="height:390px;  width: 230px; overflow: auto">
+  <nav>
+    <section class="list-with-heading">
+      <h3>SQL Λέξεις:</h3>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <ul>
+        <li (click)="select()"><a>SQL Select</a></li>
+        <li (click)="where()"><a>SQL Where</a></li>
+        <li (click)="order()"><a>SQL Order By</a></li>
+        <li (click)="insert()"><a>SQL Insert</a></li>
+        <li (click)="null1()"><a>SQL Null</a></li>
+        <li (click)="update()"><a>SQL Update</a></li>
+        <li (click)="delete()"><a>SQL Delete</a></li>
+        <li (click)="fun()"><a>SQL Functions</a></li>
+        <li (click)="like()"><a>SQL Like</a></li>
+        <li (click)="wildcards()"><a>SQL WildCards</a></li>
+        <li (click)="in()"><a>SQL In</a></li>
+        <li (click)="between()"><a>SQL Between</a></li>
+        <li (click)="alias()"><a>SQL Alias</a></li>
+        <li (click)="join()"><a>SQL Join</a></li>
+        <li (click)="group()"><a>SQL Group By</a></li>
+      </ul>
+    </section>
+  </nav>
+</div>
+<h3 *ngIf="categorySelected==true"  class="center2" >{{header}}</h3><br>
+
+<div *ngIf="categorySelected==true" class="form-container headers">
+  <div class="header1"><label
+      for="fname"><b>{{this.questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].question}}</b></label></div>
+  <br><br>
+  <h3 [innerHTML]="fillfieldsquestionsArray[questionid].fill_field_question"></h3><br>
+  <input type="text" class="inputtext" placeholder="Γράψε την λέξτη που λείπει με την σωστή σειρά και διαχώρισε τες με κόμμα..." id="text"  [(ngModel)]="textfield" >
+    <br><br> <br><br> <br><br>
+  <div class="form-group">
+    <a class="btn btn-link" (click)="showAnswer(fillfieldsquestionsArray[questionid].id)">Δείξε την Απάντηση</a>
+    <button class="btn btn-primary" (click)="next(fillfieldsquestionsArray[questionid].id)">
+      <span class="spinner-border-sm mr-1"></span>
+     Υποβολή
+    </button>
+  </div>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

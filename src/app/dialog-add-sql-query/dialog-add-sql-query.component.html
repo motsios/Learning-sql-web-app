@@ -1,0 +1,15 @@
+<div class="md-dialog-container">
+  <h2 style="text-align: center">''Προσθήκη Δεδομένων στον Πίνακα {{tablenameheader}}''</h2>
+  <hr>
+  <br>
+  <div class="form-group" *ngFor="let d of datacolumns.tableColumnsArray;let i=index;">
+    <label>{{d.COLUMN_NAME}} ({{d.COLUMN_TYPE}}) <button class="button" (click)="openInfoSwal(d)"> <i class="fa fa-info-circle" ></i></button></label>
+    <input type="text" class="form-control" [(ngModel)]="valuesArray[i]" name="{{d.name}}" />
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="addQuestion()">
+      Αποθήκευση
+    </button>
+    <a class="btn btn-link" (click)="close()">Ακύρωση</a>
+  </div>
+</div>

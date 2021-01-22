@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<h2 class="header center1">Τα μεγαλύτερα Σκορ των Κουίζ 25 Ερωτήσεων</h2><br>
+<div style="height:400px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">Όνομα</th>
+        <th scope="col">Επώνυμο</th>
+        <th scope="col">Σκορ</th>
+        <th scope="col">Επίπεδο Δυσκολίας</th>
+        <th scope="col">Διάρκεια κουίζ</th>
+        <th scope="col">Ημερομηνία Επίτευξης</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let student of bestScoreOf25Array">
+        <td><b>{{student.first_name}}</b></td>
+        <td><b>{{student.last_name}}</b></td>
+        <td><b>{{student.score_tables[0].score}}</b></td>
+        <td><b>{{student.score_tables[0].difficulty}}</b></td>
+        <td><b>{{student.score_tables[0].time}}</b></td>
+        <td>
+          <b>{{student.score_tables[0].createdAt.replace("T"," ").slice(0,-5)}}</b>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h2 class="header center1">Τα μεγαλύτερα Σκορ των Κουίζ 15 Ερωτήσεων</h2><br>
+<div style="height:400px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">Όνομα</th>
+        <th scope="col">Επώνυμο</th>
+        <th scope="col">Σκορ</th>
+        <th scope="col">Επίπεδο Δυσκολίας</th>
+        <th scope="col">Διάρκεια κουίζ</th>
+        <th scope="col">Ημερομηνία Επίτευξης</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let student of bestScoreOf15Array">
+        <td><b>{{student.first_name}}</b></td>
+        <td><b>{{student.last_name}}</b></td>
+        <td><b>{{student.score_tables[0].score}}</b></td>
+        <td><b>{{student.score_tables[0].difficulty}}</b></td>
+        <td><b>{{student.score_tables[0].time}}</b></td>
+        <td>
+          <b>{{student.score_tables[0].createdAt.replace("T"," ").slice(0,-5)}}</b>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

@@ -1,0 +1,73 @@
+.label-font {
+  color: #116a65;
+  font-weight: 700;
+}
+h3 {
+  font-style: initial;
+  font-size: 60px;
+  letter-spacing: 3px;
+  color: rgb(255, 255, 255);
+  margin-top: 1%;
+  text-align: center;
+  width: 100%;
+}
+.form-container {
+  background: rgb(253, 250, 250);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px;
+  margin: 0 auto;
+  margin-top: 0%;
+  width: 100%;
+}
+
+h4 {
+  font-style: initial;
+  color: rgb(165, 162, 162);
+  margin-top: 1%;
+  margin-bottom: 1%;
+  text-align: center;
+}
+.form-container1 {
+  background: rgb(219, 218, 218);
+  border-radius: 10px;
+  margin-top: 1%;
+  width: 100%;
+  height: 25%;
+}
+.question {
+  font-size: larger;
+}
+
+h4 {
+  font-style: initial;
+  color: rgb(0, 0, 0);
+  font-size: 25dp;
+}
+.header1 {
+  font-style: italic;
+  text-align: center;
+  letter-spacing: 2px;
+  color: rgb(31, 54, 187);
+}
+
+.timer {
+  font-style: italic;
+  text-align: end;
+  font-size: x-large;
+  color: rgb(31, 54, 187);
+}
+.center1 {
+  border: 2px solid rgb(31, 31, 32);
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgb(66, 59, 59);
+  display: flex;
+  font-size: 59px;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  width: 80%;
+}

@@ -1,0 +1,12 @@
+.bg-company-red {
+  background-color: darkred !important;
+}
+.navbar {
+  min-height: 80px;
+}
+.navbar-brand {
+  font-size: 40px;
+}
+.nav-link {
+  font-size: 30px;
+}

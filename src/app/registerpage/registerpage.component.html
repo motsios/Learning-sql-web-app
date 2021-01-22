@@ -1,0 +1,100 @@
+<br>
+<form class="form-container bg" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <h2 class="headertekst">Φόρμα εγγραφής</h2>
+  <div class="form-group">
+    <label for="firstName">Όνομα</label>
+    <input type="text" formControlName="firstName" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+      <div *ngIf="f.firstName.errors.required">Το Όνομα απαιτείτα</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Επώνυμο</label>
+    <input type="text" formControlName="lastName" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+      <div *ngIf="f.lastName.errors.required">Το Επώνυμο απαιτείτα</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="username">Όνομα Χρήστη</label>
+    <input type="text" formControlName="username" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+      <div *ngIf="f.username.errors.required">Το Όνομα Χρήστη απαιτείτα</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Κωδικός Πρόσβασης</label>
+    <input type="password" formControlName="password" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Ο Κωδικός Πρόσβασης απαιτείται</div>
+      <div *ngIf="f.password.errors.minlength">Ο Κωδικός Πρόσβασης πρέπει να είναι μεγαλύτερος από 6 χαρακτήρες</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="confirmpassword">Επαλήθευση κωδικού</label>
+    <input type="confirmpassword" formControlName="confirmpassword" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
+    <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
+      <div *ngIf="f.confirmpassword.errors.required">Η Επαλήθευση κωδικού απαιτείται</div>
+      <div *ngIf="f.password!=f.confirmpassword">Ο κωδικός πρόσβασης πρέπει να είναι ίδιος με τον Κωδικό Επαλήθευσης</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" formControlName="email" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+      <div *ngIf="f.email.errors.required">Το Email απαιτείται</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="phone">Τηλέφωνο</label>
+    <input type="phone" formControlName="phone" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+      <div *ngIf="f.phone.errors.required">Το Τηλέφωνο απαιτείται</div>
+    </div>
+  </div>
+  <div>
+    <label for="sex">Φύλο</label>
+    <div class="form-group">
+      <select type="sex" formControlName="sex" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.sex.errors }" class="form-control" id="inputGroupSelect04">
+        <option value="1">Άντρας</option>
+        <option value="2">Γυναίκα</option>
+      </select>
+      <div *ngIf="submitted && f.sex.errors" class="invalid-feedback">
+        <div *ngIf="f.sex.errors.required || f.sex==null">Το φύλο απαιτείται</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for="role">Ρόλος</label>
+    <div class="form-group">
+      <select type="role" formControlName="role" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.role.errors }" class="form-control" id="inputGroupSelect04">
+        <option value="1">Εκπαιδευόμενος</option>
+        <option value="2">Καθηγητής</option>
+      </select>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.role.errors.required || f.role==null">Ο ρόλος απαιτείται</div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Εγγραφή
+    </button>
+    <a routerLink="/" class="btn btn-link">Ακύρωση</a>
+  </div>
+  <img style='height: 100%; width: 100%; object-fit: cover' src="../../assets/sq.png"><br><br>
+
+</form>
+<br>
+<br>
+<br>

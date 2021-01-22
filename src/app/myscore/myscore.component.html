@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<h2 class="header center1">Ο πίνακας των Σκορ μου</h2><br>
+<div style="height:400px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Σκορ</th>
+        <th scope="col">Διάρκεια κουίζ</th>
+        <th scope="col">Επίπεδο Δυσκολίας</th>
+        <th scope="col">Κατηγορία</th>
+        <th scope="col">Ημερομηνία Επίτευξης</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let score of scoresArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{score.score}}</b></td>
+        <td><b>{{score.time}}</b></td>
+        <td><b>{{score.difficulty[0].toUpperCase()+score.difficulty.substr(1).toLowerCase()}}</b></td>
+        <td><b>{{score.category}}</b></td>
+        <td><b>{{score.createdAt.replace("T"," ").slice(0,-5)}}</b></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+<br>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

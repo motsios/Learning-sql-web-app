@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div style="height:100px;" *ngIf="role=='teacher'">
+  <div class="form-group form-container" >
+    <label for="file"></label>
+    <input type="file" id="file" (change)="handleFileInput($event.target.files)"  accept=".pdf"><button  type="button" class="btn btn-primary  py-1 px-2" for="file" (click)="upload(fileToUpload)">Δημοσίευση</button>
+  </div>
+</div>
+<div *ngIf="role=='teacher'" style="height:300px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Αρχεία PDF</th>
+        <th scope="col">Ενέργειες</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let pdf of pdfArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td (click)="readPdf(pdf)" (click)="scroll(target)"><b>{{pdf}}</b></td>
+        <td>
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="deletePdf(pdf)"><i
+              class="fa fa-trash-o"></i></button> &nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="role=='student'" style="height:300px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Αρχεία PDF</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let pdf of pdfArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td (click)="readPdf(pdf)"  (click)="scroll(target)"><b>{{pdf}}</b></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<div #target></div>
+<h1 *ngIf="pdfSrc!=''" class="center1">{{titlepdf}}</h1>
+<pdf-viewer  *ngIf="pdfSrc!=''" [src]="pdfSrc" [zoom]="1.2"></pdf-viewer>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

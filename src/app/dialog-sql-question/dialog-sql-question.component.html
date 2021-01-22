@@ -1,0 +1,91 @@
+<div class="md-dialog-container">
+  <h2 style="text-align: center" *ngIf="edit=='true'">''Επεξεργασία Ερώτησης''</h2>
+  <h2 style="text-align: center" *ngIf="edit=='false'">''Προσθήκη Ερώτησης''</h2>
+  <hr>
+  <br>
+  <form class="form-container" [formGroup]="editoraddForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="question">Ερώτηση</label>
+      <input type="text" formControlName="question" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.question.errors }" />
+      <div *ngIf="submitted && f.question.errors" class="invalid-feedback">
+        <div *ngIf="f.question.errors.required">Η ερώτηση απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="optiona">Επιλογή a</label>
+      <input type="optiona" formControlName="optiona" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.optiona.errors }" />
+      <div *ngIf="submitted && f.optiona.errors" class="invalid-feedback">
+        <div *ngIf="f.optiona.errors.required">Η Επιλογή a απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="optionb">Επιλογή b</label>
+      <input type="optionb" formControlName="optionb" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.optionb.errors }" />
+      <div *ngIf="submitted && f.optionb.errors" class="invalid-feedback">
+        <div *ngIf="f.optionb.errors.required">Η Επιλογή b απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="optionc">Επιλογή c</label>
+      <input type="optionc" formControlName="optionc" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.optionc.errors }" />
+      <div *ngIf="submitted && f.optionc.errors" class="invalid-feedback">
+        <div *ngIf="f.optionc.errors.required">Η Επιλογή c απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="optiond">Επιλογή d</label>
+      <input type="optiond" formControlName="optiond" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.optiond.errors }" />
+      <div *ngIf="submitted && f.optiond.errors" class="invalid-feedback">
+        <div *ngIf="f.optiond.errors.required">Η Επιλογή d απαιτείται</div>
+      </div>
+    </div>
+    <div>
+      <label for="correctanswer">Απάντηση</label>
+      <div class="form-group">
+        <select type="correctanswer" formControlName="correctanswer" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.correctanswer.errors }" class="form-control"
+          id="inputGroupSelect04">
+          <option value="a">a</option>
+          <option value="b">b</option>
+          <option value="c">c</option>
+          <option value="d">d</option>
+        </select>
+        <div *ngIf="submitted && f.correctanswer.errors" class="invalid-feedback">
+          <div *ngIf="f.correctanswer.errors.required || f.correctanswer==null">Η Απάντηση απαιτείται</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="score">Σκορ</label>
+      <input type="number" formControlName="score" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.score.errors }" />
+      <div *ngIf="submitted && f.score.errors" class="invalid-feedback">
+        <div *ngIf="f.score.errors.required">Το Σκορ απαιτείται</div>
+      </div>
+    </div>
+    <div>
+      <label for="difficulty">Επίπεδο Δυσκολίας</label>
+      <div class="form-group">
+        <select type="difficulty" formControlName="difficulty" class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.difficulty.errors }" class="form-control" id="inputGroupSelect04">
+          <option value="easy">Easy</option>
+          <option value="hard">Hard</option>
+        </select>
+        <div *ngIf="submitted && f.difficulty.errors" class="invalid-feedback">
+          <div *ngIf="f.difficulty.errors.required || f.difficulty==null">Το Επίπεδο Δυσκολίας απαιτείται</div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">
+        Αποθήκευση
+      </button>
+      <a class="btn btn-link" (click)="close()">Ακύρωση</a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,39 @@
+<app-navbar></app-navbar><br>
+<div>
+  <h2 class="header center1">Ερωτήσεις Συμπλήρωσης-κενού</h2>&nbsp;
+</div>
+<br>
+<button type="button" class="btn1 btn-primary  py-1 px-2" (click)="add()"><i class="fa fa-plus fa-lg"></i></button>
+<br>
+<!-- Table -->
+<div style="height:600px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Ερώτηση</th>
+        <th scope="col">SQL ερώτημα</th>
+        <th scope="col">Αποκρυμένες Λέξεις</th>
+        <th scope="col">Ενέργειες</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let question of fillfieldsquestionsArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{question.question}}</b></td>
+        <td><b>{{question.fill_field_question}}</b></td>
+        <td><b>{{question.hideWord}}</b></td>
+        <td>
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="updateField(question.id,question.question,question.fill_field_question,question.hideWord)"><i
+              class="fa fa-pencil"></i></button> &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
+              class="fa fa-trash-o"></i></button> &nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

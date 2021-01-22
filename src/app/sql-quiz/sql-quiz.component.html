@@ -1,0 +1,121 @@
+<app-navbar></app-navbar>
+<br>
+<div class="container">
+  <h3 class="center1" *ngIf="startquiz==false && stopquiz==false" style="text-align:center">
+    Καλωσήλθατε στο {{grdifficulty}} SQL Κουίζ &#x263A;
+  </h3>
+  <br>
+  <div></div>
+  <div *ngIf="startquiz==true && stopquiz==false" class="card timer">{{converttimer}}.</div>
+  <div class="card" [hidden]="isQuestionCardShow">
+    <div class="card-body">
+      <div class="row justify-content-md-center">
+        <h2 *ngIf="grdifficulty=='Εύκολο'" class="header1">Το Κουίζ περιλαμβάνει {{numberofquestions}} τυχαίες
+          Εύκολες Ερωτήσεις Πολλαπλής επιλογής.Κάθε ερώτηση μπορεί να έχει διαφορετικό Σκορ.Καλή Επιτυχία!</h2>
+        <h2 *ngIf="grdifficulty=='Δύσκολο'" class="header1">Το Κουίζ περιλαμβάνει {{numberofquestions}} τυχαίες
+          Δύσκολες Ερωτήσεις Πολλαπλής επιλογής.Κάθε ερώτηση μπορεί να έχει διαφορετικό Σκορ.Καλή Επιτυχία!</h2>
+        <div class="col-sm-12 col-lg-3">
+          <button class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;"
+            (click)="startQuiz()" (click)="startTimer()">
+            Έναρξη Κουίζ </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:700px; overflow: auto" class="card" [hidden]="!isQuestionCardShow">
+    <div class="card-body">
+      <form #questionTest="ngForm" novalidate>
+        <div *ngFor="let ques of questionsArray;let i=index;">
+          <h4>Ερώτηση {{i+1}}</h4><br>
+          <div class="container bootstrap snippets bootdey form-container">
+            <h2>{{ques.question}}</h2>
+            <div class="form-group row">
+              <div class="col-md-9 col-form-label">
+                <div class="form-check form-check-inline mr-1 form-container1">
+                  <input class="form-check-input" type="radio" name="{{ques.id}}" value="a" [(ngModel)]="ques.selected">
+                  <h5 class="form-check-label">a. {{ques.a}} </h5>
+                </div>
+                <div class="form-check form-check-inline mr-1 form-container1">
+                  <input class="form-check-input" type="radio" name="{{ques.id}}" value="b" [(ngModel)]="ques.selected">
+                  <h5 class="form-check-label">b. {{ques.b}}</h5>
+                </div>
+                <div class="form-check form-check-inline mr-1 form-container1">
+                  <input class="form-check-input" type="radio" name="{{ques.id}}" value="c" [(ngModel)]="ques.selected">
+                  <h5 class="form-check-label">c. {{ques.c}}</h5>
+                </div>
+                <div class="form-check form-check-inline mr-1 form-container1">
+                  <input class="form-check-input" type="radio" name="{{ques.id}}" value="d" [(ngModel)]="ques.selected">
+                  <h5 class="form-check-label">d. {{ques.d}}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <hr>
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
+  <div *ngIf="startquiz==true" class="card">
+    <div class="col-12" style="justify-content: center;display: flex;">
+      <button type="button" class="btn btn-link" (click)="HomePage()" style="margin-right: 30px;">Ακύρωση</button>
+      <button type="button" class="btn btn-primary" (click)="submitTest()">Υποβολή</button>
+    </div>
+  </div>
+</div>
+<div bsModal #submitModal="bs-modal" class="modal fade" [config]="{ignoreBackdropClick: true, keyboard: false}"
+  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="color: #196f77;">
+        <h4>Σύνολο Ερωτήσεων: {{questionsArray.length}} </h4>
+        <h4>
+          Σωστές Απαντήσεις : {{rightAnswer}}
+        </h4>
+        <h4>
+          Το Σκορ είναι : {{rightScore}}
+        </h4>
+        <span>
+          <button type="button" class="btn btn-primary" (click)="checkAnswers()" style="margin-right: 17px;">
+            Απαντήσεις</button>
+        </span>
+        <button type="button" class="btn btn-default" (click)="closeSubmitModal()"
+          style="margin-left: 17px;">Κλείσιμο</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+<!-- /.modal -->
+<div style="height:550px; overflow: auto" bsModal #answerModal="bs-modal" class="modal fade"
+  [config]="{ignoreBackdropClick: true, keyboard: false}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center" style="color: #196f77;">
+        <div *ngFor="let ques of questionsArray"
+          [style.color]="!ques.selected? '#ffc107' : ques.selected == ques.correct_answer ? 'green': 'red'">
+          <div>{{ques.question}}</div>
+          <div>Η απάντηση που δόθηκε: {{ques[ques.selected]}}</div>
+          <div>Σωστή απάντηση: {{ques.correct_answer}}) {{ques[ques.correct_answer]}}</div>
+          <hr>
+        </div>
+        <button type="button" class="btn btn-default" (click)="closeAnswerModal()"
+          style="margin-left: 17px;">Κλείσιμο</button><br>
+        <div style="text-align: right;" class="icon_image " title="Share As PDF" (click)="exportAsPDF();">Δημιουργία <i
+            class="fa fa-file-pdf-o fa-lg" aria-hidden="true"></i></div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<br><br><br>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
+</ngx-spinner>

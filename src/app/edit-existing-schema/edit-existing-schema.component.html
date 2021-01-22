@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<div class="navbar bg-dark" style="height:400px;  width: 190px; overflow: auto">
+  <nav>
+    <section class="list-with-heading">
+      <h3>Πίνακες:</h3>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <ul *ngFor="let name of tableArrayName;">
+        <li (click)="eachTableColumns(name,name.table_name)"><a>-{{name.table_name}}</a></li>
+      </ul>
+    </section>
+  </nav>
+</div>
+<h1 *ngIf="header_tale_name=='' && role=='teacher'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο</h1>
+<h1 *ngIf="header_tale_name=='' && role=='student'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο</h1>
+<h1 *ngIf="header_tale_name!=''" class="center"><i class="fa fa-trash-o  fa-border socialSignInBtns"
+    data-fa-mask="fas fa-circle" style="color:rgb(0, 0, 0) !important; " (click)="delete(header_tale_name)"
+    *ngIf="role=='teacher'"></i> &nbsp;&nbsp;&nbsp;Πίνακας "{{header_tale_name}}" </h1>
+<br>
+<div *ngIf="header_tale_name!=''" style="height:350px; table-layout: auto; overflow: auto">
+  <table class="table table-striped form-container table-container">
+    <thead>
+      <tr>
+        <th *ngFor="let field of tableColumnsArray;" class="headers">{{field.COLUMN_NAME}}&nbsp;<button class="button" (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let data of dataOfEachTableArray ">
+        <td *ngFor="let column of onlyColumnsArray;let i=index;">{{data[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="header_tale_name!=''" class="centerintotable" style="text-align: center">
+  <button type="button" class="btn1 btn-primary py-1 px-2" (click)="connect2Tables()" *ngIf="role=='teacher'">
+    <i class="fa fa-retweet fa-lg"></i></button>&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn1 btn-primary py-1 px-2" (click)="addValuesToTable()">
+    <i class="fa fa-plus fa-lg"></i></button>&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn1 btn-primary py-1 px-2" (click)="writeQueryOnHisOwn()" *ngIf="role=='teacher'"><i
+      class="fa fa-check fa-lg"></i></button>
+      <button type="button" class="btn1 btn-primary py-1 px-2" (click)="writeQueryOnHisOwn()" *ngIf="role=='student'"><i
+        class="fa fa-check fa-lg"></i></button>
+</div><br><br>
+<div *ngIf="header_tale_name!=''" style="height:300px; overflow: auto">
+  <table class="table table-striped form-container table-container" style="width:70%;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">SQL Ερώτημα</th>
+        <th scope="col">Ενέργειες</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let question of questionsOfEachTableArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{question.sql_query}}</b></td>
+        <td>
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="studentExecuteQuery(question.sql_query)"
+            *ngIf="role=='student'"><i class="fa fa-check"></i></button>
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="updateQuestion(question.id,question.sql_query)" *ngIf="role=='teacher'"><i
+              class="fa fa-pencil"></i></button> &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="removeQuestion(question.id)"
+            *ngIf="role=='teacher'"><i class="fa fa-trash-o"></i></button> &nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="header_tale_name!=''" class="centerintotable" style="text-align: center"> <button type="button"
+    class="btn1 btn-primary py-1 px-2" (click)="addQuestion()" *ngIf="role=='teacher'"><i
+      class="fa fa-plus fa-lg"></i></button></div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
