@@ -228,40 +228,52 @@ export class SqlQuizComponent implements OnInit {
 
   exportAsPDF() {
     let docDefinition = {
-      header:
-        'Το Σκορ σας στο ' +
+      content:
+        'Το Σκορ σας στο  ' +
         this.grdifficulty +
         ' SQL Κουίζ ' +
         this.numberofquestions +
         ' Ερωτήσεων είναι ' +
         this.rightScore +
-        '!' +
-        '\nΑκολουθούν οι απαντήσεις που δόθηκαν!',
-      content: JSON.stringify(
-        this.questionsArray,
-        ['question', 'a', 'b', 'c', 'd', 'selected', 'correct_answer', 'score'],
-        2
-      )
-        .split('{')
-        .join(' ')
-        .split('question')
-        .join('Ερώτηση')
-        .split('selected')
-        .join('Επιλεγμένη απάντηση')
-        .split('score')
-        .join('Σκορ')
-        .split('correct_answer')
-        .join('Σωστή απάντηση')
-        .split('}')
-        .join(' ')
-        .split(',')
-        .join(' ')
-        .split('"')
-        .join(' ')
-        .split('null')
-        .join(' Δεν απαντήθηκε.')
-        .replace('[', ' ')
-        .replace(']', ' '),
+        ' !' +
+        '\nΑκολουθούν οι απαντήσεις που δόθηκαν:' +
+        '\n' +
+        JSON.stringify(
+          this.questionsArray,
+          [
+            'question',
+            'a',
+            'b',
+            'c',
+            'd',
+            'selected',
+            'correct_answer',
+            'score',
+          ],
+          2
+        )
+          .split('{')
+          .join('')
+          .split('question')
+          .join('Ερώτηση')
+          .split('selected')
+          .join('Επιλεγμένη απάντηση')
+          .split('score')
+          .join('Σκορ')
+          .split('correct_answer')
+          .join('Σωστή απάντηση')
+          .split('}')
+          .join('')
+          .split(',')
+          .join('')
+          .split('"')
+          .join('')
+          .split('null')
+          .join(' Δεν απαντήθηκε.')
+          .split('[')
+          .join('')
+          .split(']')
+          .join(''),
     };
     pdfMake.createPdf(docDefinition).open();
   }
