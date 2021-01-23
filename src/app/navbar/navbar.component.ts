@@ -67,7 +67,8 @@ export class NavbarComponent implements OnInit {
 
   start15Quiz() {
     Swal.fire({
-      title: 'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 15 Ερωτήσεων',
+      title:
+        'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 15 Ερωτήσεων',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Εύκολο`,
@@ -87,7 +88,8 @@ export class NavbarComponent implements OnInit {
 
   start25Quiz() {
     Swal.fire({
-      title: 'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 25 Ερωτήσεων',
+      title:
+        'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 25 Ερωτήσεων',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Εύκολο`,

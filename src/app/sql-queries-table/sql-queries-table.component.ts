@@ -102,7 +102,7 @@ export class SqlQueriesTableComponent implements OnInit {
   remove(id: any) {
     Swal.fire({
       title: 'Είστε σίγουρος?',
-      text: "Δεν μπορείτε να το επαναφέρετε!",
+      text: 'Δεν μπορείτε να το επαναφέρετε!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -119,14 +119,14 @@ export class SqlQueriesTableComponent implements OnInit {
           .subscribe((data) => {
             console.log(data);
             if (data.result == 'Deleted completed') {
-              Swal.fire(
-                '',
-                'Η ερώτηση διαγράφτηκε επιτυχώς',
-                'success'
-              );
+              Swal.fire('', 'Η ερώτηση διαγράφτηκε επιτυχώς', 'success');
               this.ngOnInit();
             } else {
-              Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+              Swal.fire(
+                'Ουπς...',
+                'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                'error'
+              );
             }
           });
       }

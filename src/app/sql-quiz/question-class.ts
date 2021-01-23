@@ -8,5 +8,4 @@ export class QuestionClass {
   "correct_answer": string;
   "score":number;
   "selected" ?: string;
-
 }

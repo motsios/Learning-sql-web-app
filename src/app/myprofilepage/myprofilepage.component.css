@@ -5,6 +5,7 @@
 .staticinfo {
   color: rgb(255, 255, 255);
 }
+
 .form-container {
   background: rgb(196, 196, 196);
   padding: 30px;
@@ -22,6 +23,7 @@
 .col-md-4 {
   margin-top: 40px;
 }
+
 h3 {
   font-style: initial;
   font-size: 60px;

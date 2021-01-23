@@ -8,9 +8,8 @@ describe('DialogAddSqlQueryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogAddSqlQueryComponent ]
-    })
-    .compileComponents();
+      declarations: [DialogAddSqlQueryComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

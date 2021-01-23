@@ -106,7 +106,11 @@ export class DialogSqlQuestionComponent implements OnInit {
             Swal.fire('', 'Η SQL ερτώτηση ανανεώθηκε επιτυχώς!', 'success');
             this.dialogRef.close();
           } else {
-            Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+            Swal.fire(
+              'Ουπς...',
+              'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+              'error'
+            );
           }
         });
     } else {
@@ -135,7 +139,11 @@ export class DialogSqlQuestionComponent implements OnInit {
             this.dialogRef.close();
             this.ngOnInit();
           } else {
-            Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+            Swal.fire(
+              'Ουπς...',
+              'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+              'error'
+            );
           }
         });
     }

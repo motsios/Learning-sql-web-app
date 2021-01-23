@@ -79,12 +79,12 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
   remove(id: any) {
     Swal.fire({
       title: 'Είστε σίγουρος?',
-      text: "Δεν μπορείτε να το επαναφέρετε!",
+      text: 'Δεν μπορείτε να το επαναφέρετε!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText:  'Ναι, διαγραφή!',
+      confirmButtonText: 'Ναι, διαγραφή!',
     }).then((result) => {
       if (result.isConfirmed) {
         const headers = {
@@ -105,7 +105,11 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
               );
               this.ngOnInit();
             } else {
-              Swal.fire('', 'Η ερώτηση συμπλήρωσης κενού δεν διαγράφτηκε επιτυχώς!', 'error');
+              Swal.fire(
+                '',
+                'Η ερώτηση συμπλήρωσης κενού δεν διαγράφτηκε επιτυχώς!',
+                'error'
+              );
             }
           });
       }

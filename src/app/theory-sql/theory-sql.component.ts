@@ -108,7 +108,7 @@ export class TheorySqlComponent implements OnInit {
             'Το PDF ανέβηκε επιτυχώς!Ισως καθυστερήσει η εμφάνιση του.',
             'success'
           );
-          this.pdfSrc=''
+          this.pdfSrc = '';
           this.pdfArray = [];
           this.ngOnInit();
         } else {

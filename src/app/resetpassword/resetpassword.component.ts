@@ -65,7 +65,11 @@ export class ResetpasswordComponent implements OnInit {
           (data) => {
             console.log(data);
             if (data.result == 'Updated completed') {
-              Swal.fire('', 'Η αλλαγή του κωδικού πρόσβασης πραγματοποιήθηκε επιτυχώς!', 'success');
+              Swal.fire(
+                '',
+                'Η αλλαγή του κωδικού πρόσβασης πραγματοποιήθηκε επιτυχώς!',
+                'success'
+              );
               this.loading = false;
               this.router.navigate(['']);
             } else {
@@ -77,11 +81,19 @@ export class ResetpasswordComponent implements OnInit {
             }
           },
           (error) => {
-            Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+            Swal.fire(
+              'Ουπς...',
+              'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+              'error'
+            );
           }
         );
     } else {
-      Swal.fire('', 'Ο κωδικός πρόσβασης δεν είναι ο ίδιος με τον Κωδικό Επαλήθευσης!', 'error');
+      Swal.fire(
+        '',
+        'Ο κωδικός πρόσβασης δεν είναι ο ίδιος με τον Κωδικό Επαλήθευσης!',
+        'error'
+      );
     }
   }
 }

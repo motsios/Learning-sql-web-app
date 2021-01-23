@@ -1,8 +1,9 @@
 <app-navbar></app-navbar>
 <div style="height:100px;" *ngIf="role=='teacher'">
-  <div class="form-group form-container" >
+  <div class="form-group form-container">
     <label for="file"></label>
-    <input type="file" id="file" (change)="handleFileInput($event.target.files)"  accept=".pdf"><button  type="button" class="btn btn-primary  py-1 px-2" for="file" (click)="upload(fileToUpload)">Δημοσίευση</button>
+    <input type="file" id="file" (change)="handleFileInput($event.target.files)" accept=".pdf"><button type="button"
+      class="btn btn-primary  py-1 px-2" for="file" (click)="upload(fileToUpload)">Δημοσίευση</button>
   </div>
 </div>
 <div *ngIf="role=='teacher'" style="height:300px; overflow: auto">
@@ -37,7 +38,7 @@
     <tbody class="content">
       <tr *ngFor="let pdf of pdfArray;let i=index;">
         <td><b>{{i+1}}</b></td>
-        <td (click)="readPdf(pdf)"  (click)="scroll(target)"><b>{{pdf}}</b></td>
+        <td (click)="readPdf(pdf)" (click)="scroll(target)"><b>{{pdf}}</b></td>
       </tr>
     </tbody>
   </table>
@@ -45,7 +46,7 @@
 <br>
 <div #target></div>
 <h1 *ngIf="pdfSrc!=''" class="center1">{{titlepdf}}</h1>
-<pdf-viewer  *ngIf="pdfSrc!=''" [src]="pdfSrc" [zoom]="1.2"></pdf-viewer>
+<pdf-viewer *ngIf="pdfSrc!=''" [src]="pdfSrc" [zoom]="1.2"></pdf-viewer>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
   <p style="color: white">Παρακαλώ περιμένετε...</p>
 </ngx-spinner>

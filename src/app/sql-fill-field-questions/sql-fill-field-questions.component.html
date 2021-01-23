@@ -26,20 +26,22 @@
     </section>
   </nav>
 </div>
-<h3 *ngIf="categorySelected==true"  class="center2" >{{header}}</h3><br>
+<h3 *ngIf="categorySelected==true" class="center2">{{header}}</h3><br>
 
 <div *ngIf="categorySelected==true" class="form-container headers">
   <div class="header1"><label
       for="fname"><b>{{this.questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].question}}</b></label></div>
   <br><br>
   <h3 [innerHTML]="fillfieldsquestionsArray[questionid].fill_field_question"></h3><br>
-  <input type="text" class="inputtext" placeholder="Γράψε την λέξτη που λείπει με την σωστή σειρά και διαχώρισε τες με κόμμα..." id="text"  [(ngModel)]="textfield" >
-    <br><br> <br><br> <br><br>
+  <input type="text" class="inputtext"
+    placeholder="Γράψε την λέξτη που λείπει με την σωστή σειρά και διαχώρισε τες με κόμμα..." id="text"
+    [(ngModel)]="textfield">
+  <br><br> <br><br> <br><br>
   <div class="form-group">
     <a class="btn btn-link" (click)="showAnswer(fillfieldsquestionsArray[questionid].id)">Δείξε την Απάντηση</a>
     <button class="btn btn-primary" (click)="next(fillfieldsquestionsArray[questionid].id)">
       <span class="spinner-border-sm mr-1"></span>
-     Υποβολή
+      Υποβολή
     </button>
   </div>
 </div>

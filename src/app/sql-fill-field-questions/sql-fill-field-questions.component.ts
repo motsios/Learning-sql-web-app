@@ -209,11 +209,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -243,11 +239,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -277,11 +269,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -311,11 +299,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -345,11 +329,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -379,11 +359,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -413,11 +389,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -447,11 +419,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -481,11 +449,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -515,11 +479,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -549,11 +509,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -583,11 +539,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -617,11 +569,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -651,11 +599,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -685,11 +629,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
     } else {
-      Swal.fire(
-        '',
-        'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!',
-        'info'
-      );
+      Swal.fire('', 'Δεν υπάρχουν ερωτήσεις σε αυτήν την κατηγορία!', 'info');
     }
   }
 
@@ -706,8 +646,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
         if (data.questions) {
           Swal.fire('Answer', data.questions[0].fill_field_question, 'info');
         } else {
-          Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
-
+          Swal.fire(
+            'Ουπς...',
+            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+            'error'
+          );
         }
       });
   }

@@ -38,7 +38,11 @@ export class MyscoreComponent implements OnInit {
             Swal.fire('Oops...', 'Δεν έχετε καταχωρημένα Σκορ!', 'error');
           }
         } else {
-          Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+          Swal.fire(
+            'Ουπς...',
+            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+            'error'
+          );
         }
       });
   }

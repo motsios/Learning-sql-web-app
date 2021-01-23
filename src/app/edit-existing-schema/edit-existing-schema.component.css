@@ -2,7 +2,7 @@
   background-color: rgb(61, 59, 59);
   color: rgb(255, 255, 255);
   overflow: hidden;
-  border-style:inset;
+  border-style: inset;
   position: fixed;
   text-align: left;
   bottom: 0;
@@ -96,7 +96,7 @@ thead th {
   top: 0;
   background-color: rgb(230, 219, 219);
 }
-.button{
+.button {
   border-radius: 50%;
   border: 1px solid red;
 }

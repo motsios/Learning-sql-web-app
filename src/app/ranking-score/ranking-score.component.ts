@@ -20,7 +20,7 @@ export class RankingScoreComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private url: AppComponent,
-    private spinner: NgxSpinnerService,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +52,11 @@ export class RankingScoreComponent implements OnInit {
               }
             });
         } else {
-          Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+          Swal.fire(
+            'Ουπς...',
+            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+            'error'
+          );
         }
       });
   }

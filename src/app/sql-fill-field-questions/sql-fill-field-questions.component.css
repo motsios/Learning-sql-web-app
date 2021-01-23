@@ -6,7 +6,7 @@
   text-align: left;
   bottom: 0;
   width: 100%;
-  border-style:inset;
+  border-style: inset;
 }
 .form-container {
   background: rgb(168, 166, 166);
@@ -80,17 +80,17 @@ thead th {
   color: aliceblue;
   justify-content: center;
   align-items: center;
-  margin-top:4%;
+  margin-top: 4%;
   margin-left: 15%;
   width: 70%;
 }
 .header1 {
   font-size: 35px;
 }
-.inputtext{
- color:  rgb(36, 18, 139);
+.inputtext {
+  color: rgb(36, 18, 139);
   font-size: 25px;
   width: 80%;
-  height:80px;
+  height: 80px;
   text-align: center;
 }

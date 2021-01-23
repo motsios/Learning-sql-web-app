@@ -14,12 +14,12 @@ export class EditprofileComponent implements OnInit {
   first_name = '';
   last_name = '';
   email = '';
-  phone='';
+  phone = '';
   role = '';
   username = '';
   sex = '';
-  grrole='';
-  grsex='';
+  grrole = '';
+  grsex = '';
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -63,15 +63,13 @@ export class EditprofileComponent implements OnInit {
           this.sex =
             data.result['sex'][0].toUpperCase() +
             data.result['sex'].substr(1).toLowerCase();
-            if (this.role == 'Teacher')
-            this.grrole = 'Καθηγητής';
-           else this.grrole = 'Εκπαιδευόμενος';
-           this.sex =
-             data.result['sex'][0].toUpperCase() +
-             data.result['sex'].substr(1).toLowerCase();
-             if (this.sex == 'Male')
-             this.grsex = 'Άνδρας';
-            else this.grsex = 'Γυναίκα';
+          if (this.role == 'Teacher') this.grrole = 'Καθηγητής';
+          else this.grrole = 'Εκπαιδευόμενος';
+          this.sex =
+            data.result['sex'][0].toUpperCase() +
+            data.result['sex'].substr(1).toLowerCase();
+          if (this.sex == 'Male') this.grsex = 'Άνδρας';
+          else this.grsex = 'Γυναίκα';
         }
       });
   }
@@ -104,7 +102,11 @@ export class EditprofileComponent implements OnInit {
                 Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
                 this.ngOnInit();
               } else {
-                Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                Swal.fire(
+                  'Ουπς...',
+                  'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                  'error'
+                );
               }
             });
         } else {
@@ -143,7 +145,11 @@ export class EditprofileComponent implements OnInit {
                 Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
                 this.ngOnInit();
               } else {
-                Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                Swal.fire(
+                  'Ουπς...',
+                  'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                  'error'
+                );
               }
             });
         } else {
@@ -193,10 +199,18 @@ export class EditprofileComponent implements OnInit {
                     .subscribe((data) => {
                       console.log(data);
                       if (data.result == 'Updated completed') {
-                        Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
+                        Swal.fire(
+                          '',
+                          'Η αλλαγή πραγματοποιήθηκε επιτυχώς!',
+                          'success'
+                        );
                         this.ngOnInit();
                       } else {
-                        Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                        Swal.fire(
+                          'Ουπς...',
+                          'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                          'error'
+                        );
                       }
                     });
                 } else {
@@ -243,10 +257,18 @@ export class EditprofileComponent implements OnInit {
               .subscribe((data) => {
                 console.log(data);
                 if (data.result == 'Updated completed') {
-                  Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
+                  Swal.fire(
+                    '',
+                    'Η αλλαγή πραγματοποιήθηκε επιτυχώς!',
+                    'success'
+                  );
                   this.ngOnInit();
                 } else {
-                  Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                  Swal.fire(
+                    'Ουπς...',
+                    'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                    'error'
+                  );
                 }
               });
           } else {
@@ -264,10 +286,18 @@ export class EditprofileComponent implements OnInit {
               .subscribe((data) => {
                 console.log(data);
                 if (data.result == 'Updated completed') {
-                  Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
+                  Swal.fire(
+                    '',
+                    'Η αλλαγή πραγματοποιήθηκε επιτυχώς!',
+                    'success'
+                  );
                   this.ngOnInit();
                 } else {
-                  Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                  Swal.fire(
+                    'Ουπς...',
+                    'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                    'error'
+                  );
                 }
               });
           }
@@ -305,7 +335,11 @@ export class EditprofileComponent implements OnInit {
                 Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
                 this.ngOnInit();
               } else {
-                Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                Swal.fire(
+                  'Ουπς...',
+                  'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                  'error'
+                );
               }
             });
         } else {
@@ -325,29 +359,41 @@ export class EditprofileComponent implements OnInit {
       showLoaderOnConfirm: true,
       preConfirm: (phone) => {
         if (phone) {
-          if(phone.length!=10){
-            Swal.fire('', 'Προσπαθήστε ξανά!Το Τηλέφωνο δεν περιείχε 10 ψηφία!', 'error');
-          }else{
-          const headers = {
-            'Content-Type': 'application/json; charset=UTF-8',
-            Authorization: localStorage.getItem('token'),
-          };
-          const body = { phone: phone };
-          this.http
-            .put<any>(
-              this.url.baseUrl + 'editprofile/' + localStorage.getItem('id'),
-              body,
-              { headers }
-            )
-            .subscribe((data) => {
-              console.log(data);
-              if (data.result == 'Updated completed') {
-                Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
-                this.ngOnInit();
-              } else {
-                Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
-              }
-            });
+          if (phone.length != 10) {
+            Swal.fire(
+              '',
+              'Προσπαθήστε ξανά!Το Τηλέφωνο δεν περιείχε 10 ψηφία!',
+              'error'
+            );
+          } else {
+            const headers = {
+              'Content-Type': 'application/json; charset=UTF-8',
+              Authorization: localStorage.getItem('token'),
+            };
+            const body = { phone: phone };
+            this.http
+              .put<any>(
+                this.url.baseUrl + 'editprofile/' + localStorage.getItem('id'),
+                body,
+                { headers }
+              )
+              .subscribe((data) => {
+                console.log(data);
+                if (data.result == 'Updated completed') {
+                  Swal.fire(
+                    '',
+                    'Η αλλαγή πραγματοποιήθηκε επιτυχώς!',
+                    'success'
+                  );
+                  this.ngOnInit();
+                } else {
+                  Swal.fire(
+                    'Ουπς...',
+                    'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                    'error'
+                  );
+                }
+              });
           }
         } else {
           Swal.fire('', 'Υπάρχουν κενά πεδία!', 'error');
@@ -383,10 +429,18 @@ export class EditprofileComponent implements OnInit {
               .subscribe((data) => {
                 console.log(data);
                 if (data.result == 'Updated completed') {
-                  Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
+                  Swal.fire(
+                    '',
+                    'Η αλλαγή πραγματοποιήθηκε επιτυχώς!',
+                    'success'
+                  );
                   this.ngOnInit();
                 } else {
-                  Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                  Swal.fire(
+                    'Ουπς...',
+                    'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                    'error'
+                  );
                 }
               });
           } else {
@@ -416,10 +470,18 @@ export class EditprofileComponent implements OnInit {
                     )
                     .subscribe((data) => {
                       if (data.result == 'Updated completed') {
-                        Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
+                        Swal.fire(
+                          '',
+                          'Η αλλαγή πραγματοποιήθηκε επιτυχώς!',
+                          'success'
+                        );
                         this.ngOnInit();
                       } else {
-                        Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+                        Swal.fire(
+                          'Ουπς...',
+                          'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                          'error'
+                        );
                       }
                     });
                 } else {

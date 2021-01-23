@@ -228,7 +228,15 @@ export class SqlQuizComponent implements OnInit {
 
   exportAsPDF() {
     let docDefinition = {
-      header: "Το Σκορ σας στο " +this.grdifficulty+" SQL Κουίζ "+this.numberofquestions +" Ερωτήσεων είναι "+ this.rightScore +'!'+'\nΑκολουθούν οι απαντήσεις που δόθηκαν!',
+      header:
+        'Το Σκορ σας στο ' +
+        this.grdifficulty +
+        ' SQL Κουίζ ' +
+        this.numberofquestions +
+        ' Ερωτήσεων είναι ' +
+        this.rightScore +
+        '!' +
+        '\nΑκολουθούν οι απαντήσεις που δόθηκαν!',
       content: JSON.stringify(
         this.questionsArray,
         ['question', 'a', 'b', 'c', 'd', 'selected', 'correct_answer', 'score'],

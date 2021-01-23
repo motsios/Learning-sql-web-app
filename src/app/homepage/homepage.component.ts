@@ -58,7 +58,11 @@ export class HomePageComponent implements OnInit {
         (data) => {
           console.log(data);
           if (data.error == 'Wrong username or password') {
-            Swal.fire('', 'Λανθασμένο το όνομα χρήστη ή ο κωδικός πρόσβασης!', 'error');
+            Swal.fire(
+              '',
+              'Λανθασμένο το όνομα χρήστη ή ο κωδικός πρόσβασης!',
+              'error'
+            );
             this.loading = false;
           } else {
             this.loading = false;
@@ -74,7 +78,11 @@ export class HomePageComponent implements OnInit {
           }
         },
         (error) => {
-          Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+          Swal.fire(
+            'Ουπς...',
+            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+            'error'
+          );
         }
       );
   }

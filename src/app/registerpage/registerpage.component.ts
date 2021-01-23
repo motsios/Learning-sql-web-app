@@ -125,7 +125,11 @@ export class RegisterpageComponent implements OnInit {
           }
         },
         (error) => {
-          Swal.fire('Ουπς...', 'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.', 'error');
+          Swal.fire(
+            'Ουπς...',
+            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+            'error'
+          );
         }
       );
   }

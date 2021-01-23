@@ -8,9 +8,8 @@ describe('TheorySqlComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TheorySqlComponent ]
-    })
-    .compileComponents();
+      declarations: [TheorySqlComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
