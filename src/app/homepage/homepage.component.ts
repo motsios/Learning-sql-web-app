@@ -89,12 +89,13 @@ export class HomePageComponent implements OnInit {
   openSwal() {
     Swal.fire({
       title:
-        'Παρακαλώ εισάγετε το όνομα χρήστη σας και θα σας σταλεί link για την ανάκτηση του κωδικού πρόσβασης!',
+        'Παρακαλώ εισάγετε το όνομα χρήστη σας και θα σας σταλεί σύνδεσμος για την ανάκτηση του κωδικού πρόσβασης!',
       input: 'text',
       inputAttributes: {
         autocapitalize: 'off',
       },
       showCancelButton: true,
+      cancelButtonText:'Ακύρωση',
       width: 1000,
       confirmButtonText: 'Αποδοχή',
       showLoaderOnConfirm: true,

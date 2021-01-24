@@ -133,7 +133,8 @@ export class EditExistingSchemaComponent implements OnInit {
       inputValue: defaultQuery,
       showCancelButton: true,
       allowOutsideClick: false,
-      confirmButtonText: 'Execute',
+      confirmButtonText: 'Εκτέλεση',
+      cancelButtonText: 'Ακύρωση',
       showLoaderOnConfirm: true,
       preConfirm: (query) => {
         if (query) {
@@ -292,6 +293,7 @@ export class EditExistingSchemaComponent implements OnInit {
         'Επιλέξτε τον άλλον Πίνακα για την δημιουργία σύνδεσης μεταξύ τους...',
       input: 'select',
       confirmButtonText: 'Συνέχεια',
+      cancelButtonText: 'Ακύρωση',
       width: 1000,
       inputOptions: {
         Πίνακες: this.tablesOnlyName,
@@ -314,6 +316,7 @@ export class EditExistingSchemaComponent implements OnInit {
               this.tablesOnlyName[i] +
               ' ;',
             input: 'select',
+            cancelButtonText: 'Ακύρωση',
             width: 1000,
             inputOptions: {
               Στήλες: this.unstableColumnsArrayNames,
@@ -328,6 +331,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   title:
                     'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
                     this.statictablename,
+                    cancelButtonText: 'Ακύρωση',
                   input: 'select',
                   width: 1000,
                   inputOptions: {
@@ -350,6 +354,7 @@ export class EditExistingSchemaComponent implements OnInit {
                           '<label>ON UPDATE</label>' +
                           '<input id="swal-input2" class="swal2-input" placeholder="NO ACTION,RESTRICT,CASCADE,SET NULL">',
                         focusConfirm: false,
+                        cancelButtonText: 'Ακύρωση',
                         confirmButtonText: 'Ολοκλήρωση',
                         preConfirm: () => {
                           return [
@@ -700,12 +705,13 @@ export class EditExistingSchemaComponent implements OnInit {
         'Καταχωρήστε ένα νέο ερώτημα για τον Πίνακα το οποίο θα γίνει ορατό και στους Εκπαιδευόμενους.',
       input: 'text',
       inputPlaceholder: 'SQL Ερώτημα',
+      cancelButtonText: 'Ακύρωση',
       inputAttributes: {
         autocapitalize: 'off',
       },
       showCancelButton: true,
       width: 1000,
-      confirmButtonText: 'Apply',
+      confirmButtonText: 'Αποδοχή',
       showLoaderOnConfirm: true,
       preConfirm: (query1) => {
         if (query1) {

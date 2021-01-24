@@ -81,6 +81,7 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
       title: 'Είστε σίγουρος?',
       text: 'Δεν μπορείτε να το επαναφέρετε!',
       icon: 'warning',
+      cancelButtonText: 'Ακύρωση',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
