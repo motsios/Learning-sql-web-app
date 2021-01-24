@@ -150,6 +150,20 @@ export class EditExistingSchemaComponent implements OnInit {
               );
             }
           }
+          if (
+            query.toLowerCase().includes('excersice_tables') ||
+            query.toLowerCase().includes('sql_random_queries') ||
+            query.toLowerCase().includes('fill_fields_questions') ||
+            query.toLowerCase().includes('user_table') ||
+            query.toLowerCase().includes('sql_questions') ||
+            query.toLowerCase().includes('score_table')
+          ) {
+            return Swal.fire(
+              '',
+              'Δεν μπορείτε να εκτελέσετε κάποιο SQL ερώτημα σε αυτόν τον πίνακα!',
+              'error'
+            );
+          }
           const headers = {
             'Content-Type': 'application/json; charset=UTF-8',
             Authorization: localStorage.getItem('token'),
