@@ -150,7 +150,7 @@
         <td><b>{{score.score}}</b></td>
         <td><b>{{score.time}}</b></td>
         <td><b>{{score.difficulty[0].toUpperCase()+score.difficulty.substr(1).toLowerCase()}}</b></td>
-        <td><b>{{score.category}}</b></td>
+        <td><b  *ngIf="score.category=='15 Questions'">15 Ερωτήσεις</b><b  *ngIf="score.category=='25 Questions'">25 Ερωτήσεις</b></td>
         <td><b>{{score.createdAt.replace("T"," ").slice(0,-5)}}</b></td>
       </tr>
     </tbody>
