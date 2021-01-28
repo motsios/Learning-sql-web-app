@@ -27,7 +27,7 @@ export class GenerateNewSchemaComponent implements OnInit {
   ngOnInit(): void {}
 
   async createTable() {
-    if (this.tablename.length == 0) {
+    if (this.tablename.length == 0 ) {
       Swal.fire('', 'Ο Πίνακας δεν έχει όνομα!', 'error');
     } else {
       await this.createSqlSquery();
@@ -73,6 +73,7 @@ export class GenerateNewSchemaComponent implements OnInit {
   createSqlSquery() {
     this.columnsStringArray = [];
     this.columnsNamesArray = [];
+    this.tablename=this.tablename.toLowerCase()
     if (
       this.fieldArray.length == 0 &&
       JSON.stringify(this.newAttribute) == '{}'
@@ -380,7 +381,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                           );
                           var randomQueryFromUpperArray = [];
 
-                          for (var i = 0; i < 4; i++) {
+                          for (var i = 0; i < 5; i++) {
                             randomQueryFromUpperArray.push(
                               arrayOfRandomSqlQueries[randomnumberFromArray]
                             );
