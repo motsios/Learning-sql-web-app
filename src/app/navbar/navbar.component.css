@@ -3,6 +3,7 @@
 }
 .navbar {
   min-height: 80px;
+  width: 100%;
 }
 .navbar-brand {
   font-size: 40px;
