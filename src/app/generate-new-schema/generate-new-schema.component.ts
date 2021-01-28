@@ -224,7 +224,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                           "'" +
                           this.tablename +
                           "'" +
-                          ' δημιουργήθηκε επιτυχώς! Θέλετε να αναπαραχθουν 5 τυχαία SQL Ερωτήματα που τον αφορούν;',
+                          ' δημιουργήθηκε επιτυχώς! Θέλετε να παραχθούν 5 τυχαία SQL Ερωτήματα για αυτόν;',
                         showDenyButton: true,
                         icon: 'success',
                         confirmButtonText: `Ναι`,
