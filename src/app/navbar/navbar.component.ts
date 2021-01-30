@@ -73,6 +73,7 @@ export class NavbarComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: `Εύκολο`,
       denyButtonText: `Δύσκολο`,
+      cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.setItem('difficulty', 'easy');
@@ -94,6 +95,7 @@ export class NavbarComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: `Εύκολο`,
       denyButtonText: `Δύσκολο`,
+      cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
         localStorage.setItem('difficulty', 'easy');
