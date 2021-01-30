@@ -360,7 +360,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[this.randomNumber(max)] +
-                              'BETWEEN 1 AND 10 ORDER BY ' +
+                              ' BETWEEN 1 AND 10 ORDER BY ' +
                               "'" +
                               this.columnsNamesArray[this.randomNumber(max)] +
                               "'",
