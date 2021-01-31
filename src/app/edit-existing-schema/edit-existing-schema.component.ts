@@ -290,7 +290,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
     await Swal.fire({
       title:
-        'Επιλέξτε τον άλλον Πίνακα για την δημιουργία σύνδεσης μεταξύ τους...',
+        'Επιλέξτε τον άλλο Πίνακα για την δημιουργία σύνδεσης μεταξύ τους...',
       input: 'select',
       confirmButtonText: 'Συνέχεια',
       cancelButtonText: 'Ακύρωση',
