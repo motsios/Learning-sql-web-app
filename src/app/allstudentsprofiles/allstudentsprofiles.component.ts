@@ -119,7 +119,7 @@ export class AllstudentsprofilesComponent implements OnInit {
           if (data.result[0].score_tables.length == 0) {
             Swal.fire(
               '',
-              'Ο εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Σκορ ακόμη!',
+              'Ο εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Κουίζ ακόμη!',
               'error'
             );
           }
