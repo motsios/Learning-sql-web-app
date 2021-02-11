@@ -151,7 +151,7 @@
         <td><b>{{score.time}}</b></td>
         <td><b  *ngIf="score.difficulty=='easy'">Εύκολο</b><b  *ngIf="score.difficulty=='hard'">Δύσκολο</b></td>
         <td><b  *ngIf="score.category=='15 Questions'">15 Ερωτήσεις</b><b  *ngIf="score.category=='25 Questions'">25 Ερωτήσεις</b></td>
-        <td><b>{{score.createdAt.replace("T"," ").slice(0,-5)}}</b></td>
+        <td><b>{{score.createdAt.slice(0,-41)}}</b></td>
       </tr>
     </tbody>
   </table>

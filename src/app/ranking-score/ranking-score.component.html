@@ -22,7 +22,7 @@
         <td><b  *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b  *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
         <td><b>{{student.score_tables[0].time}}</b></td>
         <td>
-          <b>{{student.score_tables[0].createdAt.replace("T"," ").slice(0,-5)}}</b>
+          <b>{{student.score_tables[0].createdAt.slice(0,-41)}}</b>
         </td>
       </tr>
     </tbody>
@@ -49,7 +49,7 @@
         <td><b  *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b  *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
         <td><b>{{student.score_tables[0].time}}</b></td>
         <td>
-          <b>{{student.score_tables[0].createdAt.replace("T"," ").slice(0,-5)}}</b>
+          <b>{{student.score_tables[0].createdAt.slice(0,-41)}}</b>
         </td>
       </tr>
     </tbody>
