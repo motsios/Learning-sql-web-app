@@ -73,8 +73,8 @@
       <div class="form-group">
         <select type="difficulty" formControlName="difficulty" class="form-control"
           [ngClass]="{ 'is-invalid': submitted && f.difficulty.errors }" class="form-control" id="inputGroupSelect04">
-          <option value="easy">Easy</option>
-          <option value="hard">Hard</option>
+          <option value="easy">Εύκολο</option>
+          <option value="hard">Δύσκολο</option>
         </select>
         <div *ngIf="submitted && f.difficulty.errors" class="invalid-feedback">
           <div *ngIf="f.difficulty.errors.required || f.difficulty==null">Το Επίπεδο Δυσκολίας απαιτείται</div>
