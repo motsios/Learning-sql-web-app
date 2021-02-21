@@ -18,10 +18,12 @@ export class NavbarComponent implements OnInit {
   }
 
   myprofilePage() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/myprofile']);
   }
 
   logout() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -46,26 +48,32 @@ export class NavbarComponent implements OnInit {
   }
 
   editprofile() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/editprofile']);
   }
 
   allstudentsPage() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/allstudentsprofile']);
   }
 
   sqlquestionsedit() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/sqlquestionstable']);
   }
 
   fillfieldquestionsedit() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/handlefillfieldquestions']);
   }
 
   myscores() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/myscores']);
   }
 
   start15Quiz() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     Swal.fire({
       title:
         'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 15 Ερωτήσεων',
@@ -88,6 +96,7 @@ export class NavbarComponent implements OnInit {
   }
 
   start25Quiz() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     Swal.fire({
       title:
         'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 25 Ερωτήσεων',
@@ -109,26 +118,39 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  sqlQuestionsToTables(){
+    if(localStorage.getItem('insideFillFieldQuestionsTable')=='yes'){
+      localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+      this.router.navigate(['/myprofile']);
+    }else{
+      localStorage.setItem('insideFillFieldQuestionsTable', 'yes');
+      this.router.navigate(['/questionsToTables/0']);
+    }
+  }
+
   sqlfillfieldquestions() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/fillfieldsqlquestions/0']);
   }
 
   generateNewSchema() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/generateNewSchema']);
   }
 
   goToExistingShcema() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/editExistingSchema']);
   }
 
   rankingPage() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/ranking']);
   }
 
   introSQL() {
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/theorySql']);
   }
-  introSQL2() {
-    this.router.navigate(['/theorySql2']);
-  }
+
 }

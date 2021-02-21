@@ -36,6 +36,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { RankingScoreComponent } from './ranking-score/ranking-score.component';
 import { TheorySqlComponent } from './theory-sql/theory-sql.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { QuestionsToTablesComponent } from './questions-to-tables/questions-to-tables.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     SqlFillFieldQuestionsComponent,
     RankingScoreComponent,
     TheorySqlComponent,
+    QuestionsToTablesComponent,
   ],
   imports: [
     ModalModule.forRoot(),

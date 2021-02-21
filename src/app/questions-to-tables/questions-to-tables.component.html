@@ -1,0 +1,102 @@
+<app-navbar></app-navbar>
+<div *ngIf="header_tale_name==''" class="navbar bg-dark" style="height:400px;  width: 190px; overflow: auto">
+  <nav>
+    <section class="list-with-heading">
+      <h3>Πίνακες:</h3>
+      <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+      <ul *ngFor="let name of tableArrayName;">
+        <li (click)="eachTableColumns(name,name.table_name)"><a>-{{name.table_name}}</a></li>
+      </ul>
+    </section>
+  </nav>
+</div>
+<h1 *ngIf="header_tale_name=='' && role=='student'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο στις Ερωτήσεις
+  Συμπλήρωσης Κενού</h1>
+<h1 *ngIf="header_tale_name!=''" class="center">Πίνακας "{{header_tale_name}}"</h1>
+<br>
+<div *ngIf="header_tale_name!=''" style="height:350px; table-layout: auto; overflow: auto">
+  <table class="table table-striped form-container table-container">
+    <thead>
+      <tr>
+        <th *ngFor="let field of tableColumnsArray;" class="headers">{{field.COLUMN_NAME}}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let data of dataOfEachTableArray ">
+        <td *ngFor="let column of onlyColumnsArray;let i=index;">{{data[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h1 *ngIf="secondTable!='' && header_tale_name!=''" class="center">Πίνακας "{{secondTable}}"</h1>
+<div *ngIf="secondTable!='' && header_tale_name!=''" style="height:350px; table-layout: auto; overflow: auto">
+  <table class="table table-striped form-container table-container">
+    <thead>
+      <tr>
+        <th *ngFor="let field of secondtableColumnsArray;" class="headers">{{field}}
+        </th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let data of seconddataOfEachTableArray ">
+        <td *ngFor="let column of secondtableColumnsArray;let i=index;">{{data[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<div *ngIf="header_tale_name!=''" class="form-container headers">
+  <div class="header1"><label
+      for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
+  <br>
+  <div *ngIf="errorText!=''">{{errorText}}</div>
+  <div *ngIf="errorText==''">
+    <h2 style="text-align: center;">Αποτέλεσμα SQL Ερωτήματος</h2>
+    <div style="height:300px; table-layout: auto; overflow: auto">
+      <table class="table table-striped form-container table-container">
+        <thead>
+          <tr>
+            <th *ngFor="let field of resultcolumnsArray;" class="headers">{{field}}</th>
+          </tr>
+        </thead>
+        <tbody class="content">
+          <tr *ngFor="let data of resultdataArray ">
+            <td *ngFor="let column of resultcolumnsArray;let i=index;">{{data[column]}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  <h3></h3><br>
+  <input type="text" class="inputtext" placeholder="Γράψε το ολοκληρωμένο SQL Ερώτημα..." id="text"
+    [(ngModel)]="textfield">
+  <br><br>
+  <div class="form-group">
+    <button class="btn btn-primary" (click)="next()">
+      <span class="spinner-border-sm mr-1"></span>
+      Υποβολή
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>
