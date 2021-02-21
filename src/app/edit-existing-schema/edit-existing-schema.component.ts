@@ -46,8 +46,8 @@ export class EditExistingSchemaComponent implements OnInit {
       .get<any>(this.url.baseUrl + '/getalltables', { headers })
       .subscribe((data) => {
         console.log(data);
+        this.spinner.hide();
         if (data.result) {
-          this.spinner.hide();
           for (var i = 0; i < data.result.length; i++) {
             this.tableArrayName.push(data.result[i]);
             this.tablesOnlyName.push(data.result[i].table_name);

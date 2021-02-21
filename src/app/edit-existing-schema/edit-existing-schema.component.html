@@ -57,7 +57,7 @@
         <td><b>{{question.sql_query}}</b></td>
         <td>
           <button type="button" class="btn btn-primary  py-1 px-2" (click)="studentExecuteQuery(question.sql_query)"
-           ><i class="fa fa-check"></i></button>
+           ><i class="fa fa-check"></i></button>&nbsp;
           <button type="button" class="btn btn-primary  py-1 px-2"
             (click)="updateQuestion(question.id,question.sql_query)" *ngIf="role=='teacher'"><i
               class="fa fa-pencil"></i></button> &nbsp;

@@ -27,7 +27,7 @@ export class GenerateNewSchemaComponent implements OnInit {
   ngOnInit(): void {}
 
   async createTable() {
-    if (this.tablename.length == 0 ) {
+    if (this.tablename.length == 0) {
       Swal.fire('', 'Ο Πίνακας δεν έχει όνομα!', 'error');
     } else {
       await this.createSqlSquery();
@@ -73,7 +73,7 @@ export class GenerateNewSchemaComponent implements OnInit {
   createSqlSquery() {
     this.columnsStringArray = [];
     this.columnsNamesArray = [];
-    this.tablename=this.tablename.toLowerCase()
+    this.tablename = this.tablename.toLowerCase();
     if (
       this.fieldArray.length == 0 &&
       JSON.stringify(this.newAttribute) == '{}'
@@ -232,41 +232,35 @@ export class GenerateNewSchemaComponent implements OnInit {
                       }).then((result) => {
                         if (result.isConfirmed) {
                           var max = this.columnsNamesArray.length;
-                          var staticvalue = this.columnsNamesArray[
-                            this.randomNumber(max)
-                          ];
-                          var static2value = this.columnsNamesArray[
-                            this.randomNumber(max)
-                          ];
                           var arrayOfRandomSqlQueries = [
                             // QUESTION 1
                             'SELECT * FROM ' + this.tablename,
                             // QUESTION 2
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[0 % max] +
                               ', ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[1 % max] +
                               ' FROM ' +
                               this.tablename,
                             // QUESTION 3
                             'SELECT DISTINCT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[0 % max] +
                               ', ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[2 % max] +
                               ', ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[1 % max] +
                               ' FROM ' +
                               this.tablename,
                             // QUESTION 4
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[3 % max] +
                               ', ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[4 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
                               "'" +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[3 % max] +
                               "'" +
                               ' ASC',
                             // QUESTION 5
@@ -274,44 +268,44 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' ORDER BY ' +
                               "'" +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[2 % max] +
                               "'" +
                               ' ASC, ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[0 % max] +
                               ' DESC',
                             // QUESTION 6
                             'SELECT MIN(' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[0 % max] +
                               ') AS minValue ' +
                               ' FROM ' +
                               this.tablename,
                             // Question 7
                             'SELECT COUNT(' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[2 % max] +
                               ') FROM ' +
                               this.tablename,
                             // Question 8
                             'SELECT COUNT(' +
-                              staticvalue +
+                              this.columnsNamesArray[1 % max] +
                               '), ' +
-                              static2value +
+                              this.columnsNamesArray[7 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              staticvalue +
+                              this.columnsNamesArray[1 % max] +
                               ' HAVING COUNT(' +
-                              static2value +
+                              this.columnsNamesArray[7 % max] +
                               ')',
                             //Question 9
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[10%max] +
                               ' FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[this.randomNumber(max)],
+                              this.columnsNamesArray[10%max],
                             //Question 10
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[0%max] +
                               ' FROM ' +
                               this.tablename +
                               ' ORDER BY RAND() LIMIT 1',
@@ -319,61 +313,48 @@ export class GenerateNewSchemaComponent implements OnInit {
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[10%max] +
                               ' = (SELECT MAX(' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[0%max] +
                               ') FROM ' +
                               this.tablename +
                               ')',
                             //Question 12
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[1%max] +
                               ' FROM ' +
                               this.tablename +
                               ' UNION SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[2%max] +
                               ' FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
                               "'" +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[1%max] +
                               "'",
                             //Question 13
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
-                              ',COUNT(*) FROM ' +
-                              this.tablename +
-                              ' WHERE ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
-                              "='kostas' GROUP BY  " +
-                              this.columnsNamesArray[this.randomNumber(max)] +
-                              ' ORDER BY ' +
-                              "'" +
-                              this.columnsNamesArray[this.randomNumber(max)] +
-                              "'",
-                            //Question 14
-                            'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[4%max] +
                               ', ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[3%max] +
                               ' FROM ' +
                               this.tablename +
                               ' WHERE ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[4%max] +
                               ' BETWEEN 1 AND 10 ORDER BY ' +
                               "'" +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[3%max] +
                               "'",
-                            //Question 15
+                            //Question 14
                             'SELECT COUNT(' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[4%max] +
                               '), SUM(' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
+                              this.columnsNamesArray[4%max] +
                               ') FROM ' +
                               this.tablename +
                               ' WHERE ' +
-                              this.columnsNamesArray[this.randomNumber(max)] +
-                              " NOT BETWEEN '1/1/2013' AND '1/31/2013'",
+                              this.columnsNamesArray[0%max] +
+                              " NOT BETWEEN '0' AND '10'",
                           ];
                           var randomnumberFromArray = Math.floor(
                             Math.random() *

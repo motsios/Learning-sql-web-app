@@ -47,10 +47,7 @@
 </div>
 <br>
 
-<div *ngIf="header_tale_name!=''" class="form-container headers">
-  <div class="header1"><label
-      for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
-  <br>
+<div *ngIf="header_tale_name!=''" class="form-container2 headers">
   <div *ngIf="errorText!=''">{{errorText}}</div>
   <div *ngIf="errorText==''">
     <h2 style="text-align: center;">Αποτέλεσμα SQL Ερωτήματος</h2>
@@ -69,9 +66,10 @@
       </table>
     </div>
   </div>
-  <br>
-  <h3></h3><br>
-  <input type="text" class="inputtext" placeholder="Γράψε το ολοκληρωμένο SQL Ερώτημα..." id="text"
+  <h4><div class="header1"><label
+      for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
+  </h4>
+  <input type="text" class="inputtext" placeholder="Γράψτε το ολοκληρωμένο SQL Ερώτημα..." id="text"
     [(ngModel)]="textfield">
   <br><br>
   <div class="form-group">

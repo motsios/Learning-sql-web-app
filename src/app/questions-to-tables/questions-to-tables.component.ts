@@ -33,6 +33,7 @@ export class QuestionsToTablesComponent implements OnInit {
   resultdataArray = [];
   errorText = '';
 
+  correctAnswers=0;
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -57,8 +58,8 @@ export class QuestionsToTablesComponent implements OnInit {
       .get<any>(this.url.baseUrl + '/getalltables', { headers })
       .subscribe((data) => {
         console.log(data);
+        this.spinner.hide();
         if (data.result) {
-          this.spinner.hide();
           for (var i = 0; i < data.result.length; i++) {
             this.tableArrayName.push(data.result[i]);
           }
@@ -187,6 +188,7 @@ export class QuestionsToTablesComponent implements OnInit {
       text.toLowerCase() ==
       this.fillfieldsquestionsArray[this.questionid].sql_query.toLowerCase()
     ) {
+      this.correctAnswers=this.correctAnswers+1;
       Swal.fire({
         title: '',
         text: 'Σωστό',
@@ -203,7 +205,7 @@ export class QuestionsToTablesComponent implements OnInit {
           ) {
             Swal.fire(
               '',
-              'Οι ερωτήσεις σε αυτόν τον Πίνακα τελείωσαν!',
+              'Οι ερωτήσεις σε αυτόν τον Πίνακα τελείωσαν! Σωστές '+this.correctAnswers+' στις '+this.fillfieldsquestionsArray.length,
               'info'
             );
             this.tableArrayName = [];
@@ -273,7 +275,7 @@ export class QuestionsToTablesComponent implements OnInit {
           ) {
             Swal.fire(
               '',
-              'Οι ερωτήσεις σε αυτόν τον Πίνακα τελείωσαν!',
+              'Οι ερωτήσεις σε αυτόν τον Πίνακα τελείωσαν! Σωστές '+this.correctAnswers+' στις '+this.fillfieldsquestionsArray.length+'.',
               'info'
             );
             this.tableArrayName = [];

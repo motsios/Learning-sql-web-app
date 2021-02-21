@@ -22,6 +22,16 @@ hr.dashed {
   text-align: center;
   width: 80%;
 }
+.form-container2 {
+  background: rgb(122, 120, 120);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px;
+  margin: 0 auto;
+  margin-top: 0%;
+  text-align: center;
+  width: 80%;
+}
 .content {
   color: rgb(43, 43, 107);
   text-align: left;
