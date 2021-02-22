@@ -43,7 +43,7 @@ hr.dashed {
   border-radius: 25px;
   background-color: rgb(61, 59, 59);
   display: flex;
-  font-size: 59px;
+  font-size: 40px;
   color: aliceblue;
   justify-content: center;
   align-items: center;
@@ -116,4 +116,10 @@ thead th {
   width: 80%;
   height: 80px;
   text-align: center;
+}
+.timer {
+  font-style: italic;
+  text-align: end;
+  font-size: x-large;
+  color: rgb(31, 54, 187);
 }

@@ -13,7 +13,6 @@
 <h1 *ngIf="header_tale_name=='' && role=='student'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο στις Ερωτήσεις
   Συμπλήρωσης Κενού</h1>
 <h1 *ngIf="header_tale_name!=''" class="center">Πίνακας "{{header_tale_name}}"</h1>
-<br>
 <div *ngIf="header_tale_name!=''" style="height:350px; table-layout: auto; overflow: auto">
   <table class="table table-striped form-container table-container">
     <thead>
@@ -45,9 +44,9 @@
     </tbody>
   </table>
 </div>
-<br>
 
 <div *ngIf="header_tale_name!=''" class="form-container2 headers">
+  <div *ngIf="startTimer==true" class=" timer">{{converttimer}}</div>
   <div *ngIf="errorText!=''">{{errorText}}</div>
   <div *ngIf="errorText==''">
     <h2 style="text-align: center;">Αποτέλεσμα SQL Ερωτήματος</h2>
@@ -66,6 +65,7 @@
       </table>
     </div>
   </div>
+  <br>
   <h4><div class="header1"><label
       for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
   </h4>

@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <br>
 <br>
-<h2 class="header center1">Ο πίνακας των Σκορ μου</h2><br>
+<h2 class="header center1">Τα Σκορ μου στα Κουίζ</h2><br>
 <div style="height:400px; overflow: auto">
   <table class="table table-striped table-responsive-md btn-table form-container">
     <thead>
@@ -27,6 +27,29 @@
   </table>
 </div>
 <br>
+<h2 class="header center1">Τα υλοποιημένα Τεστ στις Ερωτήσεις Συμπλήρωσης-Kενού σε Πίνακες</h2><br>
+<div style="height:400px; overflow: auto">
+  <table class="table table-striped table-responsive-md btn-table form-container">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Επιτυχία</th>
+        <th scope="col">Διάρκεια Τεστ</th>
+        <th scope="col">Πίνακας</th>
+        <th scope="col">Ημερομηνία Επίτευξης</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let rate of ratesArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{rate.rate}}</b></td>
+        <td><b>{{rate.time}}</b></td>
+        <td><b>{{rate.table_name}}</b></td>
+        <td><b>{{rate.createdAt.slice(0,-41)}}</b></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <br>
 <br>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">

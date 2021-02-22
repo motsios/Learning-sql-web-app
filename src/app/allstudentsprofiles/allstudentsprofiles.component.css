@@ -43,6 +43,7 @@ thead th {
   text-align: center;
   width: 100%;
 }
+
 .center1 {
   border: 2px solid rgb(31, 31, 32);
   padding: 10px;
@@ -50,7 +51,21 @@ thead th {
   border-radius: 25px;
   background-color: rgb(66, 59, 59);
   display: flex;
-  font-size: 59px;
+  font-size: 40px;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10%;
+  width: 80%;
+}
+.center2 {
+  border: 2px solid rgb(31, 31, 32);
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgb(66, 59, 59);
+  display: flex;
+  font-size: 35px;
   color: aliceblue;
   justify-content: center;
   align-items: center;

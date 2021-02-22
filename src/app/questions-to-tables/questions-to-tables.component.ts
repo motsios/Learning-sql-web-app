@@ -34,6 +34,11 @@ export class QuestionsToTablesComponent implements OnInit {
   errorText = '';
 
   correctAnswers = 0;
+  startTimer = false;
+
+  timer: number = 0;
+  converttimer;
+  interval;
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -69,8 +74,20 @@ export class QuestionsToTablesComponent implements OnInit {
         }
       });
   }
-
+  startTimerFun() {
+    this.interval = setInterval(() => {
+      this.converttimer = this.toTime(this.timer);
+      this.timer++;
+    }, 1000);
+  }
+  toTime(seconds) {
+    var date = new Date(null);
+    date.setSeconds(seconds);
+    return date.toISOString().substr(11, 8);
+  }
   async eachTableColumns(table, name) {
+    this.startTimer = true;
+    this.startTimerFun();
     this.header_tale_name = name;
     this.tableColumnsArray = [];
     this.tableColumnsArray2 = [];
@@ -181,12 +198,9 @@ export class QuestionsToTablesComponent implements OnInit {
   }
 
   next() {
-
-
-//na stelnw to score se enan neo pinaka sotn api pou th adeinei poses stis poses kai se pion pinaka.
-//Na dw ti tha kanw me to pws tha sigkrinw tis apantiseis kai ti tha krivw.
-//Kai na ksanaftiaksw ta automata sql erwtimata na einia pio statika gia na petixainoun kai oi erwtiseis.
-
+    //na stelnw to score se enan neo pinaka sotn api pou th adeinei poses stis poses kai se pion pinaka.
+    //Na dw ti tha kanw me to pws tha sigkrinw tis apantiseis kai ti tha krivw.
+    //Kai na ksanaftiaksw ta automata sql erwtimata na einia pio statika gia na petixainoun kai oi erwtiseis.
 
     var text = this.textfield;
     console.log(this.fillfieldsquestionsArray[this.questionid].sql_query);
@@ -210,31 +224,51 @@ export class QuestionsToTablesComponent implements OnInit {
             this.fillfieldsquestionsArray.length - 2 <
             this.questionidToNumber
           ) {
-            Swal.fire(
-              '',
-              "Οι ερωτήσεις στον Πίνακα '" +
-                this.header_tale_name +
-                "' τελείωσαν! Σωστές " +
+            console.log(this.converttimer);
+            clearInterval(this.interval);
+            this.timer = 0;
+
+            const headers = {
+              'Content-Type': 'application/json; charset=UTF-8',
+              Authorization: localStorage.getItem('token'),
+            };
+            const body = {
+              rate:
+                'Σωστές ' +
                 this.correctAnswers +
                 ' στις ' +
                 this.fillfieldsquestionsArray.length,
-              'info'
-            );
-            this.tableArrayName = [];
-            this.tableColumnsArray = [];
-            this.tableColumnsArray2 = [];
-            this.dataOfEachTableArray = [];
-            this.onlyColumnsArray = [];
-            this.header_tale_name = '';
-            this.fillfieldsquestionsArray = [];
-            this.role = '';
-            this.questionid = '0';
-            this.questionidToNumber;
-            this.textfield = '';
-            this.resultcolumnsArray = [];
-            this.resultdataArray = [];
-            this.errorText = '';
-            this.ngOnInit();
+              table_name: this.header_tale_name,
+              time: this.converttimer,
+            };
+            this.http
+              .post<any>(
+                this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
+                body,
+                { headers }
+              )
+              .subscribe((data) => {
+                console.log(data);
+                if (data.result == 'Rate added') {
+                  Swal.fire(
+                    '',
+                    'Μόλις ολοκλήρωσες το Τεστ.' +
+                      'Σωστές ' +
+                      this.correctAnswers +
+                      ' στις ' +
+                      this.fillfieldsquestionsArray.length +
+                      '.Το ποσοστό επιτυχίας σου καταχωρήθηκε!',
+                    'success'
+                  );
+                  this.router.navigate(['/myscores']);
+                } else {
+                  Swal.fire(
+                    'Ουπς...',
+                    'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                    'error'
+                  );
+                }
+              });
           } else {
             this.textfield = '';
             this.questionidToNumber = this.questionidToNumber + 1;
@@ -285,31 +319,51 @@ export class QuestionsToTablesComponent implements OnInit {
             this.fillfieldsquestionsArray.length - 2 <
             this.questionidToNumber
           ) {
-            Swal.fire(
-              '',
-              "Οι ερωτήσεις στον Πίνακα '" +
-                this.header_tale_name +
-                "' τελείωσαν! Σωστές " +
+            console.log(this.converttimer);
+            clearInterval(this.interval);
+            this.timer = 0;
+
+            const headers = {
+              'Content-Type': 'application/json; charset=UTF-8',
+              Authorization: localStorage.getItem('token'),
+            };
+            const body = {
+              rate:
+                'Σωστές ' +
                 this.correctAnswers +
                 ' στις ' +
                 this.fillfieldsquestionsArray.length,
-              'info'
-            );
-            this.tableArrayName = [];
-            this.tableColumnsArray = [];
-            this.tableColumnsArray2 = [];
-            this.dataOfEachTableArray = [];
-            this.onlyColumnsArray = [];
-            this.header_tale_name = '';
-            this.fillfieldsquestionsArray = [];
-            this.role = '';
-            this.questionid = '0';
-            this.questionidToNumber;
-            this.textfield = '';
-            this.resultcolumnsArray = [];
-            this.resultdataArray = [];
-            this.errorText = '';
-            this.ngOnInit();
+              table_name: this.header_tale_name,
+              time: this.converttimer,
+            };
+            this.http
+              .post<any>(
+                this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
+                body,
+                { headers }
+              )
+              .subscribe((data) => {
+                console.log(data);
+                if (data.result == 'Rate added') {
+                  Swal.fire(
+                    '',
+                    'Μόλις ολοκλήρωσες το Τεστ.' +
+                      'Σωστές ' +
+                      this.correctAnswers +
+                      ' στις ' +
+                      this.fillfieldsquestionsArray.length +
+                      '.Το ποσοστό επιτυχίας σου καταχωρήθηκε!',
+                    'success'
+                  );
+                  this.router.navigate(['/myscores']);
+                } else {
+                  Swal.fire(
+                    'Ουπς...',
+                    'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                    'error'
+                  );
+                }
+              });
           } else {
             this.textfield = '';
             this.questionidToNumber = this.questionidToNumber + 1;
@@ -344,5 +398,8 @@ export class QuestionsToTablesComponent implements OnInit {
         }
       });
     }
+  }
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
 }
