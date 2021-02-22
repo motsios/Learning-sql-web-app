@@ -702,7 +702,7 @@ export class EditExistingSchemaComponent implements OnInit {
   addQuestion() {
     Swal.fire({
       title:
-        'Καταχωρήστε ένα νέο ερώτημα για τον Πίνακα το οποίο θα γίνει ορατό και στους Εκπαιδευόμενους.',
+        'Καταχωρήστε ένα νέο ερώτημα για τον Πίνακα.',
       input: 'text',
       inputPlaceholder: 'SQL Ερώτημα',
       cancelButtonText: 'Ακύρωση',

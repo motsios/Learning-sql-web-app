@@ -45,9 +45,10 @@
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
           <a *ngIf="role=='student'" class="dropdown-item" (click)="goToExistingShcema()">Εξάσκηση SQL ερωτήσεων σε
             υπάρχοντα σχήματα</a>
-            <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTables()">Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες</a>
           <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlfillfieldquestions()">Ερωτήσεις
             Συμπλήρωσης-Κενού</a>
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTables()">Τεστ: Ερωτήσεις
+            Συμπλήρωσης-Κενού σε Πίνακες</a>
         </div>
       </li>
       <li class="nav-item" *ngIf="role=='teacher'">
