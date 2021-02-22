@@ -33,7 +33,7 @@ export class QuestionsToTablesComponent implements OnInit {
   resultdataArray = [];
   errorText = '';
 
-  correctAnswers=0;
+  correctAnswers = 0;
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -181,6 +181,13 @@ export class QuestionsToTablesComponent implements OnInit {
   }
 
   next() {
+
+
+//na stelnw to score se enan neo pinaka sotn api pou th adeinei poses stis poses kai se pion pinaka.
+//Na dw ti tha kanw me to pws tha sigkrinw tis apantiseis kai ti tha krivw.
+//Kai na ksanaftiaksw ta automata sql erwtimata na einia pio statika gia na petixainoun kai oi erwtiseis.
+
+
     var text = this.textfield;
     console.log(this.fillfieldsquestionsArray[this.questionid].sql_query);
     console.log(text);
@@ -188,7 +195,7 @@ export class QuestionsToTablesComponent implements OnInit {
       text.toLowerCase() ==
       this.fillfieldsquestionsArray[this.questionid].sql_query.toLowerCase()
     ) {
-      this.correctAnswers=this.correctAnswers+1;
+      this.correctAnswers = this.correctAnswers + 1;
       Swal.fire({
         title: '',
         text: 'Σωστό',
@@ -205,7 +212,12 @@ export class QuestionsToTablesComponent implements OnInit {
           ) {
             Swal.fire(
               '',
-              'Οι ερωτήσεις σε αυτόν τον Πίνακα τελείωσαν! Σωστές '+this.correctAnswers+' στις '+this.fillfieldsquestionsArray.length,
+              "Οι ερωτήσεις στον Πίνακα '" +
+                this.header_tale_name +
+                "' τελείωσαν! Σωστές " +
+                this.correctAnswers +
+                ' στις ' +
+                this.fillfieldsquestionsArray.length,
               'info'
             );
             this.tableArrayName = [];
@@ -275,7 +287,12 @@ export class QuestionsToTablesComponent implements OnInit {
           ) {
             Swal.fire(
               '',
-              'Οι ερωτήσεις σε αυτόν τον Πίνακα τελείωσαν! Σωστές '+this.correctAnswers+' στις '+this.fillfieldsquestionsArray.length+'.',
+              "Οι ερωτήσεις στον Πίνακα '" +
+                this.header_tale_name +
+                "' τελείωσαν! Σωστές " +
+                this.correctAnswers +
+                ' στις ' +
+                this.fillfieldsquestionsArray.length,
               'info'
             );
             this.tableArrayName = [];
