@@ -53,7 +53,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
 
   infoHideWord() {
     Swal.fire(
-      'Αποκρυμένη Λέξη',
+      'ΑποκρυμΜένη Λέξη',
       'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL Ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
       'info'
     );

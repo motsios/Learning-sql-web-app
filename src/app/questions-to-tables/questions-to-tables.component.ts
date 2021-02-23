@@ -174,7 +174,7 @@ export class QuestionsToTablesComponent implements OnInit {
           for (var i = 0; i < splitWords.length; i++) {
             this.questionWithField = this.questionWithField.replace(
               splitWords[i],
-              '_____'
+              ' ____ '
             );
           }
 
@@ -298,7 +298,7 @@ export class QuestionsToTablesComponent implements OnInit {
             for (var i = 0; i < splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
                 splitWords[i],
-                '_____'
+                ' ____ '
               );
             }
 
@@ -409,7 +409,7 @@ export class QuestionsToTablesComponent implements OnInit {
             for (var i = 0; i < splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
                 splitWords[i],
-                '_____'
+                ' ____ '
               );
             }
 

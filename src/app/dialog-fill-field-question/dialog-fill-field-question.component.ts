@@ -56,7 +56,7 @@ export class DialogFillFieldQuestionComponent implements OnInit {
 
   infoHideWord() {
     Swal.fire(
-      'Αποκρυμένη Λέξη',
+      'Αποκρυμμένη Λέξη',
       'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL Ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
       'info'
     );
