@@ -8,6 +8,7 @@ import { DialogAddSqlQueryComponent } from '../dialog-add-sql-query/dialog-add-s
 import { DialogShowQueryResultsComponent } from '../dialog-show-query-results/dialog-show-query-results.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IfStmt } from '@angular/compiler';
+import { DialogSqlQueryTableComponent } from '../dialog-sql-query-table/dialog-sql-query-table.component';
 
 @Component({
   selector: 'app-edit-existing-schema',
@@ -596,57 +597,31 @@ export class EditExistingSchemaComponent implements OnInit {
         }
       });
   }
-  updateQuestion(id, question) {
-    Swal.fire({
-      title: 'Ανανέωση SQL Ερωτήματος',
-      input: 'text',
-      inputAttributes: {
-        autocapitalize: 'off',
-      },
-      inputValue: question,
-      width: 1000,
-      showCancelButton: true,
-      confirmButtonText: 'Apply',
-      showLoaderOnConfirm: true,
-      preConfirm: (query) => {
-        if (query) {
-          const headers = {
-            'Content-Type': 'application/json; charset=UTF-8',
-            Authorization: localStorage.getItem('token'),
-          };
-          const body = { sql_query: query };
-          this.http
-            .put<any>(
-              this.url.baseUrl + 'updateonesqlqueryfromspecifictable/' + id,
-              body,
-              { headers }
-            )
-            .subscribe((data) => {
-              console.log(data);
-              if (data.result == 'Updated completed') {
-                this.tableArrayName = [];
-                this.tableColumnsArray = [];
-                this.tableColumnsArray2 = [];
-                this.dataOfEachTableArray = [];
-                this.onlyColumnsArray = [];
-                this.header_tale_name = '';
-                this.questionsOfEachTableArray = [];
-                Swal.fire('', 'Το SQL Ερώτημα ανανεώθηκε επιτυχώς!', 'success');
-                this.ngOnInit();
-                this.eachTableColumns(this.statictable, this.statictablename);
-              } else {
-                Swal.fire(
-                  'Ουπς...',
-                  'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
-                  'error'
-                );
-              }
-            });
-        } else {
-          Swal.fire('', 'Υπάρχουν κενά πεδία!', 'error');
-        }
-      },
-      allowOutsideClick: () => !Swal.isLoading(),
+
+  updateQuestion(id, sql_query, hideWord) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = {
+      edit: 'true',
+      id,
+      sql_query,
+      hideWord,
+      tablename: this.header_tale_name
+    };
+    let dialog = this.matDialog.open(
+      DialogSqlQueryTableComponent,
+      dialogConfig
+    );
+      dialog.afterClosed().subscribe((result) => {
+        this.tableArrayName = [];
+        this.tableColumnsArray = [];
+        this.tableColumnsArray2 = [];
+        this.dataOfEachTableArray = [];
+        this.onlyColumnsArray = [];
+        this.header_tale_name = '';
+        this.questionsOfEachTableArray = [];
+        this.ngOnInit();
+        this.eachTableColumns(this.statictable, this.statictablename);
     });
   }
 
@@ -699,66 +674,28 @@ export class EditExistingSchemaComponent implements OnInit {
       }
     });
   }
+
   addQuestion() {
-    Swal.fire({
-      title:
-        'Καταχωρήστε ένα νέο ερώτημα για τον Πίνακα.',
-      input: 'text',
-      inputPlaceholder: 'SQL Ερώτημα',
-      cancelButtonText: 'Ακύρωση',
-      inputAttributes: {
-        autocapitalize: 'off',
-      },
-      showCancelButton: true,
-      width: 1000,
-      confirmButtonText: 'Αποδοχή',
-      showLoaderOnConfirm: true,
-      preConfirm: (query1) => {
-        if (query1) {
-          const headers = {
-            'Content-Type': 'application/json; charset=UTF-8',
-            Authorization: localStorage.getItem('token'),
-          };
-          const body = {
-            query: query1,
-            tablename: this.header_tale_name,
-          };
-          this.http
-            .post<any>(
-              this.url.baseUrl + 'addonesqlqueryfromspecifictable',
-              body,
-              {
-                headers,
-              }
-            )
-            .subscribe((data) => {
-              console.log(data);
-              if (data.result.id) {
-                this.tableArrayName = [];
-                this.tableColumnsArray = [];
-                this.tableColumnsArray2 = [];
-                this.dataOfEachTableArray = [];
-                this.onlyColumnsArray = [];
-                this.header_tale_name = '';
-                this.questionsOfEachTableArray = [];
-                Swal.fire('', 'Το SQL Ερώτημα προστέθηκε επιτυχώς', 'success');
-                this.ngOnInit();
-                this.eachTableColumns(this.statictable, this.statictablename);
-              } else {
-                Swal.fire(
-                  'Ουπς...',
-                  'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
-                  'error'
-                );
-              }
-            });
-        } else {
-          Swal.fire('', 'Υπάρχουν κενά πεδία!', 'error');
-        }
-      },
-      allowOutsideClick: () => !Swal.isLoading(),
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = { edit: 'false',tablename: this.header_tale_name };
+    let dialog = this.matDialog.open(
+      DialogSqlQueryTableComponent,
+      dialogConfig
+    );
+    dialog.afterClosed().subscribe((result) => {
+      this.tableArrayName = [];
+      this.tableColumnsArray = [];
+      this.tableColumnsArray2 = [];
+      this.dataOfEachTableArray = [];
+      this.onlyColumnsArray = [];
+      this.header_tale_name = '';
+      this.questionsOfEachTableArray = [];
+      this.ngOnInit();
+      this.eachTableColumns(this.statictable, this.statictablename);
     });
   }
+
   studentExecuteQuery(query) {
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',

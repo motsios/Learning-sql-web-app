@@ -52,6 +52,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">SQL Ερώτημα</th>
+        <th scope="col">Αποκρυμένες Λέξεις</th>
         <th scope="col">Ενέργειες</th>
       </tr>
     </thead>
@@ -59,11 +60,12 @@
       <tr *ngFor="let question of questionsOfEachTableArray;let i=index;">
         <td><b>{{i+1}}</b></td>
         <td><b>{{question.sql_query}}</b></td>
+        <td><b>{{question.hideWord}}</b></td>
         <td>
           <button type="button" class="btn btn-primary  py-1 px-2" (click)="studentExecuteQuery(question.sql_query)"><i
               class="fa fa-check"></i></button>&nbsp;
           <button type="button" class="btn btn-primary  py-1 px-2"
-            (click)="updateQuestion(question.id,question.sql_query)" *ngIf="role=='teacher'"><i
+            (click)="updateQuestion(question.id,question.sql_query,question.hideWord)" *ngIf="role=='teacher'"><i
               class="fa fa-pencil"></i></button> &nbsp;
           <button type="button" class="btn btn-primary  py-1 px-2" (click)="removeQuestion(question.id)"
             *ngIf="role=='teacher'"><i class="fa fa-trash-o"></i></button> &nbsp;
