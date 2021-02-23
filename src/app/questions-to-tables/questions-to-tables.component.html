@@ -67,7 +67,7 @@
   </div>
   <br>
   <h4><div class="header1"><label
-    *ngIf="load!=false"   for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
+    *ngIf="load!=false"   for="fname"><b>{{questionidToNumber+1}}.{{questionWithField}}</b></label></div>
   </h4>
   <input type="text" class="inputtext" placeholder="Γράψτε το ολοκληρωμένο SQL Ερώτημα..." id="text"
     [(ngModel)]="textfield">

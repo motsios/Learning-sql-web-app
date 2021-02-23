@@ -54,7 +54,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
   infoHideWord() {
     Swal.fire(
       'Αποκρυμένη Λέξη',
-      'Γράψτε τις λέξεις χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
+      'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL Ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
       'info'
     );
   }
@@ -117,7 +117,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
         })
         .subscribe((data) => {
           console.log(data);
-          if (data.result.id) {
+          if (data.result) {
             Swal.fire(
               '',
               'Το SQL Ερώτημα προστέθηκε επιτυχώς!',

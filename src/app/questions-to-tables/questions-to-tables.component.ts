@@ -22,6 +22,7 @@ export class QuestionsToTablesComponent implements OnInit {
 
   header_tale_name = '';
   fillfieldsquestionsArray = [];
+  hideWordArray = [];
   role = '';
 
   secondTable = '';
@@ -40,7 +41,11 @@ export class QuestionsToTablesComponent implements OnInit {
   converttimer;
   interval;
 
-  load=false;
+  load = false;
+
+  questionWithField = '';
+  heddenWords = '';
+
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -157,11 +162,22 @@ export class QuestionsToTablesComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
-        this.load=true
+        this.load = true;
         console.log(data.result);
         if (data.result) {
           this.fillfieldsquestionsArray = data.result.sql_random_queries;
           console.log(this.fillfieldsquestionsArray);
+
+          this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
+          var splitWords = this.fillfieldsquestionsArray[0].hideWord.split(',');
+
+          for (var i = 0; i < splitWords.length; i++) {
+            this.questionWithField = this.questionWithField.replace(
+              splitWords[i],
+              '_____'
+            );
+          }
+
           const body = {
             sqlQueryString: this.fillfieldsquestionsArray[0].sql_query,
           };
@@ -201,16 +217,11 @@ export class QuestionsToTablesComponent implements OnInit {
   }
 
   next() {
-    //na stelnw to score se enan neo pinaka sotn api pou th adeinei poses stis poses kai se pion pinaka.
-    //Na dw ti tha kanw me to pws tha sigkrinw tis apantiseis kai ti tha krivw.
-    //Kai na ksanaftiaksw ta automata sql erwtimata na einia pio statika gia na petixainoun kai oi erwtiseis.
-
     var text = this.textfield;
-    console.log(this.fillfieldsquestionsArray[this.questionid].sql_query);
     console.log(text);
     if (
       text.toLowerCase() ==
-      this.fillfieldsquestionsArray[this.questionid].sql_query.toLowerCase()
+      this.fillfieldsquestionsArray[this.questionid].hideWord.toLowerCase()
     ) {
       this.correctAnswers = this.correctAnswers + 1;
       Swal.fire({
@@ -275,6 +286,22 @@ export class QuestionsToTablesComponent implements OnInit {
           } else {
             this.textfield = '';
             this.questionidToNumber = this.questionidToNumber + 1;
+
+            this.questionWithField = this.fillfieldsquestionsArray[
+              this.questionidToNumber
+            ].sql_query;
+
+            var splitWords = this.fillfieldsquestionsArray[this.questionidToNumber].hideWord.split(
+              ','
+            );
+
+            for (var i = 0; i < splitWords.length; i++) {
+              this.questionWithField = this.questionWithField.replace(
+                splitWords[i],
+                '_____'
+              );
+            }
+
             const headers = {
               'Content-Type': 'application/json; charset=UTF-8',
               Authorization: localStorage.getItem('token'),
@@ -370,6 +397,22 @@ export class QuestionsToTablesComponent implements OnInit {
           } else {
             this.textfield = '';
             this.questionidToNumber = this.questionidToNumber + 1;
+
+            this.questionWithField = this.fillfieldsquestionsArray[
+              this.questionidToNumber
+            ].sql_query;
+
+            var splitWords = this.fillfieldsquestionsArray[this.questionidToNumber].hideWord.split(
+              ','
+            );
+
+            for (var i = 0; i < splitWords.length; i++) {
+              this.questionWithField = this.questionWithField.replace(
+                splitWords[i],
+                '_____'
+              );
+            }
+
             const headers = {
               'Content-Type': 'application/json; charset=UTF-8',
               Authorization: localStorage.getItem('token'),
