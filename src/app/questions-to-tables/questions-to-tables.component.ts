@@ -39,6 +39,8 @@ export class QuestionsToTablesComponent implements OnInit {
   timer: number = 0;
   converttimer;
   interval;
+
+  load=false;
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -155,6 +157,7 @@ export class QuestionsToTablesComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
+        this.load=true
         console.log(data.result);
         if (data.result) {
           this.fillfieldsquestionsArray = data.result.sql_random_queries;

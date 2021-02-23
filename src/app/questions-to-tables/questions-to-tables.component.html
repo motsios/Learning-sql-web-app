@@ -11,7 +11,7 @@
   </nav>
 </div>
 <h1 *ngIf="header_tale_name=='' && role=='student'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο στο Τεστ Ερωτήσεων
-  Συμπλήρωσης-Κενού</h1>
+  Συμπλήρωσης-Κενού &#x263A;</h1>
 <h1 *ngIf="header_tale_name!=''" class="center">Πίνακας "{{header_tale_name}}"</h1>
 <div *ngIf="header_tale_name!=''" style="height:350px; table-layout: auto; overflow: auto">
   <table class="table table-striped form-container table-container">
@@ -67,7 +67,7 @@
   </div>
   <br>
   <h4><div class="header1"><label
-      for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
+    *ngIf="load!=false"   for="fname"><b>{{questionidToNumber+1}}.{{fillfieldsquestionsArray[questionid].sql_query}}</b></label></div>
   </h4>
   <input type="text" class="inputtext" placeholder="Γράψτε το ολοκληρωμένο SQL Ερώτημα..." id="text"
     [(ngModel)]="textfield">
