@@ -361,6 +361,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.url.baseUrl + 'addarrayofqueries',
                               {
                                 queriesArray: randomQueryFromUpperArray,
+                                hiddenWordsArray:['ok,okok,o','opop,po','sdsd','ddd','ds'],
                                 table_name: this.tablename,
                               },
                               { headers }

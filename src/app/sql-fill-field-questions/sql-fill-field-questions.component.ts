@@ -203,7 +203,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -233,7 +233,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -263,7 +263,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -293,7 +293,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -323,7 +323,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -353,7 +353,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -383,7 +383,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -413,7 +413,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -443,7 +443,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -473,7 +473,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -503,7 +503,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -533,7 +533,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -563,7 +563,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -593,7 +593,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
@@ -623,7 +623,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             j
           ].fill_field_question.replace(
             this.hidewordsOfEachQuestion[j][k],
-            '___'
+            ' ___ '
           );
         }
       }
