@@ -45,6 +45,7 @@ export class QuestionsToTablesComponent implements OnInit {
 
   questionWithField = '';
   heddenWords = '';
+  splitWords = [];
 
   constructor(
     private http: HttpClient,
@@ -168,61 +169,146 @@ export class QuestionsToTablesComponent implements OnInit {
           this.fillfieldsquestionsArray = data.result.sql_random_queries;
           console.log(this.fillfieldsquestionsArray);
 
-          this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
-          var splitWords = this.fillfieldsquestionsArray[0].hideWord.split(',');
-
-          for (var i = 0; i < splitWords.length; i++) {
-            this.questionWithField = this.questionWithField.replace(
-              splitWords[i],
-              ' ____ '
+          if (this.fillfieldsquestionsArray.length == 0) {
+            Swal.fire(
+              '',
+              'Το Τεστ για τον Πίνακα ' +
+                this.header_tale_name +
+                ' δεν είναι ακόμη έτοιμο καθώς δεν περιέχει δεδομένα ή SQL Ερωτήσεις!',
+              'error'
             );
-          }
+            this.tableArrayName = [];
+            this.tableColumnsArray = [];
+            this.tableColumnsArray2 = [];
+            this.dataOfEachTableArray = [];
+            this.onlyColumnsArray = [];
+            this.secondtableColumnsArray = [];
+            this.seconddataOfEachTableArray = [];
+            this.header_tale_name = '';
+            this.fillfieldsquestionsArray = [];
+            this.hideWordArray = [];
+            this.role = '';
+            this.secondTable = '';
+            this.questionid = '0';
+            this.questionidToNumber;
+            this.textfield = '';
+            this.resultcolumnsArray = [];
+            this.resultdataArray = [];
+            this.errorText = '';
+            this.correctAnswers = 0;
+            this.startTimer = false;
+            this.timer = 0;
+            this.converttimer;
+            this.load = false;
+            this.questionWithField = '';
+            this.heddenWords = '';
+            this.splitWords = [];
+            clearInterval(this.interval);
+            this.ngOnInit();
+          } else {
+            this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
+            this.splitWords = this.fillfieldsquestionsArray[0].hideWord.split(
+              ','
+            );
 
-          const body = {
-            sqlQueryString: this.fillfieldsquestionsArray[0].sql_query,
-          };
-          this.http
-            .post<any>(this.url.baseUrl + 'executesqlquery', body, {
-              headers,
-            })
-            .subscribe((data) => {
-              console.log(data);
-              if (Array.isArray(data.result)) {
-                if (data.result.length == 0) {
-                  this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
-                } else {
-                  this.resultcolumnsArray = Object.keys(data.result[0]);
-                  this.resultdataArray = data.result;
+            for (var i = 0; i < this.splitWords.length; i++) {
+              this.questionWithField = this.questionWithField.replace(
+                this.splitWords[i],
+                ' ____ '
+              );
+              this.splitWords[i] = this.splitWords[i].toLowerCase();
+            }
+
+            const body = {
+              sqlQueryString: this.fillfieldsquestionsArray[0].sql_query,
+            };
+            this.http
+              .post<any>(this.url.baseUrl + 'executesqlquery', body, {
+                headers,
+              })
+              .subscribe((data) => {
+                console.log(data);
+                if (Array.isArray(data.result)) {
+                  if (data.result.length == 0) {
+                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
+                  } else {
+                    this.resultcolumnsArray = Object.keys(data.result[0]);
+                    this.resultdataArray = data.result;
+                  }
                 }
-              }
-            });
-        }
-      });
+              });
 
-    this.http
-      .post<any>(
-        this.url.baseUrl + '/getaldataofatable',
-        { sqlQueryString: 'SELECT * FROM' + ' `' + table.table_name + '`' },
-        { headers }
-      )
-      .subscribe((data) => {
-        if (data.result == 'Empty Table') {
-          Swal.fire('', 'Άδεια Κελιά!', 'warning');
-        } else {
-          this.dataOfEachTableArray = data.result[0];
-          console.log(this.dataOfEachTableArray);
+            this.http
+              .post<any>(
+                this.url.baseUrl + '/getaldataofatable',
+                {
+                  sqlQueryString:
+                    'SELECT * FROM' + ' `' + table.table_name + '`',
+                },
+                { headers }
+              )
+              .subscribe((data) => {
+                if (data.result == 'Empty Table') {
+                  Swal.fire(
+                    '',
+                    'Το Τεστ για τον Πίνακα ' +
+                      this.header_tale_name +
+                      ' δεν είναι ακόμη έτοιμο καθώς δεν περιέχει δεδομένα ή SQL Ερωτήσεις!',
+                    'error'
+                  );
+                  this.tableArrayName = [];
+                  this.tableColumnsArray = [];
+                  this.tableColumnsArray2 = [];
+                  this.dataOfEachTableArray = [];
+                  this.onlyColumnsArray = [];
+                  this.secondtableColumnsArray = [];
+                  this.seconddataOfEachTableArray = [];
+                  this.header_tale_name = '';
+                  this.fillfieldsquestionsArray = [];
+                  this.hideWordArray = [];
+                  this.role = '';
+                  this.secondTable = '';
+                  this.questionid = '0';
+                  this.questionidToNumber;
+                  this.textfield = '';
+                  this.resultcolumnsArray = [];
+                  this.resultdataArray = [];
+                  this.errorText = '';
+                  this.correctAnswers = 0;
+                  this.startTimer = false;
+                  this.timer = 0;
+                  this.converttimer;
+                  this.load = false;
+                  this.questionWithField = '';
+                  this.heddenWords = '';
+                  clearInterval(this.interval);
+                  this.ngOnInit();
+                } else {
+                  this.dataOfEachTableArray = data.result[0];
+                }
+              });
+          }
+          this.router.navigate(['/questionsToTables/0']);
         }
       });
-    this.router.navigate(['/questionsToTables/0']);
   }
 
   next() {
-    var text = this.textfield;
-    console.log(text);
-    if (
-      text.toLowerCase() ==
-      this.fillfieldsquestionsArray[this.questionid].hideWord.toLowerCase()
-    ) {
+    var text = this.textfield.toLowerCase();
+    var wrong = false;
+    var textToArray = text.split(',');
+
+    for (var i = 0; i < this.splitWords.length; i++) {
+      if ( textToArray.includes(this.splitWords[i])) {
+        wrong = false;
+      } else {
+        wrong = true;
+        break;
+      }
+    }
+    this.splitWords = [];
+
+    if (!wrong) {
       this.correctAnswers = this.correctAnswers + 1;
       Swal.fire({
         title: '',
@@ -238,7 +324,6 @@ export class QuestionsToTablesComponent implements OnInit {
             this.fillfieldsquestionsArray.length - 2 <
             this.questionidToNumber
           ) {
-            console.log(this.converttimer);
             clearInterval(this.interval);
             this.timer = 0;
 
@@ -291,15 +376,16 @@ export class QuestionsToTablesComponent implements OnInit {
               this.questionidToNumber
             ].sql_query;
 
-            var splitWords = this.fillfieldsquestionsArray[this.questionidToNumber].hideWord.split(
-              ','
-            );
+            this.splitWords = this.fillfieldsquestionsArray[
+              this.questionidToNumber
+            ].hideWord.split(',');
 
-            for (var i = 0; i < splitWords.length; i++) {
+            for (var i = 0; i < this.splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
-                splitWords[i],
+                this.splitWords[i],
                 ' ____ '
               );
+              this.splitWords[i] = this.splitWords[i].toLowerCase();
             }
 
             const headers = {
@@ -349,7 +435,6 @@ export class QuestionsToTablesComponent implements OnInit {
             this.fillfieldsquestionsArray.length - 2 <
             this.questionidToNumber
           ) {
-            console.log(this.converttimer);
             clearInterval(this.interval);
             this.timer = 0;
 
@@ -402,15 +487,16 @@ export class QuestionsToTablesComponent implements OnInit {
               this.questionidToNumber
             ].sql_query;
 
-            var splitWords = this.fillfieldsquestionsArray[this.questionidToNumber].hideWord.split(
-              ','
-            );
+            this.splitWords = this.fillfieldsquestionsArray[
+              this.questionidToNumber
+            ].hideWord.split(',');
 
-            for (var i = 0; i < splitWords.length; i++) {
+            for (var i = 0; i < this.splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
-                splitWords[i],
+                this.splitWords[i],
                 ' ____ '
               );
+              this.splitWords[i] = this.splitWords[i].toLowerCase();
             }
 
             const headers = {

@@ -128,7 +128,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
   }
 
   next(questionid) {
-    var text = this.textfield;
+    var text = this.textfield.toLowerCase();
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -139,7 +139,24 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       })
       .subscribe((data) => {
         if (data.questions) {
-          if (text.toLowerCase() == data.questions[0].hideWord.toLowerCase()) {
+          var wrong = false;
+          var textToArray = text.split(',');
+          var splitWords = data.questions[0].hideWord.split(',');
+
+          for (var i = 0; i < splitWords.length; i++) {
+            splitWords[i] = splitWords[i].toLowerCase();
+          }
+
+          for (var i = 0; i < splitWords.length; i++) {
+            if (textToArray.includes(splitWords[i])) {
+              wrong = false;
+            } else {
+              wrong = true;
+              break;
+            }
+          }
+
+          if (!wrong) {
             Swal.fire({
               title: 'Απάντηση',
               icon: 'success',
