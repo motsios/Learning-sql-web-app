@@ -245,126 +245,137 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[2 % max] +
                               ' FROM ' +
                               this.tablename,
-                            // QUESTION 4
+                            //QUESTION 4
+                            'SELECT DISTINCT ' +
+                              this.columnsNamesArray[1 % max] +
+                              ' FROM ' +
+                              this.tablename,
+                            // Question 5
+                            'SELECT COUNT(' +
+                              this.columnsNamesArray[3 % max] +
+                              ') FROM ' +
+                              this.tablename,
+                            //QUESTION 6
+                            'SELECT COUNT(DISTINCT ' +
+                              this.columnsNamesArray[2 % max] +
+                              ') FROM ' +
+                              this.tablename,
+                            //QUESTION 7
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '=7',
+                            //QUESTION 8
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              ' IN ("1","4")',
+                            //QUESTION 9
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              ' BETWEEN 2 AND 7',
+                            // QUESTION 10
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
                               this.columnsNamesArray[3 % max],
-                            // QUESTION 5
+                            // QUESTION 11
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
                               this.columnsNamesArray[2 % max] +
                               ' DESC',
-                            // QUESTION 6
+                            // QUESTION 12
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' ORDER BY ' +
+                              this.columnsNamesArray[2 % max] +
+                              ' ASC, ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' DESC',
+                            // QUESTION 13
+                            'SELECT * FROM ' + this.tablename+' LIMIT 3',
+                            // QUESTION 14
                             'SELECT MIN(' +
                               this.columnsNamesArray[0 % max] +
-                              ') AS minValue ' +
+                              ')' +
                               ' FROM ' +
                               this.tablename,
-                            // Question 7
-                            'SELECT COUNT(' +
-                              this.columnsNamesArray[2 % max] +
-                              ') FROM ' +
+                            // QUESTION 15
+                            'SELECT MAX(' +
+                              this.columnsNamesArray[0 % max] +
+                              ')' +
+                              ' FROM ' +
                               this.tablename,
-                            // Question 8
+                            // Question 16
                             'SELECT COUNT(' +
-                              this.columnsNamesArray[1 % max] +
+                              this.columnsNamesArray[6 % max] +
                               '), ' +
                               this.columnsNamesArray[7 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[1 % max] +
-                              ' HAVING COUNT(' +
-                              this.columnsNamesArray[7 % max] +
-                              ')',
-                            //Question 9
-                            'SELECT ' +
-                              this.columnsNamesArray[10 % max] +
+                              this.columnsNamesArray[7 % max],
+                            // Question 17
+                            'SELECT COUNT(' +
+                              this.columnsNamesArray[4 % max] +
+                              '), ' +
+                              this.columnsNamesArray[5 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[10 % max],
-                            //Question 10
-                            'SELECT ' +
-                              this.columnsNamesArray[0 % max] +
-                              ' FROM ' +
-                              this.tablename +
-                              ' ORDER BY RAND() LIMIT 1',
-                            //Question 11
-                            'SELECT * FROM ' +
-                              this.tablename +
-                              ' WHERE ' +
-                              this.columnsNamesArray[10 % max] +
-                              ' = (SELECT MAX(' +
-                              this.columnsNamesArray[0 % max] +
-                              ') FROM ' +
-                              this.tablename +
-                              ')',
-                            //Question 12
-                            'SELECT ' +
-                              this.columnsNamesArray[1 % max] +
-                              ' FROM ' +
-                              this.tablename +
-                              ' UNION SELECT ' +
-                              this.columnsNamesArray[2 % max] +
-                              ' FROM ' +
-                              this.tablename +
-                              ' ORDER BY ' +
-                              "'" +
-                              this.columnsNamesArray[1 % max] +
-                              "'",
-                            //Question 13
-                            'SELECT ' +
+                              this.columnsNamesArray[5 % max] +
+                              ' ORDER BY COUNT(' +
                               this.columnsNamesArray[4 % max] +
-                              ', ' +
-                              this.columnsNamesArray[3 % max] +
-                              ' FROM ' +
-                              this.tablename +
-                              ' WHERE ' +
-                              this.columnsNamesArray[4 % max] +
-                              ' BETWEEN 1 AND 10 ORDER BY ' +
-                              "'" +
-                              this.columnsNamesArray[3 % max] +
-                              "'",
-                            //Question 14
+                              ') DESC',
+                            // Question 18
                             'SELECT COUNT(' +
-                              this.columnsNamesArray[4 % max] +
-                              '), SUM(' +
-                              this.columnsNamesArray[4 % max] +
-                              ') FROM ' +
+                              this.columnsNamesArray[2 % max] +
+                              '), ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' FROM ' +
                               this.tablename +
-                              ' WHERE ' +
-                              this.columnsNamesArray[0 % max] +
-                              " NOT BETWEEN '0' AND '10'",
+                              ' GROUP BY ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' HAVING COUNT(' +
+                              this.columnsNamesArray[2 % max] +
+                              ') >3',
                           ];
                           var randomnumberFromArray = Math.floor(
                             Math.random() *
                               Math.floor(arrayOfRandomSqlQueries.length)
                           );
-                          var randomQueryFromUpperArray = [];
 
-                          for (var i = 0; i < 5; i++) {
-                            randomQueryFromUpperArray.push(
-                              arrayOfRandomSqlQueries[randomnumberFromArray]
-                            );
-                            randomnumberFromArray =
-                              (randomnumberFromArray + 1) %
-                              arrayOfRandomSqlQueries.length;
-                          }
+
 
                           this.http
                             .post<any>(
                               this.url.baseUrl + 'addarrayofqueries',
                               {
-                                queriesArray: randomQueryFromUpperArray,
+                                queriesArray: arrayOfRandomSqlQueries,
                                 hiddenWordsArray: [
                                   'ok,okok,o',
                                   'opop,po',
                                   'sdsd',
                                   'ddd',
                                   'ds',
+                                  'd',
+                                  'd',
+                                  'd',
+                                  'ok,okok,o',
+                                  'opop,po',
+                                  'sdsd',
+                                  'ddd',
+                                  'ds',
+                                  'd',
+                                  'd',
+                                  'd',
+                                  'd',
+                                  'd'
                                 ],
                                 table_name: this.tablename,
                               },
