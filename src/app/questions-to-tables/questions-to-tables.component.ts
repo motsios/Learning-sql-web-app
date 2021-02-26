@@ -15,34 +15,25 @@ export class QuestionsToTablesComponent implements OnInit {
   tableColumnsArray = [];
   tableColumnsArray2 = [];
   dataOfEachTableArray = [];
-  onlyColumnsArray = [];
-
   secondtableColumnsArray = [];
   seconddataOfEachTableArray = [];
-
   header_tale_name = '';
   fillfieldsquestionsArray = [];
   hideWordArray = [];
   role = '';
-
   secondTable = '';
   questionid = '0';
   questionidToNumber;
   textfield = '';
-
   resultcolumnsArray = [];
   resultdataArray = [];
   errorText = '';
-
   correctAnswers = 0;
   startTimer = false;
-
   timer: number = 0;
   converttimer;
   interval;
-
   load = false;
-
   questionWithField = '';
   heddenWords = '';
   splitWords = [];
@@ -100,8 +91,6 @@ export class QuestionsToTablesComponent implements OnInit {
     this.tableColumnsArray = [];
     this.tableColumnsArray2 = [];
     this.dataOfEachTableArray = [];
-    this.onlyColumnsArray = [];
-    this.tableColumnsArray = table.temparray;
     this.tableColumnsArray2 = table.temparray2;
     this.seconddataOfEachTableArray = [];
     this.secondtableColumnsArray = [];
@@ -124,6 +113,21 @@ export class QuestionsToTablesComponent implements OnInit {
         );
       }
     }
+    this.http
+      .post<any>(
+        this.url.baseUrl + '/getaldataofatable',
+        { sqlQueryString: 'SELECT * FROM' + ' `' + table.table_name + '`' },
+        { headers }
+      )
+      .subscribe((data) => {
+        console.log(data);
+        if (data.result == 'Empty Table') {
+          Swal.fire('', 'Άδεια Κελιά!', 'warning');
+        } else {
+          this.tableColumnsArray = Object.keys(data.result[0][0]);
+          this.dataOfEachTableArray = data.result[0];
+        }
+      });
 
     if (this.secondTable != '') {
       for (var i = 0; i < this.tableArrayName.length; i++) {
@@ -152,10 +156,6 @@ export class QuestionsToTablesComponent implements OnInit {
         });
     }
 
-    for (var i = 0; i < table.temparray.length; i++) {
-      this.onlyColumnsArray.push(table.temparray[i].COLUMN_NAME);
-    }
-
     this.http
       .post<any>(
         this.url.baseUrl + 'getallsqlqueriesfromspecifictable',
@@ -181,7 +181,6 @@ export class QuestionsToTablesComponent implements OnInit {
             this.tableColumnsArray = [];
             this.tableColumnsArray2 = [];
             this.dataOfEachTableArray = [];
-            this.onlyColumnsArray = [];
             this.secondtableColumnsArray = [];
             this.seconddataOfEachTableArray = [];
             this.header_tale_name = '';
@@ -260,7 +259,6 @@ export class QuestionsToTablesComponent implements OnInit {
                   this.tableColumnsArray = [];
                   this.tableColumnsArray2 = [];
                   this.dataOfEachTableArray = [];
-                  this.onlyColumnsArray = [];
                   this.secondtableColumnsArray = [];
                   this.seconddataOfEachTableArray = [];
                   this.header_tale_name = '';
@@ -299,7 +297,7 @@ export class QuestionsToTablesComponent implements OnInit {
     var textToArray = text.split(',');
 
     for (var i = 0; i < this.splitWords.length; i++) {
-      if ( textToArray.includes(this.splitWords[i])) {
+      if (textToArray.includes(this.splitWords[i])) {
         wrong = false;
       } else {
         wrong = true;

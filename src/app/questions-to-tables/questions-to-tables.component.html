@@ -17,13 +17,13 @@
   <table class="table table-striped form-container table-container">
     <thead>
       <tr>
-        <th *ngFor="let field of tableColumnsArray;" class="headers">{{field.COLUMN_NAME}}
+        <th *ngFor="let field of tableColumnsArray;" class="headers">{{field}}
         </th>
       </tr>
     </thead>
     <tbody class="content">
       <tr *ngFor="let data of dataOfEachTableArray ">
-        <td *ngFor="let column of onlyColumnsArray;let i=index;">{{data[column]}}</td>
+        <td *ngFor="let column of tableColumnsArray;let i=index;">{{data[column]}}</td>
       </tr>
     </tbody>
   </table>
