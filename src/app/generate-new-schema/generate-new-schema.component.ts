@@ -245,51 +245,46 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[2 % max] +
                               ' FROM ' +
                               this.tablename,
-                            //QUESTION 4
-                            'SELECT DISTINCT ' +
-                              this.columnsNamesArray[1 % max] +
-                              ' FROM ' +
-                              this.tablename,
-                            // Question 5
+                            // Question 4
                             'SELECT COUNT(' +
                               this.columnsNamesArray[3 % max] +
                               ') FROM ' +
                               this.tablename,
-                            //QUESTION 6
+                            //QUESTION 5
                             'SELECT COUNT(DISTINCT ' +
                               this.columnsNamesArray[2 % max] +
                               ') FROM ' +
                               this.tablename,
-                            //QUESTION 7
+                            //QUESTION 6
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
                               '=7',
-                            //QUESTION 8
+                            //QUESTION 7
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
                               ' IN ("1","4")',
-                            //QUESTION 9
+                            //QUESTION 8
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
                               ' BETWEEN 2 AND 7',
-                            // QUESTION 10
+                            // QUESTION 9
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
                               this.columnsNamesArray[3 % max],
-                            // QUESTION 11
+                            // QUESTION 10
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
                               this.columnsNamesArray[2 % max] +
                               ' DESC',
-                            // QUESTION 12
+                            // QUESTION 11
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
@@ -297,21 +292,21 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ' ASC, ' +
                               this.columnsNamesArray[3 % max] +
                               ' DESC',
+                            // QUESTION 12
+                            'SELECT * FROM ' + this.tablename + ' LIMIT 3',
                             // QUESTION 13
-                            'SELECT * FROM ' + this.tablename+' LIMIT 3',
-                            // QUESTION 14
                             'SELECT MIN(' +
                               this.columnsNamesArray[0 % max] +
                               ')' +
                               ' FROM ' +
                               this.tablename,
-                            // QUESTION 15
+                            // QUESTION 14
                             'SELECT MAX(' +
                               this.columnsNamesArray[0 % max] +
                               ')' +
                               ' FROM ' +
                               this.tablename,
-                            // Question 16
+                            // Question 15
                             'SELECT COUNT(' +
                               this.columnsNamesArray[6 % max] +
                               '), ' +
@@ -320,7 +315,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' GROUP BY ' +
                               this.columnsNamesArray[7 % max],
-                            // Question 17
+                            // Question 16
                             'SELECT COUNT(' +
                               this.columnsNamesArray[4 % max] +
                               '), ' +
@@ -332,7 +327,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ' ORDER BY COUNT(' +
                               this.columnsNamesArray[4 % max] +
                               ') DESC',
-                            // Question 18
+                            // Question 17
                             'SELECT COUNT(' +
                               this.columnsNamesArray[2 % max] +
                               '), ' +
@@ -350,32 +345,32 @@ export class GenerateNewSchemaComponent implements OnInit {
                               Math.floor(arrayOfRandomSqlQueries.length)
                           );
 
-
-
                           this.http
                             .post<any>(
                               this.url.baseUrl + 'addarrayofqueries',
                               {
                                 queriesArray: arrayOfRandomSqlQueries,
                                 hiddenWordsArray: [
-                                  'ok,okok,o',
-                                  'opop,po',
-                                  'sdsd',
-                                  'ddd',
-                                  'ds',
-                                  'd',
-                                  'd',
-                                  'd',
-                                  'ok,okok,o',
-                                  'opop,po',
-                                  'sdsd',
-                                  'ddd',
-                                  'ds',
-                                  'd',
-                                  'd',
-                                  'd',
-                                  'd',
-                                  'd'
+                                  '*,' + this.tablename,
+                                  this.columnsNamesArray[0 % max] +
+                                    ',' +
+                                    this.columnsNamesArray[1 % max],
+                                  'DISTINCT',
+                                  'COUNT,FROM',
+                                  'DISTINCT',
+                                  "WHERE," +
+                                    this.columnsNamesArray[0 % max],
+                                  'IN',
+                                  'BETWEEN,AND',
+                                  'ORDER BY',
+                                  'ORDER BY,DESC',
+                                  'ORDER BY,ASC,DESC',
+                                  'LIMIT',
+                                  'MIN',
+                                  'MAX',
+                                  'COUNT,GROUP BY',
+                                  'ORDER BY,DESC',
+                                  'GROUP BY,HAVING COUNT',
                                 ],
                                 table_name: this.tablename,
                               },

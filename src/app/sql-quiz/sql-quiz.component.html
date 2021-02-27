@@ -100,8 +100,8 @@
         <div *ngFor="let ques of questionsArray"
           [style.color]="!ques.selected? '#ffc107' : ques.selected == ques.correct_answer ? 'green': 'red'">
           <div>{{ques.question}}</div>
-          <div>Η απάντηση που δόθηκε: {{ques[ques.selected]}}</div>
-          <div>Σωστή απάντηση: {{ques.correct_answer}}) {{ques[ques.correct_answer]}}</div>
+          <div>Η απάντηση που δόθηκε:({{ques.selected}}) {{ques[ques.selected]}}</div>
+          <div>Σωστή απάντηση: ({{ques.correct_answer}}) {{ques[ques.correct_answer]}}</div>
           <hr>
         </div>
         <button type="button" class="btn btn-default" (click)="closeAnswerModal()"
