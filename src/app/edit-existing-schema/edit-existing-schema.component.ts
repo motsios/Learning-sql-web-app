@@ -143,11 +143,12 @@ export class EditExistingSchemaComponent implements OnInit {
             if (
               query.toLowerCase().includes('delete') ||
               query.toLowerCase().includes('drop') ||
-              query.toLowerCase().includes('alter')
+              query.toLowerCase().includes('alter') ||
+              query.toLowerCase().includes('insert')
             ) {
               return Swal.fire(
                 '',
-                'Δεν μπορείτε να εκτελέσετε DELETE, DROP ή ALTER SQL Ερώτημα!',
+                'Μπορείτε να εκετελέσετε μόνο SELECT SQL Ερώτημα!',
                 'error'
               );
             }
@@ -158,7 +159,8 @@ export class EditExistingSchemaComponent implements OnInit {
             query.toLowerCase().includes('fill_fields_questions') ||
             query.toLowerCase().includes('user_table') ||
             query.toLowerCase().includes('sql_questions') ||
-            query.toLowerCase().includes('score_table')
+            query.toLowerCase().includes('score_table') ||
+            query.toLowerCase().includes('success_rate')
           ) {
             return Swal.fire(
               '',
@@ -332,7 +334,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   title:
                     'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
                     this.statictablename,
-                    cancelButtonText: 'Ακύρωση',
+                  cancelButtonText: 'Ακύρωση',
                   input: 'select',
                   width: 1000,
                   inputOptions: {
@@ -432,8 +434,6 @@ export class EditExistingSchemaComponent implements OnInit {
                                     confirmButtonText: 'Εντάξει',
                                   }).then((result) => {
                                     if (result.isConfirmed) {
-                                      console.log(this.unstableColumnsArrayNames)
-                                      console.log(this.onlyColumnsArray)
                                       this.tableArrayName = [];
                                       this.tableColumnsArray = [];
                                       this.tableColumnsArray2 = [];
@@ -608,22 +608,22 @@ export class EditExistingSchemaComponent implements OnInit {
       id,
       sql_query,
       hideWord,
-      tablename: this.header_tale_name
+      tablename: this.header_tale_name,
     };
     let dialog = this.matDialog.open(
       DialogSqlQueryTableComponent,
       dialogConfig
     );
-      dialog.afterClosed().subscribe((result) => {
-        this.tableArrayName = [];
-        this.tableColumnsArray = [];
-        this.tableColumnsArray2 = [];
-        this.dataOfEachTableArray = [];
-        this.onlyColumnsArray = [];
-        this.header_tale_name = '';
-        this.questionsOfEachTableArray = [];
-        this.ngOnInit();
-        this.eachTableColumns(this.statictable, this.statictablename);
+    dialog.afterClosed().subscribe((result) => {
+      this.tableArrayName = [];
+      this.tableColumnsArray = [];
+      this.tableColumnsArray2 = [];
+      this.dataOfEachTableArray = [];
+      this.onlyColumnsArray = [];
+      this.header_tale_name = '';
+      this.questionsOfEachTableArray = [];
+      this.ngOnInit();
+      this.eachTableColumns(this.statictable, this.statictablename);
     });
   }
 
@@ -680,7 +680,7 @@ export class EditExistingSchemaComponent implements OnInit {
   addQuestion() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.data = { edit: 'false',tablename: this.header_tale_name };
+    dialogConfig.data = { edit: 'false', tablename: this.header_tale_name };
     let dialog = this.matDialog.open(
       DialogSqlQueryTableComponent,
       dialogConfig
