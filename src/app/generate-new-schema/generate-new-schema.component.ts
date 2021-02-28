@@ -330,20 +330,30 @@ export class GenerateNewSchemaComponent implements OnInit {
                             // Question 17
                             'SELECT COUNT(' +
                               this.columnsNamesArray[2 % max] +
-                              '), ' +
-                              this.columnsNamesArray[3 % max] +
-                              ' FROM ' +
+                              ') FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
                               this.columnsNamesArray[3 % max] +
                               ' HAVING COUNT(' +
                               this.columnsNamesArray[2 % max] +
                               ') >3',
+                            //Question 18
+                            'SELECT SUM(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename,
+                            //Question 19
+                            'SELECT AVG(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename,
+                            //Question 20
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' IS NULL',
                           ];
-                          var randomnumberFromArray = Math.floor(
-                            Math.random() *
-                              Math.floor(arrayOfRandomSqlQueries.length)
-                          );
 
                           this.http
                             .post<any>(
@@ -358,8 +368,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                                   'DISTINCT',
                                   'COUNT,FROM',
                                   'DISTINCT',
-                                  "WHERE," +
-                                    this.columnsNamesArray[0 % max],
+                                  'WHERE,' + this.columnsNamesArray[0 % max],
                                   'IN',
                                   'BETWEEN,AND',
                                   'ORDER BY',
@@ -371,6 +380,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                                   'COUNT,GROUP BY',
                                   'ORDER BY,DESC',
                                   'GROUP BY,HAVING COUNT',
+                                  'SUM',
+                                  'AVG',
+                                  'IS NULL',
                                 ],
                                 table_name: this.tablename,
                               },

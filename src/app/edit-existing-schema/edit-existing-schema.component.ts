@@ -432,6 +432,8 @@ export class EditExistingSchemaComponent implements OnInit {
                                     confirmButtonText: 'Εντάξει',
                                   }).then((result) => {
                                     if (result.isConfirmed) {
+                                      console.log(this.unstableColumnsArrayNames)
+                                      console.log(this.onlyColumnsArray)
                                       this.tableArrayName = [];
                                       this.tableColumnsArray = [];
                                       this.tableColumnsArray2 = [];

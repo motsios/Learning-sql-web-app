@@ -37,7 +37,7 @@ export class QuestionsToTablesComponent implements OnInit {
   questionWithField = '';
   heddenWords = '';
   splitWords = [];
-
+  hiddenWordsArray = [];
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -192,6 +192,7 @@ export class QuestionsToTablesComponent implements OnInit {
             this.questionidToNumber;
             this.textfield = '';
             this.resultcolumnsArray = [];
+            this.hiddenWordsArray = [];
             this.resultdataArray = [];
             this.errorText = '';
             this.correctAnswers = 0;
@@ -233,6 +234,43 @@ export class QuestionsToTablesComponent implements OnInit {
                   } else {
                     this.resultcolumnsArray = Object.keys(data.result[0]);
                     this.resultdataArray = data.result;
+
+                    for (var i = 0; i < this.resultcolumnsArray.length; i++) {
+                      this.hiddenWordsArray.push(this.resultcolumnsArray[i]);
+                    }
+                    for (var i = 0; i < this.hiddenWordsArray.length; i++) {
+                      if (this.hiddenWordsArray[i].includes('COUNT')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('COUNT', '')
+                          .replace('DISTINCT', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('MIN')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('MIN', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('MAX')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('MAX', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('SUM')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('SUM', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('AVG')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('AVG', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                    }
                   }
                 }
               });
@@ -270,6 +308,7 @@ export class QuestionsToTablesComponent implements OnInit {
                   this.questionidToNumber;
                   this.textfield = '';
                   this.resultcolumnsArray = [];
+                  this.hiddenWordsArray = [];
                   this.resultdataArray = [];
                   this.errorText = '';
                   this.correctAnswers = 0;
@@ -407,6 +446,44 @@ export class QuestionsToTablesComponent implements OnInit {
                   } else {
                     this.resultcolumnsArray = Object.keys(data.result[0]);
                     this.resultdataArray = data.result;
+                    this.hiddenWordsArray = [];
+
+                    for (var i = 0; i < this.resultcolumnsArray.length; i++) {
+                      this.hiddenWordsArray.push(this.resultcolumnsArray[i]);
+                    }
+                    for (var i = 0; i < this.hiddenWordsArray.length; i++) {
+                      if (this.hiddenWordsArray[i].includes('COUNT')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('COUNT', '')
+                          .replace('DISTINCT', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('MIN')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('MIN', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('MAX')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('MAX', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('SUM')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('SUM', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('AVG')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('AVG', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                    }
                   }
                 }
               });
@@ -518,6 +595,44 @@ export class QuestionsToTablesComponent implements OnInit {
                   } else {
                     this.resultcolumnsArray = Object.keys(data.result[0]);
                     this.resultdataArray = data.result;
+                    this.hiddenWordsArray = [];
+
+                    for (var i = 0; i < this.resultcolumnsArray.length; i++) {
+                      this.hiddenWordsArray.push(this.resultcolumnsArray[i]);
+                    }
+                    for (var i = 0; i < this.hiddenWordsArray.length; i++) {
+                      if (this.hiddenWordsArray[i].includes('COUNT')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('COUNT', '')
+                          .replace('DISTINCT', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('MIN')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('MIN', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('MAX')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('MAX', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('SUM')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('SUM', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                      if (this.hiddenWordsArray[i].includes('AVG')) {
+                        this.hiddenWordsArray[i] = this.hiddenWordsArray[i]
+                          .replace('AVG', '')
+                          .replace('(', '')
+                          .replace(')', '');
+                      }
+                    }
                   }
                 }
               });
