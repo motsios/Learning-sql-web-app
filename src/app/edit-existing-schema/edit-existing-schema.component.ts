@@ -434,30 +434,26 @@ export class EditExistingSchemaComponent implements OnInit {
                                     confirmButtonText: 'Εντάξει',
                                   }).then((result) => {
                                     if (result.isConfirmed) {
-                                      this.tableArrayName = [];
-                                      this.tableColumnsArray = [];
-                                      this.tableColumnsArray2 = [];
-                                      this.dataOfEachTableArray = [];
-                                      this.onlyColumnsArray = [];
-                                      this.header_tale_name = '';
-                                      this.questionsOfEachTableArray = [];
-                                      this.ngOnInit();
-                                      this.eachTableColumns(
-                                        this.statictable,
-                                        this.statictablename
+                                      this.createSqlQueries(
+                                        this.tablesOnlyName[i],
+                                        this.unstableColumnsArrayNames[
+                                          position
+                                        ],
+                                        this.unstableColumnsArrayNames,
+                                        this.onlyColumnsArray[position2],
+                                        this.statictablename,
+                                        this.onlyColumnsArray
                                       );
                                     } else {
-                                      this.tableArrayName = [];
-                                      this.tableColumnsArray = [];
-                                      this.tableColumnsArray2 = [];
-                                      this.dataOfEachTableArray = [];
-                                      this.onlyColumnsArray = [];
-                                      this.header_tale_name = '';
-                                      this.questionsOfEachTableArray = [];
-                                      this.ngOnInit();
-                                      this.eachTableColumns(
-                                        this.statictable,
-                                        this.statictablename
+                                      this.createSqlQueries(
+                                        this.tablesOnlyName[i],
+                                        this.unstableColumnsArrayNames[
+                                          position
+                                        ],
+                                        this.unstableColumnsArrayNames,
+                                        this.onlyColumnsArray[position2],
+                                        this.statictablename,
+                                        this.onlyColumnsArray
                                       );
                                     }
                                   });
@@ -471,13 +467,6 @@ export class EditExistingSchemaComponent implements OnInit {
                                   });
                                 } else if (data.result) {
                                   if ((data.result.serverStatus = 2)) {
-                                    this.tableArrayName = [];
-                                    this.tableColumnsArray = [];
-                                    this.tableColumnsArray2 = [];
-                                    this.dataOfEachTableArray = [];
-                                    this.onlyColumnsArray = [];
-                                    this.header_tale_name = '';
-                                    this.questionsOfEachTableArray = [];
                                     Swal.fire({
                                       title: '',
                                       text:
@@ -488,10 +477,15 @@ export class EditExistingSchemaComponent implements OnInit {
                                       confirmButtonText: 'Εντάξει',
                                     }).then((result) => {
                                       if (result.isConfirmed) {
-                                        this.ngOnInit();
-                                        this.eachTableColumns(
-                                          this.statictable,
-                                          this.statictablename
+                                        this.createSqlQueries(
+                                          this.tablesOnlyName[i],
+                                          this.unstableColumnsArrayNames[
+                                            position
+                                          ],
+                                          this.unstableColumnsArrayNames,
+                                          this.onlyColumnsArray[position2],
+                                          this.statictablename,
+                                          this.onlyColumnsArray
                                         );
                                       }
                                     });
@@ -514,6 +508,90 @@ export class EditExistingSchemaComponent implements OnInit {
           });
         });
       },
+    });
+  }
+
+  createSqlQueries(
+    secondTableName,
+    secondTableConnectionKey,
+    secondTableColumnsArray,
+    staticTableKey,
+    staticTableName,
+    staticTableColumnsArray
+  ) {
+    console.log(
+      secondTableName,
+      secondTableConnectionKey,
+      secondTableColumnsArray,
+      staticTableKey,
+      staticTableName,
+      staticTableColumnsArray
+    );
+    Swal.fire({
+      title:
+        ' Θέλετε να παραχθούν SQL Ερωτήματα τύπου Join ανάμεσα στους συνδεδεμένους Πίνακες;',
+      showDenyButton: true,
+      allowOutsideClick: false,
+      icon: 'success',
+      confirmButtonText: `Ναι`,
+      denyButtonText: `Όχι`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        var arrayOfRandomSqlQueries = [
+          // QUESTION 1
+          'SADASDD',
+        ];
+        const headers = {
+          'Content-Type': 'application/json; charset=UTF-8',
+          Authorization: localStorage.getItem('token'),
+        };
+        this.http
+          .post<any>(
+            this.url.baseUrl + 'addarrayofqueries',
+            {
+              queriesArray: arrayOfRandomSqlQueries,
+              hiddenWordsArray: ['FDSFSDF'],
+              table_name: staticTableName,
+            },
+            { headers }
+          )
+          .subscribe((data) => {
+            console.log(data);
+            if (data.result == 'Sql Queries successfully created!') {
+              Swal.fire(
+                'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
+                '',
+                'success'
+              );
+
+              this.tableArrayName = [];
+              this.tableColumnsArray = [];
+              this.tableColumnsArray2 = [];
+              this.dataOfEachTableArray = [];
+              this.onlyColumnsArray = [];
+              this.header_tale_name = '';
+              this.questionsOfEachTableArray = [];
+              this.ngOnInit();
+              this.eachTableColumns(this.statictable, this.statictablename);
+            } else {
+              Swal.fire(
+                'Ουπς...',
+                'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                'error'
+              );
+            }
+          });
+      } else if (result.isDenied) {
+        this.tableArrayName = [];
+        this.tableColumnsArray = [];
+        this.tableColumnsArray2 = [];
+        this.dataOfEachTableArray = [];
+        this.onlyColumnsArray = [];
+        this.header_tale_name = '';
+        this.questionsOfEachTableArray = [];
+        this.ngOnInit();
+        this.eachTableColumns(this.statictable, this.statictablename);
+      }
     });
   }
 

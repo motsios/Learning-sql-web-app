@@ -224,6 +224,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                           this.tablename +
                           ' δημιουργήθηκε επιτυχώς! Θέλετε να παραχθούν SQL Ερωτήματα για αυτόν;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στην κατηγορία "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες".  ',
                         showDenyButton: true,
+                        allowOutsideClick: false,
                         icon: 'success',
                         confirmButtonText: `Ναι`,
                         denyButtonText: `Όχι`,
