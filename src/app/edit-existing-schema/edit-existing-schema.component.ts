@@ -529,7 +529,7 @@ export class EditExistingSchemaComponent implements OnInit {
     );
     Swal.fire({
       title:
-        ' Θέλετε να παραχθούν SQL Ερωτήματα τύπου Join ανάμεσα στους συνδεδεμένους Πίνακες;',
+        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;',
       showDenyButton: true,
       allowOutsideClick: false,
       icon: 'success',
@@ -539,7 +539,172 @@ export class EditExistingSchemaComponent implements OnInit {
       if (result.isConfirmed) {
         var arrayOfRandomSqlQueries = [
           // QUESTION 1
-          'SADASDD',
+          'SELECT ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            ', ' +
+            secondTableName +
+            '.' +
+            secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' INNER JOIN ' +
+            staticTableName +
+            ' ON ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            '=' +
+            staticTableName +
+            '.' +
+            staticTableKey,
+          // QUESTION 2
+          'SELECT ' +
+            secondTableName +
+            '.' +
+            secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableKey +
+            ' FROM ' +
+            secondTableName +
+            ' LEFT JOIN ' +
+            staticTableName +
+            ' ON ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            '=' +
+            staticTableName +
+            '.' +
+            staticTableKey +
+            ' ORDER BY ' +
+            secondTableName +
+            '.' +
+            secondTableColumnsArray[1 % secondTableColumnsArray.length],
+          // QUESTION 3
+          'SELECT ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' RIGHT JOIN ' +
+            staticTableName +
+            ' ON ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            '=' +
+            staticTableName +
+            '.' +
+            staticTableKey +
+            ' ORDER BY ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            ' DESC',
+          // QUESTION 4
+          'SELECT ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            ', ' +
+            secondTableName +
+            '.' +
+            secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' INNER JOIN ' +
+            staticTableName +
+            ' ON ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            '=' +
+            staticTableName +
+            '.' +
+            staticTableKey +
+            ' WHERE ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            '>3',
+          // QUESTION 5
+          'SELECT * FROM ' + staticTableName + ' CROSS JOIN ' + secondTableName,
+          // QUESTION 6
+          'SELECT ' +
+            secondTableColumnsArray[4 % secondTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' UNION SELECT ' +
+            staticTableColumnsArray[3 % staticTableColumnsArray.length] +
+            ' FROM ' +
+            staticTableName,
+          // QUESTION 7
+          'SELECT ' +
+            secondTableColumnsArray[3 % secondTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' WHERE ' +
+            secondTableConnectionKey +
+            ' = ANY ( SELECT ' +
+            staticTableKey +
+            ' FROM ' +
+            staticTableName +
+            ' WHERE ' +
+            staticTableKey +
+            '>3 )',
+          // QUESTION 8
+          'SELECT ' +
+            secondTableColumnsArray[4 % secondTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' WHERE ' +
+            secondTableConnectionKey +
+            ' = ALL ( SELECT ' +
+            staticTableKey +
+            ' FROM ' +
+            staticTableName +
+            ' WHERE ' +
+            staticTableKey +
+            '=3 )',
+        ];
+        var hiddenWordsArray = [
+          // QUESTION 1
+          'INNER',
+          // QUESTION 2
+          'LEFT,ORDER BY',
+          // QUESTION 3
+          'RIGHT,DESC',
+          // QUESTION 4
+          'WHERE,>',
+           // QUESTION 5
+           'CROSS',
+          // QUESTION 6
+          'UNION',
+          // QUESTION 7
+          'ANY',
+          // QUESTION 8
+          'ALL',
         ];
         const headers = {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -550,7 +715,7 @@ export class EditExistingSchemaComponent implements OnInit {
             this.url.baseUrl + 'addarrayofqueries',
             {
               queriesArray: arrayOfRandomSqlQueries,
-              hiddenWordsArray: ['FDSFSDF'],
+              hiddenWordsArray: hiddenWordsArray,
               table_name: staticTableName,
             },
             { headers }
