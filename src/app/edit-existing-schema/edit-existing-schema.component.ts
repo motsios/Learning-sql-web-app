@@ -551,6 +551,35 @@ export class EditExistingSchemaComponent implements OnInit {
             staticTableName +
             '.' +
             staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ', ' +
+            staticTableName +
+            ' WHERE ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            '=' +
+            staticTableName +
+            '.' +
+            staticTableKey,
+          // QUESTION 2
+          'SELECT ' +
+            secondTableName +
+            '.' +
+            secondTableConnectionKey +
+            ', ' +
+            secondTableName +
+            '.' +
+            secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+            ', ' +
+            staticTableName +
+            '.' +
+            staticTableColumnsArray[1 % staticTableColumnsArray.length] +
             ' FROM ' +
             secondTableName +
             ' INNER JOIN ' +
@@ -563,7 +592,7 @@ export class EditExistingSchemaComponent implements OnInit {
             staticTableName +
             '.' +
             staticTableKey,
-          // QUESTION 2
+          // QUESTION 3
           'SELECT ' +
             secondTableName +
             '.' +
@@ -588,7 +617,7 @@ export class EditExistingSchemaComponent implements OnInit {
             secondTableName +
             '.' +
             secondTableColumnsArray[1 % secondTableColumnsArray.length],
-          // QUESTION 3
+          // QUESTION 4
           'SELECT ' +
             secondTableName +
             '.' +
@@ -618,7 +647,7 @@ export class EditExistingSchemaComponent implements OnInit {
             '.' +
             secondTableConnectionKey +
             ' DESC',
-          // QUESTION 4
+          // QUESTION 5
           'SELECT ' +
             secondTableName +
             '.' +
@@ -648,9 +677,9 @@ export class EditExistingSchemaComponent implements OnInit {
             '.' +
             secondTableConnectionKey +
             '>3',
-          // QUESTION 5
-          'SELECT * FROM ' + staticTableName + ' CROSS JOIN ' + secondTableName,
           // QUESTION 6
+          'SELECT * FROM ' + staticTableName + ' CROSS JOIN ' + secondTableName,
+          // QUESTION 7
           'SELECT ' +
             secondTableColumnsArray[4 % secondTableColumnsArray.length] +
             ' FROM ' +
@@ -659,7 +688,7 @@ export class EditExistingSchemaComponent implements OnInit {
             staticTableColumnsArray[3 % staticTableColumnsArray.length] +
             ' FROM ' +
             staticTableName,
-          // QUESTION 7
+          // QUESTION 8
           'SELECT ' +
             secondTableColumnsArray[3 % secondTableColumnsArray.length] +
             ' FROM ' +
@@ -673,7 +702,7 @@ export class EditExistingSchemaComponent implements OnInit {
             ' WHERE ' +
             staticTableKey +
             '>3 )',
-          // QUESTION 8
+          // QUESTION 9
           'SELECT ' +
             secondTableColumnsArray[4 % secondTableColumnsArray.length] +
             ' FROM ' +
@@ -687,24 +716,42 @@ export class EditExistingSchemaComponent implements OnInit {
             ' WHERE ' +
             staticTableKey +
             '=3 )',
+          // QUESTION 10
+          'SELECT ' +
+            secondTableColumnsArray[2 % secondTableColumnsArray.length] +
+            ' FROM ' +
+            secondTableName +
+            ' WHERE ' +
+            secondTableConnectionKey +
+            ' IN ( SELECT ' +
+            staticTableKey +
+            ' FROM ' +
+            staticTableName +
+            ' WHERE ' +
+            staticTableKey +
+            '>2 )',
         ];
         var hiddenWordsArray = [
           // QUESTION 1
-          'INNER',
+          secondTableName + ',' + secondTableConnectionKey + ',=',
           // QUESTION 2
-          'LEFT,ORDER BY',
+          'INNER',
           // QUESTION 3
-          'RIGHT,DESC',
+          'LEFT,ORDER BY',
           // QUESTION 4
+          'RIGHT,DESC',
+          // QUESTION 5
           'WHERE,>',
-           // QUESTION 5
-           'CROSS',
           // QUESTION 6
-          'UNION',
+          'CROSS',
           // QUESTION 7
-          'ANY',
+          'UNION',
           // QUESTION 8
+          'ANY',
+          // QUESTION 9
           'ALL',
+          // QUESTION 10
+          'IN',
         ];
         const headers = {
           'Content-Type': 'application/json; charset=UTF-8',
