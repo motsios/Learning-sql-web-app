@@ -235,9 +235,8 @@ export class SqlQuizComponent implements OnInit {
         this.numberofquestions +
         ' Ερωτήσεων είναι ' +
         this.rightScore +
-        ' !' +
-        '\nΑκολουθούν οι απαντήσεις που δόθηκαν:' +
-        '\n' +
+        '!' +
+        '\n\nΑκολουθούν οι απαντήσεις που δόθηκαν:' +
         JSON.stringify(
           this.questionsArray,
           [
