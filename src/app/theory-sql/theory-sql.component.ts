@@ -57,6 +57,7 @@ export class TheorySqlComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Ναι, διαγραφή!',
+      cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
         const headers = {
@@ -105,7 +106,7 @@ export class TheorySqlComponent implements OnInit {
         if (response.result == 'File Uploaded') {
           Swal.fire(
             '',
-            'Το PDF ανέβηκε επιτυχώς!Ισως καθυστερήσει η εμφάνιση του.',
+            'Το PDF ανέβηκε επιτυχώς!',
             'success'
           );
           this.pdfSrc = '';
