@@ -529,7 +529,7 @@ export class EditExistingSchemaComponent implements OnInit {
     );
     Swal.fire({
       title:
-        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;',
+        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στην κατηγορία "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες".  ',
       showDenyButton: true,
       allowOutsideClick: false,
       icon: 'success',
