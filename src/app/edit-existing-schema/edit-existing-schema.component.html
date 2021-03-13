@@ -20,7 +20,23 @@
     data-fa-mask="fas fa-circle" style="color:rgb(0, 0, 0) !important; " (click)="delete(header_tale_name)"
     *ngIf="role=='teacher'"></i> &nbsp;&nbsp;&nbsp;Πίνακας "{{header_tale_name}}" </h1>
 <br>
-<div *ngIf="header_tale_name!=''" style="height:350px; table-layout: auto; overflow: auto">
+<div *ngIf="header_tale_name!='' && role=='student'" style="height:600px; table-layout: auto; overflow: auto">
+  <table class="table table-striped form-container table-container">
+    <thead>
+      <tr>
+        <th *ngFor="let field of tableColumnsArray;" class="headers">{{field.COLUMN_NAME}}&nbsp;<button class="button"
+            (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let data of dataOfEachTableArray ">
+        <td *ngFor="let column of onlyColumnsArray;let i=index;">{{data[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="header_tale_name!='' && role=='teacher'" style="height: 350px;; table-layout: auto; overflow: auto">
   <table class="table table-striped form-container table-container">
     <thead>
       <tr>
