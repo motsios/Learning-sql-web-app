@@ -3,66 +3,66 @@
   <a class="navbar-brand">{{username[0].toUpperCase()+username.substr(1).toLowerCase()}}</a>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
     <ul class="navbar-nav mr-auto" id="navbar">
-      <li class="nav-item">
-        <a class="nav-link" (click)="myprofilePage()">Προφίλ |
+      <li class="nav-item" >
+        <a class="nav-link" (click)="myprofilePage()" [ngClass]="getChecked()=='tab1' ? 'active':''">Προφίλ |
           <span class="sr-only">(current)</span>
         </a>
       </li>
 
       <li *ngIf="role=='student'" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Κουίζ
+          aria-expanded="false" [ngClass]="getChecked()=='tab2' || getChecked()=='tab22' ? 'active':''">Κουίζ
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a *ngIf="role=='student'" class="dropdown-item" (click)="start15Quiz()">15 Ερωτήσεις Κουίζ</a>
-          <a *ngIf="role=='student'" class="dropdown-item" (click)="start25Quiz()">25 Ερωτήσεις Κουίζ</a>
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="start15Quiz()" [ngClass]="getChecked()=='tab2' ? 'active':''" >15 Ερωτήσεις Κουίζ</a>
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="start25Quiz()"  [ngClass]="getChecked()=='tab22' ? 'active':''">25 Ερωτήσεις Κουίζ</a>
         </div>
       </li>
       <li *ngIf="role=='teacher'" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Ερωτήσεις
+          aria-expanded="false"  [ngClass]="getChecked()=='tab3' || getChecked()=='tab33' ? 'active':''">Ερωτήσεις
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="sqlquestionsedit()">Επεξεργασία Ερωτήσεων Κουίζ</a>
-          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="fillfieldquestionsedit()">Επεξεργασία Ερωτήσεων
+          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="sqlquestionsedit()" [ngClass]="getChecked()=='tab3' ? 'active':''">Επεξεργασία Ερωτήσεων Κουίζ</a>
+          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="fillfieldquestionsedit()"  [ngClass]="getChecked()=='tab33' ? 'active':''">Επεξεργασία Ερωτήσεων
             Συμπλήρωσης-κενού</a>
         </div>
       </li>
       <li *ngIf="role=='teacher'" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">| Σχήματα
+          aria-expanded="false" [ngClass]="getChecked()=='tab4' || getChecked()=='tab44' ? 'active':''">| Σχήματα
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="generateNewSchema()">Δημιουργία νέου Πίνακα</a>
-          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="goToExistingShcema()">Επεξεργασία Υπάρχοντος
+          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="generateNewSchema()" [ngClass]="getChecked()=='tab4' ? 'active':''">Δημιουργία νέου Πίνακα</a>
+          <a *ngIf="role=='teacher'" class="dropdown-item" (click)="goToExistingShcema1()"  [ngClass]="getChecked()=='tab44' ? 'active':''">Επεξεργασία Υπάρχοντος
             Πίνακα</a>
         </div>
       </li>
       <li *ngIf="role=='student'" class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">| Εκπαιδευτικό Υλικό
+          aria-expanded="false"  [ngClass]="getChecked()=='tab5' || getChecked()=='tab55' || getChecked()=='tab555' ? 'active':''">| Εκπαιδευτικό Υλικό
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a *ngIf="role=='student'" class="dropdown-item" (click)="goToExistingShcema()">Εξάσκηση SQL ερωτήσεων σε
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="goToExistingShcema2()" [ngClass]="getChecked()=='tab5' ? 'active':''">Εξάσκηση SQL ερωτήσεων σε
             υπάρχοντα σχήματα</a>
-          <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlfillfieldquestions()">Εξάσκηση σε Ερωτήσεις
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlfillfieldquestions()" [ngClass]="getChecked()=='tab55' ? 'active':''">Εξάσκηση σε Ερωτήσεις
             Συμπλήρωσης-Κενού</a>
-          <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTables()">Τεστ: Ερωτήσεις
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTables()" [ngClass]="getChecked()=='tab555' ? 'active':''">Τεστ: Ερωτήσεις
             Συμπλήρωσης-Κενού σε Πίνακες</a>
         </div>
       </li>
       <li class="nav-item" *ngIf="role=='teacher'">
-        <a class="nav-link" (click)="allstudentsPage()">| Εκπαιδευόμενοι
+        <a class="nav-link" (click)="allstudentsPage()"  [ngClass]="getChecked()=='tab6' ? 'active':''">| Εκπαιδευόμενοι
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="rankingPage()">| Κατάταξη
+        <a class="nav-link" (click)="rankingPage()"  [ngClass]="getChecked()=='tab7' ? 'active':''">| Κατάταξη
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="introSQL()">| Θεωρία SQL
+        <a class="nav-link" (click)="introSQL()"  [ngClass]="getChecked()=='tab8' ? 'active':''">| Θεωρία SQL
           <span class="sr-only">(current)</span>
         </a>
       </li>
@@ -70,12 +70,12 @@
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+          aria-expanded="false" [ngClass]="getChecked()=='tab9' || getChecked()=='tab99' ? 'active':''">
           <i class="fa fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a *ngIf="role=='student'" class="dropdown-item" (click)=" myscores()">Τα σκορ μου</a>
-          <a class="dropdown-item" (click)="editprofile()">Επεξεργασία Προφίλ</a>
+          <a *ngIf="role=='student'" class="dropdown-item" (click)=" myscores()" [ngClass]="getChecked()=='tab9' ? 'active':''">Τα σκορ μου</a>
+          <a class="dropdown-item" (click)="editprofile()" [ngClass]="getChecked()=='tab99' ? 'active':''">Επεξεργασία Προφίλ</a>
           <a class="dropdown-item" (click)="logout()">Αποσύνδεση</a>
         </div>
       </li>

@@ -10,6 +10,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class NavbarComponent implements OnInit {
   username = '';
   role = '';
+  static checked: string;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -18,11 +20,13 @@ export class NavbarComponent implements OnInit {
   }
 
   myprofilePage() {
+    NavbarComponent.checked = 'tab1';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/myprofile']);
   }
 
   logout() {
+    NavbarComponent.checked = 'tab9';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -48,26 +52,31 @@ export class NavbarComponent implements OnInit {
   }
 
   editprofile() {
+    NavbarComponent.checked = 'tab99';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/editprofile']);
   }
 
   allstudentsPage() {
+    NavbarComponent.checked = 'tab6';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/allstudentsprofile']);
   }
 
   sqlquestionsedit() {
+    NavbarComponent.checked = 'tab3';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/sqlquestionstable']);
   }
 
   fillfieldquestionsedit() {
+    NavbarComponent.checked = 'tab33';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/handlefillfieldquestions']);
   }
 
   myscores() {
+    NavbarComponent.checked = 'tab9';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/myscores']);
   }
@@ -84,10 +93,12 @@ export class NavbarComponent implements OnInit {
       cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
+        NavbarComponent.checked = 'tab2';
         localStorage.setItem('difficulty', 'easy');
         localStorage.setItem('numberofquestions', '15');
         this.router.navigate(['/sqlquiz']);
       } else if (result.isDenied) {
+        NavbarComponent.checked = 'tab2';
         localStorage.setItem('difficulty', 'hard');
         localStorage.setItem('numberofquestions', '15');
         this.router.navigate(['/sqlquiz']);
@@ -107,10 +118,12 @@ export class NavbarComponent implements OnInit {
       cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
+        NavbarComponent.checked = 'tab22';
         localStorage.setItem('difficulty', 'easy');
         localStorage.setItem('numberofquestions', '25');
         this.router.navigate(['/sqlquiz']);
       } else if (result.isDenied) {
+        NavbarComponent.checked = 'tab22';
         localStorage.setItem('difficulty', 'hard');
         localStorage.setItem('numberofquestions', '25');
         this.router.navigate(['/sqlquiz']);
@@ -118,39 +131,55 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  sqlQuestionsToTables(){
-    if(localStorage.getItem('insideFillFieldQuestionsTable')=='yes'){
+  sqlQuestionsToTables() {
+    if (localStorage.getItem('insideFillFieldQuestionsTable') == 'yes') {
+      NavbarComponent.checked = 'tab1';
       localStorage.setItem('insideFillFieldQuestionsTable', 'no');
       this.router.navigate(['/myprofile']);
-    }else{
+    } else {
+      NavbarComponent.checked = 'tab555';
       localStorage.setItem('insideFillFieldQuestionsTable', 'yes');
       this.router.navigate(['/questionsToTables/0']);
     }
   }
 
+  goToExistingShcema2() {
+    NavbarComponent.checked = 'tab5';
+    localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    this.router.navigate(['/editExistingSchema']);
+  }
+
   sqlfillfieldquestions() {
+    NavbarComponent.checked = 'tab55';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/fillfieldsqlquestions/0']);
   }
 
   generateNewSchema() {
+    NavbarComponent.checked = 'tab4';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/generateNewSchema']);
   }
 
-  goToExistingShcema() {
+  goToExistingShcema1() {
+    NavbarComponent.checked = 'tab44';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/editExistingSchema']);
   }
 
   rankingPage() {
+    NavbarComponent.checked = 'tab7';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/ranking']);
   }
 
   introSQL() {
+    NavbarComponent.checked = 'tab8';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.router.navigate(['/theorySql']);
   }
 
+  getChecked() {
+    return NavbarComponent.checked;
+  }
 }
