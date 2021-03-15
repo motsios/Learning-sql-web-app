@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    NavbarComponent.checked = 'tab9';
+    NavbarComponent.checked = 'tab999';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
