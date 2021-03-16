@@ -98,6 +98,7 @@ export class TheorySqlComponent implements OnInit {
     this.fileToUpload = files.item(0);
   }
   upload(fileToUpload) {
+    if(fileToUpload){
     let testData: FormData = new FormData();
     testData.append('file_upload', fileToUpload, fileToUpload.name);
     this.http
@@ -106,7 +107,7 @@ export class TheorySqlComponent implements OnInit {
         if (response.result == 'File Uploaded') {
           Swal.fire(
             '',
-            'Το PDF ανέβηκε επιτυχώς!',
+            'Το PDF κοινοποιήθηκε επιτυχώς!',
             'success'
           );
           this.pdfSrc = '';
@@ -117,6 +118,9 @@ export class TheorySqlComponent implements OnInit {
           Swal.fire('', response.error, 'error');
         }
       });
+    }else{
+      Swal.fire('', 'Δεν έχει επιλεχθεί κάποιο pdf για κοινοποίηση...', 'error');
+    }
   }
   scroll(el: HTMLElement) {
     el.scrollIntoView();
