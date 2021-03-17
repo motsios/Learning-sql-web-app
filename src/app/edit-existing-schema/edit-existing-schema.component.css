@@ -100,3 +100,10 @@ thead th {
   border-radius: 50%;
   border: 1px solid red;
 }
+.horizontal {
+  position: absolute;
+  right: 8%;
+  top: 260px;
+  height: 200px;
+  width: 40px;
+}

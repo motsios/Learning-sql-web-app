@@ -43,7 +43,6 @@
         <th *ngFor="let field of tableColumnsArray;" class="headers">{{field.COLUMN_NAME}}&nbsp;<button class="button"
             (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
         </th>
-      </tr>
     </thead>
     <tbody class="content">
       <tr *ngFor="let data of dataOfEachTableArray ">
@@ -52,6 +51,8 @@
     </tbody>
   </table>
 </div>
+<div *ngIf="header_tale_name!='' && role=='teacher'"> <button type="button"
+  class="btn1 btn-primary horizontal" (click)="addNewColumn()"><i class="fa fa-plus fa-lg"></i></button></div>
 <div *ngIf="header_tale_name!=''" class="centerintotable" style="text-align: center">
   <button type="button" class="btn1 btn-primary py-1 px-2" (click)="connect2Tables()" *ngIf="role=='teacher'">
     <i class="fa fa-retweet fa-lg"></i></button>&nbsp;&nbsp;&nbsp;

@@ -371,7 +371,7 @@ export class EditExistingSchemaComponent implements OnInit {
                         },
                       });
                       if (formValues) {
-                        Swal.fire(JSON.stringify(formValues));
+                        // Swal.fire(JSON.stringify(formValues));
                         const headers = {
                           'Content-Type': 'application/json; charset=UTF-8',
                           Authorization: localStorage.getItem('token'),
@@ -1080,6 +1080,219 @@ export class EditExistingSchemaComponent implements OnInit {
           this.eachTableColumns(this.statictable, this.statictablename);
         }
       });
+  }
+  addNewColumn() {
+    var typeOfColumns = ['INT', 'VARCHAR', 'FLOAT', 'DATETIME', 'BOOLEAN'];
+    Swal.fire({
+      title: 'Ορίστε το όνομα της νέας στήλης του Πίνακα',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off',
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Συνέχεια',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Επιλέξτε τον τύπο για την νέα στήλη ' + result.value,
+          cancelButtonText: 'Ακύρωση',
+          input: 'select',
+          width: 1000,
+          inputOptions: {
+            Στήλες: typeOfColumns,
+          },
+          showCancelButton: true,
+          confirmButtonText: 'Συνέχεια',
+          showLoaderOnConfirm: true,
+          inputValidator: (position2) => {
+            return new Promise(async (resolve) => {
+              console.log(typeOfColumns[position2]);
+              if (typeOfColumns[position2] != 'BOOLEAN') {
+                Swal.fire({
+                  title:
+                    'Ορίστε το μέγεθος του τύπου ' + typeOfColumns[position2],
+                  input: 'number',
+                  inputAttributes: {
+                    autocapitalize: 'off',
+                  },
+                  showCancelButton: true,
+                  confirmButtonText: 'Συνέχεια',
+                  cancelButtonText: 'Ακύρωση',
+                }).then(async (result2) => {
+                  if (result2.isConfirmed) {
+                    const { value: formValues } = await Swal.fire({
+                      title:
+                        'Ορίστε τις ιδιότητες της νέας στήλης ' +
+                        result.value +
+                        ' ' +
+                        typeOfColumns[position2] +
+                        '(' +
+                        result2.value +
+                        ')',
+                      html:
+                        '<div><label> NN </label>' +
+                        '<input  id="swal-inputnn" class="swal2-input" type="checkbox" value="NN"></div>' +
+                        '<div><label> UQ </label>' +
+                        '<input  id="swal-inputuk" class="swal2-input" type="checkbox" value="UQ"></div>',
+                      focusConfirm: false,
+                      cancelButtonText: 'Ακύρωση',
+                      confirmButtonText: 'Ολοκλήρωση',
+                      preConfirm: () => {
+                        return [
+                          (<HTMLInputElement>(
+                            document.getElementById('swal-inputnn')
+                          )).checked,
+                          (<HTMLInputElement>(
+                            document.getElementById('swal-inputuk')
+                          )).checked,
+                        ];
+                      },
+                    });
+                    if (formValues) {
+                      console.log(formValues[0], formValues[1]);
+
+                      var notnull = '';
+                      if (formValues[0]) {
+                        notnull = ' NOT NULL';
+                      }
+                      var unique = '';
+                      if (formValues[1]) {
+                        unique = 'UNIQUE';
+                      }
+
+                      var sequenceSql =
+                        'ALTER TABLE ' +
+                        this.header_tale_name +
+                        ' ADD ' +
+                        result.value +
+                        ' ' +
+                        typeOfColumns[position2] +
+                        '(' +
+                        result2.value +
+                        ')' +
+                        ' ' +
+                        notnull +
+                        ' ' +
+                        unique;
+                      console.log(sequenceSql);
+
+                      const headers = {
+                        'Content-Type': 'application/json; charset=UTF-8',
+                        Authorization: localStorage.getItem('token'),
+                      };
+                      const body = {
+                        sqlQueryString: sequenceSql,
+                      };
+                      this.http
+                        .post<any>(this.url.baseUrl + 'executesqlquery', body, {
+                          headers,
+                        })
+                        .subscribe((data) => {
+                          console.log(data);
+                          if (data.result) {
+                            this.tableArrayName = [];
+                            this.tableColumnsArray = [];
+                            this.tableColumnsArray2 = [];
+                            this.dataOfEachTableArray = [];
+                            this.onlyColumnsArray = [];
+                            this.header_tale_name = '';
+                            this.questionsOfEachTableArray = [];
+                            this.ngOnInit();
+                          } else {
+                            Swal.fire(
+                              'SQL Synatx error',
+                              data.error.original.sqlMessage,
+                              'error'
+                            );
+                          }
+                        });
+                    }
+                  }
+                });
+              } else {
+                const { value: formValues } = await Swal.fire({
+                  title:
+                  'Ορίστε τις ιδιότητες της νέας στήλης ' +
+                  result.value ,
+                  html:
+                    '<div><label> NN </label>' +
+                    '<input  id="swal-inputnn" class="swal2-input" type="checkbox" value="NN"></div>' +
+                    '<div><label> UQ </label>' +
+                    '<input  id="swal-inputuk" class="swal2-input" type="checkbox" value="UQ"></div>',
+                  focusConfirm: false,
+                  cancelButtonText: 'Ακύρωση',
+                  confirmButtonText: 'Ολοκλήρωση',
+                  preConfirm: () => {
+                    return [
+                      (<HTMLInputElement>(
+                        document.getElementById('swal-inputnn')
+                      )).checked,
+                      (<HTMLInputElement>(
+                        document.getElementById('swal-inputuk')
+                      )).checked,
+                    ];
+                  },
+                });
+                if (formValues) {
+                  console.log(formValues[0], formValues[1]);
+
+                  var notnull = '';
+                  if (formValues[0]) {
+                    notnull = ' NOT NULL';
+                  }
+                  var unique = '';
+                  if (formValues[1]) {
+                    unique = ' UNIQUE';
+                  }
+                  var sequenceSql =
+                    'ALTER TABLE ' +
+                    this.header_tale_name +
+                    ' ADD ' +
+                    result.value +
+                    ' ' +
+                    typeOfColumns[position2] +
+                    ' ' +
+                    notnull +
+                    ' ' +
+                    unique;
+
+                  const headers = {
+                    'Content-Type': 'application/json; charset=UTF-8',
+                    Authorization: localStorage.getItem('token'),
+                  };
+                  const body = {
+                    sqlQueryString: sequenceSql,
+                  };
+                  this.http
+                    .post<any>(this.url.baseUrl + 'executesqlquery', body, {
+                      headers,
+                    })
+                    .subscribe((data) => {
+                      console.log(data);
+                      if (data.result) {
+                        this.tableArrayName = [];
+                        this.tableColumnsArray = [];
+                        this.tableColumnsArray2 = [];
+                        this.dataOfEachTableArray = [];
+                        this.onlyColumnsArray = [];
+                        this.header_tale_name = '';
+                        this.questionsOfEachTableArray = [];
+                        this.ngOnInit();
+                      } else {
+                        Swal.fire(
+                          'SQL Synatx error',
+                          data.error.original.sqlMessage,
+                          'error'
+                        );
+                      }
+                    });
+                }
+              }
+            });
+          },
+        });
+      }
+    });
   }
 
   openInfoSwal(d) {
