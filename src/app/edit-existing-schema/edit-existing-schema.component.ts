@@ -735,7 +735,7 @@ export class EditExistingSchemaComponent implements OnInit {
           // QUESTION 1
           secondTableName + ',' + secondTableConnectionKey + ',=',
           // QUESTION 2
-          'INNER',
+          'INNER,JOIN',
           // QUESTION 3
           'LEFT,ORDER BY',
           // QUESTION 4
