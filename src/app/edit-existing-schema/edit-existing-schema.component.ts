@@ -28,6 +28,7 @@ export class EditExistingSchemaComponent implements OnInit {
   statictablename = '';
   role = '';
   unstableColumnsArrayNames = [];
+  foreignkeyColumn = '';
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -81,7 +82,21 @@ export class EditExistingSchemaComponent implements OnInit {
     for (var i = 0; i < table.temparray.length; i++) {
       this.onlyColumnsArray.push(table.temparray[i].COLUMN_NAME);
     }
-
+    for (var j = 0; j < this.onlyColumnsArray.length; j++) {
+      for (var i = 0; i < this.tableColumnsArray2.length; i++) {
+        if (
+          this.tableColumnsArray2[i].OTHER_VALUES.COLUMN_NAME ==
+            this.onlyColumnsArray[j] &&
+          this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_COLUMN_NAME != null
+        ) {
+          this.foreignkeyColumn = this.onlyColumnsArray[j];
+          console.log(
+            this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_COLUMN_NAME
+          );
+        }
+      }
+    }
+    console.log(this.foreignkeyColumn);
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -1211,9 +1226,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 });
               } else {
                 const { value: formValues } = await Swal.fire({
-                  title:
-                  'Ορίστε τις ιδιότητες της νέας στήλης ' +
-                  result.value ,
+                  title: 'Ορίστε τις ιδιότητες της νέας στήλης ' + result.value,
                   html:
                     '<div><label> NN </label>' +
                     '<input  id="swal-inputnn" class="swal2-input" type="checkbox" value="NN"></div>' +

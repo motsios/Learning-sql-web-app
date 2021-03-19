@@ -355,7 +355,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[3 % max] +
                               ' IS NULL',
                           ];
-
+                                                                               //isws na mpei kai kana and not or mesa se where question..
                           this.http
                             .post<any>(
                               this.url.baseUrl + 'addarrayofqueries',
