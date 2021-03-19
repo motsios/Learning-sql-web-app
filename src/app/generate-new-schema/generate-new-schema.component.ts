@@ -355,7 +355,6 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[3 % max] +
                               ' IS NULL',
                           ];
-                                                                               //isws na mpei kai kana and not or mesa se where question..
                           this.http
                             .post<any>(
                               this.url.baseUrl + 'addarrayofqueries',
@@ -429,9 +428,5 @@ export class GenerateNewSchemaComponent implements OnInit {
         );
       }
     }
-  }
-  randomNumber(max): number {
-    var numberRandom = Math.floor(Math.random() * Math.floor(max));
-    return numberRandom;
   }
 }
