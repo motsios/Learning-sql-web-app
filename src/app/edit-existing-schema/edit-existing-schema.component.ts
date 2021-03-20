@@ -386,7 +386,6 @@ export class EditExistingSchemaComponent implements OnInit {
                         },
                       });
                       if (formValues) {
-                        // Swal.fire(JSON.stringify(formValues));
                         const headers = {
                           'Content-Type': 'application/json; charset=UTF-8',
                           Authorization: localStorage.getItem('token'),
@@ -835,7 +834,7 @@ export class EditExistingSchemaComponent implements OnInit {
         title: 'Διαγραφή Πίνακα ' + tablename,
         icon: 'warning',
         text:
-          'Είστε σίγουρος;Δεν μπορείτε να το επαναφέρετε.Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
+          'Είστε σίγουρος;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
         showCancelButton: true,
         confirmButtonText: 'Ναι',
         cancelButtonText: 'Ακύρωση',
@@ -935,7 +934,6 @@ export class EditExistingSchemaComponent implements OnInit {
   removeQuestion(id) {
     Swal.fire({
       title: 'Είστε σίγουρος για την διαγραφή του SQL Ερωτήματος?',
-      text: 'Δεν μπορείτε να το επναφέρετε!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
