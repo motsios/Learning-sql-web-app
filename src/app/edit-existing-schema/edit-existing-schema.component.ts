@@ -2,12 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-import { table } from 'console';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogAddSqlQueryComponent } from '../dialog-add-sql-query/dialog-add-sql-query.component';
 import { DialogShowQueryResultsComponent } from '../dialog-show-query-results/dialog-show-query-results.component';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { IfStmt } from '@angular/compiler';
 import { DialogSqlQueryTableComponent } from '../dialog-sql-query-table/dialog-sql-query-table.component';
 
 @Component({
@@ -75,6 +73,7 @@ export class EditExistingSchemaComponent implements OnInit {
     this.tableColumnsArray2 = [];
     this.dataOfEachTableArray = [];
     this.onlyColumnsArray = [];
+    this.foreignkeyColumn=''
     console.log(table);
 
     this.tableColumnsArray = table.temparray;
@@ -90,9 +89,6 @@ export class EditExistingSchemaComponent implements OnInit {
           this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_COLUMN_NAME != null
         ) {
           this.foreignkeyColumn = this.onlyColumnsArray[j];
-          console.log(
-            this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_COLUMN_NAME
-          );
         }
       }
     }
@@ -130,10 +126,6 @@ export class EditExistingSchemaComponent implements OnInit {
           console.log(this.dataOfEachTableArray);
         }
       });
-  }
-
-  editcolumn(columnProperties) {
-    console.log(columnProperties);
   }
 
   writeQueryOnHisOwn(defaultQuery?) {
