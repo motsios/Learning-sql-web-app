@@ -8,6 +8,7 @@
       <tr>
         <th scope="col">Όνομα</th>
         <th scope="col">Επώνυμο</th>
+        <th scope="col">Όνομα χρήστη</th>
         <th scope="col">Σκορ</th>
         <th scope="col">Επίπεδο Δυσκολίας</th>
         <th scope="col">Διάρκεια κουίζ</th>
@@ -18,6 +19,7 @@
       <tr *ngFor="let student of bestScoreOf25Array">
         <td><b>{{student.first_name}}</b></td>
         <td><b>{{student.last_name}}</b></td>
+        <td><b>{{student.username}}</b></td>
         <td><b>{{student.score_tables[0].score}}</b></td>
         <td><b  *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b  *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
         <td><b>{{student.score_tables[0].time}}</b></td>
@@ -35,6 +37,7 @@
       <tr>
         <th scope="col">Όνομα</th>
         <th scope="col">Επώνυμο</th>
+        <th scope="col">Όνομα χρήστη</th>
         <th scope="col">Σκορ</th>
         <th scope="col">Επίπεδο Δυσκολίας</th>
         <th scope="col">Διάρκεια κουίζ</th>
@@ -45,6 +48,7 @@
       <tr *ngFor="let student of bestScoreOf15Array">
         <td><b>{{student.first_name}}</b></td>
         <td><b>{{student.last_name}}</b></td>
+        <td><b>{{student.username}}</b></td>
         <td><b>{{student.score_tables[0].score}}</b></td>
         <td><b  *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b  *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
         <td><b>{{student.score_tables[0].time}}</b></td>

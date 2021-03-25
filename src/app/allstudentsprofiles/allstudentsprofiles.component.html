@@ -9,6 +9,7 @@
       <tr>
         <th scope="col">Όνομα</th>
         <th scope="col">Επώνυμο</th>
+        <th scope="col">Όνομα χρήστη</th>
         <th scope="col">Ενέργειες</th>
       </tr>
     </thead>
@@ -16,6 +17,7 @@
       <tr *ngFor="let student of studentsArray;;">
         <td *ngIf="student.role=='student'"><b>{{student.first_name}}</b></td>
         <td *ngIf="student.role=='student'"><b>{{student.last_name}}</b></td>
+        <td *ngIf="student.role=='student'"><b>{{student.username}}</b></td>
         <td *ngIf="student.role=='student'"><button type="button" class="btn btn-primary  py-1 px-2"
             (click)="moreinfo(student.id)" (click)="scroll(target)"><i class="fa fa-search">
               Πληροφορίες</i></button>&nbsp;&nbsp;<button type="button" class="btn btn-primary  py-1 px-2"
