@@ -3,7 +3,7 @@
   <hr>
   <br>
   <div class="form-group" *ngFor="let d of datacolumns.tableColumnsArray;let i=index;">
-    <label>{{d.COLUMN_NAME}} ({{d.COLUMN_TYPE}}) <button class="button" (click)="openInfoSwal(d)"> <i
+    <label>{{d.COLUMN_NAME}} ({{d.COLUMN_TYPE}}) <button class="button1" (click)="openInfoSwal(d)"> <i
           class="fa fa-info-circle"></i></button></label>
     <input type="text" class="form-control" [(ngModel)]="valuesArray[i]" name="{{d.name}}" />
   </div>

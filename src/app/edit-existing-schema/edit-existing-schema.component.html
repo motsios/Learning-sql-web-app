@@ -16,16 +16,16 @@
   <br>
   <br> <br>
 </div>
-<h1 *ngIf="header_tale_name!=''" class="center"><i class="fa fa-trash-o  fa-border socialSignInBtns"
+<h1 *ngIf="header_tale_name!=''" class="center"><button class="button1"><i class="fa fa-trash-o  fa-border socialSignInBtns"
     data-fa-mask="fas fa-circle" style="color:rgb(0, 0, 0) !important; " (click)="delete(header_tale_name)"
-    *ngIf="role=='teacher'"></i> &nbsp;&nbsp;&nbsp;Πίνακας "{{header_tale_name}}" </h1>
+    *ngIf="role=='teacher'"></i></button>&nbsp;&nbsp;Πίνακας "{{header_tale_name}}" </h1>
 <br>
 <div *ngIf="header_tale_name!='' && role=='student'" style="height:600px; table-layout: auto; overflow: auto">
   <table class="table table-striped form-container table-container">
     <thead>
       <tr>
         <th *ngFor="let field of tableColumnsArray;" class="headers"><i *ngIf="foreignkeyColumn===field.COLUMN_NAME"
-          class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button"
+          class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button1"
             (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
         </th>
       </tr>
@@ -42,7 +42,7 @@
     <thead>
       <tr>
         <th *ngFor="let field of tableColumnsArray;" class="headers"><i *ngIf="foreignkeyColumn===field.COLUMN_NAME"
-          class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button"
+          class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button1"
             (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
         </th>
     </thead>

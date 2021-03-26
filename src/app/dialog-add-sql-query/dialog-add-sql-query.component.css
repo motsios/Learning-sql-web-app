@@ -3,7 +3,7 @@
   width: 800px;
   height: 500px;
 }
-.button {
-  border-radius: 50%;
-  border: 1px solid red;
+.button1 {
+  border-style: none;
+  background-color: transparent;
 }

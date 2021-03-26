@@ -96,9 +96,9 @@ thead th {
   top: 0;
   background-color: rgb(230, 219, 219);
 }
-.button {
-  border-radius: 50%;
-  border: 1px solid red;
+.button1 {
+  border-style: none;
+  background-color: transparent;
 }
 .horizontal {
   position: absolute;
