@@ -300,7 +300,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
     await Swal.fire({
       title:
-        'Επιλέξτε τον άλλο Πίνακα για την δημιουργία σύνδεσης μεταξύ τους...',
+        'Επιλέξτε τον άλλο Πίνακα για την σύνδεση μεταξύ τους...',
       input: 'select',
       confirmButtonText: 'Συνέχεια',
       cancelButtonText: 'Ακύρωση',
@@ -324,7 +324,7 @@ export class EditExistingSchemaComponent implements OnInit {
             title:
               'Σε πιο κλειδί αναφέρεστε από τον Πίνακα ' +
               this.tablesOnlyName[i] +
-              ' ;',
+              ';',
             input: 'select',
             cancelButtonText: 'Ακύρωση',
             width: 1000,
@@ -340,7 +340,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 Swal.fire({
                   title:
                     'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
-                    this.statictablename,
+                    this.statictablename +'...',
                   cancelButtonText: 'Ακύρωση',
                   input: 'select',
                   width: 1000,

@@ -14,7 +14,7 @@
         <th scope="col">Ερώτηση</th>
         <th scope="col">SQL ερώτημα</th>
         <th scope="col">Αποκρυμμένες Λέξεις</th>
-        <th scope="col">Ενέργειες</th>
+        <th scope="col" style="width:10%;">Ενέργειες</th>
       </tr>
     </thead>
     <tbody class="content">
@@ -24,16 +24,12 @@
         <td><b>{{question.fill_field_question}}</b></td>
         <td><b>{{question.hideWord}}</b></td>
         <td>
-          <div class="row">
-            &nbsp;
-            &nbsp;
-            &nbsp;
+          &nbsp;
             <button type="button" class="btn btn-primary  py-1 px-2"
               (click)="updateField(question.id,question.question,question.fill_field_question,question.hideWord)"><i
                 class="fa fa-pencil"></i></button> &nbsp;
             <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
-                class="fa fa-trash-o"></i></button> &nbsp;
-          </div>
+                class="fa fa-trash-o"></i></button>
         </td>
       </tr>
     </tbody>
