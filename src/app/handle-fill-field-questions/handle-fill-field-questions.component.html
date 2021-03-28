@@ -24,11 +24,16 @@
         <td><b>{{question.fill_field_question}}</b></td>
         <td><b>{{question.hideWord}}</b></td>
         <td>
-          <button type="button" class="btn btn-primary  py-1 px-2"
-            (click)="updateField(question.id,question.question,question.fill_field_question,question.hideWord)"><i
-              class="fa fa-pencil"></i></button> &nbsp;
-          <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
-              class="fa fa-trash-o"></i></button> &nbsp;
+          <div class="row">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <button type="button" class="btn btn-primary  py-1 px-2"
+              (click)="updateField(question.id,question.question,question.fill_field_question,question.hideWord)"><i
+                class="fa fa-pencil"></i></button> &nbsp;
+            <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
+                class="fa fa-trash-o"></i></button> &nbsp;
+          </div>
         </td>
       </tr>
     </tbody>
