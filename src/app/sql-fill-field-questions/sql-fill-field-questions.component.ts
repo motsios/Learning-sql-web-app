@@ -51,6 +51,9 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.username = localStorage.getItem('username');
     await this.getFillFieldQuestionsFromApi(localStorage.getItem('token'));

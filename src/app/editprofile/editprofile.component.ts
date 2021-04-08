@@ -28,6 +28,9 @@ export class EditprofileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.username = localStorage.getItem('username');
     this.getProfileFromApi(

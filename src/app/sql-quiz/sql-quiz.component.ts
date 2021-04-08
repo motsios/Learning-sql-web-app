@@ -45,6 +45,9 @@ export class SqlQuizComponent implements OnInit {
   answerArray = [];
   questionsArray: Array<any> = [];
   ngOnInit() {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.difficulty = localStorage.getItem('difficulty');
     if (this.difficulty == 'easy') this.grdifficulty = 'Εύκολο';

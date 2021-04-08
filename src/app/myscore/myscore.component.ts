@@ -3,6 +3,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from '../app.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-myscore',
@@ -14,12 +15,17 @@ export class MyscoreComponent implements OnInit {
   ratesArray: Array<any>;
 
   constructor(
+    private router: Router,
+
     private http: HttpClient,
     private url: AppComponent,
     private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
     this.spinner.show();
     this.scoresArray = [];

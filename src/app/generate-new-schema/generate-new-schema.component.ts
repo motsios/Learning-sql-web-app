@@ -24,7 +24,11 @@ export class GenerateNewSchemaComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
+  }
 
   async createTable() {
     if (this.tablename.length == 0) {

@@ -24,6 +24,9 @@ export class RankingScoreComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.token = localStorage.getItem('token');
     this.getStudentsBestScore(this.token);

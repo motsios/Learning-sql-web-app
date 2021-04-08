@@ -19,12 +19,16 @@ export class TheorySqlComponent implements OnInit {
   fileToUpload: File = null;
   titlepdf = '';
   constructor(
+    private router: Router,
     private http: HttpClient,
     private url: AppComponent,
     private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.pdfSrc = '';
     this.pdfArray = [];
     this.spinner.show();

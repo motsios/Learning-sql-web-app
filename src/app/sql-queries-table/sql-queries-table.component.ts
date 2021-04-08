@@ -5,6 +5,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogSqlQuestionComponent } from '../dialog-sql-question/dialog-sql-question.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sql-queries-table',
@@ -17,6 +18,7 @@ export class SqlQueriesTableComponent implements OnInit {
   hardquestionsArray: Array<any> = [];
   totalquestionsArray: Array<any> = [];
   constructor(
+    private router: Router,
     private http: HttpClient,
     private url: AppComponent,
     private matDialog: MatDialog,
@@ -24,6 +26,9 @@ export class SqlQueriesTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.username = localStorage.getItem('username');
     this.getQuestionsFromApi(localStorage.getItem('token'));

@@ -36,6 +36,9 @@ export class AllstudentsprofilesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.token = localStorage.getItem('token');
     this.getStudentsProfileFromApi(this.token);
@@ -103,7 +106,7 @@ export class AllstudentsprofilesComponent implements OnInit {
 
   scoreofeachstudent(studentid, first_name, last_name) {
     this.scoresArray = [];
-    this.ratesArray=[];
+    this.ratesArray = [];
     this.moreinfoclick = false;
     this.clickscoreinfo = true;
     this.firstname = first_name;
@@ -274,7 +277,7 @@ export class AllstudentsprofilesComponent implements OnInit {
         }
       });
 
-      this.http
+    this.http
       .get<any>(this.url.baseUrl + '/rates/' + studentid, {
         headers,
       })
@@ -288,134 +291,134 @@ export class AllstudentsprofilesComponent implements OnInit {
             ).toString();
 
             if (data.result[0].success_rates[i].createdAt.includes('Mon'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Mon',
                 'Δευτέρα'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Tue'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Tue',
                 'Τρίτη'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Wed'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Wed',
                 'Τετάρτη'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Thu'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Thu',
                 'Πέμπτη'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Fri'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Fri',
                 'Παρασκευή'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Sat'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Sat',
                 'Σάββατο'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Sun'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Sun',
                 'Κυριακή'
               );
 
             if (data.result[0].success_rates[i].createdAt.includes('Jan'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Jan',
                 'Ιανουάριος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Feb'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Feb',
                 'Φεβρουάριος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Mar'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Mar',
                 'Μάρτιος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Apr'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Apr',
                 'Απρίλιος'
               );
             else if (data.result[0].success_ratess[i].createdAt.includes('May'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'May',
                 'Μάιος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Jun'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Jun',
                 'Ιούνιος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Jul'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Jul',
                 'Ιούλιος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Aug'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Aug',
                 'Αύγουστος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Sep'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Sep',
                 'Σεπτέμβριος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Oct'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
-              ].createdAt =data.result[0].success_rates[i].createdAt.replace(
+              ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Oct',
                 'Οκτώβριος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Nov'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Nov',
                 'Νοέμβριος'
               );
             else if (data.result[0].success_rates[i].createdAt.includes('Dec'))
-            data.result[0].success_rates[
+              data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
                 'Dec',
@@ -424,7 +427,11 @@ export class AllstudentsprofilesComponent implements OnInit {
           }
           this.ratesArray = data.result[0].success_rates;
           if (data.result[0].success_rates.length == 0) {
-            Swal.fire('Oops...', 'Ο εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Τεστ ακόμη!', 'error');
+            Swal.fire(
+              'Oops...',
+              'Ο εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Τεστ ακόμη!',
+              'error'
+            );
           }
         } else {
           Swal.fire(
@@ -434,6 +441,5 @@ export class AllstudentsprofilesComponent implements OnInit {
           );
         }
       });
-
   }
 }

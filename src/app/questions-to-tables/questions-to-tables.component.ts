@@ -52,6 +52,9 @@ export class QuestionsToTablesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.role = localStorage.getItem('role');
     const headers = {

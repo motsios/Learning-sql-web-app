@@ -7,6 +7,7 @@ import { DialogAddSqlQueryComponent } from '../dialog-add-sql-query/dialog-add-s
 import { DialogShowQueryResultsComponent } from '../dialog-show-query-results/dialog-show-query-results.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DialogSqlQueryTableComponent } from '../dialog-sql-query-table/dialog-sql-query-table.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-existing-schema',
@@ -28,6 +29,7 @@ export class EditExistingSchemaComponent implements OnInit {
   unstableColumnsArrayNames = [];
   foreignkeyColumn = '';
   constructor(
+    private router: Router,
     private http: HttpClient,
     private url: AppComponent,
     private matDialog: MatDialog,
@@ -35,6 +37,9 @@ export class EditExistingSchemaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.tablesOnlyName = [];
     this.spinner.show();
     this.role = localStorage.getItem('role');
@@ -73,7 +78,7 @@ export class EditExistingSchemaComponent implements OnInit {
     this.tableColumnsArray2 = [];
     this.dataOfEachTableArray = [];
     this.onlyColumnsArray = [];
-    this.foreignkeyColumn=''
+    this.foreignkeyColumn = '';
     console.log(table);
 
     this.tableColumnsArray = table.temparray;
@@ -299,8 +304,7 @@ export class EditExistingSchemaComponent implements OnInit {
     this.unstableColumnsArrayNames = [];
 
     await Swal.fire({
-      title:
-        'Επιλέξτε τον άλλο Πίνακα για την σύνδεση μεταξύ τους...',
+      title: 'Επιλέξτε τον άλλο Πίνακα για την σύνδεση μεταξύ τους...',
       input: 'select',
       confirmButtonText: 'Συνέχεια',
       cancelButtonText: 'Ακύρωση',
@@ -340,7 +344,8 @@ export class EditExistingSchemaComponent implements OnInit {
                 Swal.fire({
                   title:
                     'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
-                    this.statictablename +'...',
+                    this.statictablename +
+                    '...',
                   cancelButtonText: 'Ακύρωση',
                   input: 'select',
                   width: 1000,
@@ -1329,7 +1334,7 @@ export class EditExistingSchemaComponent implements OnInit {
       html: infoHtmlSting,
     });
   }
-  info(){
+  info() {
     Swal.fire(
       '',
       'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL Ερωτήματα που χρησιμοποιούνται στην κατηγορία "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" των Εκπαιδευομένων...',

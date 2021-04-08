@@ -5,6 +5,7 @@ import { AppComponent } from '../app.component';
 import { DialogFillFieldQuestionComponent } from '../dialog-fill-field-question/dialog-fill-field-question.component';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-handle-fill-field-questions',
@@ -15,6 +16,7 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
   username = '';
   fillfieldsquestionsArray: Array<any> = [];
   constructor(
+    private router: Router,
     private http: HttpClient,
     private url: AppComponent,
     private matDialog: MatDialog,
@@ -22,6 +24,9 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') == null) {
+      this.router.navigate(['']);
+    }
     this.spinner.show();
     this.username = localStorage.getItem('username');
     this.getFillFieldQuestionsFromApi(localStorage.getItem('token'));
@@ -116,7 +121,7 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
       }
     });
   }
-  info(){
+  info() {
     Swal.fire(
       '',
       'Οι "Ερωτήσεις Συμπλήρωσης-κενού" αποσκοπούν στην εξάσκηση των Εκπαιδευομένων.Ομαδοποιούνται με βάση τις SQL δεσμευμένες λέξεις από το πεδίο "Αποκρυμμένες Λέξεις" του πίνακα,κατά την εμφάνιση τους στην κατηγορία "Εξάσκηση σε Ερωτήσεις Συμπλήρωσης-Κενού"...',
