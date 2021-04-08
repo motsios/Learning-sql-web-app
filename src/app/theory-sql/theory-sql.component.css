@@ -62,3 +62,8 @@ thead th {
   margin-left: 10%;
   width: 80%;
 }
+.button1 {
+  border-style: none;
+  color: aliceblue;
+  background-color: transparent;
+}

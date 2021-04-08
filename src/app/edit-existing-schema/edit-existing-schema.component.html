@@ -10,7 +10,8 @@
     </section>
   </nav>
 </div>
-<h1 *ngIf="header_tale_name=='' && role=='teacher'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο</h1>
+<h1 *ngIf="header_tale_name=='' && role=='teacher'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο &nbsp;<button class="button2"
+  (click)="info()"><i class="fa fa-info-circle"></i></button></h1>
 <h1 *ngIf="header_tale_name=='' && role=='student'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο</h1>
 <div *ngIf="role=='student'">
   <br>

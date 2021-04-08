@@ -107,3 +107,8 @@ thead th {
   height: 200px;
   width: 40px;
 }
+.button2 {
+  color: aliceblue;
+  border-style: none;
+  background-color: transparent;
+}

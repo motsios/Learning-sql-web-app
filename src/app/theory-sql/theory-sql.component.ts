@@ -125,4 +125,11 @@ export class TheorySqlComponent implements OnInit {
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
+  info(){
+    Swal.fire(
+      '',
+      'Στην "Θεωρία SQL" μπορείτε να αναρτήσετε τα δικά σας pdf έτσι ώστε να γίνουν ορατά στους Εκπαιδευόμενους...',
+      'info'
+    );
+  }
 }

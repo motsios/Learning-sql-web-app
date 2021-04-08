@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
-<div>
+<div *ngIf="role=='student'">
   <h2 class="header center1">Θεωρία SQL</h2>&nbsp;
+</div>
+<div *ngIf="role=='teacher'">
+  <h2 class="header center1">Θεωρία SQL &nbsp;<button class="button1"
+    (click)="info()"><i class="fa fa-info-circle"></i></button></h2>&nbsp;
 </div>
 <div style="height:100px;" *ngIf="role=='teacher'">
   <div class="form-group form-container">
