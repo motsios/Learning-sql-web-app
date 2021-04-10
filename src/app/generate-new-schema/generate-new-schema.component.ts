@@ -59,8 +59,7 @@ export class GenerateNewSchemaComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          localStorage.clear();
-          this.fieldArray.splice(index, 1);
+         this.fieldArray.splice(index, 1);
         }
       });
   }
