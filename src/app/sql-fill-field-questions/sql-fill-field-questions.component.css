@@ -94,3 +94,13 @@ thead th {
   height: 80px;
   text-align: center;
 }
+.button2 {
+  color: aliceblue;
+  border-style: none;
+  background-color: transparent;
+}
+
+ul li :hover,
+ul li :focus {
+  color: rgb(36, 67, 206);
+}

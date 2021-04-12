@@ -25,7 +25,7 @@
     <tbody class="content">
       <tr *ngFor="let pdf of pdfArray;let i=index;">
         <td><b>{{i+1}}</b></td>
-        <td (click)="readPdf(pdf)" (click)="scroll(target)"><b>{{pdf}}</b></td>
+        <td (click)="readPdf(pdf)" (click)="scroll(target)"><b><button class="button2">{{pdf}}</button></b></td>
         <td>
           <button type="button" class="btn btn-primary  py-1 px-2" (click)="deletePdf(pdf)"><i
               class="fa fa-trash-o"></i></button> &nbsp;
@@ -45,7 +45,7 @@
     <tbody class="content">
       <tr *ngFor="let pdf of pdfArray;let i=index;">
         <td><b>{{i+1}}</b></td>
-        <td (click)="readPdf(pdf)" (click)="scroll(target)"><b>{{pdf}}</b></td>
+        <td (click)="readPdf(pdf)" (click)="scroll(target)"><b><button class="button2">{{pdf}}</button></b></td>
       </tr>
     </tbody>
   </table>

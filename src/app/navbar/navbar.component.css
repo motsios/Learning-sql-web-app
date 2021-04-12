@@ -19,3 +19,7 @@
 .active > a {
   color: white;
 }
+ul li :hover,
+ul li :focus {
+  color: rgb(36, 67, 206);
+}

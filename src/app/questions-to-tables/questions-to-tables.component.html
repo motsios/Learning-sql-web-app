@@ -5,7 +5,7 @@
       <h3>Πίνακες:</h3>
       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       <ul *ngFor="let name of tableArrayName;">
-        <li (click)="eachTableColumns(name,name.table_name)"><a>-{{name.table_name}}</a></li>
+        <li (click)="eachTableColumns(name,name.table_name)"><a><button class="button2">-{{name.table_name}}</button></a></li>
       </ul>
     </section>
   </nav>

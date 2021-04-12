@@ -33,3 +33,8 @@
   text-align: center;
   width: 100%;
 }
+.button2 {
+  color: aliceblue;
+  border-style: none;
+  background-color: transparent;
+}

@@ -123,3 +123,8 @@ thead th {
   font-size: x-large;
   color: rgb(31, 54, 187);
 }
+.button2 {
+  color: aliceblue;
+  border-style: none;
+  background-color: transparent;
+}

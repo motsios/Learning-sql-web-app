@@ -67,3 +67,8 @@ thead th {
   color: aliceblue;
   background-color: transparent;
 }
+.button2 {
+  color: rgb(43, 43, 107);
+  border-style: none;
+  background-color: transparent;
+}
