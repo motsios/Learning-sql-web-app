@@ -12,6 +12,7 @@ import { DialogSqlQuestionComponent } from '../dialog-sql-question/dialog-sql-qu
 export class DialogShowQueryResultsComponent implements OnInit {
   columnsArray = [];
   dataArray = [];
+  query=''
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -22,6 +23,7 @@ export class DialogShowQueryResultsComponent implements OnInit {
   ngOnInit(): void {
     this.columnsArray = this.data.columnsArray;
     this.dataArray = this.data.dataArray;
+    this.query = this.data.query;
   }
 
   close() {

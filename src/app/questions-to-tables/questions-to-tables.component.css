@@ -83,7 +83,7 @@ ul li :focus {
   color: rgb(36, 67, 206);
 }
 .content {
-  color: rgb(43, 43, 107);
+  color: rgb(0, 0, 0);
   text-align: center;
 }
 .centerintotable {
@@ -104,7 +104,7 @@ ul li :focus {
 thead th {
   position: sticky;
   top: 0;
-  background-color: rgb(230, 219, 219);
+  background-color: rgb(168, 171, 202);
 }
 .button {
   border-radius: 50%;

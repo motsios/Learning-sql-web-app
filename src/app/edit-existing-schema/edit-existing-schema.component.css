@@ -94,7 +94,7 @@ ul li :focus {
 thead th {
   position: sticky;
   top: 0;
-  background-color: rgb(230, 219, 219);
+  background-color: rgb(168, 171, 202);
 }
 .button1 {
   border-style: none;

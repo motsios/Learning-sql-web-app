@@ -83,7 +83,7 @@
         <td><b>{{question.hideWord}}</b></td>
         <td>
           &nbsp;
-          <button type="button" class="btn btn-primary  py-1 px-2" (click)="studentExecuteQuery(question.sql_query)"><i
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="executeQuery(question.sql_query)"><i
               class="fa fa-check"></i></button>&nbsp;
           <button type="button" class="btn btn-primary  py-1 px-2"
             (click)="updateQuestion(question.id,question.sql_query,question.hideWord)" *ngIf="role=='teacher'"><i

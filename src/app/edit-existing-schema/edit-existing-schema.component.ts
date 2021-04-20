@@ -233,6 +233,7 @@ export class EditExistingSchemaComponent implements OnInit {
                     dialogConfig.data = {
                       columnsArray: columnsArray,
                       dataArray: dataArray,
+                      query:query
                     };
                     let dialog = this.matDialog.open(
                       DialogShowQueryResultsComponent,
@@ -936,6 +937,7 @@ export class EditExistingSchemaComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Ναι, διαγραφή!',
+      cancelButtonText:'Ακύρωση'
     }).then((result) => {
       if (result.isConfirmed) {
         const headers = {
@@ -998,7 +1000,7 @@ export class EditExistingSchemaComponent implements OnInit {
     });
   }
 
-  studentExecuteQuery(query) {
+  executeQuery(query) {
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -1052,6 +1054,7 @@ export class EditExistingSchemaComponent implements OnInit {
               dialogConfig.data = {
                 columnsArray: columnsArray,
                 dataArray: dataArray,
+                query:query
               };
               let dialog = this.matDialog.open(
                 DialogShowQueryResultsComponent,

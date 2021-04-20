@@ -53,8 +53,10 @@ export class GenerateNewSchemaComponent implements OnInit {
         title: 'Διαγραφή Στήλης',
         icon: 'warning',
         text: 'Είστε σίγουρος?',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
         showCancelButton: true,
-        confirmButtonText: 'Ναι',
+        confirmButtonText: 'Ναι, διαγραφή!',
         cancelButtonText: 'Ακύρωση',
       })
       .then((result) => {
