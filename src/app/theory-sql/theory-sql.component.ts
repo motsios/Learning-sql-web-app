@@ -102,34 +102,38 @@ export class TheorySqlComponent implements OnInit {
     this.fileToUpload = files.item(0);
   }
   upload(fileToUpload) {
-    if(fileToUpload){
-    let testData: FormData = new FormData();
-    testData.append('file_upload', fileToUpload, fileToUpload.name);
-    this.http
-      .post<any>(this.url.baseUrl + 'upload', testData)
-      .subscribe((response) => {
-        if (response.result == 'File Uploaded') {
-          Swal.fire(
-            '',
-            'Το PDF κοινοποιήθηκε επιτυχώς!',
-            'success'
-          );
-          this.pdfSrc = '';
-          this.pdfArray = [];
-          this.ngOnInit();
-        } else {
-          console.log(response);
-          Swal.fire('', response.error, 'error');
-        }
-      });
-    }else{
-      Swal.fire('', 'Δεν έχει επιλεχθεί κάποιο pdf για κοινοποίηση...', 'error');
+    if (fileToUpload) {
+      if (fileToUpload.name.toString().includes('.pdf')) {
+        let testData: FormData = new FormData();
+        testData.append('file_upload', fileToUpload, fileToUpload.name);
+        this.http
+          .post<any>(this.url.baseUrl + 'upload', testData)
+          .subscribe((response) => {
+            if (response.result == 'File Uploaded') {
+              Swal.fire('', 'Το PDF κοινοποιήθηκε επιτυχώς!', 'success');
+              this.pdfSrc = '';
+              this.pdfArray = [];
+              this.ngOnInit();
+            } else {
+              console.log(response);
+              Swal.fire('', response.error, 'error');
+            }
+          });
+      } else {
+        Swal.fire('', 'Λανθασμένος τύπος αρχείου για δημοσίευση...', 'error');
+      }
+    } else {
+      Swal.fire(
+        '',
+        'Δεν έχει επιλεχθεί κάποιο pdf για κοινοποίηση...',
+        'error'
+      );
     }
   }
   scroll(el: HTMLElement) {
     el.scrollIntoView();
   }
-  info(){
+  info() {
     Swal.fire(
       '',
       'Στην "Θεωρία SQL" μπορείτε να αναρτήσετε τα δικά σας pdf έτσι ώστε να γίνουν ορατά στους Εκπαιδευόμενους...',
