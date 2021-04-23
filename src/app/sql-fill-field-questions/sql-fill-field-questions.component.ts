@@ -664,7 +664,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       })
       .subscribe((data) => {
         if (data.questions) {
-          Swal.fire('Answer', data.questions[0].fill_field_question, 'info');
+          Swal.fire('Απάντηση', data.questions[0].fill_field_question, 'info');
         } else {
           Swal.fire(
             'Ουπς...',

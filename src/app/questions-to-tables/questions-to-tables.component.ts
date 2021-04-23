@@ -351,8 +351,8 @@ export class QuestionsToTablesComponent implements OnInit {
     if (!wrong) {
       this.correctAnswers = this.correctAnswers + 1;
       Swal.fire({
-        title: '',
-        text: 'Σωστό',
+        title: 'Σωστό',
+        text: '',
         icon: 'success',
         showCancelButton: false,
         allowOutsideClick: false,
@@ -498,9 +498,9 @@ export class QuestionsToTablesComponent implements OnInit {
       });
     } else {
       Swal.fire({
-        title: '',
+        title: 'Λάθος',
         text:
-          'Λάθος.Η σωστή απάντηση είναι: ' +
+          'Η σωστή απάντηση είναι: ' +
           this.fillfieldsquestionsArray[this.questionid].sql_query,
         icon: 'error',
         showCancelButton: false,
