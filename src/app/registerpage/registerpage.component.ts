@@ -107,7 +107,7 @@ export class RegisterpageComponent implements OnInit {
           first_name: this.registerForm.value['firstName'],
           last_name: this.registerForm.value['lastName'],
           phone: this.registerForm.value['phone'],
-          email: this.registerForm.value['firstName'],
+          email: this.registerForm.value['email'],
           username: this.registerForm.value['username'],
           password: this.registerForm.value['password'],
           sex: sex,
