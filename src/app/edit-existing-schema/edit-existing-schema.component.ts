@@ -134,10 +134,18 @@ export class EditExistingSchemaComponent implements OnInit {
   }
 
   writeQueryOnHisOwn(defaultQuery?) {
+    var title1 = '';
+    if (this.role == 'student') {
+      title1 =
+        'Διατυπώστε οποιδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον Πίνακα ' +
+        this.statictablename;
+    } else {
+      title1 =
+        'Διατυπώστε οποιδήποτε SQL ερώτημα για να εκτελεστεί στον Πίνακα ' +
+        this.statictablename;
+    }
     Swal.fire({
-      title:
-        'Διατυπώστε ένα SQL Ερώτημα για να εκτελεστεί στον Πίνακα ' +
-        this.statictablename,
+      title: title1,
       input: 'text',
       inputAttributes: {
         autocapitalize: 'off',
@@ -233,7 +241,7 @@ export class EditExistingSchemaComponent implements OnInit {
                     dialogConfig.data = {
                       columnsArray: columnsArray,
                       dataArray: dataArray,
-                      query:query
+                      query: query,
                     };
                     let dialog = this.matDialog.open(
                       DialogShowQueryResultsComponent,
@@ -937,7 +945,7 @@ export class EditExistingSchemaComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Ναι, διαγραφή!',
-      cancelButtonText:'Ακύρωση'
+      cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
         const headers = {
@@ -1054,7 +1062,7 @@ export class EditExistingSchemaComponent implements OnInit {
               dialogConfig.data = {
                 columnsArray: columnsArray,
                 dataArray: dataArray,
-                query:query
+                query: query,
               };
               let dialog = this.matDialog.open(
                 DialogShowQueryResultsComponent,
