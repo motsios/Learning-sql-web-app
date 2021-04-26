@@ -1,16 +1,19 @@
 import { HttpClient } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { AppComponent } from '../app.component';
-import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+import { AppComponent } from '../app.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @Component({
-  selector: 'app-questions-to-tables',
-  templateUrl: './questions-to-tables.component.html',
-  styleUrls: ['./questions-to-tables.component.css'],
+  selector: 'app-questions-to-tables-true-or-false',
+  templateUrl: './questions-to-tables-true-or-false.component.html',
+  styleUrls: ['./questions-to-tables-true-or-false.component.css'],
 })
-export class QuestionsToTablesComponent implements OnInit {
+export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
   tableArrayName = [];
   tableColumnsArray = [];
   tableColumnsArray2 = [];
@@ -24,7 +27,6 @@ export class QuestionsToTablesComponent implements OnInit {
   secondTable = '';
   questionid = '0';
   questionidToNumber;
-  textfield = '';
   resultcolumnsArray = [];
   resultdataArray = [];
   errorText = '';
@@ -38,6 +40,12 @@ export class QuestionsToTablesComponent implements OnInit {
   heddenWords = '';
   splitWords = [];
   hiddenWordsArray = [];
+
+  public selection: string;
+
+  random;
+  answer;
+
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -193,7 +201,6 @@ export class QuestionsToTablesComponent implements OnInit {
             this.secondTable = '';
             this.questionid = '0';
             this.questionidToNumber;
-            this.textfield = '';
             this.resultcolumnsArray = [];
             this.hiddenWordsArray = [];
             this.resultdataArray = [];
@@ -209,19 +216,16 @@ export class QuestionsToTablesComponent implements OnInit {
             clearInterval(this.interval);
             this.ngOnInit();
           } else {
-            this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
-            this.splitWords = this.fillfieldsquestionsArray[0].hideWord.split(
-              ','
-            );
-
-            for (var i = 0; i < this.splitWords.length; i++) {
-              this.questionWithField = this.questionWithField.replace(
-                this.splitWords[i],
-                ' ____ '
-              );
-              this.splitWords[i] = this.splitWords[i].toLowerCase();
+            this.random = this.randomInteger(1, 2);
+            if (this.random == 1) {
+              this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
+            } else {
+              var nextQueryShows = 1 % this.fillfieldsquestionsArray.length;
+              console.log('tyxaia');
+              this.questionWithField = this.fillfieldsquestionsArray[
+                nextQueryShows
+              ].sql_query;
             }
-
             const body = {
               sqlQueryString: this.fillfieldsquestionsArray[0].sql_query,
             };
@@ -309,7 +313,6 @@ export class QuestionsToTablesComponent implements OnInit {
                   this.secondTable = '';
                   this.questionid = '0';
                   this.questionidToNumber;
-                  this.textfield = '';
                   this.resultcolumnsArray = [];
                   this.hiddenWordsArray = [];
                   this.resultdataArray = [];
@@ -328,26 +331,33 @@ export class QuestionsToTablesComponent implements OnInit {
                 }
               });
           }
-          this.router.navigate(['/questionsToTables/0']);
+          this.router.navigate(['/questionsToTablesTrueOrFalse/0']);
         }
       });
   }
 
   next() {
-    var text = this.textfield.toLowerCase();
-    var wrong = false;
-    var textToArray = text.split(',');
 
-    for (var i = 0; i < this.splitWords.length; i++) {
-      if (textToArray.includes(this.splitWords[i])) {
+    if(this.selection==undefined){
+     return Swal.fire('', 'Επιλέξτε μία απάντηση', 'info');
+    }
+    console.log(this.selection);
+    console.log(this.random);
+    var wrong = false;
+
+    if (this.selection.toString() == '1') {
+      if (this.random == 1) {
         wrong = false;
       } else {
         wrong = true;
-        break;
+      }
+    } else {
+      if (this.random == 1) {
+        wrong = true;
+      } else {
+        wrong = false;
       }
     }
-    this.splitWords = [];
-
     if (!wrong) {
       this.correctAnswers = this.correctAnswers + 1;
       Swal.fire({
@@ -379,7 +389,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 this.fillfieldsquestionsArray.length,
               table_name: this.header_tale_name,
               time: this.converttimer,
-              type_excersice:"Συμπλήρωση-κενού"
+              type_excersice: 'Σωστό-λάθος',
             };
             this.http
               .post<any>(
@@ -401,7 +411,10 @@ export class QuestionsToTablesComponent implements OnInit {
                     'success'
                   );
                   localStorage.setItem('insideFillFieldQuestionsTable', 'no');
-                  localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
+                  localStorage.setItem(
+                    'insideFillFieldQuestionsTableTrueOrFalse',
+                    'no'
+                  );
                   this.router.navigate(['/myscores']);
                 } else {
                   Swal.fire(
@@ -412,23 +425,20 @@ export class QuestionsToTablesComponent implements OnInit {
                 }
               });
           } else {
-            this.textfield = '';
+            this.selection = undefined;
             this.questionidToNumber = this.questionidToNumber + 1;
-
-            this.questionWithField = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].sql_query;
-
-            this.splitWords = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].hideWord.split(',');
-
-            for (var i = 0; i < this.splitWords.length; i++) {
-              this.questionWithField = this.questionWithField.replace(
-                this.splitWords[i],
-                ' ____ '
-              );
-              this.splitWords[i] = this.splitWords[i].toLowerCase();
+            this.random = this.randomInteger(1, 2);
+            if (this.random == 1) {
+              this.questionWithField = this.fillfieldsquestionsArray[
+                this.questionidToNumber
+              ].sql_query;
+            } else {
+              var nextQueryShows =
+                (this.questionidToNumber+1) % this.fillfieldsquestionsArray.length;
+              console.log('tyxaia');
+              this.questionWithField = this.fillfieldsquestionsArray[
+                nextQueryShows
+              ].sql_query;
             }
 
             const headers = {
@@ -494,7 +504,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 }
               });
             this.router.navigate([
-              '/questionsToTables/' + this.questionidToNumber,
+              '/questionsToTablesTrueOrFalse/' + this.questionidToNumber,
             ]);
           }
         }
@@ -502,9 +512,6 @@ export class QuestionsToTablesComponent implements OnInit {
     } else {
       Swal.fire({
         title: 'Λάθος',
-        text:
-          'Η σωστή απάντηση είναι: ' +
-          this.fillfieldsquestionsArray[this.questionid].sql_query,
         icon: 'error',
         showCancelButton: false,
         allowOutsideClick: false,
@@ -531,7 +538,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 this.fillfieldsquestionsArray.length,
               table_name: this.header_tale_name,
               time: this.converttimer,
-              type_excersice:"Συμπλήρωση-κενού"
+              type_excersice: 'Σωστό-λάθος',
             };
             this.http
               .post<any>(
@@ -553,9 +560,11 @@ export class QuestionsToTablesComponent implements OnInit {
                     'success'
                   );
                   localStorage.setItem('insideFillFieldQuestionsTable', 'no');
-                  localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
+                  localStorage.setItem(
+                    'insideFillFieldQuestionsTableTrueOrFalse',
+                    'no'
+                  );
                   this.router.navigate(['/myscores']);
-
                 } else {
                   Swal.fire(
                     'Ουπς...',
@@ -565,23 +574,20 @@ export class QuestionsToTablesComponent implements OnInit {
                 }
               });
           } else {
-            this.textfield = '';
+            this.selection = undefined;
             this.questionidToNumber = this.questionidToNumber + 1;
-
-            this.questionWithField = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].sql_query;
-
-            this.splitWords = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].hideWord.split(',');
-
-            for (var i = 0; i < this.splitWords.length; i++) {
-              this.questionWithField = this.questionWithField.replace(
-                this.splitWords[i],
-                ' ____ '
-              );
-              this.splitWords[i] = this.splitWords[i].toLowerCase();
+            this.random = this.randomInteger(1, 2);
+            if (this.random == 1) {
+              this.questionWithField = this.fillfieldsquestionsArray[
+                this.questionidToNumber
+              ].sql_query;
+            } else {
+              var nextQueryShows =
+              (this.questionidToNumber+1) % this.fillfieldsquestionsArray.length;
+              console.log('tyxaia');
+              this.questionWithField = this.fillfieldsquestionsArray[
+                nextQueryShows
+              ].sql_query;
             }
 
             const headers = {
@@ -647,7 +653,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 }
               });
             this.router.navigate([
-              '/questionsToTables/' + this.questionidToNumber,
+              '/questionsToTablesTrueOrFalse/' + this.questionidToNumber,
             ]);
           }
         }
@@ -656,5 +662,8 @@ export class QuestionsToTablesComponent implements OnInit {
   }
   ngOnDestroy() {
     clearInterval(this.interval);
+  }
+  randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }

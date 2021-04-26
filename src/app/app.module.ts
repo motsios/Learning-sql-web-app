@@ -38,6 +38,7 @@ import { TheorySqlComponent } from './theory-sql/theory-sql.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { QuestionsToTablesComponent } from './questions-to-tables/questions-to-tables.component';
 import { DialogSqlQueryTableComponent } from './dialog-sql-query-table/dialog-sql-query-table.component';
+import { QuestionsToTablesTrueOrFalseComponent } from './questions-to-tables-true-or-false/questions-to-tables-true-or-false.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { DialogSqlQueryTableComponent } from './dialog-sql-query-table/dialog-sq
     TheorySqlComponent,
     QuestionsToTablesComponent,
     DialogSqlQueryTableComponent,
+    QuestionsToTablesTrueOrFalseComponent,
   ],
   imports: [
     ModalModule.forRoot(),

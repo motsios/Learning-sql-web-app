@@ -8,6 +8,7 @@ import { HandleFillFieldQuestionsComponent } from './handle-fill-field-questions
 import { HomePageComponent } from './homepage/homepage.component';
 import { MyprofilepageComponent } from './myprofilepage/myprofilepage.component';
 import { MyscoreComponent } from './myscore/myscore.component';
+import { QuestionsToTablesTrueOrFalseComponent } from './questions-to-tables-true-or-false/questions-to-tables-true-or-false.component';
 import { QuestionsToTablesComponent } from './questions-to-tables/questions-to-tables.component';
 import { RankingScoreComponent } from './ranking-score/ranking-score.component';
 import { RegisterpageComponent } from './registerpage/registerpage.component';
@@ -34,6 +35,8 @@ const routes: Routes = [
   { path: 'ranking', component: RankingScoreComponent },
   { path: 'theorySql', component: TheorySqlComponent },
   { path: 'questionsToTables/:id', component: QuestionsToTablesComponent },
+  { path: 'questionsToTablesTrueOrFalse/:id', component: QuestionsToTablesTrueOrFalseComponent },
+
 
 
 

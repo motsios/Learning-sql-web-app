@@ -60,6 +60,9 @@
           <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTables()"
             [ngClass]="getChecked()=='tab555' ? 'active':''">Τεστ: Ερωτήσεις
             Συμπλήρωσης-Κενού σε Πίνακες</a>
+            <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTablesTrueOrFalse()"
+            [ngClass]="getChecked()=='tab5555' ? 'active':''">Τεστ: Ερωτήσεις
+            Σωστού-Λάθους σε Πίνακες</a>
         </div>
       </li>
       <li class="nav-item" *ngIf="role=='teacher'">

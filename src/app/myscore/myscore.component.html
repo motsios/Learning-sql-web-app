@@ -27,7 +27,7 @@
   </table>
 </div>
 <br>
-<h2 class="header center1">Τα υλοποιημένα Τεστ στις Ερωτήσεις Συμπλήρωσης-Kενού σε Πίνακες</h2><br>
+<h2 class="header center1">Τα υλοποιημένα Τεστ σε Ερωτήσεις στους δημιουργημένους Πίνακες</h2><br>
 <div style="height:400px; overflow: auto">
   <table class="table table-striped table-responsive-md btn-table form-container">
     <thead>
@@ -36,6 +36,7 @@
         <th scope="col">Επιτυχία</th>
         <th scope="col">Διάρκεια Τεστ</th>
         <th scope="col">Πίνακας</th>
+        <th scope="col">Τύπος άσκησης</th>
         <th scope="col">Ημερομηνία Επίτευξης</th>
       </tr>
     </thead>
@@ -45,6 +46,7 @@
         <td><b>{{rate.rate}}</b></td>
         <td><b>{{rate.time}}</b></td>
         <td><b>{{rate.table_name}}</b></td>
+        <td><b>{{rate.type_excersice}}</b></td>
         <td><b>{{rate.createdAt.slice(0,-41)}}</b></td>
       </tr>
     </tbody>

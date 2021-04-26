@@ -1,0 +1,138 @@
+.navbar {
+  background-color: rgb(61, 59, 59);
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  border-style: inset;
+  position: fixed;
+  text-align: left;
+  bottom: 0;
+  width: 100%;
+}
+hr.dashed {
+  border-top: 1px solid #bbb;
+  width: 150px;
+}
+.form-container {
+  background: rgb(196, 196, 196);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px;
+  margin: 0 auto;
+  margin-top: 0%;
+  text-align: center;
+  width: 80%;
+}
+.form-container2 {
+  background: rgb(122, 120, 120);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px;
+  margin: 0 auto;
+  margin-top: 0%;
+  text-align: center;
+  width: 80%;
+}
+
+.center1 {
+  border: 2px solid rgb(255, 255, 255);
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  background-color: rgb(61, 59, 59);
+  display: flex;
+  font-size: 40px;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  margin-left: 15%;
+  width: 70%;
+}
+.center {
+  display: flex;
+  color: aliceblue;
+  justify-content: center;
+  align-items: center;
+}
+.headers {
+  text-align: center;
+}
+input {
+  text-align: center;
+}
+.header {
+  font-size: 35px;
+}
+.table-container {
+  overflow-x: auto;
+}
+.red {
+  color: rgb(15, 15, 15);
+  right: 300px;
+  position: absolute;
+}
+ul li {
+  display: block;
+}
+
+ul li :hover,
+ul li :focus {
+  color: rgb(36, 67, 206);
+}
+.content {
+  color: rgb(37, 39, 41);
+  text-align: center;
+}
+.centerintotable {
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn1 {
+  width: 200px;
+  border-radius: 5px;
+}
+.socialSignInBtns {
+  display: block;
+
+  border-radius: 50%;
+  box-shadow: 0px 1px 10px 0px rgb(0, 0, 0);
+  border: 5px solid rgb(0, 0, 0);
+}
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: rgb(168, 171, 202);
+}
+.button {
+  border-radius: 50%;
+  border: 1px solid red;
+}
+.inputtext {
+  color: rgb(36, 18, 139);
+  font-size: 25px;
+  width: 80%;
+  height: 80px;
+  text-align: center;
+}
+.timer {
+  font-style: italic;
+  text-align: end;
+  font-size: x-large;
+  color: rgb(28, 47, 155);
+}
+.button2 {
+  color: aliceblue;
+  border-style: none;
+  background-color: transparent;
+}
+
+.truefalse{
+  color: rgb(0, 0, 0);
+  font-size: 25px;
+  text-shadow: 0ch;
+}
+
+.header1{
+  color: rgb(28, 47, 155);
+}
+

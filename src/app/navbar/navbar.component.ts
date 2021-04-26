@@ -22,12 +22,14 @@ export class NavbarComponent implements OnInit {
   myprofilePage() {
     NavbarComponent.checked = 'tab1';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/myprofile']);
   }
 
   logout() {
     NavbarComponent.checked = 'tab999';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -54,35 +56,41 @@ export class NavbarComponent implements OnInit {
   editprofile() {
     NavbarComponent.checked = 'tab99';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/editprofile']);
   }
 
   allstudentsPage() {
     NavbarComponent.checked = 'tab6';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/allstudentsprofile']);
   }
 
   sqlquestionsedit() {
     NavbarComponent.checked = 'tab3';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/sqlquestionstable']);
   }
 
   fillfieldquestionsedit() {
     NavbarComponent.checked = 'tab33';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/handlefillfieldquestions']);
   }
 
   myscores() {
     NavbarComponent.checked = 'tab9';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/myscores']);
   }
 
   start15Quiz() {
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     Swal.fire({
       title:
         'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 15 Ερωτήσεων',
@@ -108,6 +116,7 @@ export class NavbarComponent implements OnInit {
 
   start25Quiz() {
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     Swal.fire({
       title:
         'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 25 Ερωτήσεων',
@@ -135,47 +144,71 @@ export class NavbarComponent implements OnInit {
     if (localStorage.getItem('insideFillFieldQuestionsTable') == 'yes') {
       NavbarComponent.checked = 'tab1';
       localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+      localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
       this.router.navigate(['/myprofile']);
     } else {
       NavbarComponent.checked = 'tab555';
       localStorage.setItem('insideFillFieldQuestionsTable', 'yes');
+      localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
       this.router.navigate(['/questionsToTables/0']);
+    }
+  }
+
+  sqlQuestionsToTablesTrueOrFalse() {
+    if (
+      localStorage.getItem('insideFillFieldQuestionsTableTrueOrFalse') == 'yes'
+    ) {
+      NavbarComponent.checked = 'tab1';
+      localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+      localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
+      this.router.navigate(['/myprofile']);
+    } else {
+      NavbarComponent.checked = 'tab5555';
+      localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+      localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'yes');
+      this.router.navigate(['/questionsToTablesTrueOrFalse/0']);
     }
   }
 
   goToExistingShcema2() {
     NavbarComponent.checked = 'tab5';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/editExistingSchema']);
   }
 
   sqlfillfieldquestions() {
     NavbarComponent.checked = 'tab55';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/fillfieldsqlquestions/0']);
   }
 
   generateNewSchema() {
     NavbarComponent.checked = 'tab4';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/generateNewSchema']);
   }
 
   goToExistingShcema1() {
     NavbarComponent.checked = 'tab44';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/editExistingSchema']);
   }
 
   rankingPage() {
     NavbarComponent.checked = 'tab7';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/ranking']);
   }
 
   introSQL() {
     NavbarComponent.checked = 'tab8';
     localStorage.setItem('insideFillFieldQuestionsTable', 'no');
+    localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     this.router.navigate(['/theorySql']);
   }
 
