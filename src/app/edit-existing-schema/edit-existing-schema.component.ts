@@ -820,11 +820,80 @@ export class EditExistingSchemaComponent implements OnInit {
                 'success'
               );
 
+              /*  secondTableName +
+            '.' +
+            secondTableColumnsArray[1 % secondTableColumnsArray.length] +*/
+
               var arrayOfRandomSqlQueriesTrueOrFalse = [
+                // QUESTION 1
                 'SELECT ' +
                   secondTableName +
                   '.' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' INNER JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
                   secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  ' ORDER BY ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  ' DESC',
+                // QUESTION 2
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' INNER JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  ' ORDER BY ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  ' ASC, ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[3 % secondTableColumnsArray.length] +
+                  ' DESC',
+                // QUESTION 3
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
                   ', ' +
                   staticTableName +
                   '.' +
@@ -845,11 +914,163 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableName +
                   '.' +
                   staticTableKey +
-                  ' ORDER BY ' +
+                  ' WHERE ' +
                   secondTableName +
                   '.' +
                   secondTableConnectionKey +
-                  ' DESC',
+                  '>3',
+                // QUESTION 4
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' RIGHT JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  ' WHERE ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '<5',
+                // QUESTION 5
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' LEFT JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  ' WHERE ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  " LIKE '%e%'",
+                // QUESTION 6
+                'SELECT * FROM ' +
+                  this.statictablename +
+                  ' CROSS JOIN ' +
+                  secondTableName +
+                  ' WHERE ' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  '>1 AND ' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  '<7',
+                // QUESTION 7
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' LEFT JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey,
+                // QUESTION 8
+                'SELECT ' +
+                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' WHERE ' +
+                  secondTableConnectionKey +
+                  ' IN ( SELECT ' +
+                  staticTableKey +
+                  ' FROM ' +
+                  staticTableName +
+                  ' WHERE ' +
+                  staticTableKey +
+                  '<4 )',
+                // QUESTION 9
+                'SELECT ' +
+                  secondTableColumnsArray[2 % secondTableColumnsArray.length] +
+                  ', ' +
+                  secondTableColumnsArray[3 % secondTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' UNION SELECT ' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableColumnsArray[3 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  staticTableName,
+                // QUESTION 10
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[2 % secondTableColumnsArray.length] +
+                  ', ' +
+                  secondTableName +
+                  '.' +
+                  secondTableColumnsArray[3 % secondTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' RIGHT JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  ' WHERE NOT ' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  '=5',
               ];
 
               this.http
