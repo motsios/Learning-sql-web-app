@@ -61,7 +61,7 @@ export class GenerateNewSchemaComponent implements OnInit {
       })
       .then((result) => {
         if (result.isConfirmed) {
-         this.fieldArray.splice(index, 1);
+          this.fieldArray.splice(index, 1);
         }
       });
   }
@@ -227,7 +227,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                         title:
                           'Ο πίνακας ' +
                           this.tablename +
-                          ' δημιουργήθηκε επιτυχώς! Θέλετε να παραχθούν SQL Ερωτήματα για αυτόν;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στην κατηγορία "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες".  ',
+                          ' δημιουργήθηκε επιτυχώς! Θέλετε να παραχθούν SQL Ερωτήματα για αυτόν;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
                         showDenyButton: true,
                         allowOutsideClick: false,
                         icon: 'success',
@@ -360,6 +360,147 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[3 % max] +
                               ' IS NULL',
                           ];
+
+                          var arrayOfRandomSqlQueriesTrueOrFalse = [
+                            // QUESTION 1
+                            'SELECT * FROM ' + this.tablename,
+                            // QUESTION 2
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>1',
+                            // QUESTION 3
+                            'SELECT DISTINCT ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' FROM ' +
+                              this.tablename,
+                            // QUESTION 4
+                            'SELECT ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '=2',
+                            // QUESTION 5
+                            'SELECT MIN(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename,
+                            // QUESTION 6
+                            'SELECT COUNT(' +
+                              this.columnsNamesArray[1 % max] +
+                              ') FROM ' +
+                              this.tablename,
+                            // QUESTION 7
+                            'SELECT COUNT(' +
+                              this.columnsNamesArray[1 % max] +
+                              ') FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              ' BETWEEN 1 AND 5',
+                            // QUESTION 8
+                            'SELECT ' +
+                              this.columnsNamesArray[1 % max] +
+                              ', ' +
+                              this.columnsNamesArray[2 % max] +
+                              ' FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '=6 OR ' +
+                              this.columnsNamesArray[0 % max] +
+                              '=3',
+                            // QUESTION 9
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' ORDER BY ' +
+                              this.columnsNamesArray[4 % max] +
+                              ' ASC',
+                            // QUESTION 10
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' ORDER BY ' +
+                              this.columnsNamesArray[4 % max] +
+                              ' DESC',
+                            // QUESTION 11
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' ORDER BY ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' ASC, ' +
+                              this.columnsNamesArray[1 % max] +
+                              ' DESC',
+                            // QUESTION 12
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' GROUP BY ' +
+                              this.columnsNamesArray[2 % max],
+                            // QUESTION 13
+                            'SELECT AVG(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>2',
+                            // QUESTION 14
+                            'SELECT SUM(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>2',
+                            // QUESTION 15
+                            'SELECT ' +
+                              this.columnsNamesArray[3 % max] +
+                              ', ' +
+                              this.columnsNamesArray[4 % max] +
+                              ' FROM ' +
+                              this.tablename +
+                              ' WHERE NOT ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>2',
+                            // QUESTION 16
+                            'SELECT COUNT(DISTINCT ' +
+                              this.columnsNamesArray[3 % max] +
+                              ') ' +
+                              ' FROM ' +
+                              this.tablename,
+                            // QUESTION 17
+                            'SELECT ' +
+                              this.columnsNamesArray[3 % max] +
+                              ' FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[2 % max] +
+                              " LIKE 'a%'",
+                            // QUESTION 18
+                            'SELECT MAX(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') ' +
+                              ' FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '<3',
+                            // QUESTION 19
+                            'SELECT ' +
+                              this.columnsNamesArray[2 % max] +
+                              ' AS test' +
+                              ' FROM ' +
+                              this.tablename,
+                            // QUESTION 20
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[2 % max] +
+                              " LIKE '%a%'",
+                          ];
+
                           this.http
                             .post<any>(
                               this.url.baseUrl + 'addarrayofqueries',
@@ -399,12 +540,38 @@ export class GenerateNewSchemaComponent implements OnInit {
                                 data.result ==
                                 'Sql Queries successfully created!'
                               ) {
-                                Swal.fire(
-                                  'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
-                                  '',
-                                  'success'
-                                );
-                                this.router.navigate(['/editExistingSchema']);
+                                this.http
+                                  .post<any>(
+                                    this.url.baseUrl +
+                                      'addarrayofqueriestrueorfalse',
+                                    {
+                                      queriesArray: arrayOfRandomSqlQueriesTrueOrFalse,
+                                      table_name: this.tablename,
+                                    },
+                                    { headers }
+                                  )
+                                  .subscribe((data) => {
+                                    console.log(data);
+                                    if (
+                                      data.result ==
+                                      'Sql Queries successfully created!'
+                                    ) {
+                                      Swal.fire(
+                                        'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
+                                        '',
+                                        'success'
+                                      );
+                                      this.router.navigate([
+                                        '/editExistingSchema',
+                                      ]);
+                                    } else {
+                                      Swal.fire(
+                                        'Ουπς...',
+                                        'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                                        'error'
+                                      );
+                                    }
+                                  });
                               } else {
                                 Swal.fire(
                                   'Ουπς...',
@@ -434,7 +601,7 @@ export class GenerateNewSchemaComponent implements OnInit {
       }
     }
   }
-  info(){
+  info() {
     Swal.fire(
       '',
       'Με την "Προσθήκη νέου Πίνακα" οι Εκπαιδευόμενοι μπορούν να ελέγξουν πως συμπεριφέρονται δικά τους SELECT ερωτήματα στην κατηγορία "Εξάσκηση SQL ερωτήσεων σε υπάρχοντα σχήματα",και να επιλύσουν Τεστ με ερωτήσεις που δημιουργούνται από το σύστημα ή από εσάς...',

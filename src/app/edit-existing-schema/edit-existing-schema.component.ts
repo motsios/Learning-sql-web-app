@@ -117,7 +117,7 @@ export class EditExistingSchemaComponent implements OnInit {
         }
       });
 
-      this.http
+    this.http
       .post<any>(
         this.url.baseUrl + 'getallsqlqueriestrueorfalsefromspecifictable',
         { tablename: name },
@@ -126,7 +126,8 @@ export class EditExistingSchemaComponent implements OnInit {
       .subscribe((data) => {
         console.log(data.result);
         if (data.result) {
-          this.questionsTrueOrFalseOfEachTableArray = data.result.sql_random_queries_true_or_falses;
+          this.questionsTrueOrFalseOfEachTableArray =
+            data.result.sql_random_queries_true_or_falses;
         }
       });
 
@@ -572,7 +573,7 @@ export class EditExistingSchemaComponent implements OnInit {
     );
     Swal.fire({
       title:
-        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στην κατηγορία "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες".  ',
+        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
       showDenyButton: true,
       allowOutsideClick: false,
       icon: 'success',
@@ -819,17 +820,72 @@ export class EditExistingSchemaComponent implements OnInit {
                 'success'
               );
 
-              this.tableArrayName = [];
-              this.tableColumnsArray = [];
-              this.tableColumnsArray2 = [];
-              this.dataOfEachTableArray = [];
-              this.onlyColumnsArray = [];
-              this.header_tale_name = '';
-              this.questionsOfEachTableArray = [];
-              this.questionsTrueOrFalseOfEachTableArray = [];
+              var arrayOfRandomSqlQueriesTrueOrFalse = [
+                'SELECT ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[1 % staticTableColumnsArray.length] +
+                  ', ' +
+                  staticTableName +
+                  '.' +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
+                  ' FROM ' +
+                  secondTableName +
+                  ' RIGHT JOIN ' +
+                  staticTableName +
+                  ' ON ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  '=' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  ' ORDER BY ' +
+                  secondTableName +
+                  '.' +
+                  secondTableConnectionKey +
+                  ' DESC',
+              ];
 
-              this.ngOnInit();
-              this.eachTableColumns(this.statictable, this.statictablename);
+              this.http
+                .post<any>(
+                  this.url.baseUrl + 'addarrayofqueriestrueorfalse',
+                  {
+                    queriesArray: arrayOfRandomSqlQueriesTrueOrFalse,
+                    table_name: staticTableName,
+                  },
+                  { headers }
+                )
+                .subscribe((data) => {
+                  console.log(data);
+                  if (data.result == 'Sql Queries successfully created!') {
+                    this.tableArrayName = [];
+                    this.tableColumnsArray = [];
+                    this.tableColumnsArray2 = [];
+                    this.dataOfEachTableArray = [];
+                    this.onlyColumnsArray = [];
+                    this.header_tale_name = '';
+                    this.questionsOfEachTableArray = [];
+                    this.questionsTrueOrFalseOfEachTableArray = [];
+
+                    this.ngOnInit();
+                    this.eachTableColumns(
+                      this.statictable,
+                      this.statictablename
+                    );
+                  } else {
+                    Swal.fire(
+                      'Ουπς...',
+                      'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                      'error'
+                    );
+                  }
+                });
             } else {
               Swal.fire(
                 'Ουπς...',
@@ -949,7 +1005,7 @@ export class EditExistingSchemaComponent implements OnInit {
       tablename: this.header_tale_name,
     };
     let dialog = this.matDialog.open(
-        DialogSqlQueryTrueOrFalseTableComponent,
+      DialogSqlQueryTrueOrFalseTableComponent,
       dialogConfig
     );
     dialog.afterClosed().subscribe((result) => {
@@ -1065,7 +1121,9 @@ export class EditExistingSchemaComponent implements OnInit {
         };
         this.http
           .delete<any>(
-            this.url.baseUrl + 'deleteonesqlquerytrueorfalsefromspecifictable/' + id,
+            this.url.baseUrl +
+              'deleteonesqlquerytrueorfalsefromspecifictable/' +
+              id,
             { headers }
           )
           .subscribe(
@@ -1496,7 +1554,7 @@ export class EditExistingSchemaComponent implements OnInit {
   info() {
     Swal.fire(
       '',
-      'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL Ερωτήματα που χρησιμοποιούνται στην κατηγορία "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" των Εκπαιδευομένων...',
+      'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL Ερωτήματα που χρησιμοποιούνται στις κατηγορίες "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες" των Εκπαιδευομένων...',
       'info'
     );
   }
