@@ -8,6 +8,7 @@ import { DialogShowQueryResultsComponent } from '../dialog-show-query-results/di
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DialogSqlQueryTableComponent } from '../dialog-sql-query-table/dialog-sql-query-table.component';
 import { Router } from '@angular/router';
+import { DialogSqlQueryTrueOrFalseTableComponent } from '../dialog-sql-query-true-or-false-table/dialog-sql-query-true-or-false-table.component';
 
 @Component({
   selector: 'app-edit-existing-schema',
@@ -23,6 +24,7 @@ export class EditExistingSchemaComponent implements OnInit {
   onlyColumnsArray = [];
   header_tale_name = '';
   questionsOfEachTableArray = [];
+  questionsTrueOrFalseOfEachTableArray = [];
   statictable;
   statictablename = '';
   role = '';
@@ -112,6 +114,19 @@ export class EditExistingSchemaComponent implements OnInit {
         console.log(data.result);
         if (data.result) {
           this.questionsOfEachTableArray = data.result.sql_random_queries;
+        }
+      });
+
+      this.http
+      .post<any>(
+        this.url.baseUrl + 'getallsqlqueriestrueorfalsefromspecifictable',
+        { tablename: name },
+        { headers }
+      )
+      .subscribe((data) => {
+        console.log(data.result);
+        if (data.result) {
+          this.questionsTrueOrFalseOfEachTableArray = data.result.sql_random_queries_true_or_falses;
         }
       });
 
@@ -209,6 +224,8 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.onlyColumnsArray = [];
                 this.header_tale_name = '';
                 this.questionsOfEachTableArray = [];
+                this.questionsTrueOrFalseOfEachTableArray = [];
+
                 Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
@@ -257,6 +274,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   this.onlyColumnsArray = [];
                   this.header_tale_name = '';
                   this.questionsOfEachTableArray = [];
+                  this.questionsTrueOrFalseOfEachTableArray = [];
+
                   Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
                   this.ngOnInit();
                   this.eachTableColumns(this.statictable, this.statictablename);
@@ -275,6 +294,8 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.onlyColumnsArray = [];
                 this.header_tale_name = '';
                 this.questionsOfEachTableArray = [];
+                this.questionsTrueOrFalseOfEachTableArray = [];
+
                 Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
@@ -304,6 +325,8 @@ export class EditExistingSchemaComponent implements OnInit {
       this.onlyColumnsArray = [];
       this.header_tale_name = '';
       this.questionsOfEachTableArray = [];
+      this.questionsTrueOrFalseOfEachTableArray = [];
+
       this.ngOnInit();
       this.eachTableColumns(this.statictable, this.statictablename);
     });
@@ -803,6 +826,8 @@ export class EditExistingSchemaComponent implements OnInit {
               this.onlyColumnsArray = [];
               this.header_tale_name = '';
               this.questionsOfEachTableArray = [];
+              this.questionsTrueOrFalseOfEachTableArray = [];
+
               this.ngOnInit();
               this.eachTableColumns(this.statictable, this.statictablename);
             } else {
@@ -821,6 +846,8 @@ export class EditExistingSchemaComponent implements OnInit {
         this.onlyColumnsArray = [];
         this.header_tale_name = '';
         this.questionsOfEachTableArray = [];
+        this.questionsTrueOrFalseOfEachTableArray = [];
+
         this.ngOnInit();
         this.eachTableColumns(this.statictable, this.statictablename);
       }
@@ -882,6 +909,8 @@ export class EditExistingSchemaComponent implements OnInit {
                           this.onlyColumnsArray = [];
                           this.header_tale_name = '';
                           this.questionsOfEachTableArray = [];
+                          this.questionsTrueOrFalseOfEachTableArray = [];
+
                           Swal.fire(
                             '',
                             'Ο πίνακας ' + tablename + ' διαγράφτηκε επιτυχώς!',
@@ -910,6 +939,34 @@ export class EditExistingSchemaComponent implements OnInit {
       });
   }
 
+  updateQuestionTrueOrFalse(id, sql_query) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = {
+      edit: 'true',
+      id,
+      sql_query,
+      tablename: this.header_tale_name,
+    };
+    let dialog = this.matDialog.open(
+        DialogSqlQueryTrueOrFalseTableComponent,
+      dialogConfig
+    );
+    dialog.afterClosed().subscribe((result) => {
+      this.tableArrayName = [];
+      this.tableColumnsArray = [];
+      this.tableColumnsArray2 = [];
+      this.dataOfEachTableArray = [];
+      this.onlyColumnsArray = [];
+      this.header_tale_name = '';
+      this.questionsOfEachTableArray = [];
+      this.questionsTrueOrFalseOfEachTableArray = [];
+
+      this.ngOnInit();
+      this.eachTableColumns(this.statictable, this.statictablename);
+    });
+  }
+
   updateQuestion(id, sql_query, hideWord) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -932,6 +989,8 @@ export class EditExistingSchemaComponent implements OnInit {
       this.onlyColumnsArray = [];
       this.header_tale_name = '';
       this.questionsOfEachTableArray = [];
+      this.questionsTrueOrFalseOfEachTableArray = [];
+
       this.ngOnInit();
       this.eachTableColumns(this.statictable, this.statictablename);
     });
@@ -968,6 +1027,60 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.onlyColumnsArray = [];
                 this.header_tale_name = '';
                 this.questionsOfEachTableArray = [];
+                this.questionsTrueOrFalseOfEachTableArray = [];
+
+                Swal.fire('', 'Το SQL Ερώτημα διαγράφτηκε επιτυχώς', 'success');
+                this.ngOnInit();
+                this.eachTableColumns(this.statictable, this.statictablename);
+              } else {
+                Swal.fire(
+                  'Ουπς...',
+                  'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+                  'error'
+                );
+              }
+            },
+            (error) => {
+              Swal.fire('Oops...', error, 'error');
+            }
+          );
+      }
+    });
+  }
+
+  removeQuestionTrueOrFalse(id) {
+    Swal.fire({
+      title: 'Είστε σίγουρος για την διαγραφή του SQL Ερωτήματος?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ναι, διαγραφή!',
+      cancelButtonText: 'Ακύρωση',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const headers = {
+          'Content-Type': 'application/json; charset=UTF-8',
+          Authorization: localStorage.getItem('token'),
+        };
+        this.http
+          .delete<any>(
+            this.url.baseUrl + 'deleteonesqlquerytrueorfalsefromspecifictable/' + id,
+            { headers }
+          )
+          .subscribe(
+            (data) => {
+              console.log(data);
+              if (data.result != 0) {
+                this.tableArrayName = [];
+                this.tableColumnsArray = [];
+                this.tableColumnsArray2 = [];
+                this.dataOfEachTableArray = [];
+                this.onlyColumnsArray = [];
+                this.header_tale_name = '';
+                this.questionsOfEachTableArray = [];
+                this.questionsTrueOrFalseOfEachTableArray = [];
+
                 Swal.fire('', 'Το SQL Ερώτημα διαγράφτηκε επιτυχώς', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
@@ -1003,6 +1116,31 @@ export class EditExistingSchemaComponent implements OnInit {
       this.onlyColumnsArray = [];
       this.header_tale_name = '';
       this.questionsOfEachTableArray = [];
+      this.questionsTrueOrFalseOfEachTableArray = [];
+
+      this.ngOnInit();
+      this.eachTableColumns(this.statictable, this.statictablename);
+    });
+  }
+
+  addQuestionTrueOrFalse() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = { edit: 'false', tablename: this.header_tale_name };
+    let dialog = this.matDialog.open(
+      DialogSqlQueryTrueOrFalseTableComponent,
+      dialogConfig
+    );
+    dialog.afterClosed().subscribe((result) => {
+      this.tableArrayName = [];
+      this.tableColumnsArray = [];
+      this.tableColumnsArray2 = [];
+      this.dataOfEachTableArray = [];
+      this.onlyColumnsArray = [];
+      this.header_tale_name = '';
+      this.questionsOfEachTableArray = [];
+      this.questionsTrueOrFalseOfEachTableArray = [];
+
       this.ngOnInit();
       this.eachTableColumns(this.statictable, this.statictablename);
     });
@@ -1030,6 +1168,8 @@ export class EditExistingSchemaComponent implements OnInit {
           this.onlyColumnsArray = [];
           this.header_tale_name = '';
           this.questionsOfEachTableArray = [];
+          this.questionsTrueOrFalseOfEachTableArray = [];
+
           Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
           this.ngOnInit();
           this.eachTableColumns(this.statictable, this.statictablename);
@@ -1078,6 +1218,8 @@ export class EditExistingSchemaComponent implements OnInit {
             this.onlyColumnsArray = [];
             this.header_tale_name = '';
             this.questionsOfEachTableArray = [];
+            this.questionsTrueOrFalseOfEachTableArray = [];
+
             Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
             this.ngOnInit();
             this.eachTableColumns(this.statictable, this.statictablename);
@@ -1096,6 +1238,8 @@ export class EditExistingSchemaComponent implements OnInit {
           this.onlyColumnsArray = [];
           this.header_tale_name = '';
           this.questionsOfEachTableArray = [];
+          this.questionsTrueOrFalseOfEachTableArray = [];
+
           Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
           this.ngOnInit();
           this.eachTableColumns(this.statictable, this.statictablename);
@@ -1218,6 +1362,8 @@ export class EditExistingSchemaComponent implements OnInit {
                             this.onlyColumnsArray = [];
                             this.header_tale_name = '';
                             this.questionsOfEachTableArray = [];
+                            this.questionsTrueOrFalseOfEachTableArray = [];
+
                             this.ngOnInit();
                           } else {
                             Swal.fire(
@@ -1296,6 +1442,8 @@ export class EditExistingSchemaComponent implements OnInit {
                         this.onlyColumnsArray = [];
                         this.header_tale_name = '';
                         this.questionsOfEachTableArray = [];
+                        this.questionsTrueOrFalseOfEachTableArray = [];
+
                         this.ngOnInit();
                       } else {
                         Swal.fire(

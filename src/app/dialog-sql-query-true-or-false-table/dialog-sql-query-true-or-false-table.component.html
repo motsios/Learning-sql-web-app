@@ -1,0 +1,22 @@
+<div class="md-dialog-container">
+  <h2 style="text-align: center" *ngIf="edit=='true'">Επεξεργασία SQL Ερωτήματος...</h2>
+  <h2 style="text-align: center" *ngIf="edit=='false'">Προσθήκη SQL Ερωτήματος...</h2>
+  <hr>
+  <br>
+  <form class="form-container" [formGroup]="editoraddForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="sql_query">SQL ερώτημα</label>
+      <input type="sql_query" formControlName="sql_query" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.sql_query.errors }" />
+      <div *ngIf="submitted && f.sql_query.errors" class="invalid-feedback">
+        <div *ngIf="f.sql_query.errors.required">Το SQL ερώτημα απαιτείται</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">
+        Αποθήκευση
+      </button>
+      <a class="btn btn-link" (click)="close()">Ακύρωση</a>
+    </div>
+  </form>
+</div>

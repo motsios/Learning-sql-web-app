@@ -22,7 +22,6 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
   seconddataOfEachTableArray = [];
   header_tale_name = '';
   fillfieldsquestionsArray = [];
-  hideWordArray = [];
   role = '';
   secondTable = '';
   questionid = '0';
@@ -38,7 +37,6 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
   load = false;
   questionWithField = '';
   heddenWords = '';
-  splitWords = [];
   hiddenWordsArray = [];
 
   public selection: string;
@@ -169,7 +167,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
 
     this.http
       .post<any>(
-        this.url.baseUrl + 'getallsqlqueriesfromspecifictable',
+        this.url.baseUrl + 'getallsqlqueriestrueorfalsefromspecifictable',
         { tablename: name },
         { headers }
       )
@@ -177,7 +175,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
         this.load = true;
         console.log(data.result);
         if (data.result) {
-          this.fillfieldsquestionsArray = data.result.sql_random_queries;
+          this.fillfieldsquestionsArray = data.result.sql_random_queries_true_or_falses;
           console.log(this.fillfieldsquestionsArray);
 
           if (this.fillfieldsquestionsArray.length == 0) {
@@ -196,7 +194,6 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             this.seconddataOfEachTableArray = [];
             this.header_tale_name = '';
             this.fillfieldsquestionsArray = [];
-            this.hideWordArray = [];
             this.role = '';
             this.secondTable = '';
             this.questionid = '0';
@@ -212,22 +209,21 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             this.load = false;
             this.questionWithField = '';
             this.heddenWords = '';
-            this.splitWords = [];
             clearInterval(this.interval);
             this.ngOnInit();
           } else {
             this.random = this.randomInteger(1, 2);
             if (this.random == 1) {
-              this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
+              this.questionWithField = this.fillfieldsquestionsArray[0].sql_query_true_or_false;
             } else {
               var nextQueryShows = 1 % this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
               this.questionWithField = this.fillfieldsquestionsArray[
                 nextQueryShows
-              ].sql_query;
+              ].sql_query_true_or_false;
             }
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[0].sql_query,
+              sqlQueryString: this.fillfieldsquestionsArray[0].sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {
@@ -308,7 +304,6 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
                   this.seconddataOfEachTableArray = [];
                   this.header_tale_name = '';
                   this.fillfieldsquestionsArray = [];
-                  this.hideWordArray = [];
                   this.role = '';
                   this.secondTable = '';
                   this.questionid = '0';
@@ -431,14 +426,14 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             if (this.random == 1) {
               this.questionWithField = this.fillfieldsquestionsArray[
                 this.questionidToNumber
-              ].sql_query;
+              ].sql_query_true_or_false;
             } else {
               var nextQueryShows =
                 (this.questionidToNumber+1) % this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
               this.questionWithField = this.fillfieldsquestionsArray[
                 nextQueryShows
-              ].sql_query;
+              ].sql_query_true_or_false;
             }
 
             const headers = {
@@ -448,7 +443,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             const body = {
               sqlQueryString: this.fillfieldsquestionsArray[
                 this.questionidToNumber
-              ].sql_query,
+              ].sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {
@@ -580,14 +575,14 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             if (this.random == 1) {
               this.questionWithField = this.fillfieldsquestionsArray[
                 this.questionidToNumber
-              ].sql_query;
+              ].sql_query_true_or_false;
             } else {
               var nextQueryShows =
               (this.questionidToNumber+1) % this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
               this.questionWithField = this.fillfieldsquestionsArray[
                 nextQueryShows
-              ].sql_query;
+              ].sql_query_true_or_false;
             }
 
             const headers = {
@@ -597,7 +592,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             const body = {
               sqlQueryString: this.fillfieldsquestionsArray[
                 this.questionidToNumber
-              ].sql_query,
+              ].sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {

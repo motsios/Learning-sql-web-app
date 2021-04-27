@@ -5,28 +5,30 @@
       <h3>Πίνακες:</h3>
       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       <ul *ngFor="let name of tableArrayName;">
-        <li (click)="eachTableColumns(name,name.table_name)"><a><button class="button2">-{{name.table_name}}</button></a></li>
+        <li (click)="eachTableColumns(name,name.table_name)"><a><button
+              class="button2">-{{name.table_name}}</button></a></li>
       </ul>
     </section>
   </nav>
 </div>
-<h1 *ngIf="header_tale_name=='' && role=='teacher'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο &nbsp;<button class="button2"
-  (click)="info()"><i class="fa fa-info-circle"></i></button></h1>
+<h1 *ngIf="header_tale_name=='' && role=='teacher'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο &nbsp;<button
+    class="button2" (click)="info()"><i class="fa fa-info-circle"></i></button></h1>
 <h1 *ngIf="header_tale_name=='' && role=='student'" class="center1">Επιλέξτε έναν Πίνακα για Είσοδο</h1>
 <div *ngIf="role=='student'">
   <br>
   <br> <br>
 </div>
-<h1 *ngIf="header_tale_name!=''" class="center"><button class="button1"><i class="fa fa-trash-o  fa-border socialSignInBtns"
-    data-fa-mask="fas fa-circle" style="color:rgb(0, 0, 0) !important; " (click)="delete(header_tale_name)"
-    *ngIf="role=='teacher'"></i></button>&nbsp;&nbsp;Πίνακας "{{header_tale_name}}" </h1>
+<h1 *ngIf="header_tale_name!=''" class="center"><button class="button1"><i
+      class="fa fa-trash-o  fa-border socialSignInBtns" data-fa-mask="fas fa-circle"
+      style="color:rgb(0, 0, 0) !important; " (click)="delete(header_tale_name)"
+      *ngIf="role=='teacher'"></i></button>&nbsp;&nbsp;Πίνακας "{{header_tale_name}}" </h1>
 <br>
 <div *ngIf="header_tale_name!='' && role=='student'" style="height:600px; table-layout: auto; overflow: auto">
   <table class="table table-striped form-container table-container">
     <thead>
       <tr>
         <th *ngFor="let field of tableColumnsArray;" class="headers"><i *ngIf="foreignkeyColumn===field.COLUMN_NAME"
-          class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button1"
+            class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button1"
             (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
         </th>
       </tr>
@@ -43,7 +45,7 @@
     <thead>
       <tr>
         <th *ngFor="let field of tableColumnsArray;" class="headers"><i *ngIf="foreignkeyColumn===field.COLUMN_NAME"
-          class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button1"
+            class="fa fa-key" aria-hidden="true"></i>&nbsp;{{field.COLUMN_NAME}}&nbsp;<button class="button1"
             (click)="openInfoSwal(field)"><i class="fa fa-info-circle"></i></button>
         </th>
     </thead>
@@ -71,7 +73,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">SQL Ερώτημα</th>
+        <th scope="col">SQL Ερώτημα συμπλήρωσης-κενού άσκησης</th>
         <th scope="col">Αποκρ.Λέξεις</th>
         <th scope="col" style="width:15%;">Ενέργειες</th>
       </tr>
@@ -97,6 +99,37 @@
 </div>
 <div *ngIf="header_tale_name!=''" class="centerintotable" style="text-align: center"> <button type="button"
     class="btn1 btn-primary py-1 px-2" (click)="addQuestion()" *ngIf="role=='teacher'"><i
+      class="fa fa-plus fa-lg"></i></button></div>
+<br>
+<div *ngIf="header_tale_name!='' && role=='teacher'" style="height:500px; overflow: auto">
+  <table class="table table-striped form-container table-container" style="width:70%">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">SQL Ερώτημα σωστού-λάθους άσκησης</th>
+        <th scope="col" style="width:15%;">Ενέργειες</th>
+      </tr>
+    </thead>
+    <tbody class="content">
+      <tr *ngFor="let question of questionsTrueOrFalseOfEachTableArray;let i=index;">
+        <td><b>{{i+1}}</b></td>
+        <td><b>{{question.sql_query_true_or_false}}</b></td>
+        <td>
+          &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="executeQuery(question.sql_query_true_or_false)"><i
+              class="fa fa-check"></i></button>&nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="updateQuestionTrueOrFalse(question.id,question.sql_query_true_or_false)" *ngIf="role=='teacher'"><i
+              class="fa fa-pencil"></i></button> &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="removeQuestionTrueOrFalse(question.id)"
+            *ngIf="role=='teacher'"><i class="fa fa-trash-o"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="header_tale_name!=''" class="centerintotable" style="text-align: center"> <button type="button"
+    class="btn1 btn-primary py-1 px-2" (click)="addQuestionTrueOrFalse()" *ngIf="role=='teacher'"><i
       class="fa fa-plus fa-lg"></i></button></div>
 
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
