@@ -192,6 +192,7 @@ export class EditExistingSchemaComponent implements OnInit {
           if (
             query.toLowerCase().includes('excersice_tables') ||
             query.toLowerCase().includes('sql_random_queries') ||
+            query.toLowerCase().includes('sql_random_queries_true_or_false') ||
             query.toLowerCase().includes('fill_fields_questions') ||
             query.toLowerCase().includes('user_table') ||
             query.toLowerCase().includes('sql_questions') ||
@@ -212,7 +213,7 @@ export class EditExistingSchemaComponent implements OnInit {
             sqlQueryString: query,
           };
           this.http
-            .post<any>(this.url.baseUrl + 'executesqlquery', body, {
+            .post<any>(this.url.baseUrl + 'executesqlquerystudent', body, {
               headers,
             })
             .subscribe((data) => {
@@ -243,6 +244,13 @@ export class EditExistingSchemaComponent implements OnInit {
                   }
                 });
               } else if (data.result) {
+                if(data.result.careful){
+                  return  Swal.fire(
+                    'Αδυναμία εκτέλεσης!',
+                    'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
+                    'info'
+                  );
+                }
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
                     Swal.fire(
