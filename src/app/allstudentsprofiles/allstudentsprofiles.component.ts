@@ -368,7 +368,7 @@ export class AllstudentsprofilesComponent implements OnInit {
                 'Apr',
                 'Απρίλιος'
               );
-            else if (data.result[0].success_ratess[i].createdAt.includes('May'))
+            else if (data.result[0].success_rates[i].createdAt.includes('May'))
               data.result[0].success_rates[
                 i
               ].createdAt = data.result[0].success_rates[i].createdAt.replace(
