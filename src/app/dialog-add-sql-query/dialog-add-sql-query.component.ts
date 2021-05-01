@@ -41,7 +41,12 @@ export class DialogAddSqlQueryComponent implements OnInit {
       this.onlyColumnsArray.push(
         this.datacolumns.tableColumnsArray[i].COLUMN_NAME
       );
-      if (this.valuesArray[i] === undefined) {
+      console.log(this.valuesArray[i]);
+      if (
+        this.valuesArray[i] === undefined ||
+        this.valuesArray[i] == '' ||
+        this.valuesArray[i] == ' '
+      ) {
         this.valuesArray[i] = 'null';
         addearsArray.push(this.valuesArray[i]);
       } else {
