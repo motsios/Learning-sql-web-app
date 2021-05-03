@@ -376,7 +376,9 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               'Content-Type': 'application/json; charset=UTF-8',
               Authorization: localStorage.getItem('token'),
             };
-            const body = {
+            var body = {};
+            if (this.secondTable == '') {
+             body = {
               rate:
                 'Σωστές ' +
                 this.correctAnswers +
@@ -384,8 +386,20 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
                 this.fillfieldsquestionsArray.length,
               table_name: this.header_tale_name,
               time: this.converttimer,
-              type_excersice: 'Σωστό-λάθος',
+              type_excersice: 'Σωστό-λάθος σε 1 πίνακα',
             };
+          }else{
+            body = {
+              rate:
+                'Σωστές ' +
+                this.correctAnswers +
+                ' στις ' +
+                this.fillfieldsquestionsArray.length,
+              table_name: this.header_tale_name,
+              time: this.converttimer,
+              type_excersice: 'Σωστό-λάθος σε 2 πίνακες',
+            };
+          }
             this.http
               .post<any>(
                 this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
@@ -525,7 +539,9 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               'Content-Type': 'application/json; charset=UTF-8',
               Authorization: localStorage.getItem('token'),
             };
-            const body = {
+            var body = {};
+            if (this.secondTable == '') {
+             body = {
               rate:
                 'Σωστές ' +
                 this.correctAnswers +
@@ -533,8 +549,20 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
                 this.fillfieldsquestionsArray.length,
               table_name: this.header_tale_name,
               time: this.converttimer,
-              type_excersice: 'Σωστό-λάθος',
+              type_excersice: 'Σωστό-λάθος σε 1 πίνακα',
             };
+          }else{
+            body = {
+              rate:
+                'Σωστές ' +
+                this.correctAnswers +
+                ' στις ' +
+                this.fillfieldsquestionsArray.length,
+              table_name: this.header_tale_name,
+              time: this.converttimer,
+              type_excersice: 'Σωστό-λάθος σε 2 πίνακες',
+            };
+          }
             this.http
               .post<any>(
                 this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),

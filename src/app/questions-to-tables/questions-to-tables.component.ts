@@ -359,6 +359,7 @@ export class QuestionsToTablesComponent implements OnInit {
         confirmButtonText: 'Συνέχεια',
       }).then((result) => {
         if (result.isConfirmed) {
+          var body = {};
           this.errorText = '';
           if (
             this.fillfieldsquestionsArray.length - 2 <
@@ -371,16 +372,29 @@ export class QuestionsToTablesComponent implements OnInit {
               'Content-Type': 'application/json; charset=UTF-8',
               Authorization: localStorage.getItem('token'),
             };
-            const body = {
-              rate:
-                'Σωστές ' +
-                this.correctAnswers +
-                ' στις ' +
-                this.fillfieldsquestionsArray.length,
-              table_name: this.header_tale_name,
-              time: this.converttimer,
-              type_excersice:"Συμπλήρωση-κενού"
-            };
+            if (this.secondTable == '') {
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Συμπλήρωση-κενού σε 1 πίνακα',
+              };
+            } else {
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Συμπλήρωση-κενού σε 2 πίνακες',
+              };
+            }
             this.http
               .post<any>(
                 this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
@@ -401,7 +415,10 @@ export class QuestionsToTablesComponent implements OnInit {
                     'success'
                   );
                   localStorage.setItem('insideFillFieldQuestionsTable', 'no');
-                  localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
+                  localStorage.setItem(
+                    'insideFillFieldQuestionsTableTrueOrFalse',
+                    'no'
+                  );
                   this.router.navigate(['/myscores']);
                 } else {
                   Swal.fire(
@@ -518,21 +535,34 @@ export class QuestionsToTablesComponent implements OnInit {
           ) {
             clearInterval(this.interval);
             this.timer = 0;
-
+            var body = {};
             const headers = {
               'Content-Type': 'application/json; charset=UTF-8',
               Authorization: localStorage.getItem('token'),
             };
-            const body = {
-              rate:
-                'Σωστές ' +
-                this.correctAnswers +
-                ' στις ' +
-                this.fillfieldsquestionsArray.length,
-              table_name: this.header_tale_name,
-              time: this.converttimer,
-              type_excersice:"Συμπλήρωση-κενού"
-            };
+            if (this.secondTable == '') {
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Συμπλήρωση-κενού σε 1 πίνακα',
+              };
+            } else {
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Συμπλήρωση-κενού σε 2 πίνακες',
+              };
+            }
             this.http
               .post<any>(
                 this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
@@ -553,9 +583,11 @@ export class QuestionsToTablesComponent implements OnInit {
                     'success'
                   );
                   localStorage.setItem('insideFillFieldQuestionsTable', 'no');
-                  localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
+                  localStorage.setItem(
+                    'insideFillFieldQuestionsTableTrueOrFalse',
+                    'no'
+                  );
                   this.router.navigate(['/myscores']);
-
                 } else {
                   Swal.fire(
                     'Ουπς...',
