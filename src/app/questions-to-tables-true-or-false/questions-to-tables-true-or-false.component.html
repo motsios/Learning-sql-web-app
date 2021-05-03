@@ -5,7 +5,8 @@
       <h3>Πίνακες:</h3>
       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       <ul *ngFor="let name of tableArrayName;">
-        <li (click)="eachTableColumns(name,name.table_name)"><a><button class="button2">-{{name.table_name}}</button></a></li>
+        <li (click)="eachTableColumns(name,name.table_name)"><a><button
+              class="button2">-{{name.table_name}}</button></a></li>
       </ul>
     </section>
   </nav>
@@ -66,13 +67,18 @@
     </div>
   </div>
   <br>
-  <h4><div class="header1"><label
-    *ngIf="load!=false"   for="fname"><b>{{questionidToNumber+1}}.{{questionWithField}}</b></label></div>
+  <h4>
+    <div class="header1"><label *ngIf="load!=false"
+        for="fname"><b>{{questionidToNumber+1}}.{{questionWithField}}</b></label></div>
   </h4>
   <mat-radio-group [(ngModel)]="selection" #radioGroup="matRadioGroup">
-    <mat-radio-button color="primary" value="1"><div class="truefalse">Σωστό</div></mat-radio-button><br>
-    <mat-radio-button color="primary" value="2"><div class="truefalse">Λάθος</div></mat-radio-button>
-</mat-radio-group>
+    <mat-radio-button color="primary" value="1">
+      <div class="truefalse">Σωστό</div>
+    </mat-radio-button><br>
+    <mat-radio-button color="primary" value="2">
+      <div class="truefalse">Λάθος</div>
+    </mat-radio-button>
+  </mat-radio-group>
   <br><br>
   <div class="form-group">
     <button class="btn btn-primary" (click)="next()">

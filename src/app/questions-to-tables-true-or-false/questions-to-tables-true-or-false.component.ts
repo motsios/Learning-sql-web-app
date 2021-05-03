@@ -175,7 +175,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
         this.load = true;
         console.log(data.result);
         if (data.result) {
-          this.fillfieldsquestionsArray = data.result.sql_random_queries_true_or_falses;
+          this.fillfieldsquestionsArray =
+            data.result.sql_random_queries_true_or_falses;
           console.log(this.fillfieldsquestionsArray);
 
           if (this.fillfieldsquestionsArray.length == 0) {
@@ -223,7 +224,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               ].sql_query_true_or_false;
             }
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[0].sql_query_true_or_false,
+              sqlQueryString: this.fillfieldsquestionsArray[0]
+                .sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {
@@ -332,9 +334,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
   }
 
   next() {
-
-    if(this.selection==undefined){
-     return Swal.fire('', 'Επιλέξτε μία απάντηση', 'info');
+    if (this.selection == undefined) {
+      return Swal.fire('', 'Επιλέξτε μία απάντηση', 'info');
     }
     console.log(this.selection);
     console.log(this.random);
@@ -378,28 +379,28 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             };
             var body = {};
             if (this.secondTable == '') {
-             body = {
-              rate:
-                'Σωστές ' +
-                this.correctAnswers +
-                ' στις ' +
-                this.fillfieldsquestionsArray.length,
-              table_name: this.header_tale_name,
-              time: this.converttimer,
-              type_excersice: 'Σωστό-λάθος σε 1 πίνακα',
-            };
-          }else{
-            body = {
-              rate:
-                'Σωστές ' +
-                this.correctAnswers +
-                ' στις ' +
-                this.fillfieldsquestionsArray.length,
-              table_name: this.header_tale_name,
-              time: this.converttimer,
-              type_excersice: 'Σωστό-λάθος σε 2 πίνακες',
-            };
-          }
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Σωστό-λάθος σε 1 πίνακα',
+              };
+            } else {
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Σωστό-λάθος σε 2 πίνακες',
+              };
+            }
             this.http
               .post<any>(
                 this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
@@ -443,7 +444,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               ].sql_query_true_or_false;
             } else {
               var nextQueryShows =
-                (this.questionidToNumber+1) % this.fillfieldsquestionsArray.length;
+                (this.questionidToNumber + 1) %
+                this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
               this.questionWithField = this.fillfieldsquestionsArray[
                 nextQueryShows
@@ -541,28 +543,28 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             };
             var body = {};
             if (this.secondTable == '') {
-             body = {
-              rate:
-                'Σωστές ' +
-                this.correctAnswers +
-                ' στις ' +
-                this.fillfieldsquestionsArray.length,
-              table_name: this.header_tale_name,
-              time: this.converttimer,
-              type_excersice: 'Σωστό-λάθος σε 1 πίνακα',
-            };
-          }else{
-            body = {
-              rate:
-                'Σωστές ' +
-                this.correctAnswers +
-                ' στις ' +
-                this.fillfieldsquestionsArray.length,
-              table_name: this.header_tale_name,
-              time: this.converttimer,
-              type_excersice: 'Σωστό-λάθος σε 2 πίνακες',
-            };
-          }
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Σωστό-λάθος σε 1 πίνακα',
+              };
+            } else {
+              body = {
+                rate:
+                  'Σωστές ' +
+                  this.correctAnswers +
+                  ' στις ' +
+                  this.fillfieldsquestionsArray.length,
+                table_name: this.header_tale_name,
+                time: this.converttimer,
+                type_excersice: 'Σωστό-λάθος σε 2 πίνακες',
+              };
+            }
             this.http
               .post<any>(
                 this.url.baseUrl + 'addarate/' + localStorage.getItem('id'),
@@ -606,7 +608,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               ].sql_query_true_or_false;
             } else {
               var nextQueryShows =
-              (this.questionidToNumber+1) % this.fillfieldsquestionsArray.length;
+                (this.questionidToNumber + 1) %
+                this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
               this.questionWithField = this.fillfieldsquestionsArray[
                 nextQueryShows
