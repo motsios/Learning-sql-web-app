@@ -153,11 +153,11 @@ export class EditExistingSchemaComponent implements OnInit {
     var title1 = '';
     if (this.role == 'student') {
       title1 =
-        'Διατυπώστε οποιδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον Πίνακα ' +
+        'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον Πίνακα ' +
         this.statictablename;
     } else {
       title1 =
-        'Διατυπώστε οποιδήποτε SQL ερώτημα για να εκτελεστεί στον Πίνακα ' +
+        'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον Πίνακα ' +
         this.statictablename;
     }
     Swal.fire({
@@ -205,6 +205,26 @@ export class EditExistingSchemaComponent implements OnInit {
               'error'
             );
           }
+          if (this.role == 'student') {
+            for (
+              var i = 0;
+              i < this.questionsTrueOrFalseOfEachTableArray.length;
+              i++
+            ) {
+              if (
+                this.questionsTrueOrFalseOfEachTableArray[
+                  i
+                ].sql_query_true_or_false.toLowerCase() === query.toLowerCase()
+              ) {
+                return Swal.fire(
+                  'Αδυναμία εκτέλεσης!',
+                  'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
+                  'info'
+                );
+              }
+            }
+          }
+
           const headers = {
             'Content-Type': 'application/json; charset=UTF-8',
             Authorization: localStorage.getItem('token'),
@@ -244,8 +264,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   }
                 });
               } else if (data.result) {
-                if(data.result.careful){
-                  return  Swal.fire(
+                if (data.result.careful) {
+                  return Swal.fire(
                     'Αδυναμία εκτέλεσης!',
                     'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
                     'info'
