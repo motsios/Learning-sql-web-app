@@ -206,6 +206,13 @@ export class EditExistingSchemaComponent implements OnInit {
             );
           }
           if (this.role == 'student') {
+            if (!query.toLowerCase().includes(this.statictablename)) {
+              return Swal.fire(
+                'Αδυναμία εκτέλεσης!',
+                'Το SQL Ερώτημα πρέπει να αναφέρεται στον συγκεκριμένο πίνακα!',
+                'info'
+              );
+            }
             for (
               var i = 0;
               i < this.questionsTrueOrFalseOfEachTableArray.length;
@@ -498,8 +505,7 @@ export class EditExistingSchemaComponent implements OnInit {
                                 if (Object.keys(data).length === 0) {
                                   Swal.fire({
                                     title: '',
-                                    text:
-                                      'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!!',
+                                    text: 'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!!',
                                     icon: 'success',
                                     showCancelButton: false,
                                     confirmButtonColor: '#3085d6',
@@ -541,8 +547,7 @@ export class EditExistingSchemaComponent implements OnInit {
                                   if ((data.result.serverStatus = 2)) {
                                     Swal.fire({
                                       title: '',
-                                      text:
-                                        'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!',
+                                      text: 'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!',
                                       icon: 'success',
                                       showCancelButton: false,
                                       confirmButtonColor: '#3085d6',
@@ -1171,8 +1176,7 @@ export class EditExistingSchemaComponent implements OnInit {
       .fire({
         title: 'Διαγραφή Πίνακα ' + tablename,
         icon: 'warning',
-        text:
-          'Είστε σίγουρος;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
+        text: 'Είστε σίγουρος;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
         showCancelButton: true,
         confirmButtonText: 'Ναι',
         cancelButtonText: 'Ακύρωση',
@@ -1778,10 +1782,10 @@ export class EditExistingSchemaComponent implements OnInit {
       if (
         this.tableColumnsArray2[i].OTHER_VALUES.COLUMN_NAME == d.COLUMN_NAME
       ) {
-        reference_column_name = this.tableColumnsArray2[i].OTHER_VALUES
-          .REFERENCED_COLUMN_NAME;
-        reference_column_table = this.tableColumnsArray2[i].OTHER_VALUES
-          .REFERENCED_TABLE_NAME;
+        reference_column_name =
+          this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_COLUMN_NAME;
+        reference_column_table =
+          this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME;
       }
     }
     var infoHtmlSting =
