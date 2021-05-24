@@ -376,12 +376,12 @@ export class GenerateNewSchemaComponent implements OnInit {
                               '>'+this.randomNumber(5),
                             // QUESTION 3
                             'SELECT DISTINCT ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                            this.columnsNamesArray[0 % max] +
                               ' FROM ' +
                               this.tablename,
                             // QUESTION 4
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                               this.columnsNamesArray[0 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' WHERE ' +
