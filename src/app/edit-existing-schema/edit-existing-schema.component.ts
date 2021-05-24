@@ -1070,15 +1070,15 @@ export class EditExistingSchemaComponent implements OnInit {
                   '<'+this.randomNumber(10)+' )',
                 // QUESTION 9
                 'SELECT ' +
-                  secondTableColumnsArray[static2rand % secondTableColumnsArray.length] +
+                  secondTableColumnsArray[2 % secondTableColumnsArray.length] +
                   ', ' +
-                  secondTableColumnsArray[(static2rand+1) % secondTableColumnsArray.length] +
+                  secondTableColumnsArray[3 % secondTableColumnsArray.length] +
                   ' FROM ' +
                   secondTableName +
                   ' UNION SELECT ' +
-                  staticTableColumnsArray[static2rand % staticTableColumnsArray.length] +
+                  staticTableColumnsArray[2 % staticTableColumnsArray.length] +
                   ', ' +
-                  staticTableColumnsArray[(static2rand+1) % staticTableColumnsArray.length] +
+                  staticTableColumnsArray[3 % staticTableColumnsArray.length] +
                   ' FROM ' +
                   staticTableName,
                 // QUESTION 10

@@ -394,8 +394,8 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename,
                             // QUESTION 6
                             'SELECT COUNT(' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
-                              ') FROM ' +
+                            this.columnsNamesArray[0 % max] +
+                            ') FROM ' +
                               this.tablename,
                             // QUESTION 7
                             'SELECT COUNT(' +
