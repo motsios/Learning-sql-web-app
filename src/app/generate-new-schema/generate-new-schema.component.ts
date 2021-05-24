@@ -237,9 +237,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                       }).then((result) => {
                         if (result.isConfirmed) {
                           var max = this.columnsNamesArray.length;
-                          var staticrand=this.randomNumber(20)
-                          var static2rand=this.randomNumber(20)
-                          var static3rand=this.randomNumber(5)
+                          var staticrand = this.randomNumber(20);
+                          var static2rand = this.randomNumber(20);
+                          var static3rand = this.randomNumber(5);
                           var arrayOfRandomSqlQueries = [
                             // QUESTION 1
                             'SELECT * FROM ' + this.tablename,
@@ -252,17 +252,23 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename,
                             // QUESTION 3
                             'SELECT DISTINCT ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' FROM ' +
                               this.tablename,
                             // Question 4
                             'SELECT COUNT(' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ') FROM ' +
                               this.tablename,
                             //QUESTION 5
                             'SELECT COUNT(DISTINCT ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ') FROM ' +
                               this.tablename,
                             //QUESTION 6
@@ -270,7 +276,8 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '='+this.randomNumber(7),
+                              '=' +
+                              this.randomNumber(7),
                             //QUESTION 7
                             'SELECT * FROM ' +
                               this.tablename +
@@ -282,17 +289,24 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              ' BETWEEN '+static3rand+ ' AND '+(static3rand+6),
+                              ' BETWEEN ' +
+                              static3rand +
+                              ' AND ' +
+                              (static3rand + 6),
                             // QUESTION 9
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max],
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ],
                             // QUESTION 10
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' DESC',
                             // QUESTION 11
                             'SELECT * FROM ' +
@@ -300,10 +314,13 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ' ORDER BY ' +
                               this.columnsNamesArray[static2rand % max] +
                               ' ASC, ' +
-                              this.columnsNamesArray[(static2rand+1) % max] +
+                              this.columnsNamesArray[(static2rand + 1) % max] +
                               ' DESC',
                             // QUESTION 12
-                            'SELECT * FROM ' + this.tablename + ' LIMIT '+this.randomNumber(10),
+                            'SELECT * FROM ' +
+                              this.tablename +
+                              ' LIMIT ' +
+                              this.randomNumber(10),
                             // QUESTION 13
                             'SELECT MIN(' +
                               this.columnsNamesArray[0 % max] +
@@ -320,20 +337,20 @@ export class GenerateNewSchemaComponent implements OnInit {
                             'SELECT COUNT(' +
                               this.columnsNamesArray[staticrand % max] +
                               '), ' +
-                              this.columnsNamesArray[(staticrand+1) % max] +
+                              this.columnsNamesArray[(staticrand + 1) % max] +
                               ' FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[(staticrand+1) % max],
+                              this.columnsNamesArray[(staticrand + 1) % max],
                             // Question 16
                             'SELECT COUNT(' +
                               this.columnsNamesArray[static2rand % max] +
                               '), ' +
-                              this.columnsNamesArray[(static2rand+1) % max] +
+                              this.columnsNamesArray[(static2rand + 1) % max] +
                               ' FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[(static2rand+1) % max] +
+                              this.columnsNamesArray[(static2rand + 1) % max] +
                               ' ORDER BY COUNT(' +
                               this.columnsNamesArray[static2rand % max] +
                               ') DESC',
@@ -361,7 +378,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' IS NULL',
                           ];
 
@@ -373,20 +392,22 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '>'+this.randomNumber(5),
+                              '>' +
+                              this.randomNumber(5),
                             // QUESTION 3
                             'SELECT DISTINCT ' +
-                            this.columnsNamesArray[0 % max] +
+                              this.columnsNamesArray[0 % max] +
                               ' FROM ' +
                               this.tablename,
                             // QUESTION 4
                             'SELECT ' +
-                               this.columnsNamesArray[0 % max] +
+                              this.columnsNamesArray[0 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '='+this.randomNumber(5),
+                              '=' +
+                              this.randomNumber(5),
                             // QUESTION 5
                             'SELECT MIN(' +
                               this.columnsNamesArray[0 % max] +
@@ -394,8 +415,8 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename,
                             // QUESTION 6
                             'SELECT COUNT(' +
-                            this.columnsNamesArray[0 % max] +
-                            ') FROM ' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
                               this.tablename,
                             // QUESTION 7
                             'SELECT COUNT(' +
@@ -404,30 +425,36 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              ' BETWEEN '+ static3rand+' AND '+(static3rand+4),
+                              ' BETWEEN ' +
+                              static3rand +
+                              ' AND ' +
+                              (static3rand + 4),
                             // QUESTION 8
-                            'SELECT ' +
-                              this.columnsNamesArray[staticrand % max] +
-                              ', ' +
-                              this.columnsNamesArray[(staticrand+1) % max] +
-                              ' FROM ' +
+                            'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '='+static3rand+ ' OR ' +
+                              '=' +
+                              static3rand +
+                              ' OR ' +
                               this.columnsNamesArray[0 % max] +
-                              '='+(static3rand+6),
+                              '=' +
+                              (static3rand + 6),
                             // QUESTION 9
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' ASC',
                             // QUESTION 10
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' DESC',
                             // QUESTION 11
                             'SELECT * FROM ' +
@@ -435,13 +462,15 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ' ORDER BY ' +
                               this.columnsNamesArray[staticrand % max] +
                               ' ASC, ' +
-                              this.columnsNamesArray[(staticrand+1) % max] +
+                              this.columnsNamesArray[(staticrand + 1) % max] +
                               ' DESC',
                             // QUESTION 12
                             'SELECT * FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max],
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ],
                             // QUESTION 13
                             'SELECT AVG(' +
                               this.columnsNamesArray[0 % max] +
@@ -449,7 +478,8 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '>'+this.randomNumber(10),
+                              '>' +
+                              this.randomNumber(10),
                             // QUESTION 14
                             'SELECT SUM(' +
                               this.columnsNamesArray[0 % max] +
@@ -457,43 +487,45 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '>'+this.randomNumber(10),
+                              '>' +
+                              this.randomNumber(10),
                             // QUESTION 15
                             'SELECT ' +
-                              this.columnsNamesArray[staticrand % max] +
-                              ', ' +
-                              this.columnsNamesArray[(staticrand+1) % max] +
+                              this.columnsNamesArray[0 % max] +
                               ' FROM ' +
                               this.tablename +
                               ' WHERE NOT ' +
                               this.columnsNamesArray[0 % max] +
-                              '>'+this.randomNumber(10),
+                              '>' +
+                              this.randomNumber(10),
                             // QUESTION 16
                             'SELECT COUNT(DISTINCT ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[1 % max] +
                               ') ' +
                               ' FROM ' +
                               this.tablename,
                             // QUESTION 17
                             'SELECT ' +
-                              this.columnsNamesArray[staticrand % max] +
-                              ' FROM ' +
+                              this.columnsNamesArray[1 % max] +
+                              ' AS test FROM ' +
                               this.tablename +
                               ' WHERE ' +
-                              this.columnsNamesArray[(staticrand-1) % max] +
+                              this.columnsNamesArray[2 % max] +
                               " LIKE 'a%'",
                             // QUESTION 18
                             'SELECT MAX(' +
                               this.columnsNamesArray[0 % max] +
-                              ') ' +
-                              ' FROM ' +
+                              ') AS test FROM ' +
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[0 % max] +
-                              '<'+this.randomNumber(10),
+                              '<' +
+                              this.randomNumber(10),
                             // QUESTION 19
                             'SELECT ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' AS test' +
                               ' FROM ' +
                               this.tablename,
@@ -501,7 +533,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
-                              this.columnsNamesArray[this.randomNumber(20) % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               " LIKE '%a%'",
                           ];
 
@@ -549,7 +583,8 @@ export class GenerateNewSchemaComponent implements OnInit {
                                     this.url.baseUrl +
                                       'addarrayofqueriestrueorfalse',
                                     {
-                                      queriesArray: arrayOfRandomSqlQueriesTrueOrFalse,
+                                      queriesArray:
+                                        arrayOfRandomSqlQueriesTrueOrFalse,
                                       table_name: this.tablename,
                                     },
                                     { headers }

@@ -614,8 +614,8 @@ export class EditExistingSchemaComponent implements OnInit {
       denyButtonText: `Όχι`,
     }).then((result) => {
       if (result.isConfirmed) {
-        var staticrand=this.randomNumber(10)
-        var static2rand=this.randomNumber(10)
+        var staticrand = this.randomNumber(10);
+        var static2rand = this.randomNumber(10);
 
         var arrayOfRandomSqlQueries = [
           // QUESTION 1
@@ -756,21 +756,28 @@ export class EditExistingSchemaComponent implements OnInit {
             secondTableName +
             '.' +
             secondTableConnectionKey +
-            '>'+this.randomNumber(5),
+            '>' +
+            this.randomNumber(5),
           // QUESTION 6
           'SELECT * FROM ' + staticTableName + ' CROSS JOIN ' + secondTableName,
           // QUESTION 7
           'SELECT ' +
-            secondTableColumnsArray[this.randomNumber(10) % secondTableColumnsArray.length] +
+            secondTableColumnsArray[
+              this.randomNumber(10) % secondTableColumnsArray.length
+            ] +
             ' FROM ' +
             secondTableName +
             ' UNION SELECT ' +
-            staticTableColumnsArray[this.randomNumber(10) % staticTableColumnsArray.length] +
+            staticTableColumnsArray[
+              this.randomNumber(10) % staticTableColumnsArray.length
+            ] +
             ' FROM ' +
             staticTableName,
           // QUESTION 8
           'SELECT ' +
-            secondTableColumnsArray[this.randomNumber(10) % secondTableColumnsArray.length] +
+            secondTableColumnsArray[
+              this.randomNumber(10) % secondTableColumnsArray.length
+            ] +
             ' FROM ' +
             secondTableName +
             ' WHERE ' +
@@ -781,10 +788,14 @@ export class EditExistingSchemaComponent implements OnInit {
             staticTableName +
             ' WHERE ' +
             staticTableKey +
-            '>'+this.randomNumber(10)+' )',
+            '>' +
+            this.randomNumber(10) +
+            ' )',
           // QUESTION 9
           'SELECT ' +
-            secondTableColumnsArray[this.randomNumber(10) % secondTableColumnsArray.length] +
+            secondTableColumnsArray[
+              this.randomNumber(10) % secondTableColumnsArray.length
+            ] +
             ' FROM ' +
             secondTableName +
             ' WHERE ' +
@@ -795,10 +806,14 @@ export class EditExistingSchemaComponent implements OnInit {
             staticTableName +
             ' WHERE ' +
             staticTableKey +
-            '='+this.randomNumber(10)+' )',
+            '=' +
+            this.randomNumber(10) +
+            ' )',
           // QUESTION 10
           'SELECT ' +
-            secondTableColumnsArray[this.randomNumber(10) % secondTableColumnsArray.length] +
+            secondTableColumnsArray[
+              this.randomNumber(10) % secondTableColumnsArray.length
+            ] +
             ' FROM ' +
             secondTableName +
             ' WHERE ' +
@@ -809,7 +824,9 @@ export class EditExistingSchemaComponent implements OnInit {
             staticTableName +
             ' WHERE ' +
             staticTableKey +
-            '>'+this.randomNumber(10)+')',
+            '>' +
+            this.randomNumber(10) +
+            ')',
         ];
         var hiddenWordsArray = [
           // QUESTION 1
@@ -954,7 +971,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   secondTableName +
                   '.' +
                   secondTableConnectionKey +
-                  '>'+this.randomNumber(10),
+                  '>' +
+                  this.randomNumber(10),
                 // QUESTION 4
                 'SELECT ' +
                   secondTableName +
@@ -984,7 +1002,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   secondTableName +
                   '.' +
                   secondTableConnectionKey +
-                  '<'+this.randomNumber(10),
+                  '<' +
+                  this.randomNumber(10),
                 // QUESTION 5
                 'SELECT ' +
                   secondTableName +
@@ -1013,7 +1032,9 @@ export class EditExistingSchemaComponent implements OnInit {
                   ' WHERE ' +
                   staticTableName +
                   '.' +
-                  staticTableColumnsArray[this.randomNumber(10) % staticTableColumnsArray.length] +
+                  staticTableColumnsArray[
+                    this.randomNumber(10) % staticTableColumnsArray.length
+                  ] +
                   " LIKE '%e%'",
                 // QUESTION 6
                 'SELECT * FROM ' +
@@ -1024,11 +1045,14 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableName +
                   '.' +
                   staticTableKey +
-                  '>'+static2rand+ ' AND ' +
+                  '>' +
+                  static2rand +
+                  ' AND ' +
                   staticTableName +
                   '.' +
                   staticTableKey +
-                  '<'+(static2rand+5),
+                  '<' +
+                  (static2rand + 5),
                 // QUESTION 7
                 'SELECT ' +
                   secondTableName +
@@ -1056,7 +1080,9 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableKey,
                 // QUESTION 8
                 'SELECT ' +
-                  secondTableColumnsArray[1 % secondTableColumnsArray.length] +
+                  secondTableColumnsArray[2 % secondTableColumnsArray.length] +
+                  ', ' +
+                  secondTableColumnsArray[3 % secondTableColumnsArray.length] +
                   ' FROM ' +
                   secondTableName +
                   ' WHERE ' +
@@ -1067,7 +1093,9 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableName +
                   ' WHERE ' +
                   staticTableKey +
-                  '<'+this.randomNumber(10)+' )',
+                  '<' +
+                  this.randomNumber(10) +
+                  ' )',
                 // QUESTION 9
                 'SELECT ' +
                   secondTableColumnsArray[2 % secondTableColumnsArray.length] +
@@ -1106,7 +1134,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableName +
                   '.' +
                   staticTableKey +
-                  '='+this.randomNumber(10),
+                  '=' +
+                  this.randomNumber(10),
               ];
 
               this.http
