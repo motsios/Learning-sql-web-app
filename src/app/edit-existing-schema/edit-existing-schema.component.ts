@@ -1037,23 +1037,6 @@ export class EditExistingSchemaComponent implements OnInit {
                   ] +
                   " LIKE '%e%'",
                 // QUESTION 6
-                'SELECT * FROM ' +
-                  this.statictablename +
-                  ' CROSS JOIN ' +
-                  secondTableName +
-                  ' WHERE ' +
-                  staticTableName +
-                  '.' +
-                  staticTableKey +
-                  '>' +
-                  static2rand +
-                  ' AND ' +
-                  staticTableName +
-                  '.' +
-                  staticTableKey +
-                  '<' +
-                  (static2rand + 5),
-                // QUESTION 7
                 'SELECT ' +
                   secondTableName +
                   '.' +
@@ -1078,6 +1061,23 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableName +
                   '.' +
                   staticTableKey,
+                // QUESTION 7
+                'SELECT * FROM ' +
+                  this.statictablename +
+                  ' CROSS JOIN ' +
+                  secondTableName +
+                  ' WHERE ' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  '>' +
+                  static2rand +
+                  ' AND ' +
+                  staticTableName +
+                  '.' +
+                  staticTableKey +
+                  '<' +
+                  (static2rand + 5),
                 // QUESTION 8
                 'SELECT ' +
                   secondTableColumnsArray[2 % secondTableColumnsArray.length] +

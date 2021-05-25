@@ -360,7 +360,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ') FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
-                              this.columnsNamesArray[3 % max] +
+                              this.columnsNamesArray[
+                                this.randomNumber(20) % max
+                              ] +
                               ' HAVING COUNT(' +
                               this.columnsNamesArray[2 % max] +
                               ') >3',
@@ -419,6 +421,33 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ') FROM ' +
                               this.tablename,
                             // QUESTION 7
+                            'SELECT AVG(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>' +
+                              this.randomNumber(10),
+                            // QUESTION 8
+                            'SELECT SUM(' +
+                              this.columnsNamesArray[0 % max] +
+                              ') FROM ' +
+                              this.tablename +
+                              ' WHERE ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>' +
+                              this.randomNumber(10),
+                            // QUESTION 9
+                            'SELECT ' +
+                              this.columnsNamesArray[0 % max] +
+                              ' FROM ' +
+                              this.tablename +
+                              ' WHERE NOT ' +
+                              this.columnsNamesArray[0 % max] +
+                              '>' +
+                              this.randomNumber(10),
+                            // QUESTION 10
                             'SELECT COUNT(' +
                               this.columnsNamesArray[1 % max] +
                               ') FROM ' +
@@ -429,13 +458,13 @@ export class GenerateNewSchemaComponent implements OnInit {
                               static3rand +
                               ' AND ' +
                               (static3rand + 4),
-                            // QUESTION 8
+                            // QUESTION 11
                             'SELECT COUNT(DISTINCT ' +
                               this.columnsNamesArray[1 % max] +
                               ') ' +
                               ' FROM ' +
                               this.tablename,
-                              // QUESTION 9
+                            // QUESTION 12
                             'SELECT * FROM ' +
                               this.tablename +
                               ' WHERE ' +
@@ -446,7 +475,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[0 % max] +
                               '=' +
                               (static3rand + 6),
-                            // QUESTION 10
+                            // QUESTION 13
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
@@ -454,7 +483,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                                 this.randomNumber(20) % max
                               ] +
                               ' ASC',
-                            // QUESTION 11
+                            // QUESTION 14
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
@@ -462,7 +491,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                                 this.randomNumber(20) % max
                               ] +
                               ' DESC',
-                            // QUESTION 12
+                            // QUESTION 15
                             'SELECT * FROM ' +
                               this.tablename +
                               ' ORDER BY ' +
@@ -470,40 +499,13 @@ export class GenerateNewSchemaComponent implements OnInit {
                               ' ASC, ' +
                               this.columnsNamesArray[(staticrand + 1) % max] +
                               ' DESC',
-                            // QUESTION 13
+                            // QUESTION 16
                             'SELECT * FROM ' +
                               this.tablename +
                               ' GROUP BY ' +
                               this.columnsNamesArray[
                                 this.randomNumber(20) % max
                               ],
-                            // QUESTION 14
-                            'SELECT AVG(' +
-                              this.columnsNamesArray[0 % max] +
-                              ') FROM ' +
-                              this.tablename +
-                              ' WHERE ' +
-                              this.columnsNamesArray[0 % max] +
-                              '>' +
-                              this.randomNumber(10),
-                            // QUESTION 15
-                            'SELECT SUM(' +
-                              this.columnsNamesArray[0 % max] +
-                              ') FROM ' +
-                              this.tablename +
-                              ' WHERE ' +
-                              this.columnsNamesArray[0 % max] +
-                              '>' +
-                              this.randomNumber(10),
-                            // QUESTION 16
-                            'SELECT ' +
-                              this.columnsNamesArray[0 % max] +
-                              ' FROM ' +
-                              this.tablename +
-                              ' WHERE NOT ' +
-                              this.columnsNamesArray[0 % max] +
-                              '>' +
-                              this.randomNumber(10),
                             // QUESTION 17
                             'SELECT ' +
                               this.columnsNamesArray[1 % max] +
