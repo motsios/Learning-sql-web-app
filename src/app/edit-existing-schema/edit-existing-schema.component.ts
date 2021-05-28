@@ -873,10 +873,6 @@ export class EditExistingSchemaComponent implements OnInit {
                 'success'
               );
 
-              /*  secondTableName +
-            '.' +
-            secondTableColumnsArray[1 % secondTableColumnsArray.length] +*/
-
               var arrayOfRandomSqlQueriesTrueOrFalse = [
                 // QUESTION 1
                 'SELECT ' +
@@ -1035,7 +1031,9 @@ export class EditExistingSchemaComponent implements OnInit {
                   staticTableColumnsArray[
                     this.randomNumber(10) % staticTableColumnsArray.length
                   ] +
-                  " LIKE '%e%'",
+                  " LIKE '%" +
+                  this.randomLetterOrNumber() +
+                  "%'",
                 // QUESTION 6
                 'SELECT ' +
                   secondTableName +
@@ -1846,5 +1844,9 @@ export class EditExistingSchemaComponent implements OnInit {
   randomNumber(max): number {
     var numberRandom = Math.floor(Math.random() * Math.floor(max));
     return numberRandom;
+  }
+  randomLetterOrNumber(): String {
+    let r = Math.random().toString(36).substring(2, 3);
+    return r;
   }
 }

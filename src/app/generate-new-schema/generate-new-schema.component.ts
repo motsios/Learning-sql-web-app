@@ -513,7 +513,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.tablename +
                               ' WHERE ' +
                               this.columnsNamesArray[2 % max] +
-                              " LIKE 'a%'",
+                              " LIKE '" +
+                              this.randomLetterOrNumber() +
+                              "%'",
                             // QUESTION 18
                             'SELECT MAX(' +
                               this.columnsNamesArray[0 % max] +
@@ -538,7 +540,9 @@ export class GenerateNewSchemaComponent implements OnInit {
                               this.columnsNamesArray[
                                 this.randomNumber(20) % max
                               ] +
-                              " LIKE '%a%'",
+                              " LIKE '%" +
+                              this.randomLetterOrNumber() +
+                              "%'",
                           ];
 
                           this.http
@@ -652,5 +656,9 @@ export class GenerateNewSchemaComponent implements OnInit {
   randomNumber(max): number {
     var numberRandom = Math.floor(Math.random() * Math.floor(max));
     return numberRandom;
+  }
+  randomLetterOrNumber(): String {
+    let r = Math.random().toString(36).substring(2, 3);
+    return r;
   }
 }
