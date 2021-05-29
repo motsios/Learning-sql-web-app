@@ -120,8 +120,13 @@
               "devServerTarget": "sql-Quiz-Web-App:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "sql-Quiz-Web-App"
 }

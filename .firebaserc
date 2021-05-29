@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "learning-sql-web-app"
+  },
+  "targets": {
+    "learning-sql-web-app": {
+      "hosting": {
+        "sql-Quiz-Web-App": [
+          "learning-sql-web-app"
+        ]
+      }
+    }
+  }
+}
