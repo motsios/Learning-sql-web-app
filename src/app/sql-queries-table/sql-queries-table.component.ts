@@ -45,7 +45,6 @@ export class SqlQueriesTableComponent implements OnInit {
         this.spinner.hide();
         if (data.questions) {
           this.easyquestionsArray = data.questions;
-          console.log(this.easyquestionsArray);
         } else {
           Swal.fire('', 'Δεν υπάρχουν Εύκολες Ερωτήσεις!', 'error');
         }
@@ -56,7 +55,6 @@ export class SqlQueriesTableComponent implements OnInit {
         this.spinner.hide();
         if (data.questions) {
           this.hardquestionsArray = data.questions;
-          console.log(this.hardquestionsArray);
         } else {
           Swal.fire('Oops...', 'Δεν υπάρχουν Δύσκολες Ερωτήσεις!', 'error');
         }
@@ -123,7 +121,6 @@ export class SqlQueriesTableComponent implements OnInit {
         this.http
           .delete<any>(this.url.baseUrl + 'question/' + id, { headers })
           .subscribe((data) => {
-            console.log(data);
             if (data.result == 'Deleted completed') {
               Swal.fire('', 'Η ερώτηση διαγράφτηκε επιτυχώς', 'success');
               this.ngOnInit();

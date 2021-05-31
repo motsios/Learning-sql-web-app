@@ -63,7 +63,6 @@ export class ResetpasswordComponent implements OnInit {
         )
         .subscribe(
           (data) => {
-            console.log(data);
             if (data.result == 'Updated completed') {
               Swal.fire(
                 '',

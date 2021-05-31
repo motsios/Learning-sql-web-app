@@ -43,7 +43,6 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
         this.spinner.hide();
         if (data.questions) {
           this.fillfieldsquestionsArray = data.questions;
-          console.log(this.fillfieldsquestionsArray);
         } else {
           Swal.fire('', 'Δεν υπάρχουν ακόμη ερωτήσεις!', 'error');
         }
@@ -102,7 +101,6 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
             headers,
           })
           .subscribe((data) => {
-            console.log(data);
             if (data.result == 'Deleted completed') {
               Swal.fire(
                 '',

@@ -56,7 +56,6 @@ export class HomePageComponent implements OnInit {
       )
       .subscribe(
         (data) => {
-          console.log(data);
           if (data.error == 'Wrong username or password') {
             Swal.fire(
               '',
@@ -107,7 +106,6 @@ export class HomePageComponent implements OnInit {
           this.http
             .get<any>(this.url.baseUrl + 'findUser/' + username, { headers })
             .subscribe((data) => {
-              console.log(data);
               if (data.result == 'Email just sended') {
                 Swal.fire('', 'Το email μόλις στάλθηκε!', 'success');
               } else {

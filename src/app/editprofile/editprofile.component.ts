@@ -49,7 +49,6 @@ export class EditprofileComponent implements OnInit {
       .subscribe((data) => {
         this.spinner.hide();
         if (data.result == null) {
-          console.log('fdasfd');
         } else {
           this.phone = data.result['phone'];
           this.email = data.result['email'];
@@ -100,7 +99,6 @@ export class EditprofileComponent implements OnInit {
               { headers }
             )
             .subscribe((data) => {
-              console.log(data);
               if (data.result == 'Updated completed') {
                 Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
                 this.ngOnInit();
@@ -143,7 +141,6 @@ export class EditprofileComponent implements OnInit {
               { headers }
             )
             .subscribe((data) => {
-              console.log(data);
               if (data.result == 'Updated completed') {
                 Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
                 this.ngOnInit();
@@ -200,7 +197,6 @@ export class EditprofileComponent implements OnInit {
                       { headers }
                     )
                     .subscribe((data) => {
-                      console.log(data);
                       if (data.result == 'Updated completed') {
                         Swal.fire(
                           '',
@@ -244,7 +240,6 @@ export class EditprofileComponent implements OnInit {
       showCancelButton: true,
       inputValidator: (value) => {
         return new Promise((resolve) => {
-          console.log(value);
           if (value === 'male') {
             const headers = {
               'Content-Type': 'application/json; charset=UTF-8',
@@ -258,7 +253,6 @@ export class EditprofileComponent implements OnInit {
                 { headers }
               )
               .subscribe((data) => {
-                console.log(data);
                 if (data.result == 'Updated completed') {
                   Swal.fire(
                     '',
@@ -287,7 +281,6 @@ export class EditprofileComponent implements OnInit {
                 { headers }
               )
               .subscribe((data) => {
-                console.log(data);
                 if (data.result == 'Updated completed') {
                   Swal.fire(
                     '',
@@ -333,7 +326,6 @@ export class EditprofileComponent implements OnInit {
               { headers }
             )
             .subscribe((data) => {
-              console.log(data);
               if (data.result == 'Updated completed') {
                 Swal.fire('', 'Η αλλαγή πραγματοποιήθηκε επιτυχώς!', 'success');
                 this.ngOnInit();
@@ -381,7 +373,7 @@ export class EditprofileComponent implements OnInit {
                 { headers }
               )
               .subscribe((data) => {
-                console.log(data);
+
                 if (data.result == 'Updated completed') {
                   Swal.fire(
                     '',
@@ -416,7 +408,6 @@ export class EditprofileComponent implements OnInit {
       showCancelButton: true,
       inputValidator: (value) => {
         return new Promise((resolve) => {
-          console.log(value);
           if (value === 'student') {
             const headers = {
               'Content-Type': 'application/json; charset=UTF-8',
@@ -430,7 +421,6 @@ export class EditprofileComponent implements OnInit {
                 { headers }
               )
               .subscribe((data) => {
-                console.log(data);
                 if (data.result == 'Updated completed') {
                   Swal.fire(
                     '',

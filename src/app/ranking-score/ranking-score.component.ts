@@ -125,7 +125,6 @@ export class RankingScoreComponent implements OnInit {
               ].score_tables[0].createdAt.replace('Dec', 'Δεκέμβριος');
           }
           this.bestScoreOf25Array = data.result;
-          console.log(this.bestScoreOf25Array);
           this.http
             .get<any>(this.url.baseUrl + 'bestscores/15 Questions', { headers })
             .subscribe((data) => {
@@ -249,7 +248,6 @@ export class RankingScoreComponent implements OnInit {
                     ].score_tables[0].createdAt.replace('Dec', 'Δεκέμβριος');
                 }
                 this.bestScoreOf15Array = data.result;
-                console.log(this.bestScoreOf15Array);
               } else {
                 Swal.fire('', 'Δεν υπάρχουν διαθέσιμα Σκορ ακόμη!', 'error');
               }

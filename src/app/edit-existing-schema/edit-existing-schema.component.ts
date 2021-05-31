@@ -52,15 +52,13 @@ export class EditExistingSchemaComponent implements OnInit {
     this.http
       .get<any>(this.url.baseUrl + '/getalltables', { headers })
       .subscribe((data) => {
-        console.log(data);
         this.spinner.hide();
         if (data.result) {
           for (var i = 0; i < data.result.length; i++) {
             this.tableArrayName.push(data.result[i]);
             this.tablesOnlyName.push(data.result[i].table_name);
           }
-          console.log(this.tablesOnlyName);
-          console.log(this.tableArrayName);
+
         } else {
           Swal.fire(
             '',
@@ -81,7 +79,6 @@ export class EditExistingSchemaComponent implements OnInit {
     this.dataOfEachTableArray = [];
     this.onlyColumnsArray = [];
     this.foreignkeyColumn = '';
-    console.log(table);
 
     this.tableColumnsArray = table.temparray;
     this.tableColumnsArray2 = table.temparray2;
@@ -99,7 +96,6 @@ export class EditExistingSchemaComponent implements OnInit {
         }
       }
     }
-    console.log(this.foreignkeyColumn);
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -111,7 +107,6 @@ export class EditExistingSchemaComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
-        console.log(data.result);
         if (data.result) {
           this.questionsOfEachTableArray = data.result.sql_random_queries;
         }
@@ -124,14 +119,11 @@ export class EditExistingSchemaComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
-        console.log(data.result);
         if (data.result) {
           this.questionsTrueOrFalseOfEachTableArray =
             data.result.sql_random_queries_true_or_falses;
         }
       });
-
-    console.log(this.onlyColumnsArray);
     this.http
       .post<any>(
         this.url.baseUrl + '/getaldataofatable',
@@ -139,12 +131,10 @@ export class EditExistingSchemaComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
-        console.log(data.result[0]);
         if (data.result == 'Empty Table') {
           Swal.fire('', 'Άδεια Κελιά!', 'warning');
         } else {
           this.dataOfEachTableArray = data.result[0];
-          console.log(this.dataOfEachTableArray);
         }
       });
   }
@@ -244,7 +234,6 @@ export class EditExistingSchemaComponent implements OnInit {
               headers,
             })
             .subscribe((data) => {
-              console.log(data);
               if (Object.keys(data).length === 0) {
                 this.tableArrayName = [];
                 this.tableColumnsArray = [];
@@ -344,7 +333,6 @@ export class EditExistingSchemaComponent implements OnInit {
     });
   }
   addValuesToTable() {
-    console.log(this.onlyColumnsArray);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.data = {
@@ -383,15 +371,11 @@ export class EditExistingSchemaComponent implements OnInit {
       showCancelButton: true,
       inputValidator: (i) => {
         return new Promise((resolve) => {
-          console.log(this.tablesOnlyName[i]);
-          console.log(this.tableArrayName[i]);
-
           for (var j = 0; j < this.tableArrayName[i].temparray.length; j++) {
             this.unstableColumnsArrayNames.push(
               this.tableArrayName[i].temparray[j].COLUMN_NAME
             );
           }
-          console.log(this.unstableColumnsArrayNames);
           Swal.fire({
             title:
               'Σε πιο κλειδί αναφέρεστε από τον Πίνακα ' +
@@ -407,8 +391,6 @@ export class EditExistingSchemaComponent implements OnInit {
             showCancelButton: true,
             inputValidator: (position) => {
               return new Promise((resolve) => {
-                console.log(this.unstableColumnsArrayNames[position]);
-
                 Swal.fire({
                   title:
                     'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
@@ -425,8 +407,6 @@ export class EditExistingSchemaComponent implements OnInit {
                   showLoaderOnConfirm: true,
                   inputValidator: (position2) => {
                     return new Promise(async (resolve) => {
-                      console.log(this.onlyColumnsArray[position2]);
-
                       const { value: formValues } = await Swal.fire({
                         width: 1000,
                         title:
@@ -491,7 +471,6 @@ export class EditExistingSchemaComponent implements OnInit {
                                 ' ON UPDATE ' +
                                 formValues[1],
                             };
-                            console.log(data);
                             this.http
                               .post<any>(
                                 this.url.baseUrl + 'executesqlquery',
@@ -501,7 +480,6 @@ export class EditExistingSchemaComponent implements OnInit {
                                 }
                               )
                               .subscribe((data) => {
-                                console.log(data);
                                 if (Object.keys(data).length === 0) {
                                   Swal.fire({
                                     title: '',
@@ -596,14 +574,6 @@ export class EditExistingSchemaComponent implements OnInit {
     staticTableName,
     staticTableColumnsArray
   ) {
-    console.log(
-      secondTableName,
-      secondTableConnectionKey,
-      secondTableColumnsArray,
-      staticTableKey,
-      staticTableName,
-      staticTableColumnsArray
-    );
     Swal.fire({
       title:
         ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
@@ -865,7 +835,6 @@ export class EditExistingSchemaComponent implements OnInit {
             { headers }
           )
           .subscribe((data) => {
-            console.log(data);
             if (data.result == 'Sql Queries successfully created!') {
               Swal.fire(
                 'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
@@ -1146,7 +1115,6 @@ export class EditExistingSchemaComponent implements OnInit {
                   { headers }
                 )
                 .subscribe((data) => {
-                  console.log(data);
                   if (data.result == 'Sql Queries successfully created!') {
                     this.tableArrayName = [];
                     this.tableColumnsArray = [];
@@ -1228,7 +1196,6 @@ export class EditExistingSchemaComponent implements OnInit {
             )
             .subscribe(
               (data) => {
-                console.log(data);
                 if (data.result) {
                   this.http
                     .delete<any>(
@@ -1239,7 +1206,6 @@ export class EditExistingSchemaComponent implements OnInit {
                     )
                     .subscribe(
                       (data) => {
-                        console.log(data);
                         if (data.result) {
                           this.tableArrayName = [];
                           this.tableColumnsArray = [];
@@ -1357,7 +1323,6 @@ export class EditExistingSchemaComponent implements OnInit {
           )
           .subscribe(
             (data) => {
-              console.log(data);
               if (data.result != 0) {
                 this.tableArrayName = [];
                 this.tableColumnsArray = [];
@@ -1411,7 +1376,6 @@ export class EditExistingSchemaComponent implements OnInit {
           )
           .subscribe(
             (data) => {
-              console.log(data);
               if (data.result != 0) {
                 this.tableArrayName = [];
                 this.tableColumnsArray = [];
@@ -1500,7 +1464,6 @@ export class EditExistingSchemaComponent implements OnInit {
         headers,
       })
       .subscribe((data) => {
-        console.log(data);
         if (Object.keys(data).length === 0) {
           this.tableArrayName = [];
           this.tableColumnsArray = [];
@@ -1612,7 +1575,6 @@ export class EditExistingSchemaComponent implements OnInit {
           showLoaderOnConfirm: true,
           inputValidator: (position2) => {
             return new Promise(async (resolve) => {
-              console.log(typeOfColumns[position2]);
               if (typeOfColumns[position2] != 'BOOLEAN') {
                 Swal.fire({
                   title:
@@ -1655,8 +1617,6 @@ export class EditExistingSchemaComponent implements OnInit {
                       },
                     });
                     if (formValues) {
-                      console.log(formValues[0], formValues[1]);
-
                       var notnull = '';
                       if (formValues[0]) {
                         notnull = ' NOT NULL';
@@ -1680,8 +1640,6 @@ export class EditExistingSchemaComponent implements OnInit {
                         notnull +
                         ' ' +
                         unique;
-                      console.log(sequenceSql);
-
                       const headers = {
                         'Content-Type': 'application/json; charset=UTF-8',
                         Authorization: localStorage.getItem('token'),
@@ -1694,7 +1652,6 @@ export class EditExistingSchemaComponent implements OnInit {
                           headers,
                         })
                         .subscribe((data) => {
-                          console.log(data);
                           if (data.result) {
                             this.tableArrayName = [];
                             this.tableColumnsArray = [];
@@ -1740,8 +1697,6 @@ export class EditExistingSchemaComponent implements OnInit {
                   },
                 });
                 if (formValues) {
-                  console.log(formValues[0], formValues[1]);
-
                   var notnull = '';
                   if (formValues[0]) {
                     notnull = ' NOT NULL';
@@ -1774,7 +1729,6 @@ export class EditExistingSchemaComponent implements OnInit {
                       headers,
                     })
                     .subscribe((data) => {
-                      console.log(data);
                       if (data.result) {
                         this.tableArrayName = [];
                         this.tableColumnsArray = [];
@@ -1804,8 +1758,6 @@ export class EditExistingSchemaComponent implements OnInit {
   }
 
   openInfoSwal(d) {
-    console.log(this.tableColumnsArray);
-    console.log(this.tableColumnsArray2);
     var reference_column_name = '-';
     var reference_column_table = '-';
     for (var i = 0; i < this.tableColumnsArray2.length; i++) {

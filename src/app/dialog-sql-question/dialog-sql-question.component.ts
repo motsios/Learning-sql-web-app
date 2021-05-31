@@ -101,7 +101,6 @@ export class DialogSqlQuestionComponent implements OnInit {
           headers,
         })
         .subscribe((data) => {
-          console.log(data);
           if (data.result == 'Updated completed') {
             Swal.fire('', 'Η SQL ερτώτηση ανανεώθηκε επιτυχώς!', 'success');
             this.dialogRef.close();
@@ -133,7 +132,6 @@ export class DialogSqlQuestionComponent implements OnInit {
           headers,
         })
         .subscribe((data) => {
-          console.log(data);
           if (data.result == 'Question added') {
             Swal.fire('', 'Η SQL ερτώτηση προστέθηκε επιτυχώς!', 'success');
             this.dialogRef.close();

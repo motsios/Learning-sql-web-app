@@ -108,22 +108,6 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
               this.groupbyquestionsArray.push(data.questions[i]);
           }
           this.fillfieldsquestionsArray = data.questions;
-          console.log(this.fillfieldsquestionsArray);
-          console.log(this.selectquestionsArray);
-          console.log(this.wherequestionsArray);
-          console.log(this.orderbyquestionsArray);
-          console.log(this.insertquestionsArray);
-          console.log(this.nullquestionsArray);
-          console.log(this.updatequestionsArray);
-          console.log(this.funquestionsArray);
-          console.log(this.deletequestionsArray);
-          console.log(this.likequestionsArray);
-          console.log(this.wildcardsquestionsArray);
-          console.log(this.betweenquestionsArray);
-          console.log(this.inquestionsArray);
-          console.log(this.aliasquestionsArray);
-          console.log(this.groupbyquestionsArray);
-          console.log(this.joinquestionsArray);
         } else {
           Swal.fire('', 'Δεν υπάρχουν ερωτήσεις!', 'error');
         }

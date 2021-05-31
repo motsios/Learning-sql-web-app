@@ -40,7 +40,6 @@ export class MyscoreComponent implements OnInit {
       })
       .subscribe((data) => {
         this.spinner.hide();
-        console.log(data.result[0].score_tables);
         if (data.result) {
           for (var i = 0; i < data.result[0].score_tables.length; i++) {
             data.result[0].score_tables[i].createdAt = new Date(
@@ -201,7 +200,6 @@ export class MyscoreComponent implements OnInit {
       })
       .subscribe((data) => {
         this.spinner.hide();
-        console.log(data.result[0].success_rates);
         if (data.result) {
           for (var i = 0; i < data.result[0].success_rates.length; i++) {
             data.result[0].success_rates[i].createdAt = new Date(

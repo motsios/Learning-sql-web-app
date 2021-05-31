@@ -23,10 +23,8 @@ export class DialogAddSqlQueryComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
   ngOnInit(): void {
-    console.log(this.data);
     this.datacolumns = this.data;
     this.tablenameheader = this.datacolumns.tablename.table_name;
-    console.log(this.datacolumns);
   }
 
   close() {
@@ -41,7 +39,6 @@ export class DialogAddSqlQueryComponent implements OnInit {
       this.onlyColumnsArray.push(
         this.datacolumns.tableColumnsArray[i].COLUMN_NAME
       );
-      console.log(this.valuesArray[i]);
       if (
         this.valuesArray[i] === undefined ||
         this.valuesArray[i] == '' ||
@@ -61,7 +58,6 @@ export class DialogAddSqlQueryComponent implements OnInit {
       ') VALUES (' +
       addearsArray.join() +
       ')';
-    console.log(sqlQuery);
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -75,7 +71,6 @@ export class DialogAddSqlQueryComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
-        console.log(data);
         if (data.error) {
           Swal.fire(
             'SQL Synatx error',
@@ -88,7 +83,6 @@ export class DialogAddSqlQueryComponent implements OnInit {
       });
   }
   openInfoSwal(d) {
-    console.log(d);
     var reference_column_name = '-';
     var reference_column_table = '-';
     for (var i = 0; i < this.datacolumns.tableColumnsArray2.length; i++) {

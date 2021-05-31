@@ -87,7 +87,6 @@ export class SqlQuizComponent implements OnInit {
           this.spinner.hide();
           if (data.questions) {
             this.questionsArray = data.questions;
-            console.log(this.questionsArray);
           } else {
             Swal.fire('', 'Δεν υπάρχουν ερωτήσεις!', 'error');
           }
@@ -105,7 +104,6 @@ export class SqlQuizComponent implements OnInit {
           this.spinner.hide();
           if (data.questions) {
             this.questionsArray = data.questions;
-            console.log(this.questionsArray);
           } else {
             Swal.fire('', 'Δεν υπάρχουν ερωτήσεις!', 'error');
           }
@@ -166,7 +164,6 @@ export class SqlQuizComponent implements OnInit {
     this.http
       .post<any>(this.url.baseUrl + 'addascore/' + this.id, body, { headers })
       .subscribe((data) => {
-        console.log(data);
         if (data.result != 'This user are not a student') {
           Swal.fire(
             '',

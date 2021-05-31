@@ -60,7 +60,6 @@ export class DialogSqlQueryTableComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.sql_query)
     this.submitted = true;
     if (this.editoraddForm.invalid) {
       Swal.fire('', 'Υπάρχουν κενά πεδία!', 'error');
@@ -84,7 +83,6 @@ export class DialogSqlQueryTableComponent implements OnInit {
           }
         )
         .subscribe((data) => {
-          console.log(data);
           if (data.result == 'Updated completed') {
             Swal.fire(
               '',
@@ -101,7 +99,6 @@ export class DialogSqlQueryTableComponent implements OnInit {
           }
         });
     } else {
-      console.log(this.sql_query+this.hideWord+this.tablename)
       const headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         Authorization: localStorage.getItem('token'),
@@ -116,7 +113,6 @@ export class DialogSqlQueryTableComponent implements OnInit {
           headers,
         })
         .subscribe((data) => {
-          console.log(data);
           if (data.result) {
             Swal.fire(
               '',

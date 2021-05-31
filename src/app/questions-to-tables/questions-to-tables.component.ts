@@ -64,13 +64,11 @@ export class QuestionsToTablesComponent implements OnInit {
     this.http
       .get<any>(this.url.baseUrl + '/getalltables', { headers })
       .subscribe((data) => {
-        console.log(data);
         this.spinner.hide();
         if (data.result) {
           for (var i = 0; i < data.result.length; i++) {
             this.tableArrayName.push(data.result[i]);
           }
-          console.log(this.tableArrayName);
         } else {
           Swal.fire('', 'Δεν υπάρχουν Πίνακες!', 'error');
         }
@@ -97,8 +95,6 @@ export class QuestionsToTablesComponent implements OnInit {
     this.tableColumnsArray2 = table.temparray2;
     this.seconddataOfEachTableArray = [];
     this.secondtableColumnsArray = [];
-
-    console.log(this.tableColumnsArray2);
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -111,9 +107,6 @@ export class QuestionsToTablesComponent implements OnInit {
         this.secondTable = this.tableColumnsArray2[
           i
         ].OTHER_VALUES.REFERENCED_TABLE_NAME;
-        console.log(
-          this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME
-        );
       }
     }
     this.http
@@ -123,7 +116,6 @@ export class QuestionsToTablesComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
-        console.log(data);
         if (data.result == 'Empty Table') {
           Swal.fire('', 'Άδεια Κελιά!', 'warning');
         } else {
@@ -136,7 +128,6 @@ export class QuestionsToTablesComponent implements OnInit {
       for (var i = 0; i < this.tableArrayName.length; i++) {
         if (this.secondTable == this.tableArrayName[i].table_name) {
           for (var j = 0; j < this.tableArrayName[i].temparray.length; j++) {
-            console.log(this.tableArrayName[i].temparray[j].COLUMN_NAME);
             this.secondtableColumnsArray.push(
               this.tableArrayName[i].temparray[j].COLUMN_NAME
             );
@@ -167,11 +158,8 @@ export class QuestionsToTablesComponent implements OnInit {
       )
       .subscribe((data) => {
         this.load = true;
-        console.log(data.result);
         if (data.result) {
           this.fillfieldsquestionsArray = data.result.sql_random_queries;
-          console.log(this.fillfieldsquestionsArray);
-
           if (this.fillfieldsquestionsArray.length == 0) {
             Swal.fire(
               '',
@@ -230,7 +218,6 @@ export class QuestionsToTablesComponent implements OnInit {
                 headers,
               })
               .subscribe((data) => {
-                console.log(data);
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
                     this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
@@ -402,7 +389,6 @@ export class QuestionsToTablesComponent implements OnInit {
                 { headers }
               )
               .subscribe((data) => {
-                console.log(data);
                 if (data.result == 'Rate added') {
                   Swal.fire(
                     '',
@@ -462,7 +448,6 @@ export class QuestionsToTablesComponent implements OnInit {
                 headers,
               })
               .subscribe((data) => {
-                console.log(data);
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
                     this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
@@ -570,7 +555,6 @@ export class QuestionsToTablesComponent implements OnInit {
                 { headers }
               )
               .subscribe((data) => {
-                console.log(data);
                 if (data.result == 'Rate added') {
                   Swal.fire(
                     '',
@@ -630,7 +614,6 @@ export class QuestionsToTablesComponent implements OnInit {
                 headers,
               })
               .subscribe((data) => {
-                console.log(data);
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
                     this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';

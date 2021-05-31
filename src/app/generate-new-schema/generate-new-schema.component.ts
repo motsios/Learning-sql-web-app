@@ -176,7 +176,6 @@ export class GenerateNewSchemaComponent implements OnInit {
         this.columnsStringArray.join() +
         this.primarykey +
         ')';
-      console.log(this.columnsStringArray);
       if (this.sqlQueryString.includes('PRIMARY KEY')) {
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
@@ -210,7 +209,6 @@ export class GenerateNewSchemaComponent implements OnInit {
                 )
                 .subscribe(
                   (data) => {
-                    console.log(data);
                     if (data.result == 'Table already exists') {
                       Swal.fire(
                         '',
@@ -579,7 +577,6 @@ export class GenerateNewSchemaComponent implements OnInit {
                               { headers }
                             )
                             .subscribe((data) => {
-                              console.log(data);
                               if (
                                 data.result ==
                                 'Sql Queries successfully created!'
@@ -596,7 +593,6 @@ export class GenerateNewSchemaComponent implements OnInit {
                                     { headers }
                                   )
                                   .subscribe((data) => {
-                                    console.log(data);
                                     if (
                                       data.result ==
                                       'Sql Queries successfully created!'

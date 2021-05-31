@@ -55,7 +55,6 @@ export class AllstudentsprofilesComponent implements OnInit {
         this.spinner.hide();
         if (data.users) {
           this.studentsArray = data.users;
-          console.log(this.studentsArray);
         } else {
           Swal.fire('', 'Δεν υπάρχουν χρήστες!', 'error');
         }
@@ -118,7 +117,6 @@ export class AllstudentsprofilesComponent implements OnInit {
     this.http
       .get<any>(this.url.baseUrl + '/scores/' + studentid, { headers })
       .subscribe((data) => {
-        console.log(data.result[0].score_tables);
         if (data.result) {
           for (var i = 0; i < data.result[0].score_tables.length; i++) {
             data.result[0].score_tables[i].createdAt = new Date(
@@ -283,7 +281,6 @@ export class AllstudentsprofilesComponent implements OnInit {
       })
       .subscribe((data) => {
         this.spinner.hide();
-        console.log(data.result[0].success_rates);
         if (data.result) {
           for (var i = 0; i < data.result[0].success_rates.length; i++) {
             data.result[0].success_rates[i].createdAt = new Date(

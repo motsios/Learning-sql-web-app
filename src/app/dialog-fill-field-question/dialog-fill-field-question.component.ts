@@ -87,7 +87,6 @@ export class DialogFillFieldQuestionComponent implements OnInit {
           }
         )
         .subscribe((data) => {
-          console.log(data);
           if (data.result == 'Updated completed') {
             Swal.fire(
               '',
@@ -118,7 +117,6 @@ export class DialogFillFieldQuestionComponent implements OnInit {
           headers,
         })
         .subscribe((data) => {
-          console.log(data);
           if (data.result == 'Question added') {
             Swal.fire(
               '',

@@ -43,7 +43,6 @@ export class TheorySqlComponent implements OnInit {
     this.http
       .get<any>(this.url.baseUrl + '/allfiles', { headers })
       .subscribe((data) => {
-        console.log(data);
         this.spinner.hide();
         if (data.files == 'No Pdf yet') {
           Swal.fire('', 'Δεν υπάρχουν διαθέσιμα PDF για ανάγνωση!', 'info');
@@ -115,7 +114,6 @@ export class TheorySqlComponent implements OnInit {
               this.pdfArray = [];
               this.ngOnInit();
             } else {
-              console.log(response);
               Swal.fire('', response.error, 'error');
             }
           });
