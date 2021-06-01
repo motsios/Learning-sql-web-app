@@ -52,6 +52,7 @@ export class TheorySqlComponent implements OnInit {
       });
   }
   deletePdf(pdf) {
+    this.spinner.show();
     Swal.fire({
       title: 'Είστε σίγουρος?',
       text: 'Δεν μπορείτε να το επαναφέρετε!',
@@ -70,6 +71,7 @@ export class TheorySqlComponent implements OnInit {
         this.http
           .get<any>(this.url.baseUrl + '/deletefile/' + pdf, { headers })
           .subscribe((data) => {
+            this.spinner.hide();
             if (data.result) {
               this.pdfSrc = '';
               this.pdfArray = [];
@@ -103,11 +105,13 @@ export class TheorySqlComponent implements OnInit {
   upload(fileToUpload) {
     if (fileToUpload) {
       if (fileToUpload.name.toString().includes('.pdf')) {
+        this.spinner.show();
         let testData: FormData = new FormData();
         testData.append('file_upload', fileToUpload, fileToUpload.name);
         this.http
           .post<any>(this.url.baseUrl + 'upload', testData)
           .subscribe((response) => {
+            this.spinner.hide();
             if (response.result == 'File Uploaded') {
               Swal.fire('', 'Το PDF κοινοποιήθηκε επιτυχώς!', 'success');
               this.pdfSrc = '';
