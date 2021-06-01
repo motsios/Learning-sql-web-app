@@ -52,7 +52,6 @@ export class TheorySqlComponent implements OnInit {
       });
   }
   deletePdf(pdf) {
-    this.spinner.show();
     Swal.fire({
       title: 'Είστε σίγουρος?',
       text: 'Δεν μπορείτε να το επαναφέρετε!',
@@ -64,6 +63,7 @@ export class TheorySqlComponent implements OnInit {
       cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
+        this.spinner.show();
         const headers = {
           'Content-Type': 'application/json; charset=UTF-8',
           Authorization: localStorage.getItem('token'),
