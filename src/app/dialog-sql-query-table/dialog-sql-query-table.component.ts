@@ -76,7 +76,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
       };
       this.http
         .put<any>(
-          'http://localhost:3000/api/updateonesqlqueryfromspecifictable/' + this.id,
+          'https://salty-waters-54218.herokuapp.com/api/updateonesqlqueryfromspecifictable/' + this.id,
           body,
           {
             headers,
@@ -109,7 +109,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
         tablename:this.tablename
       };
       this.http
-        .post<any>('http://localhost:3000/api/addonesqlqueryfromspecifictable', body, {
+        .post<any>('https://salty-waters-54218.herokuapp.com/api/addonesqlqueryfromspecifictable', body, {
           headers,
         })
         .subscribe((data) => {

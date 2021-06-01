@@ -80,7 +80,7 @@ export class DialogFillFieldQuestionComponent implements OnInit {
       };
       this.http
         .put<any>(
-          'http://localhost:3000/api/editfillfieldquestion/' + this.id,
+          'https://salty-waters-54218.herokuapp.com/api/editfillfieldquestion/' + this.id,
           body,
           {
             headers,
@@ -113,7 +113,7 @@ export class DialogFillFieldQuestionComponent implements OnInit {
         hideWord: this.editoraddForm.value['hideWord'],
       };
       this.http
-        .post<any>('http://localhost:3000/api/addfillfieldquestion', body, {
+        .post<any>('https://salty-waters-54218.herokuapp.com/api/addfillfieldquestion', body, {
           headers,
         })
         .subscribe((data) => {

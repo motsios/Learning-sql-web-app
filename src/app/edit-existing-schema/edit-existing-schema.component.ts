@@ -437,7 +437,7 @@ export class EditExistingSchemaComponent implements OnInit {
                         };
                         const body = {
                           sqlQueryString:
-                            'ALTER TABLE diplwmatiki.' +
+                            'ALTER TABLE heroku_f7049074a296508.' +
                             this.tablesOnlyName[i] +
                             ' ADD INDEX ' +
                             this.unstableColumnsArrayNames[position] +
@@ -456,13 +456,13 @@ export class EditExistingSchemaComponent implements OnInit {
                           .subscribe((data) => {
                             const body1 = {
                               sqlQueryString:
-                                ' ALTER TABLE diplwmatiki.' +
+                                ' ALTER TABLE heroku_f7049074a296508.' +
                                 this.statictablename +
                                 ' ADD CONSTRAINT ' +
                                 this.onlyColumnsArray[position2] +
                                 ' FOREIGN KEY (' +
                                 this.onlyColumnsArray[position2] +
-                                ') REFERENCES diplwmatiki.' +
+                                ') REFERENCES heroku_f7049074a296508.' +
                                 this.tablesOnlyName[i] +
                                 '(' +
                                 this.unstableColumnsArrayNames[position] +

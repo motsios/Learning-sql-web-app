@@ -97,7 +97,7 @@ export class DialogSqlQuestionComponent implements OnInit {
         difficulty: this.editoraddForm.value['difficulty'],
       };
       this.http
-        .put<any>('http://localhost:3000/api/editquestion/' + this.id, body, {
+        .put<any>('https://salty-waters-54218.herokuapp.com/api/editquestion/' + this.id, body, {
           headers,
         })
         .subscribe((data) => {
@@ -128,7 +128,7 @@ export class DialogSqlQuestionComponent implements OnInit {
         difficulty: this.editoraddForm.value['difficulty'],
       };
       this.http
-        .post<any>('http://localhost:3000/api/addquestion', body, {
+        .post<any>('https://salty-waters-54218.herokuapp.com/api/addquestion', body, {
           headers,
         })
         .subscribe((data) => {
