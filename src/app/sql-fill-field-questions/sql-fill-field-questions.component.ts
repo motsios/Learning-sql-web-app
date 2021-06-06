@@ -35,6 +35,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
   joinquestionsArray: Array<any> = [];
   header = '';
   fillfieldsquestionsArray: Array<any> = [];
+  initializefieldsquestionsArray: Array<any> = [];
   textfield = '';
   constructor(
     private http: HttpClient,
@@ -108,6 +109,24 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
               this.groupbyquestionsArray.push(data.questions[i]);
           }
           this.fillfieldsquestionsArray = data.questions;
+          this.initializefieldsquestionsArray = data.questions;
+
+          console.log(this.fillfieldsquestionsArray);
+          console.log(this.selectquestionsArray);
+          console.log(this.wherequestionsArray);
+          console.log(this.orderbyquestionsArray);
+          console.log(this.insertquestionsArray);
+          console.log(this.nullquestionsArray);
+          console.log(this.updatequestionsArray);
+          console.log(this.funquestionsArray);
+          console.log(this.deletequestionsArray);
+          console.log(this.likequestionsArray);
+          console.log(this.wildcardsquestionsArray);
+          console.log(this.betweenquestionsArray);
+          console.log(this.inquestionsArray);
+          console.log(this.aliasquestionsArray);
+          console.log(this.groupbyquestionsArray);
+          console.log(this.joinquestionsArray);
         } else {
           Swal.fire('', 'Δεν υπάρχουν ερωτήσεις!', 'error');
         }
@@ -201,14 +220,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -231,14 +247,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -261,14 +274,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -291,14 +301,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -321,14 +328,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -351,14 +355,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -381,14 +382,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -411,14 +409,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -441,14 +436,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -471,14 +463,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -501,14 +490,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -531,14 +517,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -561,14 +544,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -591,14 +571,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -621,14 +598,11 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
       }
       for (let j = 0; j < this.hidewordsOfEachQuestion.length; j++) {
         for (let k = 0; k < this.hidewordsOfEachQuestion[j].length; k++) {
-          this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question = this.fillfieldsquestionsArray[
-            j
-          ].fill_field_question.replace(
-            this.hidewordsOfEachQuestion[j][k],
-            ' ___ '
-          );
+          this.fillfieldsquestionsArray[j].fill_field_question =
+            this.fillfieldsquestionsArray[j].fill_field_question.replace(
+              this.hidewordsOfEachQuestion[j][k],
+              ' ___ '
+            );
         }
       }
       this.router.navigate(['/fillfieldsqlquestions/0']);
@@ -638,24 +612,15 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
   }
 
   showAnswer(questionid) {
-    const headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-      Authorization: localStorage.getItem('token'),
-    };
-    this.http
-      .get<any>(this.url.baseUrl + '/getonefillfieldquestions/' + questionid, {
-        headers,
-      })
-      .subscribe((data) => {
-        if (data.questions) {
-          Swal.fire('Απάντηση', data.questions[0].fill_field_question, 'info');
-        } else {
-          Swal.fire(
-            'Ουπς...',
-            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
-            'error'
-          );
-        }
-      });
+    console.log(questionid);
+    for (let i = 0; i < this.initializefieldsquestionsArray.length; i++) {
+      if (this.initializefieldsquestionsArray[i].id == questionid) {
+        Swal.fire(
+          'Απάντηση',
+          this.initializefieldsquestionsArray[i].hideWord,
+          'info'
+        );
+      }
+    }
   }
 }
