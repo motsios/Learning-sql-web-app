@@ -118,75 +118,62 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
 
   next(questionid) {
     var text = this.textfield.toLowerCase();
-    const headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-      Authorization: localStorage.getItem('token'),
-    };
-    this.http
-      .get<any>(this.url.baseUrl + '/getonefillfieldquestions/' + questionid, {
-        headers,
-      })
-      .subscribe((data) => {
-        if (data.questions) {
-          var wrong = false;
-          var textToArray = text.split(',');
-          var splitWords = data.questions[0].hideWord.split(',');
+    for (let i = 0; i < this.initializefieldsquestionsArray.length; i++) {
+      if (this.initializefieldsquestionsArray[i].id == questionid) {
+        var wrong = false;
+        var textToArray = text.split(',');
+        var splitWords =
+          this.initializefieldsquestionsArray[i].hideWord.split(',');
 
-          for (var i = 0; i < splitWords.length; i++) {
-            splitWords[i] = splitWords[i].toLowerCase();
-          }
+        for (var j = 0; j < splitWords.length; j++) {
+          splitWords[j] = splitWords[j].toLowerCase();
+        }
 
-          for (var i = 0; i < splitWords.length; i++) {
-            if (textToArray.includes(splitWords[i])) {
-              wrong = false;
-            } else {
-              wrong = true;
-              break;
-            }
-          }
-
-          if (!wrong) {
-            Swal.fire({
-              title: 'Απάντηση',
-              icon: 'success',
-              text: 'Σωστή!',
-              allowOutsideClick: false,
-              confirmButtonText: `Επόμενη Ερώτηση`,
-            }).then((result) => {
-              if (result.isConfirmed) {
-                if (
-                  this.fillfieldsquestionsArray.length - 2 <
-                  this.questionidToNumber
-                ) {
-                  Swal.fire(
-                    '',
-                    'Οι ερωτήσεις σε αυτήν την κατηγορία τελείωσαν!',
-                    'info'
-                  );
-                } else {
-                  this.textfield = '';
-                  this.questionidToNumber = this.questionidToNumber + 1;
-                  this.router.navigate([
-                    '/fillfieldsqlquestions/' + this.questionidToNumber,
-                  ]);
-                }
-              }
-            });
+        for (var j = 0; j < splitWords.length; j++) {
+          if (textToArray.includes(splitWords[j])) {
+            wrong = false;
           } else {
-            Swal.fire(
-              'Απάντηση',
-              'Λάθος.Σιγουρευτείτε πως δεν περιέχονται περιττά κενά μεταξύ των απαντήσεων!',
-              'error'
-            );
+            wrong = true;
+            break;
           }
+        }
+
+        if (!wrong) {
+          Swal.fire({
+            title: 'Απάντηση',
+            icon: 'success',
+            text: 'Σωστή!',
+            allowOutsideClick: false,
+            confirmButtonText: `Επόμενη Ερώτηση`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              if (
+                this.fillfieldsquestionsArray.length - 2 <
+                this.questionidToNumber
+              ) {
+                Swal.fire(
+                  '',
+                  'Οι ερωτήσεις σε αυτήν την κατηγορία τελείωσαν!',
+                  'info'
+                );
+              } else {
+                this.textfield = '';
+                this.questionidToNumber = this.questionidToNumber + 1;
+                this.router.navigate([
+                  '/fillfieldsqlquestions/' + this.questionidToNumber,
+                ]);
+              }
+            }
+          });
         } else {
           Swal.fire(
-            'Ουπς...',
-            'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
+            'Απάντηση',
+            'Λάθος.Σιγουρευτείτε πως δεν περιέχονται περιττά κενά μεταξύ των απαντήσεων!',
             'error'
           );
         }
-      });
+      }
+    }
   }
 
   select() {
