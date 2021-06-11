@@ -7,5 +7,5 @@ import './_content/app.less';
 })
 export class AppComponent {
   title = 'SQL-Quiz-Web-App';
-  baseUrl = "https://salty-waters-54218.herokuapp.com/api/"
+  baseUrl = "http://178.62.245.116:8080/api/"
 }

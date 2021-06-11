@@ -62,7 +62,7 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
       };
       this.http
         .put<any>(
-          'https://salty-waters-54218.herokuapp.com/api/updateonesqlquerytrueorfalsefromspecifictable/' + this.id,
+          'http://178.62.245.116:8080/api/updateonesqlquerytrueorfalsefromspecifictable/' + this.id,
           body,
           {
             headers,
@@ -94,7 +94,7 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
         tablename:this.tablename
       };
       this.http
-        .post<any>('https://salty-waters-54218.herokuapp.com/api/addonesqlquerytrueorfalsefromspecifictable', body, {
+        .post<any>('http://178.62.245.116:8080/api/addonesqlquerytrueorfalsefromspecifictable', body, {
           headers,
         })
         .subscribe((data) => {

@@ -64,7 +64,7 @@ export class DialogAddSqlQueryComponent implements OnInit {
     };
     this.http
       .post<any>(
-        'https://salty-waters-54218.herokuapp.com/api/executesqlquery',
+        'http://178.62.245.116:8080/api/executesqlquery',
         {
           sqlQueryString: sqlQuery,
         },
