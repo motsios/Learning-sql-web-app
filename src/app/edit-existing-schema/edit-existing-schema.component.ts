@@ -834,7 +834,7 @@ export class EditExistingSchemaComponent implements OnInit {
           // QUESTION 2
           'INNER,JOIN',
           // QUESTION 3
-          'LEFT,ORDER BY',
+          'LEFT,ORDER,BY',
           // QUESTION 4
           'RIGHT,DESC',
           // QUESTION 5

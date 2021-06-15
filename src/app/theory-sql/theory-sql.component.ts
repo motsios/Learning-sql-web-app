@@ -43,7 +43,6 @@ export class TheorySqlComponent implements OnInit {
     this.http
       .get<any>(this.url.baseUrl + '/allfiles', { headers })
       .subscribe((data) => {
-        console.log(data);
         this.spinner.hide();
         if (data.files == 'No Pdf yet') {
           Swal.fire('', 'Δεν υπάρχουν διαθέσιμα PDF για ανάγνωση!', 'info');
@@ -64,6 +63,7 @@ export class TheorySqlComponent implements OnInit {
       cancelButtonText: 'Ακύρωση',
     }).then((result) => {
       if (result.isConfirmed) {
+        this.spinner.show();
         const headers = {
           'Content-Type': 'application/json; charset=UTF-8',
           Authorization: localStorage.getItem('token'),
@@ -71,6 +71,7 @@ export class TheorySqlComponent implements OnInit {
         this.http
           .get<any>(this.url.baseUrl + '/deletefile/' + pdf, { headers })
           .subscribe((data) => {
+            this.spinner.hide();
             if (data.result) {
               this.pdfSrc = '';
               this.pdfArray = [];
@@ -104,18 +105,19 @@ export class TheorySqlComponent implements OnInit {
   upload(fileToUpload) {
     if (fileToUpload) {
       if (fileToUpload.name.toString().includes('.pdf')) {
+        this.spinner.show();
         let testData: FormData = new FormData();
         testData.append('file_upload', fileToUpload, fileToUpload.name);
         this.http
           .post<any>(this.url.baseUrl + 'upload', testData)
           .subscribe((response) => {
+            this.spinner.hide();
             if (response.result == 'File Uploaded') {
               Swal.fire('', 'Το PDF κοινοποιήθηκε επιτυχώς!', 'success');
               this.pdfSrc = '';
               this.pdfArray = [];
               this.ngOnInit();
             } else {
-              console.log(response);
               Swal.fire('', response.error, 'error');
             }
           });
