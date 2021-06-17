@@ -568,7 +568,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                                   'MIN',
                                   'MAX',
                                   'COUNT,GROUP,BY',
-                                  'ORDER,BY,DESC',
+                                  'GROUP,BY,DESC',
                                   'GROUP,BY,HAVING,COUNT',
                                   'SUM',
                                   'AVG',
