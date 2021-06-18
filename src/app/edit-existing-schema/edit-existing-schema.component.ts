@@ -620,9 +620,9 @@ export class EditExistingSchemaComponent implements OnInit {
         var arrayOfRandomSqlQueries = [
           // QUESTION 1
           'SELECT ' +
-            secondTableName +
+            staticTableName +
             '.' +
-            secondTableConnectionKey +
+            staticTableKey +
             ', ' +
             secondTableName +
             '.' +
