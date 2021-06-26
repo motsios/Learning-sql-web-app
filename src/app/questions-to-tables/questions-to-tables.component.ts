@@ -72,7 +72,7 @@ export class QuestionsToTablesComponent implements OnInit {
           }
           console.log(this.tableArrayName);
         } else {
-          Swal.fire('', 'Δεν υπάρχουν Πίνακες!', 'error');
+          Swal.fire('', 'Δεν υπάρχουν πίνακες!', 'error');
         }
       });
   }
@@ -175,9 +175,9 @@ export class QuestionsToTablesComponent implements OnInit {
           if (this.fillfieldsquestionsArray.length == 0) {
             Swal.fire(
               '',
-              'Το Τεστ για τον Πίνακα ' +
+              'Το Τεστ για τον πίνακα ' +
                 this.header_tale_name +
-                ' δεν είναι ακόμη έτοιμο καθώς δεν περιέχει δεδομένα ή SQL Ερωτήσεις!',
+                ' δεν είναι ακόμη έτοιμο καθώς δεν περιέχει δεδομένα ή SQL ερωτήσεις!',
               'error'
             );
             this.tableArrayName = [];
@@ -291,9 +291,9 @@ export class QuestionsToTablesComponent implements OnInit {
                 if (data.result == 'Empty Table') {
                   Swal.fire(
                     '',
-                    'Το Τεστ για τον Πίνακα ' +
+                    'Το Τεστ για τον πίνακα ' +
                       this.header_tale_name +
-                      ' δεν είναι ακόμη έτοιμο καθώς δεν περιέχει δεδομένα ή SQL Ερωτήσεις!',
+                      ' δεν είναι ακόμη έτοιμο καθώς δεν περιέχει δεδομένα ή SQL ερωτήσεις!',
                     'error'
                   );
                   this.tableArrayName = [];

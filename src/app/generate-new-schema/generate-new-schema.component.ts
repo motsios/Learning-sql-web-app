@@ -33,7 +33,7 @@ export class GenerateNewSchemaComponent implements OnInit {
 
   async createTable() {
     if (this.tablename.length == 0) {
-      Swal.fire('', 'Ο Πίνακας δεν έχει όνομα!', 'error');
+      Swal.fire('', 'Ο πίνακας δεν έχει όνομα!', 'error');
     } else {
       await this.createSqlSquery();
     }
@@ -53,7 +53,7 @@ export class GenerateNewSchemaComponent implements OnInit {
       .fire({
         title: 'Διαγραφή Στήλης',
         icon: 'warning',
-        text: 'Είστε σίγουρος?',
+        text: 'Είστε σίγουροι?',
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         showCancelButton: true,
@@ -86,7 +86,7 @@ export class GenerateNewSchemaComponent implements OnInit {
     )
       Swal.fire(
         '',
-        'Ο Πίνακας πρέπει να περιλαμβάνει τουλάχιστον μία στήλη!',
+        'Ο πίνακας πρέπει να περιλαμβάνει τουλάχιστον μία στήλη!',
         'error'
       );
     else {
@@ -186,7 +186,7 @@ export class GenerateNewSchemaComponent implements OnInit {
         });
         swalWithBootstrapButtons
           .fire({
-            title: 'Δημιουργία Πίνακα!',
+            title: 'Δημιουργία πίνακα!',
             icon: 'warning',
             text: this.sqlQueryString,
             showCancelButton: true,
@@ -214,7 +214,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                     if (data.result == 'Table already exists') {
                       Swal.fire(
                         '',
-                        'Ο Πίνακας ' + this.tablename + ' υπάρχει ήδη!',
+                        'Ο πίνακας ' + this.tablename + ' υπάρχει ήδη!',
                         'error'
                       );
                     } else if (data.error) {
@@ -228,7 +228,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                         title:
                           'Ο πίνακας ' +
                           this.tablename +
-                          ' δημιουργήθηκε επιτυχώς! Θέλετε να παραχθούν SQL Ερωτήματα για αυτόν;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
+                          ' δημιουργήθηκε επιτυχώς! Θέλετε να παραχθούν SQL ερωτήματα για αυτόν;\n\n*Τα SQL ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
                         showDenyButton: true,
                         allowOutsideClick: false,
                         icon: 'success',
@@ -602,7 +602,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                                       'Sql Queries successfully created!'
                                     ) {
                                       Swal.fire(
-                                        'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
+                                        'Τα SQL ερωτήματα καταχωρήθηκαν επιτυχώς!',
                                         '',
                                         'success'
                                       );
@@ -612,7 +612,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                                     } else {
                                       Swal.fire(
                                         'Ουπς...',
-                                        'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                                        'Κάτι πήγε στραβά!Τα SQL ερωτήματα δεν καταχωρήθηκαν',
                                         'error'
                                       );
                                     }
@@ -620,7 +620,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                               } else {
                                 Swal.fire(
                                   'Ουπς...',
-                                  'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                                  'Κάτι πήγε στραβά!Τα SQL ερωτήματα δεν καταχωρήθηκαν',
                                   'error'
                                 );
                               }
@@ -632,7 +632,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                     }
                   },
                   (error) => {
-                    Swal.fire('Oops...', error, 'error');
+                    Swal.fire('Ουπς...', error, 'error');
                   }
                 );
             }
@@ -649,7 +649,7 @@ export class GenerateNewSchemaComponent implements OnInit {
   info() {
     Swal.fire(
       '',
-      'Με την "Προσθήκη νέου Πίνακα" οι Εκπαιδευόμενοι μπορούν να ελέγξουν πως συμπεριφέρονται δικά τους SELECT ερωτήματα στην κατηγορία "Εξάσκηση SQL ερωτήσεων σε υπάρχοντα σχήματα",και να επιλύσουν Τεστ με ερωτήσεις που δημιουργούνται από το σύστημα ή από εσάς...',
+      'Με την "Προσθήκη νέου πίνακα" οι Εκπαιδευόμενοι μπορούν να ελέγξουν πως συμπεριφέρονται δικά τους SELECT ερωτήματα στην κατηγορία "Εξάσκηση SQL ερωτήσεων σε υπάρχοντα σχήματα",και να επιλύσουν Τεστ με ερωτήσεις που δημιουργούνται από το σύστημα ή από εσάς...',
       'info'
     );
   }

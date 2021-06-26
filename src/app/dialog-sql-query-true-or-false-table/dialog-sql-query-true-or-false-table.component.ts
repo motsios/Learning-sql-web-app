@@ -74,7 +74,7 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
           if (data.result == 'Updated completed') {
             Swal.fire(
               '',
-              'Το SQL Ερώτημα ανανεώθηκε επιτυχώς!',
+              'Το SQL ερώτημα ανανεώθηκε επιτυχώς!',
               'success'
             );
             this.dialogRef.close();
@@ -104,13 +104,13 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
           if (data.result) {
             Swal.fire(
               '',
-              'Το SQL Ερώτημα προστέθηκε επιτυχώς!',
+              'Το SQL ερώτημα προστέθηκε επιτυχώς!',
               'success'
             );
             this.dialogRef.close();
           } else {
             Swal.fire(
-              'Oops...',
+              'Ουπς...',
               'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
               'error'
             );

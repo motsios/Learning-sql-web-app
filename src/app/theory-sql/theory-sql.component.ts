@@ -53,7 +53,7 @@ export class TheorySqlComponent implements OnInit {
   }
   deletePdf(pdf) {
     Swal.fire({
-      title: 'Είστε σίγουρος?',
+      title: 'Είστε σίγουροι?',
       text: 'Δεν μπορείτε να το επαναφέρετε!',
       icon: 'warning',
       showCancelButton: true,

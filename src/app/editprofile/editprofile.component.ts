@@ -355,7 +355,7 @@ export class EditprofileComponent implements OnInit {
 
   editPhone() {
     Swal.fire({
-      title: 'Καταχωρήστε το νέο Τηλέφωνο',
+      title: 'Καταχωρήστε το νέο τηλέφωνο',
       input: 'number',
       showCancelButton: true,
       confirmButtonText: 'Αποδοχή',

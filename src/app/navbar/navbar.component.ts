@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
       .fire({
         title: 'Αποσύνδεση',
         icon: 'warning',
-        text: 'Είστε σίγουρος;',
+        text: 'Είστε σίγουροι;',
         showCancelButton: true,
         confirmButtonText: 'Ναι',
         cancelButtonText: 'Ακύρωση',

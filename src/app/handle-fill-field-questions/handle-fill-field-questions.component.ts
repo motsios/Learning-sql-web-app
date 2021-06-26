@@ -83,7 +83,7 @@ export class HandleFillFieldQuestionsComponent implements OnInit {
   }
   remove(id: any) {
     Swal.fire({
-      title: 'Είστε σίγουρος?',
+      title: 'Είστε σίγουροι?',
       text: 'Δεν μπορείτε να το επαναφέρετε!',
       icon: 'warning',
       cancelButtonText: 'Ακύρωση',

@@ -205,7 +205,7 @@ export class SqlQuizComponent implements OnInit {
       .fire({
         title: 'Ακύρωση',
         icon: 'warning',
-        text: 'Είστε σίγουρος; Όλες οι απαντήσεις θα χαθούν!',
+        text: 'Είστε σίγουροι; Όλες οι απαντήσεις θα χαθούν!',
         showCancelButton: true,
         confirmButtonText: 'Ναι',
         cancelButtonText: 'Όχι',

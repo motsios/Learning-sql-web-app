@@ -47,7 +47,7 @@ export class SqlQueriesTableComponent implements OnInit {
           this.easyquestionsArray = data.questions;
           console.log(this.easyquestionsArray);
         } else {
-          Swal.fire('', 'Δεν υπάρχουν Εύκολες Ερωτήσεις!', 'error');
+          Swal.fire('', 'Δεν υπάρχουν Εύκολες ερωτήσεις!', 'error');
         }
       });
     this.http
@@ -58,7 +58,7 @@ export class SqlQueriesTableComponent implements OnInit {
           this.hardquestionsArray = data.questions;
           console.log(this.hardquestionsArray);
         } else {
-          Swal.fire('Oops...', 'Δεν υπάρχουν Δύσκολες Ερωτήσεις!', 'error');
+          Swal.fire('Ουπς...', 'Δεν υπάρχουν Δύσκολες ερωτήσεις!', 'error');
         }
       });
   }
@@ -106,7 +106,7 @@ export class SqlQueriesTableComponent implements OnInit {
 
   remove(id: any) {
     Swal.fire({
-      title: 'Είστε σίγουρος?',
+      title: 'Είστε σίγουροι?',
       text: 'Δεν μπορείτε να το επαναφέρετε!',
       icon: 'warning',
       cancelButtonText: 'Ακύρωση',

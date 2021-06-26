@@ -144,7 +144,7 @@ export class SqlFillFieldQuestionsComponent implements OnInit {
             icon: 'success',
             text: 'Σωστή!',
             allowOutsideClick: false,
-            confirmButtonText: `Επόμενη Ερώτηση`,
+            confirmButtonText: `Επόμενη ερώτηση`,
           }).then((result) => {
             if (result.isConfirmed) {
               if (

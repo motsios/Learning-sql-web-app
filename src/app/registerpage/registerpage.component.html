@@ -6,7 +6,7 @@
     <input type="text" formControlName="firstName" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
     <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-      <div *ngIf="f.firstName.errors.required">Το Όνομα απαιτείτα</div>
+      <div *ngIf="f.firstName.errors.required">Το όνομα απαιτείτα</div>
     </div>
   </div>
   <div class="form-group">
@@ -14,7 +14,7 @@
     <input type="text" formControlName="lastName" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
     <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-      <div *ngIf="f.lastName.errors.required">Το Επώνυμο απαιτείτα</div>
+      <div *ngIf="f.lastName.errors.required">Το επώνυμο απαιτείτα</div>
     </div>
   </div>
   <div class="form-group">
@@ -22,7 +22,7 @@
     <input type="text" formControlName="username" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-      <div *ngIf="f.username.errors.required">Το Όνομα Χρήστη απαιτείτα</div>
+      <div *ngIf="f.username.errors.required">Το όνομα χρήστη απαιτείτα</div>
     </div>
   </div>
   <div class="form-group">
@@ -30,8 +30,8 @@
     <input type="password" formControlName="password" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Ο Κωδικός Πρόσβασης απαιτείται</div>
-      <div *ngIf="f.password.errors.minlength">Ο Κωδικός Πρόσβασης πρέπει να είναι μεγαλύτερος από 6 χαρακτήρες</div>
+      <div *ngIf="f.password.errors.required">Ο κωδικός πρόσβασης απαιτείται</div>
+      <div *ngIf="f.password.errors.minlength">Ο κωδικός πρόσβασης πρέπει να είναι μεγαλύτερος από 6 χαρακτήρες</div>
     </div>
   </div>
   <div class="form-group">
@@ -39,8 +39,8 @@
     <input type="confirmpassword" formControlName="confirmpassword" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
     <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
-      <div *ngIf="f.confirmpassword.errors.required">Η Επαλήθευση κωδικού απαιτείται</div>
-      <div *ngIf="f.password!=f.confirmpassword">Ο κωδικός πρόσβασης πρέπει να είναι ίδιος με τον Κωδικό Επαλήθευσης
+      <div *ngIf="f.confirmpassword.errors.required">Η επαλήθευση κωδικού απαιτείται</div>
+      <div *ngIf="f.password!=f.confirmpassword">Ο κωδικός πρόσβασης πρέπει να είναι ίδιος με τον κωδικό επαλήθευσης
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@
     <input type="email" formControlName="email" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-      <div *ngIf="f.email.errors.required">Το Email απαιτείται</div>
+      <div *ngIf="f.email.errors.required">Το email απαιτείται</div>
     </div>
   </div>
   <div class="form-group">
@@ -57,7 +57,7 @@
     <input type="phone" formControlName="phone" class="form-control"
       [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
     <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-      <div *ngIf="f.phone.errors.required">Το Τηλέφωνο απαιτείται</div>
+      <div *ngIf="f.phone.errors.required">Το τηλέφωνο απαιτείται</div>
     </div>
   </div>
   <div>

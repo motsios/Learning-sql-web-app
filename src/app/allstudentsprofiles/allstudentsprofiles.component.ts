@@ -264,7 +264,7 @@ export class AllstudentsprofilesComponent implements OnInit {
           if (data.result[0].score_tables.length == 0) {
             Swal.fire(
               '',
-              'Ο εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Κουίζ ακόμη!',
+              'Ο Εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Κουίζ ακόμη!',
               'error'
             );
           }
@@ -428,8 +428,8 @@ export class AllstudentsprofilesComponent implements OnInit {
           this.ratesArray = data.result[0].success_rates;
           if (data.result[0].success_rates.length == 0) {
             Swal.fire(
-              'Oops...',
-              'Ο εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Τεστ ακόμη!',
+              'Ουπς...',
+              'Ο Εκπαιδευόμενος δεν έχει υλοποιήσει κάποιο Τεστ ακόμη!',
               'error'
             );
           }

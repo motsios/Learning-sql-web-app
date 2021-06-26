@@ -57,7 +57,7 @@ export class DialogFillFieldQuestionComponent implements OnInit {
   infoHideWord() {
     Swal.fire(
       'Αποκρυμμένη Λέξη',
-      'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL Ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
+      'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
       'info'
     );
   }
@@ -129,7 +129,7 @@ export class DialogFillFieldQuestionComponent implements OnInit {
             this.ngOnInit();
           } else {
             Swal.fire(
-              'Oops...',
+              'Ουπς...',
               'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
               'error'
             );

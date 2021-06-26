@@ -54,7 +54,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
   infoHideWord() {
     Swal.fire(
       'ΑποκρυμΜένη Λέξη',
-      'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL Ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
+      'Γράψτε τις λέξεις όπως ακριβώς υπάρχουν στο SQL ερώτημα χωριζόμενες με κόμμα μεταξύ τους.Προσοχή να ΜΗΝ υπάρχουν ΚΕΝΑ!',
       'info'
     );
   }
@@ -88,7 +88,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
           if (data.result == 'Updated completed') {
             Swal.fire(
               '',
-              'Το SQL Ερώτημα ανανεώθηκε επιτυχώς!',
+              'Το SQL ερώτημα ανανεώθηκε επιτυχώς!',
               'success'
             );
             this.dialogRef.close();
@@ -120,13 +120,13 @@ export class DialogSqlQueryTableComponent implements OnInit {
           if (data.result) {
             Swal.fire(
               '',
-              'Το SQL Ερώτημα προστέθηκε επιτυχώς!',
+              'Το SQL ερώτημα προστέθηκε επιτυχώς!',
               'success'
             );
             this.dialogRef.close();
           } else {
             Swal.fire(
-              'Oops...',
+              'Ουπς...',
               'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
               'error'
             );

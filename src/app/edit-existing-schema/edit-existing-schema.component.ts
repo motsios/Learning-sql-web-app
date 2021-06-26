@@ -64,7 +64,7 @@ export class EditExistingSchemaComponent implements OnInit {
         } else {
           Swal.fire(
             '',
-            'Δεν υπάρχουν Πίνακες!Παρακαλώ Δημιουργήστε έναν.',
+            'Δεν υπάρχουν πίνακες!Παρακαλώ δημιουργήστε έναν',
             'error'
           );
         }
@@ -85,6 +85,10 @@ export class EditExistingSchemaComponent implements OnInit {
 
     this.tableColumnsArray = table.temparray;
     this.tableColumnsArray2 = table.temparray2;
+
+    console.log(this.tableColumnsArray);
+    console.log(this.tableColumnsArray2);
+
     for (var i = 0; i < table.temparray.length; i++) {
       this.onlyColumnsArray.push(table.temparray[i].COLUMN_NAME);
     }
@@ -153,11 +157,11 @@ export class EditExistingSchemaComponent implements OnInit {
     var title1 = '';
     if (this.role == 'student') {
       title1 =
-        'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον Πίνακα ' +
+        'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον πίνακα ' +
         this.statictablename;
     } else {
       title1 =
-        'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον Πίνακα ' +
+        'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον πίνακα ' +
         this.statictablename;
     }
     Swal.fire({
@@ -184,7 +188,7 @@ export class EditExistingSchemaComponent implements OnInit {
             ) {
               return Swal.fire(
                 '',
-                'Μπορείτε να εκετελέσετε μόνο SELECT SQL Ερώτημα!',
+                'Μπορείτε να εκετελέσετε μόνο SELECT SQL ερώτημα!',
                 'error'
               );
             }
@@ -209,7 +213,7 @@ export class EditExistingSchemaComponent implements OnInit {
             if (!query.toLowerCase().includes(this.statictablename)) {
               return Swal.fire(
                 'Αδυναμία εκτέλεσης!',
-                'Το SQL Ερώτημα πρέπει να αναφέρεται στον συγκεκριμένο πίνακα!',
+                'Το SQL ερώτημα πρέπει να αναφέρεται στον συγκεκριμένο πίνακα!',
                 'info'
               );
             }
@@ -225,7 +229,7 @@ export class EditExistingSchemaComponent implements OnInit {
               ) {
                 return Swal.fire(
                   'Αδυναμία εκτέλεσης!',
-                  'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
+                  'Το SQL ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
                   'info'
                 );
               }
@@ -255,7 +259,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+                Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               } else if (data.error) {
@@ -274,7 +278,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 if (data.result.careful) {
                   return Swal.fire(
                     'Αδυναμία εκτέλεσης!',
-                    'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
+                    'Το SQL ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
                     'info'
                   );
                 }
@@ -282,7 +286,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   if (data.result.length == 0) {
                     Swal.fire(
                       'Αποτέλεσμα!',
-                      'Το SQL Ερώτημα επιστέφει έναν άδειο Πίνακα!',
+                      'Το SQL ερώτημα επιστρέφει έναν άδειο πίνακα!',
                       'info'
                     );
                   } else {
@@ -312,7 +316,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   this.questionsOfEachTableArray = [];
                   this.questionsTrueOrFalseOfEachTableArray = [];
 
-                  Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+                  Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
                   this.ngOnInit();
                   this.eachTableColumns(this.statictable, this.statictablename);
                 } else {
@@ -332,7 +336,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+                Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               }
@@ -372,7 +376,7 @@ export class EditExistingSchemaComponent implements OnInit {
     this.unstableColumnsArrayNames = [];
 
     await Swal.fire({
-      title: 'Επιλέξτε τον άλλο Πίνακα για την σύνδεση μεταξύ τους...',
+      title: 'Επιλέξτε τον άλλο πίνακα για την σύνδεση μεταξύ τους...',
       input: 'select',
       confirmButtonText: 'Συνέχεια',
       cancelButtonText: 'Ακύρωση',
@@ -394,7 +398,7 @@ export class EditExistingSchemaComponent implements OnInit {
           console.log(this.unstableColumnsArrayNames);
           Swal.fire({
             title:
-              'Σε πιο κλειδί αναφέρεστε από τον Πίνακα ' +
+              'Σε πιο κλειδί αναφέρεστε από τον πίνακα: ' +
               this.tablesOnlyName[i] +
               ';',
             input: 'select',
@@ -411,7 +415,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
                 Swal.fire({
                   title:
-                    'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
+                    'Ορίστε πιο θα είναι το ξένο κλειδί από τον πίνακα: ' +
                     this.statictablename +
                     '...',
                   cancelButtonText: 'Ακύρωση',
@@ -505,7 +509,7 @@ export class EditExistingSchemaComponent implements OnInit {
                                 if (Object.keys(data).length === 0) {
                                   Swal.fire({
                                     title: '',
-                                    text: 'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!!',
+                                    text: 'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!',
                                     icon: 'success',
                                     showCancelButton: false,
                                     confirmButtonColor: '#3085d6',
@@ -569,7 +573,7 @@ export class EditExistingSchemaComponent implements OnInit {
                                   } else {
                                     Swal.fire(
                                       '',
-                                      'Ακόμη δεν υπάρχουν διαθέσιμα αποτελέσματα!',
+                                      'Δεν υπάρχουν διαθέσιμα αποτελέσματα!',
                                       'warning'
                                     );
                                   }
@@ -606,7 +610,7 @@ export class EditExistingSchemaComponent implements OnInit {
     );
     Swal.fire({
       title:
-        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
+        ' Θέλετε να παραχθούν SQL ερωτήματα ανάμεσα στους συνδεδεμένους πίνακες;\n\n*Τα SQL ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
       showDenyButton: true,
       allowOutsideClick: false,
       icon: 'success',
@@ -868,7 +872,7 @@ export class EditExistingSchemaComponent implements OnInit {
             console.log(data);
             if (data.result == 'Sql Queries successfully created!') {
               Swal.fire(
-                'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
+                'Τα SQL ερωτήματα καταχωρήθηκαν επιτυχώς!',
                 '',
                 'success'
               );
@@ -1165,7 +1169,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   } else {
                     Swal.fire(
                       'Ουπς...',
-                      'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                      'Κάτι πήγε στραβά!Τα SQL ερωτήματα δεν καταχωρήθηκαν',
                       'error'
                     );
                   }
@@ -1173,7 +1177,7 @@ export class EditExistingSchemaComponent implements OnInit {
             } else {
               Swal.fire(
                 'Ουπς...',
-                'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                'Κάτι πήγε στραβά!Τα SQL ερωτήματα δεν καταχωρήθηκαν',
                 'error'
               );
             }
@@ -1204,9 +1208,9 @@ export class EditExistingSchemaComponent implements OnInit {
     });
     swalWithBootstrapButtons
       .fire({
-        title: 'Διαγραφή Πίνακα ' + tablename,
+        title: 'Διαγραφή πίνακα ' + tablename,
         icon: 'warning',
-        text: 'Είστε σίγουρος;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
+        text: 'Είστε σίγουροι;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
         showCancelButton: true,
         confirmButtonText: 'Ναι',
         cancelButtonText: 'Ακύρωση',
@@ -1259,7 +1263,7 @@ export class EditExistingSchemaComponent implements OnInit {
                         }
                       },
                       (error) => {
-                        Swal.fire('Oops...', error, 'error');
+                        Swal.fire('Ουπς...', error, 'error');
                       }
                     );
                 } else if (data.error) {
@@ -1271,7 +1275,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 }
               },
               (error) => {
-                Swal.fire('Oops...', error, 'error');
+                Swal.fire('Ουπς...', error, 'error');
               }
             );
         }
@@ -1337,7 +1341,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
   removeQuestion(id) {
     Swal.fire({
-      title: 'Είστε σίγουρος για την διαγραφή του SQL Ερωτήματος?',
+      title: 'Είστε σίγουροι για την διαγραφή του SQL ερωτήματος?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -1368,7 +1372,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα διαγράφτηκε επιτυχώς', 'success');
+                Swal.fire('', 'Το SQL ερώτημα διαγράφτηκε επιτυχώς', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               } else {
@@ -1380,7 +1384,7 @@ export class EditExistingSchemaComponent implements OnInit {
               }
             },
             (error) => {
-              Swal.fire('Oops...', error, 'error');
+              Swal.fire('Ουπς...', error, 'error');
             }
           );
       }
@@ -1389,7 +1393,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
   removeQuestionTrueOrFalse(id) {
     Swal.fire({
-      title: 'Είστε σίγουρος για την διαγραφή του SQL Ερωτήματος?',
+      title: 'Είστε σίγουροι για την διαγραφή του SQL ερωτήματος?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -1422,7 +1426,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα διαγράφτηκε επιτυχώς', 'success');
+                Swal.fire('', 'Το SQL ερώτημα διαγράφτηκε επιτυχώς', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               } else {
@@ -1434,7 +1438,7 @@ export class EditExistingSchemaComponent implements OnInit {
               }
             },
             (error) => {
-              Swal.fire('Oops...', error, 'error');
+              Swal.fire('Ουπς...', error, 'error');
             }
           );
       }
@@ -1511,7 +1515,7 @@ export class EditExistingSchemaComponent implements OnInit {
           this.questionsOfEachTableArray = [];
           this.questionsTrueOrFalseOfEachTableArray = [];
 
-          Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+          Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
           this.ngOnInit();
           this.eachTableColumns(this.statictable, this.statictablename);
         } else if (data.error) {
@@ -1531,7 +1535,7 @@ export class EditExistingSchemaComponent implements OnInit {
             if (data.result.length == 0) {
               Swal.fire(
                 'Αποτέλεσμα!',
-                'Το SQL Ερώτημα επιστέφει έναν άδειο Πίνακα!',
+                'Το SQL ερώτημα επιστρέφει έναν άδειο πίνακα!',
                 'info'
               );
             } else {
@@ -1561,7 +1565,7 @@ export class EditExistingSchemaComponent implements OnInit {
             this.questionsOfEachTableArray = [];
             this.questionsTrueOrFalseOfEachTableArray = [];
 
-            Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+            Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
             this.ngOnInit();
             this.eachTableColumns(this.statictable, this.statictablename);
           } else {
@@ -1581,7 +1585,7 @@ export class EditExistingSchemaComponent implements OnInit {
           this.questionsOfEachTableArray = [];
           this.questionsTrueOrFalseOfEachTableArray = [];
 
-          Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+          Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
           this.ngOnInit();
           this.eachTableColumns(this.statictable, this.statictablename);
         }
@@ -1590,7 +1594,7 @@ export class EditExistingSchemaComponent implements OnInit {
   addNewColumn() {
     var typeOfColumns = ['INT', 'VARCHAR', 'FLOAT', 'DATETIME', 'BOOLEAN'];
     Swal.fire({
-      title: 'Ορίστε το όνομα της νέας στήλης του Πίνακα',
+      title: 'Ορίστε το όνομα της νέας στήλης του πίνακα',
       input: 'text',
       inputAttributes: {
         autocapitalize: 'off',
@@ -1837,7 +1841,7 @@ export class EditExistingSchemaComponent implements OnInit {
   info() {
     Swal.fire(
       '',
-      'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL Ερωτήματα που χρησιμοποιούνται στις κατηγορίες "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες" των Εκπαιδευομένων...',
+      'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL ερωτήματα που χρησιμοποιούνται στις κατηγορίες "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες" των Εκπαιδευομένων...',
       'info'
     );
   }

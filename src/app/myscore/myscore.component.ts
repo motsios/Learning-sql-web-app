@@ -184,7 +184,7 @@ export class MyscoreComponent implements OnInit {
           }
           this.scoresArray = data.result[0].score_tables;
           if (data.result[0].score_tables.length == 0) {
-            Swal.fire('Oops...', 'Δεν έχετε καταχωρημένα Σκορ!', 'error');
+            Swal.fire('Ουπς...', 'Δεν έχετε καταχωρημένα Σκορ!', 'error');
           }
         } else {
           Swal.fire(
@@ -345,7 +345,7 @@ export class MyscoreComponent implements OnInit {
           }
           this.ratesArray = data.result[0].success_rates;
           if (data.result[0].success_rates.length == 0) {
-            Swal.fire('Oops...', 'Δεν έχετε υλοποιημένα Τεστ!', 'error');
+            Swal.fire('Ουπς...', 'Δεν έχετε υλοποιημένα Τεστ!', 'error');
           }
         } else {
           Swal.fire(
