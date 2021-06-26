@@ -158,11 +158,11 @@ export class EditExistingSchemaComponent implements OnInit {
     if (this.role == 'student') {
       title1 =
         'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον πίνακα ' +
-        this.statictablename;
+        this.statictablename+'...';
     } else {
       title1 =
         'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον πίνακα ' +
-        this.statictablename;
+        this.statictablename+'...';
     }
     Swal.fire({
       title: title1,
@@ -415,7 +415,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
                 Swal.fire({
                   title:
-                    'Ορίστε πιο θα είναι το ξένο κλειδί από τον πίνακα: ' +
+                    'Ορίστε πιο θα είναι το ξένο κλειδί από τον πίνακα ' +
                     this.statictablename +
                     '...',
                   cancelButtonText: 'Ακύρωση',
