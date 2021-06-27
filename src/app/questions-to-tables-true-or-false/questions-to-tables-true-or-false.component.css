@@ -114,6 +114,12 @@ thead th {
   height: 80px;
   text-align: center;
 }
+.questions {
+  font-style: italic;
+  text-align: start;
+  font-size: x-large;
+  color: rgb(31, 54, 187);
+}
 .timer {
   font-style: italic;
   text-align: end;
