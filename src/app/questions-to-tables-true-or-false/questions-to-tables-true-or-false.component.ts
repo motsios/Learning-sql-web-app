@@ -38,6 +38,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
   questionWithField = '';
   heddenWords = '';
   hiddenWordsArray = [];
+  lengthOfQuestions
 
   public selection: string;
 
@@ -167,6 +168,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
       .subscribe((data) => {
         this.load = true;
         if (data.result) {
+          this.lengthOfQuestions=data.result.sql_random_queries_true_or_falses.length;
           this.fillfieldsquestionsArray =
             data.result.sql_random_queries_true_or_falses;
           if (this.fillfieldsquestionsArray.length == 0) {

@@ -90,10 +90,12 @@ export class DialogAddSqlQueryComponent implements OnInit {
         this.datacolumns.tableColumnsArray2[i].OTHER_VALUES.COLUMN_NAME ==
         d.COLUMN_NAME
       ) {
-        reference_column_name = this.datacolumns.tableColumnsArray2[i]
-          .OTHER_VALUES.REFERENCED_COLUMN_NAME;
-        reference_column_table = this.datacolumns.tableColumnsArray2[i]
-          .OTHER_VALUES.REFERENCED_TABLE_NAME;
+        reference_column_name =
+        this.datacolumns.tableColumnsArray2[i].OTHER_VALUES
+          .REFERENCED_COLUMN_NAME;
+      reference_column_table =
+        this.datacolumns.tableColumnsArray2[i].OTHER_VALUES
+          .REFERENCED_TABLE_NAME;
       }
     }
     var infoHtmlSting =
@@ -104,9 +106,9 @@ export class DialogAddSqlQueryComponent implements OnInit {
       '<br>IS_NULLABLE: ' +
       d.IS_NULLABLE +
       '<br>REFERENCED_TABLE_NAME: ' +
-      reference_column_name +
+      reference_column_table +
       '<br>REFERENCED_COLUMN_NAME: ' +
-      reference_column_table;
+      reference_column_name;
     Swal.fire({
       title: d.COLUMN_NAME + '(' + d.COLUMN_TYPE + ')',
       html: infoHtmlSting,

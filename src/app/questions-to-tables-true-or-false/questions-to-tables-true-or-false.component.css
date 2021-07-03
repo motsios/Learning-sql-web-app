@@ -135,4 +135,10 @@ thead th {
 .header1{
   color: rgb(28, 47, 155);
 }
+.questions {
+  font-style: italic;
+  text-align: start;
+  font-size: x-large;
+  color: rgb(31, 54, 187);
+}
 

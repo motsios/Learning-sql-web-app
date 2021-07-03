@@ -38,6 +38,8 @@ export class QuestionsToTablesComponent implements OnInit {
   heddenWords = '';
   splitWords = [];
   hiddenWordsArray = [];
+  lengthOfQuestions;
+
   constructor(
     private http: HttpClient,
     private url: AppComponent,
@@ -159,6 +161,7 @@ export class QuestionsToTablesComponent implements OnInit {
       .subscribe((data) => {
         this.load = true;
         if (data.result) {
+          this.lengthOfQuestions=data.result.sql_random_queries.length;
           this.fillfieldsquestionsArray = data.result.sql_random_queries;
           if (this.fillfieldsquestionsArray.length == 0) {
             Swal.fire(

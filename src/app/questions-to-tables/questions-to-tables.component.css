@@ -125,3 +125,9 @@ thead th {
   border-style: none;
   background-color: transparent;
 }
+.questions {
+  font-style: italic;
+  text-align: start;
+  font-size: x-large;
+  color: rgb(31, 54, 187);
+}

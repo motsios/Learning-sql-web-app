@@ -52,17 +52,19 @@ export class EditExistingSchemaComponent implements OnInit {
     this.http
       .get<any>(this.url.baseUrl + '/getalltables', { headers })
       .subscribe((data) => {
+        console.log(data);
         this.spinner.hide();
         if (data.result) {
           for (var i = 0; i < data.result.length; i++) {
             this.tableArrayName.push(data.result[i]);
             this.tablesOnlyName.push(data.result[i].table_name);
           }
-
+          console.log(this.tablesOnlyName);
+          console.log(this.tableArrayName);
         } else {
           Swal.fire(
             '',
-            'Δεν υπάρχουν Πίνακες!Παρακαλώ Δημιουργήστε έναν.',
+            'Δεν υπάρχουν πίνακες!Παρακαλώ δημιουργήστε έναν',
             'error'
           );
         }
@@ -79,9 +81,14 @@ export class EditExistingSchemaComponent implements OnInit {
     this.dataOfEachTableArray = [];
     this.onlyColumnsArray = [];
     this.foreignkeyColumn = '';
+    console.log(table);
 
     this.tableColumnsArray = table.temparray;
     this.tableColumnsArray2 = table.temparray2;
+
+    console.log(this.tableColumnsArray);
+    console.log(this.tableColumnsArray2);
+
     for (var i = 0; i < table.temparray.length; i++) {
       this.onlyColumnsArray.push(table.temparray[i].COLUMN_NAME);
     }
@@ -96,6 +103,7 @@ export class EditExistingSchemaComponent implements OnInit {
         }
       }
     }
+    console.log(this.foreignkeyColumn);
     const headers = {
       'Content-Type': 'application/json; charset=UTF-8',
       Authorization: localStorage.getItem('token'),
@@ -107,6 +115,7 @@ export class EditExistingSchemaComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
+        console.log(data.result);
         if (data.result) {
           this.questionsOfEachTableArray = data.result.sql_random_queries;
         }
@@ -119,11 +128,14 @@ export class EditExistingSchemaComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
+        console.log(data.result);
         if (data.result) {
           this.questionsTrueOrFalseOfEachTableArray =
             data.result.sql_random_queries_true_or_falses;
         }
       });
+
+    console.log(this.onlyColumnsArray);
     this.http
       .post<any>(
         this.url.baseUrl + '/getaldataofatable',
@@ -131,10 +143,12 @@ export class EditExistingSchemaComponent implements OnInit {
         { headers }
       )
       .subscribe((data) => {
+        console.log(data.result[0]);
         if (data.result == 'Empty Table') {
           Swal.fire('', 'Άδεια Κελιά!', 'warning');
         } else {
           this.dataOfEachTableArray = data.result[0];
+          console.log(this.dataOfEachTableArray);
         }
       });
   }
@@ -143,12 +157,12 @@ export class EditExistingSchemaComponent implements OnInit {
     var title1 = '';
     if (this.role == 'student') {
       title1 =
-        'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον Πίνακα ' +
-        this.statictablename;
+        'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον πίνακα ' +
+        this.statictablename+'...';
     } else {
       title1 =
-        'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον Πίνακα ' +
-        this.statictablename;
+        'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον πίνακα ' +
+        this.statictablename+'...';
     }
     Swal.fire({
       title: title1,
@@ -174,7 +188,7 @@ export class EditExistingSchemaComponent implements OnInit {
             ) {
               return Swal.fire(
                 '',
-                'Μπορείτε να εκετελέσετε μόνο SELECT SQL Ερώτημα!',
+                'Μπορείτε να εκετελέσετε μόνο SELECT SQL ερώτημα!',
                 'error'
               );
             }
@@ -199,7 +213,7 @@ export class EditExistingSchemaComponent implements OnInit {
             if (!query.toLowerCase().includes(this.statictablename)) {
               return Swal.fire(
                 'Αδυναμία εκτέλεσης!',
-                'Το SQL Ερώτημα πρέπει να αναφέρεται στον συγκεκριμένο πίνακα!',
+                'Το SQL ερώτημα πρέπει να αναφέρεται στον συγκεκριμένο πίνακα!',
                 'info'
               );
             }
@@ -215,7 +229,7 @@ export class EditExistingSchemaComponent implements OnInit {
               ) {
                 return Swal.fire(
                   'Αδυναμία εκτέλεσης!',
-                  'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
+                  'Το SQL ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
                   'info'
                 );
               }
@@ -234,6 +248,7 @@ export class EditExistingSchemaComponent implements OnInit {
               headers,
             })
             .subscribe((data) => {
+              console.log(data);
               if (Object.keys(data).length === 0) {
                 this.tableArrayName = [];
                 this.tableColumnsArray = [];
@@ -244,7 +259,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+                Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               } else if (data.error) {
@@ -263,7 +278,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 if (data.result.careful) {
                   return Swal.fire(
                     'Αδυναμία εκτέλεσης!',
-                    'Το SQL Ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
+                    'Το SQL ερώτημα υπάρχει στο Τεστ τύπου σωστό-λάθος!',
                     'info'
                   );
                 }
@@ -271,7 +286,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   if (data.result.length == 0) {
                     Swal.fire(
                       'Αποτέλεσμα!',
-                      'Το SQL Ερώτημα επιστέφει έναν άδειο Πίνακα!',
+                      'Το SQL ερώτημα επιστρέφει έναν άδειο πίνακα!',
                       'info'
                     );
                   } else {
@@ -301,7 +316,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   this.questionsOfEachTableArray = [];
                   this.questionsTrueOrFalseOfEachTableArray = [];
 
-                  Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+                  Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
                   this.ngOnInit();
                   this.eachTableColumns(this.statictable, this.statictablename);
                 } else {
@@ -321,7 +336,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+                Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               }
@@ -333,6 +348,7 @@ export class EditExistingSchemaComponent implements OnInit {
     });
   }
   addValuesToTable() {
+    console.log(this.onlyColumnsArray);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.data = {
@@ -360,7 +376,7 @@ export class EditExistingSchemaComponent implements OnInit {
     this.unstableColumnsArrayNames = [];
 
     await Swal.fire({
-      title: 'Επιλέξτε τον άλλο Πίνακα για την σύνδεση μεταξύ τους...',
+      title: 'Επιλέξτε τον άλλο πίνακα για την σύνδεση μεταξύ τους...',
       input: 'select',
       confirmButtonText: 'Συνέχεια',
       cancelButtonText: 'Ακύρωση',
@@ -371,14 +387,18 @@ export class EditExistingSchemaComponent implements OnInit {
       showCancelButton: true,
       inputValidator: (i) => {
         return new Promise((resolve) => {
+          console.log(this.tablesOnlyName[i]);
+          console.log(this.tableArrayName[i]);
+
           for (var j = 0; j < this.tableArrayName[i].temparray.length; j++) {
             this.unstableColumnsArrayNames.push(
               this.tableArrayName[i].temparray[j].COLUMN_NAME
             );
           }
+          console.log(this.unstableColumnsArrayNames);
           Swal.fire({
             title:
-              'Σε πιο κλειδί αναφέρεστε από τον Πίνακα ' +
+              'Σε πιο κλειδί αναφέρεστε από τον πίνακα: ' +
               this.tablesOnlyName[i] +
               ';',
             input: 'select',
@@ -391,9 +411,11 @@ export class EditExistingSchemaComponent implements OnInit {
             showCancelButton: true,
             inputValidator: (position) => {
               return new Promise((resolve) => {
+                console.log(this.unstableColumnsArrayNames[position]);
+
                 Swal.fire({
                   title:
-                    'Ορίστε πιο θα είναι το ξένο κλειδί από τον Πίνακα ' +
+                    'Ορίστε πιο θα είναι το ξένο κλειδί από τον πίνακα ' +
                     this.statictablename +
                     '...',
                   cancelButtonText: 'Ακύρωση',
@@ -407,6 +429,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   showLoaderOnConfirm: true,
                   inputValidator: (position2) => {
                     return new Promise(async (resolve) => {
+                      console.log(this.onlyColumnsArray[position2]);
+
                       const { value: formValues } = await Swal.fire({
                         width: 1000,
                         title:
@@ -471,6 +495,7 @@ export class EditExistingSchemaComponent implements OnInit {
                                 ' ON UPDATE ' +
                                 formValues[1],
                             };
+                            console.log(data);
                             this.http
                               .post<any>(
                                 this.url.baseUrl + 'executesqlquery',
@@ -480,10 +505,11 @@ export class EditExistingSchemaComponent implements OnInit {
                                 }
                               )
                               .subscribe((data) => {
+                                console.log(data);
                                 if (Object.keys(data).length === 0) {
                                   Swal.fire({
                                     title: '',
-                                    text: 'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!!',
+                                    text: 'Η προσθήκη της ιδιότητας του ξένου κλειδιού καταχωρήθηκε!',
                                     icon: 'success',
                                     showCancelButton: false,
                                     confirmButtonColor: '#3085d6',
@@ -547,7 +573,7 @@ export class EditExistingSchemaComponent implements OnInit {
                                   } else {
                                     Swal.fire(
                                       '',
-                                      'Ακόμη δεν υπάρχουν διαθέσιμα αποτελέσματα!',
+                                      'Δεν υπάρχουν διαθέσιμα αποτελέσματα!',
                                       'warning'
                                     );
                                   }
@@ -574,9 +600,17 @@ export class EditExistingSchemaComponent implements OnInit {
     staticTableName,
     staticTableColumnsArray
   ) {
+    console.log(
+      secondTableName,
+      secondTableConnectionKey,
+      secondTableColumnsArray,
+      staticTableKey,
+      staticTableName,
+      staticTableColumnsArray
+    );
     Swal.fire({
       title:
-        ' Θέλετε να παραχθούν SQL Ερωτήματα ανάμεσα στους συνδεδεμένους Πίνακες;\n\n*Τα SQL Ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
+        ' Θέλετε να παραχθούν SQL ερωτήματα ανάμεσα στους συνδεδεμένους πίνακες;\n\n*Τα SQL ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
       showDenyButton: true,
       allowOutsideClick: false,
       icon: 'success',
@@ -590,9 +624,9 @@ export class EditExistingSchemaComponent implements OnInit {
         var arrayOfRandomSqlQueries = [
           // QUESTION 1
           'SELECT ' +
-            secondTableName +
+            staticTableName +
             '.' +
-            secondTableConnectionKey +
+            staticTableKey +
             ', ' +
             secondTableName +
             '.' +
@@ -804,7 +838,7 @@ export class EditExistingSchemaComponent implements OnInit {
           // QUESTION 2
           'INNER,JOIN',
           // QUESTION 3
-          'LEFT,ORDER BY',
+          'LEFT,ORDER,BY',
           // QUESTION 4
           'RIGHT,DESC',
           // QUESTION 5
@@ -835,9 +869,10 @@ export class EditExistingSchemaComponent implements OnInit {
             { headers }
           )
           .subscribe((data) => {
+            console.log(data);
             if (data.result == 'Sql Queries successfully created!') {
               Swal.fire(
-                'Τα SQL Ερωτήματα καταχωρήθηκαν επιτυχώς!',
+                'Τα SQL ερωτήματα καταχωρήθηκαν επιτυχώς!',
                 '',
                 'success'
               );
@@ -1115,6 +1150,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   { headers }
                 )
                 .subscribe((data) => {
+                  console.log(data);
                   if (data.result == 'Sql Queries successfully created!') {
                     this.tableArrayName = [];
                     this.tableColumnsArray = [];
@@ -1133,7 +1169,7 @@ export class EditExistingSchemaComponent implements OnInit {
                   } else {
                     Swal.fire(
                       'Ουπς...',
-                      'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                      'Κάτι πήγε στραβά!Τα SQL ερωτήματα δεν καταχωρήθηκαν',
                       'error'
                     );
                   }
@@ -1141,7 +1177,7 @@ export class EditExistingSchemaComponent implements OnInit {
             } else {
               Swal.fire(
                 'Ουπς...',
-                'Κάτι πήγε στραβά!Τα SQL Ερωτήματα δεν καταχωρήθηκαν',
+                'Κάτι πήγε στραβά!Τα SQL ερωτήματα δεν καταχωρήθηκαν',
                 'error'
               );
             }
@@ -1172,9 +1208,9 @@ export class EditExistingSchemaComponent implements OnInit {
     });
     swalWithBootstrapButtons
       .fire({
-        title: 'Διαγραφή Πίνακα ' + tablename,
+        title: 'Διαγραφή πίνακα ' + tablename,
         icon: 'warning',
-        text: 'Είστε σίγουρος;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
+        text: 'Είστε σίγουροι;Σε περίπτωση που υπάρχουν SQL ερωτήματα σε αυτόν θα διαγραφούν!',
         showCancelButton: true,
         confirmButtonText: 'Ναι',
         cancelButtonText: 'Ακύρωση',
@@ -1196,6 +1232,7 @@ export class EditExistingSchemaComponent implements OnInit {
             )
             .subscribe(
               (data) => {
+                console.log(data);
                 if (data.result) {
                   this.http
                     .delete<any>(
@@ -1206,6 +1243,7 @@ export class EditExistingSchemaComponent implements OnInit {
                     )
                     .subscribe(
                       (data) => {
+                        console.log(data);
                         if (data.result) {
                           this.tableArrayName = [];
                           this.tableColumnsArray = [];
@@ -1225,7 +1263,7 @@ export class EditExistingSchemaComponent implements OnInit {
                         }
                       },
                       (error) => {
-                        Swal.fire('Oops...', error, 'error');
+                        Swal.fire('Ουπς...', error, 'error');
                       }
                     );
                 } else if (data.error) {
@@ -1237,7 +1275,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 }
               },
               (error) => {
-                Swal.fire('Oops...', error, 'error');
+                Swal.fire('Ουπς...', error, 'error');
               }
             );
         }
@@ -1303,7 +1341,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
   removeQuestion(id) {
     Swal.fire({
-      title: 'Είστε σίγουρος για την διαγραφή του SQL Ερωτήματος?',
+      title: 'Είστε σίγουροι για την διαγραφή του SQL ερωτήματος?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -1323,6 +1361,7 @@ export class EditExistingSchemaComponent implements OnInit {
           )
           .subscribe(
             (data) => {
+              console.log(data);
               if (data.result != 0) {
                 this.tableArrayName = [];
                 this.tableColumnsArray = [];
@@ -1333,7 +1372,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα διαγράφτηκε επιτυχώς', 'success');
+                Swal.fire('', 'Το SQL ερώτημα διαγράφτηκε επιτυχώς', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               } else {
@@ -1345,7 +1384,7 @@ export class EditExistingSchemaComponent implements OnInit {
               }
             },
             (error) => {
-              Swal.fire('Oops...', error, 'error');
+              Swal.fire('Ουπς...', error, 'error');
             }
           );
       }
@@ -1354,7 +1393,7 @@ export class EditExistingSchemaComponent implements OnInit {
 
   removeQuestionTrueOrFalse(id) {
     Swal.fire({
-      title: 'Είστε σίγουρος για την διαγραφή του SQL Ερωτήματος?',
+      title: 'Είστε σίγουροι για την διαγραφή του SQL ερωτήματος?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -1376,6 +1415,7 @@ export class EditExistingSchemaComponent implements OnInit {
           )
           .subscribe(
             (data) => {
+              console.log(data);
               if (data.result != 0) {
                 this.tableArrayName = [];
                 this.tableColumnsArray = [];
@@ -1386,7 +1426,7 @@ export class EditExistingSchemaComponent implements OnInit {
                 this.questionsOfEachTableArray = [];
                 this.questionsTrueOrFalseOfEachTableArray = [];
 
-                Swal.fire('', 'Το SQL Ερώτημα διαγράφτηκε επιτυχώς', 'success');
+                Swal.fire('', 'Το SQL ερώτημα διαγράφτηκε επιτυχώς', 'success');
                 this.ngOnInit();
                 this.eachTableColumns(this.statictable, this.statictablename);
               } else {
@@ -1398,7 +1438,7 @@ export class EditExistingSchemaComponent implements OnInit {
               }
             },
             (error) => {
-              Swal.fire('Oops...', error, 'error');
+              Swal.fire('Ουπς...', error, 'error');
             }
           );
       }
@@ -1464,6 +1504,7 @@ export class EditExistingSchemaComponent implements OnInit {
         headers,
       })
       .subscribe((data) => {
+        console.log(data);
         if (Object.keys(data).length === 0) {
           this.tableArrayName = [];
           this.tableColumnsArray = [];
@@ -1474,7 +1515,7 @@ export class EditExistingSchemaComponent implements OnInit {
           this.questionsOfEachTableArray = [];
           this.questionsTrueOrFalseOfEachTableArray = [];
 
-          Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+          Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
           this.ngOnInit();
           this.eachTableColumns(this.statictable, this.statictablename);
         } else if (data.error) {
@@ -1494,7 +1535,7 @@ export class EditExistingSchemaComponent implements OnInit {
             if (data.result.length == 0) {
               Swal.fire(
                 'Αποτέλεσμα!',
-                'Το SQL Ερώτημα επιστέφει έναν άδειο Πίνακα!',
+                'Το SQL ερώτημα επιστρέφει έναν άδειο πίνακα!',
                 'info'
               );
             } else {
@@ -1524,7 +1565,7 @@ export class EditExistingSchemaComponent implements OnInit {
             this.questionsOfEachTableArray = [];
             this.questionsTrueOrFalseOfEachTableArray = [];
 
-            Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+            Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
             this.ngOnInit();
             this.eachTableColumns(this.statictable, this.statictablename);
           } else {
@@ -1544,7 +1585,7 @@ export class EditExistingSchemaComponent implements OnInit {
           this.questionsOfEachTableArray = [];
           this.questionsTrueOrFalseOfEachTableArray = [];
 
-          Swal.fire('', 'Το SQL Ερώτημα εκτελέστηκε', 'success');
+          Swal.fire('', 'Το SQL ερώτημα εκτελέστηκε', 'success');
           this.ngOnInit();
           this.eachTableColumns(this.statictable, this.statictablename);
         }
@@ -1553,7 +1594,7 @@ export class EditExistingSchemaComponent implements OnInit {
   addNewColumn() {
     var typeOfColumns = ['INT', 'VARCHAR', 'FLOAT', 'DATETIME', 'BOOLEAN'];
     Swal.fire({
-      title: 'Ορίστε το όνομα της νέας στήλης του Πίνακα',
+      title: 'Ορίστε το όνομα της νέας στήλης του πίνακα',
       input: 'text',
       inputAttributes: {
         autocapitalize: 'off',
@@ -1575,6 +1616,7 @@ export class EditExistingSchemaComponent implements OnInit {
           showLoaderOnConfirm: true,
           inputValidator: (position2) => {
             return new Promise(async (resolve) => {
+              console.log(typeOfColumns[position2]);
               if (typeOfColumns[position2] != 'BOOLEAN') {
                 Swal.fire({
                   title:
@@ -1617,6 +1659,8 @@ export class EditExistingSchemaComponent implements OnInit {
                       },
                     });
                     if (formValues) {
+                      console.log(formValues[0], formValues[1]);
+
                       var notnull = '';
                       if (formValues[0]) {
                         notnull = ' NOT NULL';
@@ -1640,6 +1684,8 @@ export class EditExistingSchemaComponent implements OnInit {
                         notnull +
                         ' ' +
                         unique;
+                      console.log(sequenceSql);
+
                       const headers = {
                         'Content-Type': 'application/json; charset=UTF-8',
                         Authorization: localStorage.getItem('token'),
@@ -1652,6 +1698,7 @@ export class EditExistingSchemaComponent implements OnInit {
                           headers,
                         })
                         .subscribe((data) => {
+                          console.log(data);
                           if (data.result) {
                             this.tableArrayName = [];
                             this.tableColumnsArray = [];
@@ -1697,6 +1744,8 @@ export class EditExistingSchemaComponent implements OnInit {
                   },
                 });
                 if (formValues) {
+                  console.log(formValues[0], formValues[1]);
+
                   var notnull = '';
                   if (formValues[0]) {
                     notnull = ' NOT NULL';
@@ -1729,6 +1778,7 @@ export class EditExistingSchemaComponent implements OnInit {
                       headers,
                     })
                     .subscribe((data) => {
+                      console.log(data);
                       if (data.result) {
                         this.tableArrayName = [];
                         this.tableColumnsArray = [];
@@ -1758,6 +1808,8 @@ export class EditExistingSchemaComponent implements OnInit {
   }
 
   openInfoSwal(d) {
+    console.log(this.tableColumnsArray);
+    console.log(this.tableColumnsArray2);
     var reference_column_name = '-';
     var reference_column_table = '-';
     for (var i = 0; i < this.tableColumnsArray2.length; i++) {
@@ -1778,9 +1830,9 @@ export class EditExistingSchemaComponent implements OnInit {
       '<br>IS_NULLABLE: ' +
       d.IS_NULLABLE +
       '<br>REFERENCED_TABLE_NAME: ' +
-      reference_column_name +
+      reference_column_table +
       '<br>REFERENCED_COLUMN_NAME: ' +
-      reference_column_table;
+      reference_column_name;
     Swal.fire({
       title: d.COLUMN_NAME + '(' + d.COLUMN_TYPE + ')',
       html: infoHtmlSting,
@@ -1789,7 +1841,7 @@ export class EditExistingSchemaComponent implements OnInit {
   info() {
     Swal.fire(
       '',
-      'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL Ερωτήματα που χρησιμοποιούνται στις κατηγορίες "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες" των Εκπαιδευομένων...',
+      'Εκτελώντας είσοδο σε κάποιον από τους "Πίνακες" εμφανίζονται τα δεδομένα του και τα SQL ερωτήματα που χρησιμοποιούνται στις κατηγορίες "Τεστ:Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες" των Εκπαιδευομένων...',
       'info'
     );
   }

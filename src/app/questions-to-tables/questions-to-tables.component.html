@@ -47,6 +47,7 @@
 <br>
 <div *ngIf="header_tale_name!=''" class="form-container2 headers">
   <div *ngIf="startTimer==true" class=" timer">{{converttimer}}</div>
+  <div class="questions">{{lengthOfQuestions}} Ερωτήσεις</div>
   <div *ngIf="errorText!=''">{{errorText}}</div>
   <div *ngIf="errorText==''">
     <h2 style="text-align: center;">Αποτέλεσμα SQL Ερωτήματος</h2>
@@ -80,5 +81,5 @@
   </div>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
-  <p style="color: white">Please Wait. </p>
+  <p style="color: white">Παρακαλώ περιμένετε...</p>
 </ngx-spinner>
