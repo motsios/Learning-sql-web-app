@@ -413,7 +413,7 @@ export class QuestionsToTablesComponent implements OnInit {
                       this.correctAnswers +
                       ' στις ' +
                       this.fillfieldsquestionsArray.length +
-                      '.Το ποσοστό επιτυχίας σου καταχωρήθηκε!',
+                      '.Το ποσοστό επιτυχίας σας καταχωρήθηκε!',
                     'success'
                   );
                   localStorage.setItem('insideFillFieldQuestionsTable', 'no');
@@ -581,7 +581,7 @@ export class QuestionsToTablesComponent implements OnInit {
                       this.correctAnswers +
                       ' στις ' +
                       this.fillfieldsquestionsArray.length +
-                      '.Το ποσοστό επιτυχίας σου καταχωρήθηκε!',
+                      '.Το ποσοστό επιτυχίας σας καταχωρήθηκε!',
                     'success'
                   );
                   localStorage.setItem('insideFillFieldQuestionsTable', 'no');
