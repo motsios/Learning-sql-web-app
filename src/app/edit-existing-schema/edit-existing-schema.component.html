@@ -6,7 +6,7 @@
       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       <ul *ngFor="let name of tableArrayName;">
         <li (click)="eachTableColumns(name,name.table_name)"><a><button
-              class="button2">-{{name.table_name}}</button></a></li>
+              class="button2">{{name.table_name}}</button></a></li>
       </ul>
     </section>
   </nav>
@@ -74,7 +74,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">SQL ερώτημα για το Τεστ τύπου συμπλήρωσης-κενού</th>
-        <th scope="col">Αποκρ.Λέξεις</th>
+        <th scope="col">Αποκρυμμένες Λέξεις</th>
         <th scope="col" style="width:15%;">Ενέργειες</th>
       </tr>
     </thead>

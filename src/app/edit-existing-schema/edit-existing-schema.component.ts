@@ -398,7 +398,7 @@ export class EditExistingSchemaComponent implements OnInit {
           console.log(this.unstableColumnsArrayNames);
           Swal.fire({
             title:
-              'Σε πιο κλειδί αναφέρεστε από τον πίνακα: ' +
+              'Σε πιο κλειδί αναφέρεστε από τον πίνακα ' +
               this.tablesOnlyName[i] +
               ';',
             input: 'select',
