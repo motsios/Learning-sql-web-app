@@ -93,6 +93,7 @@ export class RegisterpageComponent implements OnInit {
   }
 
   registerToApi(role) {
+    this.loading =true;
     var sex = '';
     if (this.registerForm.value['sex'] == '1') {
       sex = 'male';
@@ -121,10 +122,12 @@ export class RegisterpageComponent implements OnInit {
             Swal.fire('', 'Η εγγραφή ολοκληρώθηκε επιτυχώς!', 'success');
             this.router.navigate(['']);
           } else {
+            this.loading = false;
             Swal.fire('', 'Το όνομα χρήστη υπάρχει ήδη!', 'error');
           }
         },
         (error) => {
+          this.loading = false;
           Swal.fire(
             'Ουπς...',
             'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',

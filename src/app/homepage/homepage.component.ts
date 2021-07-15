@@ -78,6 +78,7 @@ export class HomePageComponent implements OnInit {
           }
         },
         (error) => {
+          this.loading = false;
           Swal.fire(
             'Ουπς...',
             'Κάτι πήγε στραβά!Παρακαλώ προσπαθήστε αργότερα.',
