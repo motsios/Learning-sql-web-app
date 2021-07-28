@@ -170,7 +170,7 @@ export class SqlQuizComponent implements OnInit {
         if (data.result != 'This user are not a student') {
           Swal.fire(
             '',
-            'Μόλις ολοκλήρωσες το SQL Κουίζ.Το Σκορ σας καταχωρήθηκε!Πατώντας τις Απαντήσεις μπορείτε να ελέγξετε τις σωστές και τις λανθασμένες απαντήσεις',
+            'Μόλις ολοκλήρωσες το SQL Κουίζ.Το σκορ σας καταχωρήθηκε!Πατώντας τις Απαντήσεις μπορείτε να ελέγξετε τις σωστές και τις λανθασμένες απαντήσεις',
             'success'
           );
           this.submitModal.show();
@@ -232,7 +232,7 @@ export class SqlQuizComponent implements OnInit {
   exportAsPDF() {
     let docDefinition = {
       content:
-        'Το Σκορ σας στο  ' +
+        'Το σκορ σας στο  ' +
         this.grdifficulty +
         ' SQL Κουίζ ' +
         this.numberofquestions +

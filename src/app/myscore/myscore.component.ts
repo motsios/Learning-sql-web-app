@@ -184,7 +184,7 @@ export class MyscoreComponent implements OnInit {
           }
           this.scoresArray = data.result[0].score_tables;
           if (data.result[0].score_tables.length == 0) {
-            Swal.fire('Ουπς...', 'Δεν έχετε καταχωρημένα Σκορ!', 'error');
+            Swal.fire('Ουπς...', 'Δεν έχετε καταχωρημένα σκορ!', 'error');
           }
         } else {
           Swal.fire(

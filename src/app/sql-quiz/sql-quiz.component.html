@@ -10,10 +10,10 @@
   <div class="card" [hidden]="isQuestionCardShow">
     <div class="card-body">
       <div class="row justify-content-md-center">
-        <h2 *ngIf="grdifficulty=='Εύκολο'" class="header1">Το Κουίζ περιλαμβάνει {{numberofquestions}} τυχαίες
-          Εύκολες Ερωτήσεις Πολλαπλής επιλογής.Κάθε ερώτηση μπορεί να έχει διαφορετικό Σκορ.Καλή Επιτυχία!</h2>
-        <h2 *ngIf="grdifficulty=='Δύσκολο'" class="header1">Το Κουίζ περιλαμβάνει {{numberofquestions}} τυχαίες
-          Δύσκολες Ερωτήσεις Πολλαπλής επιλογής.Κάθε ερώτηση μπορεί να έχει διαφορετικό Σκορ.Καλή Επιτυχία!</h2>
+        <h2 *ngIf="grdifficulty=='Εύκολο'" class="header1">Το κουίζ περιλαμβάνει {{numberofquestions}} τυχαίες
+          Εύκολες Ερωτήσεις Πολλαπλής επιλογής.Κάθε ερώτηση μπορεί να έχει διαφορετικό σκορ.Καλή Επιτυχία!</h2>
+        <h2 *ngIf="grdifficulty=='Δύσκολο'" class="header1">Το κουίζ περιλαμβάνει {{numberofquestions}} τυχαίες
+          Δύσκολες Ερωτήσεις Πολλαπλής επιλογής.Κάθε ερώτηση μπορεί να έχει διαφορετικό σκορ.Καλή Επιτυχία!</h2>
         <div class="col-sm-12 col-lg-3">
           <button class="btn btn-block btn-outline-primary cursor-restriction" style="margin-top: 24px;"
             (click)="startQuiz()" (click)="startTimer()">
@@ -69,12 +69,12 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-center" style="color: #196f77;">
-        <h4>Σύνολο Ερωτήσεων: {{questionsArray.length}} </h4>
+        <h4>Σύνολο ερωτήσεων: {{questionsArray.length}} </h4>
         <h4>
-          Σωστές Απαντήσεις : {{rightAnswer}}
+          Σωστές απαντήσεις : {{rightAnswer}}
         </h4>
         <h4>
-          Το Σκορ είναι : {{rightScore}}
+          Το σκορ είναι : {{rightScore}}
         </h4>
         <span>
           <button type="button" class="btn btn-primary" (click)="checkAnswers()" style="margin-right: 17px;">

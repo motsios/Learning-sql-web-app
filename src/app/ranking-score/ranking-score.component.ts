@@ -251,7 +251,7 @@ export class RankingScoreComponent implements OnInit {
                 this.bestScoreOf15Array = data.result;
                 console.log(this.bestScoreOf15Array);
               } else {
-                Swal.fire('', 'Δεν υπάρχουν διαθέσιμα Σκορ ακόμη!', 'error');
+                Swal.fire('', 'Δεν υπάρχουν διαθέσιμα σκορ ακόμη!', 'error');
               }
             });
         } else {
