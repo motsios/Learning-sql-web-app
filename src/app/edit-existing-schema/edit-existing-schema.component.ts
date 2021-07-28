@@ -609,6 +609,7 @@ export class EditExistingSchemaComponent implements OnInit {
       staticTableColumnsArray
     );
     Swal.fire({
+      width:'800',
       title:
         ' Θέλετε να παραχθούν SQL ερωτήματα ανάμεσα στους συνδεδεμένους πίνακες;\n\n*Τα SQL ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
       showDenyButton: true,

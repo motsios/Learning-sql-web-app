@@ -225,6 +225,7 @@ export class GenerateNewSchemaComponent implements OnInit {
                       );
                     } else {
                       Swal.fire({
+                        width:'800',
                         title:
                           'Ο πίνακας ' +
                           this.tablename +
