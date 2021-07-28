@@ -93,7 +93,7 @@ export class NavbarComponent implements OnInit {
     localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     Swal.fire({
       title:
-        'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του κουίζ 15 Ερωτήσεων',
+        'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 15 Ερωτήσεων',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Εύκολο`,
@@ -119,7 +119,7 @@ export class NavbarComponent implements OnInit {
     localStorage.setItem('insideFillFieldQuestionsTableTrueOrFalse', 'no');
     Swal.fire({
       title:
-        'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του κουίζ 25 Ερωτήσεων',
+        'Επιλέξτε τον βαθμό δυσκολίας για την εκκίνηση του Κουίζ 25 Ερωτήσεων',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: `Εύκολο`,
