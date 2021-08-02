@@ -38,7 +38,7 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
   questionWithField = '';
   heddenWords = '';
   hiddenWordsArray = [];
-  lengthOfQuestions
+  lengthOfQuestions;
   public selection: string;
 
   random;
@@ -114,9 +114,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
       if (
         this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME != null
       ) {
-        this.secondTable = this.tableColumnsArray2[
-          i
-        ].OTHER_VALUES.REFERENCED_TABLE_NAME;
+        this.secondTable =
+          this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME;
         console.log(
           this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME
         );
@@ -175,7 +174,8 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
         this.load = true;
         console.log(data.result);
         if (data.result) {
-          this.lengthOfQuestions=data.result.sql_random_queries_true_or_falses.length;
+          this.lengthOfQuestions =
+            data.result.sql_random_queries_true_or_falses.length;
           this.fillfieldsquestionsArray =
             data.result.sql_random_queries_true_or_falses;
           console.log(this.fillfieldsquestionsArray);
@@ -216,17 +216,19 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
           } else {
             this.random = this.randomInteger(1, 2);
             if (this.random == 1) {
-              this.questionWithField = this.fillfieldsquestionsArray[0].sql_query_true_or_false;
+              this.questionWithField =
+                this.fillfieldsquestionsArray[0].sql_query_true_or_false;
             } else {
               var nextQueryShows = 1 % this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
-              this.questionWithField = this.fillfieldsquestionsArray[
-                nextQueryShows
-              ].sql_query_true_or_false;
+              this.questionWithField =
+                this.fillfieldsquestionsArray[
+                  nextQueryShows
+                ].sql_query_true_or_false;
             }
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[0]
-                .sql_query_true_or_false,
+              sqlQueryString:
+                this.fillfieldsquestionsArray[0].sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {
@@ -440,17 +442,19 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             this.questionidToNumber = this.questionidToNumber + 1;
             this.random = this.randomInteger(1, 2);
             if (this.random == 1) {
-              this.questionWithField = this.fillfieldsquestionsArray[
-                this.questionidToNumber
-              ].sql_query_true_or_false;
+              this.questionWithField =
+                this.fillfieldsquestionsArray[
+                  this.questionidToNumber
+                ].sql_query_true_or_false;
             } else {
               var nextQueryShows =
                 (this.questionidToNumber + 1) %
                 this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
-              this.questionWithField = this.fillfieldsquestionsArray[
-                nextQueryShows
-              ].sql_query_true_or_false;
+              this.questionWithField =
+                this.fillfieldsquestionsArray[
+                  nextQueryShows
+                ].sql_query_true_or_false;
             }
 
             const headers = {
@@ -458,9 +462,9 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               Authorization: localStorage.getItem('token'),
             };
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[
-                this.questionidToNumber
-              ].sql_query_true_or_false,
+              sqlQueryString:
+                this.fillfieldsquestionsArray[this.questionidToNumber]
+                  .sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {
@@ -604,17 +608,19 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
             this.questionidToNumber = this.questionidToNumber + 1;
             this.random = this.randomInteger(1, 2);
             if (this.random == 1) {
-              this.questionWithField = this.fillfieldsquestionsArray[
-                this.questionidToNumber
-              ].sql_query_true_or_false;
+              this.questionWithField =
+                this.fillfieldsquestionsArray[
+                  this.questionidToNumber
+                ].sql_query_true_or_false;
             } else {
               var nextQueryShows =
                 (this.questionidToNumber + 1) %
                 this.fillfieldsquestionsArray.length;
               console.log('tyxaia');
-              this.questionWithField = this.fillfieldsquestionsArray[
-                nextQueryShows
-              ].sql_query_true_or_false;
+              this.questionWithField =
+                this.fillfieldsquestionsArray[
+                  nextQueryShows
+                ].sql_query_true_or_false;
             }
 
             const headers = {
@@ -622,9 +628,9 @@ export class QuestionsToTablesTrueOrFalseComponent implements OnInit {
               Authorization: localStorage.getItem('token'),
             };
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[
-                this.questionidToNumber
-              ].sql_query_true_or_false,
+              sqlQueryString:
+                this.fillfieldsquestionsArray[this.questionidToNumber]
+                  .sql_query_true_or_false,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {

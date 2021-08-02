@@ -93,7 +93,7 @@ export class RegisterpageComponent implements OnInit {
   }
 
   registerToApi(role) {
-    this.loading =true;
+    this.loading = true;
     var sex = '';
     if (this.registerForm.value['sex'] == '1') {
       sex = 'male';

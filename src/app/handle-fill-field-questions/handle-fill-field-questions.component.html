@@ -1,7 +1,7 @@
 <app-navbar></app-navbar><br>
 <div>
-  <h2 class="header center1">Ερωτήσεις Συμπλήρωσης-κενού &nbsp;<button class="button1"
-    (click)="info()"><i class="fa fa-info-circle"></i></button></h2>&nbsp;
+  <h2 class="header center1">Ερωτήσεις Συμπλήρωσης-κενού &nbsp;<button class="button1" (click)="info()"><i
+        class="fa fa-info-circle"></i></button></h2>&nbsp;
 </div>
 <br>
 <button type="button" class="btn1 btn-primary  py-1 px-2" (click)="add()"><i class="fa fa-plus fa-lg"></i></button>
@@ -26,11 +26,11 @@
         <td><b>{{question.hideWord}}</b></td>
         <td>
           &nbsp;
-            <button type="button" class="btn btn-primary  py-1 px-2"
-              (click)="updateField(question.id,question.question,question.fill_field_question,question.hideWord)"><i
-                class="fa fa-pencil"></i></button> &nbsp;
-            <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
-                class="fa fa-trash-o"></i></button>
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="updateField(question.id,question.question,question.fill_field_question,question.hideWord)"><i
+              class="fa fa-pencil"></i></button> &nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2" (click)="remove(question.id)"><i
+              class="fa fa-trash-o"></i></button>
         </td>
       </tr>
     </tbody>

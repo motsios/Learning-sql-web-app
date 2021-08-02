@@ -5,7 +5,8 @@
       <h3>Πίνακες:</h3>
       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       <ul *ngFor="let name of tableArrayName;">
-        <li (click)="eachTableColumns(name,name.table_name)"><a><button class="button2">-{{name.table_name}}</button></a></li>
+        <li (click)="eachTableColumns(name,name.table_name)"><a><button
+              class="button2">-{{name.table_name}}</button></a></li>
       </ul>
     </section>
   </nav>
@@ -67,10 +68,12 @@
     </div>
   </div>
   <br>
-  <h4><div class="header1"><label
-    *ngIf="load!=false"   for="fname"><b>{{questionidToNumber+1}}.{{questionWithField}}</b></label></div>
+  <h4>
+    <div class="header1"><label *ngIf="load!=false"
+        for="fname"><b>{{questionidToNumber+1}}.{{questionWithField}}</b></label></div>
   </h4>
-  <input type="text" class="inputtext" placeholder="Γράψτε τις λέξεις που λείπουν χωρισμένες με κόμμα και χωρίς περιττά κενά..." id="text"
+  <input type="text" class="inputtext"
+    placeholder="Γράψτε τις λέξεις που λείπουν χωρισμένες με κόμμα και χωρίς περιττά κενά..." id="text"
     [(ngModel)]="textfield">
   <br><br>
   <div class="form-group">

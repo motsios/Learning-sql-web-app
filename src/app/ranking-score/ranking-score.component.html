@@ -21,7 +21,8 @@
         <td><b>{{student.last_name}}</b></td>
         <td><b>{{student.username}}</b></td>
         <td><b>{{student.score_tables[0].score}}</b></td>
-        <td><b  *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b  *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
+        <td><b *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b
+            *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
         <td><b>{{student.score_tables[0].time}}</b></td>
         <td>
           <b>{{student.score_tables[0].createdAt.slice(0,-41)}}</b>
@@ -50,7 +51,8 @@
         <td><b>{{student.last_name}}</b></td>
         <td><b>{{student.username}}</b></td>
         <td><b>{{student.score_tables[0].score}}</b></td>
-        <td><b  *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b  *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
+        <td><b *ngIf="student.score_tables[0].difficulty=='easy'">Εύκολο</b><b
+            *ngIf="student.score_tables[0].difficulty=='hard'">Δύσκολο</b></td>
         <td><b>{{student.score_tables[0].time}}</b></td>
         <td>
           <b>{{student.score_tables[0].createdAt.slice(0,-41)}}</b>

@@ -47,7 +47,7 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
     return this.editoraddForm.controls;
   }
   onSubmit() {
-    console.log( this.editoraddForm.value['sql_query'])
+    console.log(this.editoraddForm.value['sql_query']);
     this.submitted = true;
     if (this.editoraddForm.invalid) {
       Swal.fire('', 'Υπάρχουν κενά πεδία!', 'error');
@@ -63,7 +63,8 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
       };
       this.http
         .put<any>(
-          'http://localhost:3000/api/updateonesqlquerytrueorfalsefromspecifictable/' + this.id,
+          'http://localhost:3000/api/updateonesqlquerytrueorfalsefromspecifictable/' +
+            this.id,
           body,
           {
             headers,
@@ -72,11 +73,7 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
         .subscribe((data) => {
           console.log(data);
           if (data.result == 'Updated completed') {
-            Swal.fire(
-              '',
-              'Το SQL ερώτημα ανανεώθηκε επιτυχώς!',
-              'success'
-            );
+            Swal.fire('', 'Το SQL ερώτημα ανανεώθηκε επιτυχώς!', 'success');
             this.dialogRef.close();
           } else {
             Swal.fire(
@@ -93,20 +90,20 @@ export class DialogSqlQueryTrueOrFalseTableComponent implements OnInit {
       };
       const body = {
         sql_query: this.editoraddForm.value['sql_query'],
-        tablename:this.tablename
+        tablename: this.tablename,
       };
       this.http
-        .post<any>('http://localhost:3000/api/addonesqlquerytrueorfalsefromspecifictable', body, {
-          headers,
-        })
+        .post<any>(
+          'http://localhost:3000/api/addonesqlquerytrueorfalsefromspecifictable',
+          body,
+          {
+            headers,
+          }
+        )
         .subscribe((data) => {
           console.log(data);
           if (data.result) {
-            Swal.fire(
-              '',
-              'Το SQL ερώτημα προστέθηκε επιτυχώς!',
-              'success'
-            );
+            Swal.fire('', 'Το SQL ερώτημα προστέθηκε επιτυχώς!', 'success');
             this.dialogRef.close();
           } else {
             Swal.fire(

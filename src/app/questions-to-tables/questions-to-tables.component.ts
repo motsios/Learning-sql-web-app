@@ -109,9 +109,8 @@ export class QuestionsToTablesComponent implements OnInit {
       if (
         this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME != null
       ) {
-        this.secondTable = this.tableColumnsArray2[
-          i
-        ].OTHER_VALUES.REFERENCED_TABLE_NAME;
+        this.secondTable =
+          this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME;
         console.log(
           this.tableColumnsArray2[i].OTHER_VALUES.REFERENCED_TABLE_NAME
         );
@@ -170,7 +169,7 @@ export class QuestionsToTablesComponent implements OnInit {
         this.load = true;
         console.log(data.result);
         if (data.result) {
-         this.lengthOfQuestions=data.result.sql_random_queries.length;
+          this.lengthOfQuestions = data.result.sql_random_queries.length;
           this.fillfieldsquestionsArray = data.result.sql_random_queries;
           console.log(this.fillfieldsquestionsArray);
 
@@ -212,9 +211,8 @@ export class QuestionsToTablesComponent implements OnInit {
             this.ngOnInit();
           } else {
             this.questionWithField = this.fillfieldsquestionsArray[0].sql_query;
-            this.splitWords = this.fillfieldsquestionsArray[0].hideWord.split(
-              ','
-            );
+            this.splitWords =
+              this.fillfieldsquestionsArray[0].hideWord.split(',');
 
             for (var i = 0; i < this.splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
@@ -434,13 +432,13 @@ export class QuestionsToTablesComponent implements OnInit {
             this.textfield = '';
             this.questionidToNumber = this.questionidToNumber + 1;
 
-            this.questionWithField = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].sql_query;
+            this.questionWithField =
+              this.fillfieldsquestionsArray[this.questionidToNumber].sql_query;
 
-            this.splitWords = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].hideWord.split(',');
+            this.splitWords =
+              this.fillfieldsquestionsArray[
+                this.questionidToNumber
+              ].hideWord.split(',');
 
             for (var i = 0; i < this.splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
@@ -455,9 +453,9 @@ export class QuestionsToTablesComponent implements OnInit {
               Authorization: localStorage.getItem('token'),
             };
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[
-                this.questionidToNumber
-              ].sql_query,
+              sqlQueryString:
+                this.fillfieldsquestionsArray[this.questionidToNumber]
+                  .sql_query,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {
@@ -602,13 +600,13 @@ export class QuestionsToTablesComponent implements OnInit {
             this.textfield = '';
             this.questionidToNumber = this.questionidToNumber + 1;
 
-            this.questionWithField = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].sql_query;
+            this.questionWithField =
+              this.fillfieldsquestionsArray[this.questionidToNumber].sql_query;
 
-            this.splitWords = this.fillfieldsquestionsArray[
-              this.questionidToNumber
-            ].hideWord.split(',');
+            this.splitWords =
+              this.fillfieldsquestionsArray[
+                this.questionidToNumber
+              ].hideWord.split(',');
 
             for (var i = 0; i < this.splitWords.length; i++) {
               this.questionWithField = this.questionWithField.replace(
@@ -623,9 +621,9 @@ export class QuestionsToTablesComponent implements OnInit {
               Authorization: localStorage.getItem('token'),
             };
             const body = {
-              sqlQueryString: this.fillfieldsquestionsArray[
-                this.questionidToNumber
-              ].sql_query,
+              sqlQueryString:
+                this.fillfieldsquestionsArray[this.questionidToNumber]
+                  .sql_query,
             };
             this.http
               .post<any>(this.url.baseUrl + 'executesqlquery', body, {

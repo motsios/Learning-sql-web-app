@@ -12,7 +12,7 @@ import { DialogSqlQuestionComponent } from '../dialog-sql-question/dialog-sql-qu
 export class DialogShowQueryResultsComponent implements OnInit {
   columnsArray = [];
   dataArray = [];
-  query=''
+  query = '';
   constructor(
     private http: HttpClient,
     private router: Router,

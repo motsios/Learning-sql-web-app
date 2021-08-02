@@ -8,14 +8,13 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-dialog-sql-query-table',
   templateUrl: './dialog-sql-query-table.component.html',
-  styleUrls: ['./dialog-sql-query-table.component.css']
+  styleUrls: ['./dialog-sql-query-table.component.css'],
 })
 export class DialogSqlQueryTableComponent implements OnInit {
-
   editoraddForm: FormGroup;
   submitted = false;
   edit = '';
-  tablename='';
+  tablename = '';
   id = '';
   sql_query = '';
   hideWord = '';
@@ -60,7 +59,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.sql_query)
+    console.log(this.sql_query);
     this.submitted = true;
     if (this.editoraddForm.invalid) {
       Swal.fire('', 'Υπάρχουν κενά πεδία!', 'error');
@@ -77,7 +76,8 @@ export class DialogSqlQueryTableComponent implements OnInit {
       };
       this.http
         .put<any>(
-          'http://localhost:3000/api/updateonesqlqueryfromspecifictable/' + this.id,
+          'http://localhost:3000/api/updateonesqlqueryfromspecifictable/' +
+            this.id,
           body,
           {
             headers,
@@ -86,11 +86,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
         .subscribe((data) => {
           console.log(data);
           if (data.result == 'Updated completed') {
-            Swal.fire(
-              '',
-              'Το SQL ερώτημα ανανεώθηκε επιτυχώς!',
-              'success'
-            );
+            Swal.fire('', 'Το SQL ερώτημα ανανεώθηκε επιτυχώς!', 'success');
             this.dialogRef.close();
           } else {
             Swal.fire(
@@ -101,7 +97,7 @@ export class DialogSqlQueryTableComponent implements OnInit {
           }
         });
     } else {
-      console.log(this.sql_query+this.hideWord+this.tablename)
+      console.log(this.sql_query + this.hideWord + this.tablename);
       const headers = {
         'Content-Type': 'application/json; charset=UTF-8',
         Authorization: localStorage.getItem('token'),
@@ -109,20 +105,20 @@ export class DialogSqlQueryTableComponent implements OnInit {
       const body = {
         sql_query: this.editoraddForm.value['sql_query'],
         hideWord: this.editoraddForm.value['hideWord'],
-        tablename:this.tablename
+        tablename: this.tablename,
       };
       this.http
-        .post<any>('http://localhost:3000/api/addonesqlqueryfromspecifictable', body, {
-          headers,
-        })
+        .post<any>(
+          'http://localhost:3000/api/addonesqlqueryfromspecifictable',
+          body,
+          {
+            headers,
+          }
+        )
         .subscribe((data) => {
           console.log(data);
           if (data.result) {
-            Swal.fire(
-              '',
-              'Το SQL ερώτημα προστέθηκε επιτυχώς!',
-              'success'
-            );
+            Swal.fire('', 'Το SQL ερώτημα προστέθηκε επιτυχώς!', 'success');
             this.dialogRef.close();
           } else {
             Swal.fire(

@@ -158,11 +158,13 @@ export class EditExistingSchemaComponent implements OnInit {
     if (this.role == 'student') {
       title1 =
         'Διατυπώστε οποιοδήποτε SQL SELECT ερώτημα για να εκτελεστεί στον πίνακα ' +
-        this.statictablename+'...';
+        this.statictablename +
+        '...';
     } else {
       title1 =
         'Διατυπώστε οποιοδήποτε SQL ερώτημα για να εκτελεστεί στον πίνακα ' +
-        this.statictablename+'...';
+        this.statictablename +
+        '...';
     }
     Swal.fire({
       title: title1,
@@ -609,7 +611,7 @@ export class EditExistingSchemaComponent implements OnInit {
       staticTableColumnsArray
     );
     Swal.fire({
-      width:'800',
+      width: '800',
       title:
         ' Θέλετε να παραχθούν SQL ερωτήματα ανάμεσα στους συνδεδεμένους πίνακες;\n\n*Τα SQL ερωτήματα θα εμφανίζονται στους Εκπαιδευόμενους στις κατηγορίες "Τεστ: Ερωτήσεις Συμπλήρωσης-Κενού σε Πίνακες" και "Τεστ:Ερωτήσεις Σωστού-Λάθους σε Πίνακες".  ',
       showDenyButton: true,

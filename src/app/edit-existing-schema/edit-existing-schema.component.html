@@ -5,8 +5,8 @@
       <h3>Πίνακες:</h3>
       <hr style="height:2px;border-width:0;color:gray;background-color:gray">
       <ul *ngFor="let name of tableArrayName;">
-        <li (click)="eachTableColumns(name,name.table_name)"><a><button
-              class="button2">{{name.table_name}}</button></a></li>
+        <li (click)="eachTableColumns(name,name.table_name)"><a><button class="button2">{{name.table_name}}</button></a>
+        </li>
       </ul>
     </section>
   </nav>
@@ -116,8 +116,8 @@
         <td><b>{{question.sql_query_true_or_false}}</b></td>
         <td>
           &nbsp;
-          <button type="button" class="btn btn-primary  py-1 px-2" (click)="executeQuery(question.sql_query_true_or_false)"><i
-              class="fa fa-check"></i></button>&nbsp;
+          <button type="button" class="btn btn-primary  py-1 px-2"
+            (click)="executeQuery(question.sql_query_true_or_false)"><i class="fa fa-check"></i></button>&nbsp;
           <button type="button" class="btn btn-primary  py-1 px-2"
             (click)="updateQuestionTrueOrFalse(question.id,question.sql_query_true_or_false)" *ngIf="role=='teacher'"><i
               class="fa fa-pencil"></i></button> &nbsp;

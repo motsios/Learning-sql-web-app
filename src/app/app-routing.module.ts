@@ -19,8 +19,8 @@ import { SqlQuizComponent } from './sql-quiz/sql-quiz.component';
 import { TheorySqlComponent } from './theory-sql/theory-sql.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent},
-  { path: 'register', component: RegisterpageComponent},
+  { path: '', component: HomePageComponent },
+  { path: 'register', component: RegisterpageComponent },
   { path: 'myprofile', component: MyprofilepageComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'allstudentsprofile', component: AllstudentsprofilesComponent },
@@ -30,22 +30,25 @@ const routes: Routes = [
   { path: 'generateNewSchema', component: GenerateNewSchemaComponent },
   { path: 'editExistingSchema', component: EditExistingSchemaComponent },
   { path: 'resetpassword/:id/:code', component: ResetpasswordComponent },
-  { path: 'handlefillfieldquestions', component: HandleFillFieldQuestionsComponent },
-  { path: 'fillfieldsqlquestions/:id', component: SqlFillFieldQuestionsComponent },
+  {
+    path: 'handlefillfieldquestions',
+    component: HandleFillFieldQuestionsComponent,
+  },
+  {
+    path: 'fillfieldsqlquestions/:id',
+    component: SqlFillFieldQuestionsComponent,
+  },
   { path: 'ranking', component: RankingScoreComponent },
   { path: 'theorySql', component: TheorySqlComponent },
   { path: 'questionsToTables/:id', component: QuestionsToTablesComponent },
-  { path: 'questionsToTablesTrueOrFalse/:id', component: QuestionsToTablesTrueOrFalseComponent },
-
-
-
-
-
+  {
+    path: 'questionsToTablesTrueOrFalse/:id',
+    component: QuestionsToTablesTrueOrFalseComponent,
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

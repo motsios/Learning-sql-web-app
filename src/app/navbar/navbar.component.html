@@ -60,7 +60,7 @@
           <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTables()"
             [ngClass]="getChecked()=='tab555' ? 'active':''">Τεστ: Ερωτήσεις
             Συμπλήρωσης-Κενού σε Πίνακες</a>
-            <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTablesTrueOrFalse()"
+          <a *ngIf="role=='student'" class="dropdown-item" (click)="sqlQuestionsToTablesTrueOrFalse()"
             [ngClass]="getChecked()=='tab5555' ? 'active':''">Τεστ: Ερωτήσεις
             Σωστού-Λάθους σε Πίνακες</a>
         </div>
@@ -84,7 +84,8 @@
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false" [ngClass]="getChecked()=='tab9' || getChecked()=='tab99' || getChecked()=='tab999' ? 'active':''">
+          aria-expanded="false"
+          [ngClass]="getChecked()=='tab9' || getChecked()=='tab99' || getChecked()=='tab999' ? 'active':''">
           <i class="fa fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">

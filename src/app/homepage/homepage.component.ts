@@ -96,7 +96,7 @@ export class HomePageComponent implements OnInit {
         autocapitalize: 'off',
       },
       showCancelButton: true,
-      cancelButtonText:'Ακύρωση',
+      cancelButtonText: 'Ακύρωση',
       width: 1000,
       confirmButtonText: 'Αποδοχή',
       showLoaderOnConfirm: true,
