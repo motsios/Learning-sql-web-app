@@ -233,7 +233,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 console.log(data);
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
-                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
+                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα';
                   } else {
                     this.resultcolumnsArray = Object.keys(data.result[0]);
                     this.resultdataArray = data.result;
@@ -465,7 +465,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 console.log(data);
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
-                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
+                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα';
                   } else {
                     this.resultcolumnsArray = Object.keys(data.result[0]);
                     this.resultdataArray = data.result;
@@ -633,7 +633,7 @@ export class QuestionsToTablesComponent implements OnInit {
                 console.log(data);
                 if (Array.isArray(data.result)) {
                   if (data.result.length == 0) {
-                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα!';
+                    this.errorText = 'Το ερώτημα επιστρέφει κενό πίνακα';
                   } else {
                     this.resultcolumnsArray = Object.keys(data.result[0]);
                     this.resultdataArray = data.result;
